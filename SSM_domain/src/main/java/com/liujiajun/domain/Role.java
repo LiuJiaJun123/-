@@ -1,6 +1,6 @@
 package com.liujiajun.domain;
 
-import org.springframework.security.core.userdetails.User;
+//import org.springframework.security.core.userdetails.User;
 
 import java.util.List;
 

@@ -7,9 +7,9 @@ import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
+//import org.springframework.security.core.context.SecurityContext;
+//import org.springframework.security.core.context.SecurityContextHolder;
+//import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -76,7 +76,6 @@ public class LogAop {
                         return;
                     }
 
-//                    url = classValue[0] + methodValue[0];
                     url=request.getRequestURI();
 
                     //获取访问的ip
@@ -96,9 +95,9 @@ public class LogAop {
 
 
                     //获取当前操作的用户
-                    SecurityContext context = SecurityContextHolder.getContext();//从上下文中获了当前登录的用户
-                    User user = (User) context.getAuthentication().getPrincipal();
-                    String username = user.getUsername();
+//                    SecurityContext context = SecurityContextHolder.getContext();//从上下文中获了当前登录的用户
+//                    User user = (User) context.getAuthentication().getPrincipal();
+//                    String username = user.getUsername();
 
                     //将日志相关信息封装到SysLog对象
                     SysLog sysLog = new SysLog();
@@ -106,14 +105,11 @@ public class LogAop {
                     sysLog.setIp(ip);
 
 
-
-//                    sysLog.setMethod("[类名] " + clazz.getName() + "[方法名] " + method.getName());
-
                     String methodName = jp.getSignature().getName();
                     sysLog.setMethod("[类名] " + clazz.getName() + "[方法名] " + methodName);
 
                     sysLog.setUrl(url);
-                    sysLog.setUsername(username);
+//                    sysLog.setUsername(username);
                     sysLog.setVisitTime(visitTime);
                     //调用Service完成操作
                     sysLogService.save(sysLog);

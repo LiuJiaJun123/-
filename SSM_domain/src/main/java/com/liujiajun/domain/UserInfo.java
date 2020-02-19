@@ -6,20 +6,24 @@ import java.util.List;
  * 对应数据库中users表
  */
 public class UserInfo {
-    private String id;
+    private Integer id;
     private String username;
-    private String email;
     private String password;
-    private String phoneNum;
-    private int status;
+    private String phone;
+    private String qq;
+    private String email;
+    private String address;
+    private String description;
+    private Integer role;
+    private String roleStr;
+    private Integer status;
     private String statusStr;
-    private List<Role> roles;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -31,14 +35,6 @@ public class UserInfo {
         this.username = username;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -47,19 +43,73 @@ public class UserInfo {
         this.password = password;
     }
 
-    public String getPhoneNum() {
-        return phoneNum;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPhoneNum(String phoneNum) {
-        this.phoneNum = phoneNum;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public int getStatus() {
+    public String getQq() {
+        return qq;
+    }
+
+    public void setQq(String qq) {
+        this.qq = qq;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Integer getRole() {
+        return role;
+    }
+
+    public void setRole(Integer role) {
+        this.role = role;
+    }
+
+    public String getRoleStr() {
+        if(role==1){
+            roleStr="admin";
+        }
+        if(role==2){
+            roleStr="user";
+        }
+        return roleStr;
+    }
+
+    public void setRoleStr(String roleStr) {
+        this.roleStr = roleStr;
+    }
+
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
@@ -75,27 +125,5 @@ public class UserInfo {
 
     public void setStatusStr(String statusStr) {
         this.statusStr = statusStr;
-    }
-
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
-    }
-
-    @Override
-    public String toString() {
-        return "UserInfo{" +
-                "id='" + id + '\'' +
-                ", username='" + username + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", phoneNum='" + phoneNum + '\'' +
-                ", status=" + status +
-                ", statusStr='" + statusStr + '\'' +
-                ", roles=" + roles +
-                '}';
     }
 }

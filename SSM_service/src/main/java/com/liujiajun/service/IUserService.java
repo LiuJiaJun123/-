@@ -3,12 +3,13 @@ package com.liujiajun.service;
 import com.liujiajun.domain.Role;
 import com.liujiajun.domain.UserInfo;
 import org.apache.ibatis.annotations.Select;
-import org.springframework.security.core.userdetails.UserDetailsService;
+//import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public interface IUserService extends UserDetailsService {
+//public interface IUserService extends UserDetailsService {
+public interface IUserService  {
 
     public List<UserInfo> findAll(int page,int pageSize) throws Exception;
 

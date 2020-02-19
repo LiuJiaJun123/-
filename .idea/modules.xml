@@ -7,7 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/SSM_service/SSM_service.iml" filepath="$PROJECT_DIR$/SSM_service/SSM_service.iml" />
       <module fileurl="file://$PROJECT_DIR$/SSM_utils/SSM_utils.iml" filepath="$PROJECT_DIR$/SSM_utils/SSM_utils.iml" />
       <module fileurl="file://$PROJECT_DIR$/SSM_web/SSM_web.iml" filepath="$PROJECT_DIR$/SSM_web/SSM_web.iml" />
-      <module fileurl="file://$PROJECT_DIR$/后台管理.iml" filepath="$PROJECT_DIR$/后台管理.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/后台.iml" filepath="$PROJECT_DIR$/.idea/后台.iml" />
     </modules>
   </component>
 </project>

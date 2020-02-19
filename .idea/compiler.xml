@@ -19,7 +19,7 @@
       <module name="SSM_service" target="1.8" />
       <module name="SSM_utils" target="1.8" />
       <module name="SSM_web" target="1.8" />
-      <module name="后台管理" target="1.5" />
+      <module name="后台" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

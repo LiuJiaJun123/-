@@ -1,88 +1,98 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%--<%@ page language="java" contentType="text/html; charset=UTF-8"--%>
+	<%--pageEncoding="UTF-8"%>--%>
+<%--<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">--%>
+<%--<html>--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/libs/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css">
+	<link rel="apple-touch-icon" href="${pageContext.request.contextPath}/img/icon.jpg" sizes="100x100">
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/img/icon.jpg" type="img/x-icon">
+	<title>ZQU BOOK</title>
 
-<title>登录</title>
-
-<meta
-	content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
-	name="viewport">
-
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/plugins/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/plugins/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/plugins/ionicons/css/ionicons.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/plugins/adminLTE/css/AdminLTE.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/plugins/iCheck/square/blue.css">
 </head>
 
-<body class="hold-transition login-page">
-	<div class="login-box">
-		<div class="login-logo">
-			<a href="all-admin-index.html">企业权限管理系统</a>
-		</div>
-		<!-- /.login-logo -->
-		<div class="login-box-body">
-			<p class="login-box-msg">登录</p>
-
-			<form action="${pageContext.request.contextPath}/login.do" method="post">
-				<div class="form-group has-feedback">
-					<input type="text" name="username" class="form-control"
-						placeholder="用户名"> <span
-						class="glyphicon glyphicon-user form-control-feedback"></span>
-				</div>
-				<div class="form-group has-feedback">
-					<input type="password" name="password" class="form-control"
-						placeholder="密码"> <span
-						class="glyphicon glyphicon-lock form-control-feedback"></span>
-				</div>
-				<div class="row">
-					<div class="col-xs-8">
-						<div class="checkbox icheck">
-							<label><input type="checkbox"> 记住 下次自动登录</label>
-						</div>
-					</div>
-					<!-- /.col -->
-					<div class="col-xs-4">
-						<button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
-					</div>
-					<!-- /.col -->
-				</div>
-			</form>
-
-
-
-		</div>
-		<!-- /.login-box-body -->
+<body>
+<div class="container">
+	<div class="logo">
+		<img src="${pageContext.request.contextPath}/img/logo.png" alt="">
+		<h2 class="hidden-xs"></h2>砚园人的二手书交易平台 <h2 class="hidden-xs"></h2>
 	</div>
-	<!-- /.login-box -->
+	<div class="login-toggle">
+		<div class="row">
+			<div class="center-block">
+				<a href="#" class id="login-toggle-signUp">注册</a>
+				<a href="#" class="active" id="login-toggle-signIn">登陆</a>
+			</div>
+			<%--<span id="login-toggle-bar"></span>--%>
+		</div>
+	</div>
+	<div id="signUp-page" style="display: none">
+		<form class="form-horizontal" id="signUp-form" role="form">
+			<div class="form-group">
+				<%--<div class="col-xs-10 col-sm-8 col-md-4 col-lg-2 col-xs-offset-1 col-sm-offset-2 col-md-offset-4 col-lg-offset-5">--%>
+				<div class="col-xs-10 col-sm-8 col-md-4 col-lg-2 col-xs-offset-1 col-sm-offset-2 col-md-offset-4 col-lg-offset-5">
+					<input type="text" name="username" class="form-control input-lg" required placeholder="用户名">
+					<label class="error-msg" id="error-msg-username">用户名不存在</label>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-xs-10 col-sm-8 col-md-4 col-lg-2 col-xs-offset-1 col-sm-offset-2 col-md-offset-4 col-lg-offset-5">
+					<input type="text" name="phonenum-or-email" class="form-control input-lg" required placeholder="手机号">
+					<label class="error-msg" id="error-msg-phonenum"></label>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-xs-10 col-sm-8 col-md-4 col-lg-2 col-xs-offset-1 col-sm-offset-2 col-md-offset-4 col-lg-offset-5">
+					<input type="password" name="password" class="form-control input-lg" required placeholder="密码（不少于 6 位）">
+					<label class="error-msg" id="error-msg-password"></label>
 
-	<!-- jQuery 2.2.3 -->
-	<!-- Bootstrap 3.3.6 -->
-	<!-- iCheck -->
-	<script
-		src="${pageContext.request.contextPath}/plugins/jQuery/jquery-2.2.3.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/bootstrap/js/bootstrap.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/iCheck/icheck.min.js"></script>
-	<script>
-		$(function() {
-			$('input').iCheck({
-				checkboxClass : 'icheckbox_square-blue',
-				radioClass : 'iradio_square-blue',
-				increaseArea : '20%' // optional
-			});
-		});
-	</script>
+
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-10 col-sm-8 col-md-4 col-lg-2 col-xs-offset-1 col-sm-offset-2 col-md-offset-4 col-lg-offset-5">
+					<a href="#" type="submit" class="btu-submit">注册ZQU BOOK</a>
+				</div>
+			</div>
+		</form>
+		<div class="row">
+			<p>点击注册按钮，即代表你同意<a href="#">《ZQU BOOK协议》</a></p>
+		</div>
+	</div>
+	<div id="signIn-page" >
+		<form class="form-horizontal" id="signIn-form" role="form"
+			   action="${pageContext.request.contextPath}/login.do" method="post">
+			<div class="form-group">
+				<div class="col-xs-10 col-sm-8 col-md-4 col-lg-2 col-xs-offset-1 col-sm-offset-2 col-md-offset-4 col-lg-offset-5">
+					<input type="text" name="username" class="form-control input-lg" required placeholder="用户名">
+					<label class="error-msg" id="error-msg-phnum"></label>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-xs-10 col-sm-8 col-md-4 col-lg-2 col-xs-offset-1 col-sm-offset-2 col-md-offset-4 col-lg-offset-5">
+					<input type="password" name="password" class="form-control input-lg" required placeholder="密码">
+					<label class="error-msg error-msg-password"></label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-10 col-sm-8 col-md-4 col-lg-2 col-xs-offset-1 col-sm-offset-2 col-md-offset-4 col-lg-offset-5">
+					<button type="submit" class="btu-submit">登陆</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<canvas id="canvas"></canvas>
+<script src="${pageContext.request.contextPath}/libs/jq-3.2.1/jquery-3.2.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/libs/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/login-toggle.js"></script>
+<script src='${pageContext.request.contextPath}/js/canvas.js'></script>
 </body>
 
 </html>

@@ -32,8 +32,9 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!--配置静态资源不过滤-->
     <mvc:resources location="/css/" mapping="/css/**" />
-    <mvc:resources location="/img/" mapping="/images/**" />
+    <mvc:resources location="/img/" mapping="/img/**" />
     <mvc:resources location="/js/" mapping="/js/**" />
+    <mvc:resources location="/libs/" mapping="/libs/**" />
     <mvc:resources location="/plugins/" mapping="/plugins/**" />
 
     <!--开启注解的支持-->

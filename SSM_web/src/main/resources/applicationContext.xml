@@ -24,11 +24,19 @@
 
 
     <context:property-placeholder location="classpath:db.properties"></context:property-placeholder>
-    <!--配置连接池-->
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="driverClass" value="${jdbc.driver}"></property>
-        <property name="jdbcUrl" value="${jdbc.url}"></property>
-        <property name="user" value="${jdbc.username}"></property>
+    <!--&lt;!&ndash;配置连接池&ndash;&gt;-->
+    <!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">-->
+        <!--<property name="driverClass" value="${jdbc.driver}"></property>-->
+        <!--<property name="jdbcUrl" value="${jdbc.url}"></property>-->
+        <!--<property name="user" value="${jdbc.username}"></property>-->
+        <!--<property name="password" value="${jdbc.password}"></property>-->
+    <!--</bean>-->
+
+    <!--配置druid连接池对象-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"></property>
+        <property name="url" value="${jdbc.url}"></property>
+        <property name="username" value="${jdbc.username}"></property>
         <property name="password" value="${jdbc.password}"></property>
     </bean>
 
@@ -42,7 +50,7 @@
                 <bean class="com.github.pagehelper.PageInterceptor">
                     <property name="properties">
                         <props>
-                            <prop key="helperDialect">oracle</prop>
+                            <prop key="helperDialect">mysql</prop>
                             <prop key="reasonable">true</prop>
                         </props>
                     </property>

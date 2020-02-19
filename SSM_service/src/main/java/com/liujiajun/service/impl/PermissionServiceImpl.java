@@ -9,7 +9,7 @@ import com.liujiajun.domain.Role;
 import com.liujiajun.service.IPermissionService;
 import com.liujiajun.service.IRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.parameters.P;
+//import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

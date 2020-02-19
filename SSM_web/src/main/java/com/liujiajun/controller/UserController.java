@@ -9,7 +9,7 @@ import com.liujiajun.service.IRoleService;
 import com.liujiajun.service.IUserService;
 import javafx.scene.input.InputMethodTextRun;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -69,7 +69,7 @@ public class UserController {
         userService.save(userInfo);
         //因为id是随机生成的，所以要根据姓名查找用户
         userInfo=userService.findByName(userInfo.getUsername());
-        userService.addRole(userInfo.getId(),roleIds);
+//        userService.addRole(userInfo.getId(),roleIds);
         return "redirect:findAll.do";
 
     }
@@ -154,7 +154,7 @@ public class UserController {
         userService.update(userInfo);
 
         //角色信息修改
-        userService.updateRole(userInfo.getId(),roleIds);
+//        userService.updateRole(userInfo.getId(),roleIds);
         return "redirect:findAll.do";
 
     }
