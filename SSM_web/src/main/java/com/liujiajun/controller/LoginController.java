@@ -37,7 +37,7 @@ public class LoginController {
             return "main";
         } else if (subject.hasRole("user")) {
             System.out.println("普通用户登录2222222222");
-            return "error";
+            return "main";
         }
 
         return "login";

@@ -37,7 +37,7 @@
 				<%--<div class="col-xs-10 col-sm-8 col-md-4 col-lg-2 col-xs-offset-1 col-sm-offset-2 col-md-offset-4 col-lg-offset-5">--%>
 				<div class="col-xs-10 col-sm-8 col-md-4 col-lg-2 col-xs-offset-1 col-sm-offset-2 col-md-offset-4 col-lg-offset-5">
 					<input type="text" name="username" class="form-control input-lg" required placeholder="用户名">
-					<label class="error-msg" id="error-msg-username">用户名不存在</label>
+					<label class="error-msg" id="error-msg-username"></label>
 				</div>
 			</div>
 			<div class="form-group">
@@ -50,10 +50,9 @@
 				<div class="col-xs-10 col-sm-8 col-md-4 col-lg-2 col-xs-offset-1 col-sm-offset-2 col-md-offset-4 col-lg-offset-5">
 					<input type="password" name="password" class="form-control input-lg" required placeholder="密码（不少于 6 位）">
 					<label class="error-msg" id="error-msg-password"></label>
-
-
 				</div>
 			</div>
+
 			<div class="row">
 				<div class="col-xs-10 col-sm-8 col-md-4 col-lg-2 col-xs-offset-1 col-sm-offset-2 col-md-offset-4 col-lg-offset-5">
 					<a href="#" type="submit" class="btu-submit">注册ZQU BOOK</a>
@@ -70,13 +69,13 @@
 			<div class="form-group">
 				<div class="col-xs-10 col-sm-8 col-md-4 col-lg-2 col-xs-offset-1 col-sm-offset-2 col-md-offset-4 col-lg-offset-5">
 					<input type="text" name="username" class="form-control input-lg" required placeholder="用户名">
-					<label class="error-msg" id="error-msg-phnum"></label>
+					<label class="error-msg" id="error-msg-phnum">${usernameErrorMsg}</label>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-xs-10 col-sm-8 col-md-4 col-lg-2 col-xs-offset-1 col-sm-offset-2 col-md-offset-4 col-lg-offset-5">
 					<input type="password" name="password" class="form-control input-lg" required placeholder="密码">
-					<label class="error-msg error-msg-password"></label>
+					<label class="error-msg error-msg-password">${passwordErrorMsg}</label>
 				</div>
 			</div>
 			<div class="row">

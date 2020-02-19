@@ -71,13 +71,13 @@ public class LoginRealm extends AuthorizingRealm {
         if (userInfo == null) {
             //没有该用户名
             System.out.println("没有该用户名1111111");
-            throw new RuntimeException("没有该用户名1111111");
-//            throw new UnknownAccountException();
+//            throw new RuntimeException("没有该用户名1111111");
+            throw new UnknownAccountException();
         } else if (!password.equals(userInfo .getPassword())) {
             //密码错误
             System.out.println("密码错误11111111");
-            throw new RuntimeException("密码错误11111111");
-//            throw new IncorrectCredentialsException();
+//            throw new RuntimeException("密码错误11111111");
+            throw new IncorrectCredentialsException();
         }
 
         //身份验证通过,返回一个身份信息

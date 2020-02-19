@@ -81,17 +81,6 @@ a:link {
     color: #0f88eb;
 }
 
-/*#login-toggle-bar {*/
-    /*display: inline-block;*/
-    /*width: 43px;*/
-    /*height: 0.2em;*/
-    /*background: #0f88eb;*/
-    /*transition: left .15s ease-in;*/
-    /*position: relative;*/
-    /*top: -12px;*/
-    /*left: -38px;*/
-/*}*/
-
 .form-group {
     margin-bottom: 0;
 }

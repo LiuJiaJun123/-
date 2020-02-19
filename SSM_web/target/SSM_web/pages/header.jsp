@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%--<%@taglib prefix="security" uri="http://www.springframework.org/security/tags" %>--%>
+<%--shiro标签--%>
+<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 
 <!-- 页面头部 -->
 <header class="main-header">
@@ -25,6 +26,7 @@
 						class="user-image" alt="User Image"> <span class="hidden-xs">
 							<%--获取用户名--%>
 							<%--<security:authentication property="principal.username"></security:authentication>--%>
+							<shiro:principal/>
 					</span>
 
 				</a>
@@ -40,7 +42,7 @@
 								<a href="#" class="btn btn-default btn-flat">修改密码</a>
 							</div>
 							<div class="pull-right">
-								<a href="${pageContext.request.contextPath}/logout.do"
+								<a href="/logout"
 									class="btn btn-default btn-flat">注销</a>
 							</div>
 						</li>
