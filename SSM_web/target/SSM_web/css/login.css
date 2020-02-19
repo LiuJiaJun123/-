@@ -85,16 +85,43 @@ a:link {
     margin-bottom: 0;
 }
 
-.register-group {
-    margin-bottom: 0;
-    padding: 5px;
-}
-
-
 .form-control {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
+}
+
+.register-group {
+    margin-bottom: 0;
+    padding-bottom: 40px;
+}
+
+.register-control{
+    /*-webkit-border-radius: 0;*/
+    /*-moz-border-radius: 0;*/
+    border-radius: 0;
+    height: 1.9vw;
+    border: 1px solid #0f88eb;
+    display: inline;
+    /*width: 90%;*/
+}
+
+.must:before {
+    content: '*';
+    position: absolute;
+    top: 0;
+    left: -8px;
+    padding: 0 8px;
+    line-height: 48px;
+    color: #c33;
+    cursor: text;
+    visibility: visible;
+    opacity: 1;
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    transform: translate(0, 0);
+    font-size: 24px;
+    font-weight: normal;
 }
 
 .form-control[name="username"] {
@@ -106,6 +133,7 @@ a:link {
     border-bottom-left-radius: 0.25rem;
     border-bottom-right-radius: 0.25rem;
 }
+
 
 
 .btu-submit,
@@ -168,6 +196,24 @@ a:link {
     font-size: 14px;
     font-weight: normal;
 }
+
+.register-error-msg{
+    position: absolute;
+    top: -5px;
+    right: -130px;
+    padding: 0 8px;
+    line-height: 48px;
+    color: #c33;
+    cursor: text;
+    visibility: visible;
+    opacity: 1;
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    transform: translate(0, 0);
+    font-size: 14px;
+    font-weight: normal;
+}
+
 
 
 .footer {
