@@ -33,20 +33,20 @@
 	</div>
 	<div id="signUp-page" style="display: none">
 		<form class="form-horizontal" id="signUp-form" role="form">
-			<div class="form-group">
+			<div class="register-group">
 				<%--<div class="col-xs-10 col-sm-8 col-md-4 col-lg-2 col-xs-offset-1 col-sm-offset-2 col-md-offset-4 col-lg-offset-5">--%>
 				<div class="col-xs-10 col-sm-8 col-md-4 col-lg-2 col-xs-offset-1 col-sm-offset-2 col-md-offset-4 col-lg-offset-5">
 					<input type="text" name="username" class="form-control input-lg" required placeholder="用户名">
 					<label class="error-msg" id="error-msg-username"></label>
 				</div>
 			</div>
-			<div class="form-group">
+			<div class="register-group">
 				<div class="col-xs-10 col-sm-8 col-md-4 col-lg-2 col-xs-offset-1 col-sm-offset-2 col-md-offset-4 col-lg-offset-5">
 					<input type="text" name="phonenum-or-email" class="form-control input-lg" required placeholder="手机号">
 					<label class="error-msg" id="error-msg-phonenum"></label>
 				</div>
 			</div>
-			<div class="form-group">
+			<div class="register-group">
 				<div class="col-xs-10 col-sm-8 col-md-4 col-lg-2 col-xs-offset-1 col-sm-offset-2 col-md-offset-4 col-lg-offset-5">
 					<input type="password" name="password" class="form-control input-lg" required placeholder="密码（不少于 6 位）">
 					<label class="error-msg" id="error-msg-password"></label>

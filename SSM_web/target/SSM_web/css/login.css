@@ -85,6 +85,12 @@ a:link {
     margin-bottom: 0;
 }
 
+.register-group {
+    margin-bottom: 0;
+    padding: 5px;
+}
+
+
 .form-control {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
