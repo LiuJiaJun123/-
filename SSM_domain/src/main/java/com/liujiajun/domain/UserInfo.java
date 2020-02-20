@@ -126,4 +126,22 @@ public class UserInfo {
     public void setStatusStr(String statusStr) {
         this.statusStr = statusStr;
     }
+
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
+                ", qq='" + qq + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", description='" + description + '\'' +
+                ", role=" + role +
+                ", roleStr='" + roleStr + '\'' +
+                ", status=" + status +
+                ", statusStr='" + statusStr + '\'' +
+                '}';
+    }
 }

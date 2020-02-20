@@ -96,6 +96,16 @@ public class UserServiceImpl implements IUserService {
 
         //使用BCryptPasswordEncoderUtils的encode方法
 //        userInfo.setPassword(BCryptPasswordEncoderUtils.encodePassword(userInfo.getPassword()));
+//        userInfo.setRole(1);  //普通用户
+//        userInfo.setStatus(1);
+//        userDao.save(userInfo);
+    }
+
+//     注册
+    @Override
+    public void register(UserInfo userInfo) throws Exception {
+        userInfo.setRole(1);  //普通用户
+        userInfo.setStatus(1);
         userDao.save(userInfo);
     }
 

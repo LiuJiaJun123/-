@@ -48,8 +48,8 @@ public interface IUserDao {
      * @param userInfo
      * @throws Exception
      */
-    @Insert("insert into users(email,username,password,phoneNum,status) " +
-            "values(#{email},#{username},#{password},#{phoneNum},#{status})")
+    @Insert("insert into users(username,password,phone,qq,email,address,description,role,status) " +
+            "values(#{username},#{password},#{phone},#{qq},#{email},#{address},#{description},#{role},#{status})")
     public void save(UserInfo userInfo) throws Exception;
 
 

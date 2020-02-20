@@ -32,7 +32,8 @@
 		</div>
 	</div>
 	<div id="signUp-page" style="display: none">
-		<form class="form-horizontal" id="signUp-form" role="form">
+		<form class="form-horizontal" id="register-form" role="form"
+              action="${pageContext.request.contextPath}/register.do" method="post">
 			<div class="register-group">
 				<%--<div class="col-xs-10 col-sm-8 col-md-4 col-lg-2 col-xs-offset-1 col-sm-offset-2 col-md-offset-4 col-lg-offset-5">--%>
 				<div class="col-xs-10 col-sm-8 col-md-4 col-lg-2 col-xs-offset-1 col-sm-offset-2 col-md-offset-4 col-lg-offset-5">
@@ -50,7 +51,7 @@
 			</div>
 			<div class="register-group">
 				<div class="col-xs-10 col-sm-8 col-md-4 col-lg-2 col-xs-offset-1 col-sm-offset-2 col-md-offset-4 col-lg-offset-5">
-					<input type="password" id="rePassword" name="rePassword" class="register-control input-lg" required placeholder="再次输入密码">
+					<input type="password" id="rePassword" class="register-control input-lg" required placeholder="再次输入密码">
 					<label  class="must" ></label>
 					<label class="register-error-msg" id="repwd-error-msg"></label>
 				</div>
@@ -77,14 +78,15 @@
 			</div>
 			<div class="register-group">
 				<div class="col-xs-10 col-sm-8 col-md-4 col-lg-2 col-xs-offset-1 col-sm-offset-2 col-md-offset-4 col-lg-offset-5">
-					<input type="text" name="address" class="register-control input-lg" required placeholder="地址">
+					<input type="text" id="address" name="address" class="register-control input-lg" required placeholder="地址">
 					<label class="error-msg"></label>
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="col-xs-10 col-sm-8 col-md-4 col-lg-2 col-xs-offset-1 col-sm-offset-2 col-md-offset-4 col-lg-offset-5">
-					<a href="#" type="submit" class="btu-submit">注册ZQU BOOK</a>
+					<%--<a href="#" type="submit" class="btu-submit">注册ZQU BOOK</a>--%>
+					<button type="button" id="btn_register" class="btu-submit">注册ZQU BOOK</button>
 				</div>
 			</div>
 		</form>
@@ -116,6 +118,14 @@
 	</div>
 </div>
 
+<%
+    if ((String)request.getAttribute("register_info") == "success") { %>
+<script>
+    alert("注册成功！");
+</script>
+<%
+}%>
+
 <canvas id="canvas"></canvas>
 <script src="${pageContext.request.contextPath}/libs/jq-3.2.1/jquery-3.2.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/libs/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
@@ -124,6 +134,30 @@
 
 <%--添加用户时，检查必填项是否有填，密码是否符合正则表达式，两次密码是否一致--%>
 <script>
+
+
+    //按键盘的回车键也执行注册
+    $("#address").keydown(function () {
+        if(event.keyCode==13) {
+            return register_check();
+        }
+    });
+
+    $("#btn_register").click(function () {
+        return register_check();
+    })
+
+    function register_check(){
+        var flag = checkUsername()&&checkPassword()&&checkRePassword();
+        if (flag==false){
+            // 出错
+            return false;
+        }
+        // 没出错，提交表单
+        $("#register-form").submit();
+    }
+
+
     // 检查用户名是否符合正则表达式
 	function checkUsername() {
         var username = $("#username").val().trim();
@@ -163,10 +197,12 @@
     function checkRePassword(){
         var password = $("#password").val().trim();
         var rePassword = $("#rePassword").val();
+        var flag = false;
         if (password==rePassword){
             //校验通过
             $("#rePassword").css("border","1px solid #0f88eb");
-            $("#repwd-error-msg").text("")
+            $("#repwd-error-msg").text("");
+            flag = true;
         } else{
             //校验不通过
             $("#rePassword").css("border","1px solid red");
@@ -182,6 +218,7 @@
         $("#rePassword").blur(checkRePassword);
 
     });
+
 
 </script>
 

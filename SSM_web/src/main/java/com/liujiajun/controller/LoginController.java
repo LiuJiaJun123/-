@@ -1,16 +1,21 @@
 package com.liujiajun.controller;
 
 import com.liujiajun.domain.UserInfo;
+import com.liujiajun.service.IUserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class LoginController {
 
+    @Autowired
+    private IUserService userService;
     //登录跳转
 //    @RequestMapping(value = "/login", method = {RequestMethod.GET})
 //    public String loginUI() throws Exception {
@@ -41,6 +46,20 @@ public class LoginController {
         }
 
         return "login";
+    }
+
+
+    //注册表单处理
+    @RequestMapping(value = "/register.do", method = {RequestMethod.POST})
+    public ModelAndView register(UserInfo userInfo) throws Exception {
+        System.out.println("注册11111111111");
+        System.out.println(userInfo);
+        //注册
+        userService.register(userInfo);
+        ModelAndView modelAndView=new ModelAndView();
+        modelAndView.setViewName("../login");
+        modelAndView.addObject("register_info","success");
+        return modelAndView;
     }
 
 }

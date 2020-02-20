@@ -33,6 +33,8 @@
 
                 <!-- 当访问login（LoginController中的登录处理方法）时，不用进行认证（anon表示匿名）-->
                 /login.do = anon
+                <!--注册-->
+                /register.do = anon
 
                 <!--退出登录-->
                 /logout = logout

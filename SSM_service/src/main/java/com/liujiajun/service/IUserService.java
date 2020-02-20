@@ -13,6 +13,8 @@ public interface IUserService  {
 
     public List<UserInfo> findAll(int page,int pageSize) throws Exception;
 
+    public void register(UserInfo userInfo) throws Exception;
+
     //添加用户
     public void save(UserInfo userInfo) throws Exception;
 
