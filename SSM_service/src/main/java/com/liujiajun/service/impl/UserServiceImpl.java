@@ -45,15 +45,7 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public void save(UserInfo userInfo) throws Exception {
-
-        //可以配置加密类bean
-//        userInfo.setPassword(bCryptPasswordEncoder.encode(userInfo.getPassword()));
-
-        //使用BCryptPasswordEncoderUtils的encode方法
-//        userInfo.setPassword(BCryptPasswordEncoderUtils.encodePassword(userInfo.getPassword()));
-//        userInfo.setRole(1);  //普通用户
-//        userInfo.setStatus(1);
-//        userDao.save(userInfo);
+        userDao.save(userInfo);
     }
 
 //     注册

@@ -35,7 +35,7 @@ public class CustomExceptionResolver implements HandlerExceptionResolver {
             modelAndView.addObject("passwordErrorMsg", "密码错误");
             modelAndView.setViewName("../login");
             return modelAndView;
-        } else {
+        }else {
             customException = new CustomException("未知错误");
         }
 

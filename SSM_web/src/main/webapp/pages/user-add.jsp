@@ -99,19 +99,21 @@
 					<div class="panel-heading">用户信息</div>
 					<div class="row data-type">
 
-						<div class="col-md-2 title">用户名称</div>
-						<div class="col-md-4 data">
-							<%--<input id="username" type="text" class="form-control" name="username"--%>
-								<%--placeholder="用户名称" value="">--%>
-
-							<div class="input-group date">
-								<div style="float: left">
-									<input id="username" type="text" class="form-control" name="username"
-										   placeholder="用户名称" value="">
-								</div>
-								<span id="span_username" style="float: right"></span>
-							</div>
-						</div>
+						<%--<div class="col-md-2 title">用户名称</div>--%>
+						<%--<div class="col-md-4 data">--%>
+							<%--<div class="input-group date">--%>
+								<%--<div style="float: left">--%>
+									<%--<input id="username" type="text" class="form-control" name="username"--%>
+										   <%--placeholder="用户名称" value="">--%>
+								<%--</div>--%>
+								<%--&lt;%&ndash;<span id="span_username" style="float: right"></span>&ndash;%&gt;--%>
+							<%--</div>--%>
+						<%--</div>--%>
+                        <div class="col-md-2 title">用户名</div>
+                        <div class="col-md-4 data">
+                            <input type="text" class="form-control" name="username"
+                                   placeholder="用户名" value="">
+                        </div>
 						<div class="col-md-2 title">密码</div>
 						<div class="col-md-4 data">
 							<div class="input-group date">
@@ -122,23 +124,32 @@
 								<span id="span_password" style="float: right"></span>
 							</div>
 						</div>
+                        <div class="col-md-2 title">电话</div>
+                        <div class="col-md-4 data">
+                            <input type="text" class="form-control" name="phone"
+                                   placeholder="电话" value="">
+                        </div>
+                        <div class="col-md-2 title">qq</div>
+                        <div class="col-md-4 data">
+                            <input type="text" class="form-control" name="qq"
+                                   placeholder="qq" value="">
+                        </div>
 						<div class="col-md-2 title">邮箱</div>
 						<div class="col-md-4 data">
 							<input type="text" class="form-control" name="email"
 								placeholder="邮箱" value="">
 						</div>
-						<div class="col-md-2 title">联系电话</div>
+						<div class="col-md-2 title">地址</div>
 						<div class="col-md-4 data">
-							<input type="text" class="form-control" name="phoneNum"
-								placeholder="联系电话" value="">
+							<input type="text" class="form-control" name="address"
+								placeholder="地址" value="">
 						</div>
 
 						<div class="col-md-2 title">角色</div>
-						<div class="col-md-10 data line-height36">
+						<div class="col-md-4 data line-height36">
 							<div class="form-group form-inline">
-								<c:forEach items="${roleList}" var="role">
-									<div class="checkbox"><label><input name="roleIds" type="checkbox" value="${role.id}"> ${role.roleDesc}</label></div>
-								</c:forEach>
+                                <div class="radio"><label><input name="role" type="radio" value="1">管理员</label></div>
+                                <div class="radio"><label><input name="role" type="radio" value="2" checked>普通用户</label></div>
 							</div>
 						</div>
 
@@ -150,6 +161,12 @@
 								<option value="0">关闭</option>
 							</select>
 						</div>
+
+                        <div class="col-md-2 title rowHeight2x">描述</div>
+                            <div class="col-md-10 data rowHeight2x">
+                            <textarea class="form-control" rows="3" placeholder="描述"
+                                      name="description"></textarea>
+                        </div>
 
 					</div>
 				</div>
@@ -269,7 +286,7 @@
         // 检查密码是否符合正则表达式
         function checkPassword() {
             var password = $("#password").val();
-            var reg_password=/^\w{3,20}$/;
+            var reg_password=/^\w{6,20}$/;
             var flag = reg_password.test(password);
             if (flag==true){
                 //校验通过
@@ -278,44 +295,14 @@
             } else{
                 //校验不通过
                 $("#password").css("border","1px solid red");
-                $("#span_password").text("请输入3-20位的密码")
+                $("#span_password").text("请输入6-20位的密码")
                 $("#span_password").css("color","red");
             }
             return flag;
         }
 
-        function checkUsername(){
-            var username=$("#username").val();
-            // alert(username)
-
-            var allData = {
-                username:username
-            };
-
-            $.ajax({
-                url:"${pageContext.request.contextPath}/user/findByName.do",
-                contentType:"application/json;charset=UTF-8",
-                data:JSON.stringify(allData),//'{"username":username}',
-                dataType:"json",
-                type:"post",
-                success:function (data) {
-                    if (data.flag){
-                        $("#username").css("border","");
-                        $("#span_username").text("");
-                    }else{
-                        $("#username").css("border","1px solid red");
-                        $("#span_username").text(data.errorMsg);
-                        $("#span_username").css("color","red");
-                    }
-
-                }
-            });
-		}
-
         $(function () {
-
             $("#password").blur(checkPassword);
-            $("#username").blur(checkUsername);
 
         });
 

@@ -3,6 +3,7 @@ package com.liujiajun.shiro;
 import com.liujiajun.domain.Permission;
 import com.liujiajun.domain.Role;
 import com.liujiajun.domain.UserInfo;
+import com.liujiajun.exception.CustomException;
 import com.liujiajun.service.IRoleService;
 import com.liujiajun.service.IUserService;
 import org.apache.shiro.authc.*;
@@ -79,11 +80,12 @@ public class LoginRealm extends AuthorizingRealm {
 //            throw new RuntimeException("密码错误11111111");
             throw new IncorrectCredentialsException();
         }
+        if(userInfo.getStatus()==1){
+            AuthenticationInfo aInfo = new SimpleAuthenticationInfo(username, password, getName());
+            return aInfo;
+        }
 
-        //身份验证通过,返回一个身份信息
-        AuthenticationInfo aInfo = new SimpleAuthenticationInfo(username,password,getName());
-
-        return aInfo;
+        return null;
     }
 
 

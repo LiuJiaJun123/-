@@ -40,62 +40,18 @@ public class UserController {
         mv.addObject("usersInfo",usersInfo);
         mv.setViewName("user-list");
         return mv;
-
     }
-
-    /**
-     * 添加用户，查找所有角色
-     */
-    @RequestMapping("/findAllRole.do")
-    public ModelAndView findAllRole() throws Exception {
-
-        ModelAndView mv=new ModelAndView();
-
-        List<Role> roleList = roleService.findAll(1, 20);
-
-        mv.addObject("roleList",roleList);
-        mv.setViewName("user-add");
-        return mv;
-    }
-
 
     //添加用户
     @RequestMapping("/save.do")
-    public String save(UserInfo userInfo,String[] roleIds) throws Exception {
+    public String save(UserInfo userInfo) throws Exception {
 
         ModelAndView mv=new ModelAndView();
         userService.save(userInfo);
         //因为id是随机生成的，所以要根据姓名查找用户
         userInfo=userService.findByName(userInfo.getUsername());
-//        userService.addRole(userInfo.getId(),roleIds);
         return "redirect:findAll.do";
 
-    }
-
-    /**
-     * 添加用户时，查看用户名是否已经已经存在
-     * @param checkUsername
-     * @return
-     * @throws Exception
-     */
-    @RequestMapping("/findByName.do")
-    @ResponseBody
-    public CheckUsername findByName(@RequestBody CheckUsername checkUsername) throws Exception{
-
-//        CheckUsername checkUsername=new CheckUsername();
-        System.out.println("UserController 1111111:"+checkUsername);
-
-        Boolean flag = userService.findNameExist(checkUsername.getUsername());
-        if(!flag){
-            //用户已经存在
-            checkUsername.setFlag(false);
-            checkUsername.setErrorMsg("该用户名已经存在，请重新输入！");
-        }else {
-            //可以注册
-            checkUsername.setFlag(true);
-            checkUsername.setErrorMsg("");
-        }
-        return checkUsername;
     }
 
 
