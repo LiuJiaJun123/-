@@ -1,7 +1,9 @@
 package com.liujiajun.controller;
 
 import com.liujiajun.domain.SysLog;
+import com.liujiajun.domain.UserInfo;
 import com.liujiajun.service.ISysLogService;
+import org.apache.shiro.SecurityUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
@@ -98,6 +100,7 @@ public class LogAop {
 //                    SecurityContext context = SecurityContextHolder.getContext();//从上下文中获了当前登录的用户
 //                    User user = (User) context.getAuthentication().getPrincipal();
 //                    String username = user.getUsername();
+                    String username = (String) SecurityUtils.getSubject().getPrincipal();
 
                     //将日志相关信息封装到SysLog对象
                     SysLog sysLog = new SysLog();
@@ -109,7 +112,7 @@ public class LogAop {
                     sysLog.setMethod("[类名] " + clazz.getName() + "[方法名] " + methodName);
 
                     sysLog.setUrl(url);
-//                    sysLog.setUsername(username);
+                    sysLog.setUsername(username);
                     sysLog.setVisitTime(visitTime);
                     //调用Service完成操作
                     sysLogService.save(sysLog);

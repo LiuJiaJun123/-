@@ -153,7 +153,7 @@
 												<td>${user.id }</td>
 												<td>${user.username }</td>
 												<td>${user.email }</td>
-												<td>${user.phoneNum }</td>
+												<td>${user.phone }</td>
 												<td>${user.statusStr }</td>
 												<td class="text-center">
 													<a href="${pageContext.request.contextPath}/user/findById.do?id=${user.id}" class="btn bg-olive btn-xs">详情</a>

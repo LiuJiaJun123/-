@@ -35,51 +35,6 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private IPermissionDao permissionDao;
 
-    //可以配置加密类bean 也可以不配置加密类，使用BCryptPasswordEncoderUtils的encode方法
-//    @Autowired
-//    private BCryptPasswordEncoder bCryptPasswordEncoder;
-//
-//    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        UserInfo userInfo=null;
-//        try {
-//            userInfo = userDao.findByUsername(username);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//          }
-////        List<Role> roles = userInfo.getRoles();
-//        List<SimpleGrantedAuthority> role = null;
-//        try {
-////            authoritys = getAuthority(roles);
-//            role.add(new SimpleGrantedAuthority(userInfo.getRoleStr()));
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//        //密码未加密时，需要加"{noop}"
-////        User user=new User(userInfo.getUsername(),"{noop}"+userInfo.getPassword(),userInfo.getStatus()==0?false:true,
-////                true,true,true,authoritys);
-//
-//        //密码加密后，不需要加"{noop}"
-//        User user=new User(userInfo.getUsername(),userInfo.getPassword(),userInfo.getStatus()==0?false:true,
-//                true,true,true,role);
-//         return user;
-//    }
-//    //作用是返回一个List集合，集合中装入的是资源路径
-//    private List<SimpleGrantedAuthority> getAuthority(List<Role> roles) throws Exception {
-//        List<SimpleGrantedAuthority> authoritys = new ArrayList();
-//        for (Role role : roles) {
-//
-//            List<Permission> permissions = permissionDao.findPermissionByRoleId(role.getId());
-//            for (Permission permission : permissions) {
-//                authoritys.add(new SimpleGrantedAuthority(permission.getUrl()));
-//            }
-////            authoritys.add(new SimpleGrantedAuthority(role.getRoleName()));
-//        }
-////        System.out.println("aaaaaaaaaaaaa:"+authoritys);
-//        return authoritys;
-//    }
-
 
     @Override
     public List<UserInfo> findAll(int page,int pageSize) throws Exception {
