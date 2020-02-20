@@ -31,8 +31,6 @@ public class UserController {
     private IRoleService roleService;
 
     @RequestMapping("/findAll.do")
-//    @PreAuthorize("hasRole('ADMIN')")
-//    @RolesAllowed("ADMIN")
     public ModelAndView findAll(@RequestParam(value = "page",required = true,defaultValue = "1") Integer page,
                                 @RequestParam(value = "pageSize",required = true,defaultValue = "4")Integer pageSize) throws Exception {
 
