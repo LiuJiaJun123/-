@@ -7,24 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="804deefe-cf1b-4b54-a4a8-7771175315e0" name="默认" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SSM_dao/src/main/java/com/liujiajun/dao/IUserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/SSM_dao/src/main/java/com/liujiajun/dao/IUserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SSM_dao/target/classes/com/liujiajun/dao/IUserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/SSM_dao/target/classes/com/liujiajun/dao/IUserDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SSM_domain/src/main/java/com/liujiajun/domain/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/SSM_domain/src/main/java/com/liujiajun/domain/UserInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SSM_domain/target/classes/com/liujiajun/domain/UserInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/SSM_domain/target/classes/com/liujiajun/domain/UserInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SSM_service/src/main/java/com/liujiajun/service/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/SSM_service/src/main/java/com/liujiajun/service/IUserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SSM_service/src/main/java/com/liujiajun/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/SSM_service/src/main/java/com/liujiajun/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SSM_service/target/classes/com/liujiajun/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/SSM_service/target/classes/com/liujiajun/service/impl/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SSM_web/src/main/java/com/liujiajun/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/SSM_web/src/main/java/com/liujiajun/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SSM_web/src/main/resources/spring-shiro.xml" beforeDir="false" afterPath="$PROJECT_DIR$/SSM_web/src/main/resources/spring-shiro.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SSM_web/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/SSM_web/src/main/webapp/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SSM_web/target/SSM_web/WEB-INF/classes/com/liujiajun/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/SSM_web/target/SSM_web/WEB-INF/classes/com/liujiajun/controller/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SSM_web/target/SSM_web/WEB-INF/classes/spring-shiro.xml" beforeDir="false" afterPath="$PROJECT_DIR$/SSM_web/target/SSM_web/WEB-INF/classes/spring-shiro.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SSM_web/target/SSM_web/WEB-INF/lib/SSM_domain-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/SSM_web/target/SSM_web/WEB-INF/lib/SSM_domain-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SSM_web/target/SSM_web/WEB-INF/lib/SSM_service-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/SSM_web/target/SSM_web/WEB-INF/lib/SSM_service-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SSM_web/target/SSM_web/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/SSM_web/target/SSM_web/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SSM_web/target/classes/com/liujiajun/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/SSM_web/target/classes/com/liujiajun/controller/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SSM_web/target/classes/spring-shiro.xml" beforeDir="false" afterPath="$PROJECT_DIR$/SSM_web/target/classes/spring-shiro.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/SSM_dao/target/" />
@@ -122,7 +105,7 @@
         <counts>
           <entry key="css" value="266" />
           <entry key="dummy" value="5" />
-          <entry key="java" value="913" />
+          <entry key="java" value="914" />
           <entry key="js" value="3" />
           <entry key="jsp" value="742" />
           <entry key="name" value="2" />
@@ -133,7 +116,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="266" />
-          <entry key="JAVA" value="913" />
+          <entry key="JAVA" value="914" />
           <entry key="JSP" value="742" />
           <entry key="JavaScript" value="3" />
           <entry key="PLAIN_TEXT" value="7" />
@@ -148,7 +131,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SSM_web/src/main/java/com/liujiajun/controller/LoginController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
+            <state relative-caret-position="200">
               <caret line="54" column="44" lean-forward="true" selection-start-line="54" selection-start-column="44" selection-end-line="54" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -166,11 +149,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SSM_service/src/main/java/com/liujiajun/service/impl/UserServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-254">
-              <caret line="104" column="10" selection-start-line="104" selection-start-column="10" selection-end-line="104" selection-end-column="10" />
+            <state relative-caret-position="146">
+              <caret line="106" column="26" selection-start-line="106" selection-start-column="26" selection-end-line="106" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -208,10 +191,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SSM_web/src/main/webapp/login.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
+            <state relative-caret-position="-144">
               <caret line="141" column="36" selection-start-line="141" selection-start-column="36" selection-end-line="141" selection-end-column="36" />
             </state>
           </provider>
@@ -265,9 +248,9 @@
       <find>register.do</find>
       <find>密码错误</find>
       <find>sub</find>
-      <find>register-form</find>
       <find>-form</find>
       <find>productName</find>
+      <find>register-form</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -309,9 +292,9 @@
         <option value="$PROJECT_DIR$/SSM_web/src/main/webapp/success.jsp" />
         <option value="$PROJECT_DIR$/SSM_dao/src/main/java/com/liujiajun/dao/IUserDao.java" />
         <option value="$PROJECT_DIR$/SSM_service/src/main/java/com/liujiajun/service/IUserService.java" />
-        <option value="$PROJECT_DIR$/SSM_service/src/main/java/com/liujiajun/service/impl/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/SSM_web/src/main/java/com/liujiajun/controller/LoginController.java" />
         <option value="$PROJECT_DIR$/SSM_web/src/main/webapp/login.jsp" />
+        <option value="$PROJECT_DIR$/SSM_service/src/main/java/com/liujiajun/service/impl/UserServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -616,7 +599,7 @@
     <property name="SearchEverywhereHistoryKey" value="useri&#9;FILE&#9;file://H:/BYSJ_Project/后台/SSM_domain/src/main/java/com/liujiajun/domain/UserInfo.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1582202965280" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1582206212735" />
     <property name="last_opened_file_path" value="H:/IDEA_Project2/SSM/SSM_Shiro" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -747,12 +730,12 @@
       <workItem from="1582076777210" duration="2174000" />
       <workItem from="1582078971026" duration="11861000" />
       <workItem from="1582103201515" duration="13386000" />
-      <workItem from="1582192916131" duration="5775000" />
+      <workItem from="1582192916131" duration="6388000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49276000" />
+    <option name="totallyTimeSpent" value="49889000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -765,6 +748,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1930295" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1113,10 +1097,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SSM_service/src/main/java/com/liujiajun/service/impl/UserServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/SSM_web/src/main/webapp/pages/product-list.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-254">
-          <caret line="104" column="10" selection-start-line="104" selection-start-column="10" selection-end-line="104" selection-end-column="10" />
+        <state relative-caret-position="-3838">
+          <caret line="154" column="65" selection-start-line="154" selection-start-column="54" selection-end-line="154" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SSM_web/src/main/webapp/pages/role-list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5653" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SSM_web/src/main/webapp/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-144">
+          <caret line="141" column="36" selection-start-line="141" selection-start-column="36" selection-end-line="141" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SSM_web/src/main/java/com/liujiajun/controller/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="54" column="44" lean-forward="true" selection-start-line="54" selection-start-column="44" selection-end-line="54" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1130,32 +1133,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SSM_web/src/main/webapp/pages/product-list.jsp">
+    <entry file="file://$PROJECT_DIR$/SSM_service/src/main/java/com/liujiajun/service/impl/UserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3838">
-          <caret line="154" column="65" selection-start-line="154" selection-start-column="54" selection-end-line="154" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SSM_web/src/main/webapp/pages/role-list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5653" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SSM_web/src/main/java/com/liujiajun/controller/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="54" column="44" lean-forward="true" selection-start-line="54" selection-start-column="44" selection-end-line="54" selection-end-column="44" />
+        <state relative-caret-position="146">
+          <caret line="106" column="26" selection-start-line="106" selection-start-column="26" selection-end-line="106" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SSM_web/src/main/webapp/login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="141" column="36" selection-start-line="141" selection-start-column="36" selection-end-line="141" selection-end-column="36" />
         </state>
       </provider>
     </entry>

@@ -104,7 +104,7 @@ public class UserServiceImpl implements IUserService {
 //     注册
     @Override
     public void register(UserInfo userInfo) throws Exception {
-        userInfo.setRole(1);  //普通用户
+        userInfo.setRole(2);  //普通用户
         userInfo.setStatus(1);
         userDao.save(userInfo);
     }
