@@ -8,6 +8,7 @@ import com.liujiajun.exception.CustomException;
 import com.liujiajun.service.IRoleService;
 import com.liujiajun.service.IUserService;
 import javafx.scene.input.InputMethodTextRun;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -54,7 +55,6 @@ public class UserController {
 
 //        CheckUsername checkUsername=new CheckUsername();
         System.out.println("UserController 1111111:"+checkUsername);
-
         Boolean flag = userService.findNameExist(checkUsername.getUsername());
         if(!flag){
             //用户已经存在
@@ -127,14 +127,13 @@ public class UserController {
      * @return
      */
     @RequestMapping("/update.do")
-    public String update(UserInfo userInfo,String[] roleIds) throws Exception {
+    public String update(UserInfo userInfo) throws Exception {
 
         ModelAndView mv=new ModelAndView();
         //用户信息修改
         userService.update(userInfo);
 
         //角色信息修改
-//        userService.updateRole(userInfo.getId(),roleIds);
         return "redirect:findAll.do";
 
     }

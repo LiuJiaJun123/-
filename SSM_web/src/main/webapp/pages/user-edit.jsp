@@ -90,7 +90,7 @@
 			</section>
 			<!-- 内容头部 /-->
 
-			<form action="${pageContext.request.contextPath}/user/update.do"
+			<form action="${pageContext.request.contextPath}/user/update.do" id="saveForm"
 				method="post">
 				<!-- 正文区域 -->
 				<section class="content">
@@ -190,7 +190,8 @@
 				</div>
 				<!--订单信息/--> <!--工具栏-->
 				<div class="box-tools text-center">
-					<button id="btnSave" type="submit" class="btn bg-maroon" onclick="location.href='${pageContext.request.contextPath}/user/update.do'">保存</button>
+					<%--<button id="btnSave" type="submit" class="btn bg-maroon" onclick="location.href='${pageContext.request.contextPath}/user/update.do'">保存</button>--%>
+					<button id="btnSave" type="submit" class="btn bg-maroon">保存</button>
 					<button type="button" class="btn bg-default"
 						onclick="history.back(-1);">返回</button>
 				</div>
@@ -301,32 +302,36 @@
     <%--添加用户时，检查用户名是否存在，密码是否符合正则表达式--%>
     <script>
         // 检查密码是否符合正则表达式
-        // function checkPassword() {
-        //     var password = $("#password").val();
-        //     var reg_password=/^\w{3,20}$/;
-        //     var flag = reg_password.test(password);
-        //     if (flag==true){
-        //         //校验通过
-        //         $("#password").css("border","");
-        //         $("#span_password").text("")
-        //     } else{
-        //         //校验不通过
-        //         $("#password").css("border","1px solid red");
-        //         $("#span_password").text("请输入3-20位的密码")
-        //         $("#span_password").css("color","red");
-        //     }
-        //     return flag;
-        // }
+        function checkPassword() {
+            var password = $("#password").val();
+            var reg_password=/^\w{6,20}$/;
+            var flag = reg_password.test(password);
+            if (flag==true){
+                //校验通过
+                $("#password").css("border","");
+                $("#span_password").text("")
+            } else{
+                //校验不通过
+                $("#password").css("border","1px solid red");
+                $("#span_password").text("请输入6-20位的密码")
+                $("#span_password").css("color","red");
+            }
+            return flag;
+        }
 
         function checkUsername(){
             var username=$("#username").val();
-            // alert(username)
-
+			if (username=="${user.username}") {
+                $("#username").css("border","");
+                $("#span_username").text("");
+				return true;
+			}
             var allData = {
                 username:username
             };
+            var flag =false;
 
-            $.ajax({
+            flag = $.ajax({
                 url:"${pageContext.request.contextPath}/user/findByName.do",
                 contentType:"application/json;charset=UTF-8",
                 data:JSON.stringify(allData),//'{"username":username}',
@@ -336,20 +341,37 @@
                     if (data.flag){
                         $("#username").css("border","");
                         $("#span_username").text("");
+                        return true;
                     }else{
                         $("#username").css("border","1px solid red");
                         $("#span_username").text(data.errorMsg);
                         $("#span_username").css("color","red");
+                        return false;
                     }
 
                 }
             });
-		}
+            return flag;
+        }
+
+        $("#btnSave").click(function () {
+            return save_check();
+        })
+
+        function save_check(){
+            var flag = checkUsername()&&checkPassword();
+            if (flag==false){
+                // 出错
+                return false;
+            }
+            // 没出错，提交表单
+            $("#saveForm").submit();
+        }
 
         $(function () {
 
             $("#password").blur(checkPassword);
-            // $("#username").blur(checkUsername);
+            $("#username").blur(checkUsername);
 
         });
 
