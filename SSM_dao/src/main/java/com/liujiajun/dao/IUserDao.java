@@ -73,11 +73,14 @@ public interface IUserDao {
     @Results({
             @Result(id = true,column = "id",property = "id"),
             @Result(column = "username",property = "username"),
-            @Result(column = "email",property = "email"),
             @Result(column = "password",property = "password"),
-            @Result(column = "phoneNum",property = "phoneNum"),
+            @Result(column = "phone",property = "phone"),
+            @Result(column = "qq",property = "qq"),
+            @Result(column = "email",property = "email"),
+            @Result(column = "address",property = "address"),
+            @Result(column = "description",property = "description"),
+            @Result(column = "role",property = "role"),
             @Result(column = "status",property = "status"),
-            @Result(column = "id",property = "roles",many = @Many(select = "com.liujiajun.dao.IRoleDao.findRoleByUserId")),
     })
     public UserInfo findById(String id) throws Exception;
 

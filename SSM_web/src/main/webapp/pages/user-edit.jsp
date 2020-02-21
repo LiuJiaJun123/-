@@ -93,7 +93,7 @@
 			<form action="${pageContext.request.contextPath}/user/update.do"
 				method="post">
 				<!-- 正文区域 -->
-				<section class="content"> <!--产品信息-->
+				<section class="content">
 
 				<div class="panel panel-default">
 					<div class="panel-heading">用户信息</div>
@@ -120,48 +120,49 @@
 						<div class="col-md-4 data">
 							<div class="input-group date">
 								<div style="float: left">
-									<input id="password" type="password" class="form-control" name="password"
+									<input id="password" type="text" class="form-control" name="password"
 										   placeholder="密码" value="${user.password}">
 								</div>
 								<span id="span_password" style="float: right"></span>
 							</div>
 						</div>
 
+						<div class="col-md-2 title">联系电话</div>
+						<div class="col-md-4 data">
+							<input type="text" class="form-control" name="phone"
+								placeholder="联系电话" value="${user.phone}">
+						</div>
+
+						<div class="col-md-2 title">qq</div>
+						<div class="col-md-4 data">
+							<input type="text" class="form-control" name="qq"
+								   placeholder="qq" value="${user.qq}">
+						</div>
+
+
 						<div class="col-md-2 title">邮箱</div>
 						<div class="col-md-4 data">
 							<input type="text" class="form-control" name="email"
-								placeholder="邮箱" value="${user.email}">
+								   placeholder="邮箱" value="${user.email}">
 						</div>
 
-						<div class="col-md-2 title">联系电话</div>
+						<div class="col-md-2 title">地址</div>
 						<div class="col-md-4 data">
-							<input type="text" class="form-control" name="phoneNum"
-								placeholder="联系电话" value="${user.phoneNum}">
+							<input type="text" class="form-control" name="address"
+								   placeholder="地址" value="${user.address}">
 						</div>
 
 						<div class="col-md-2 title">角色</div>
-						<div class="col-md-10 data line-height36">
+						<div class="col-md-4 data line-height36">
 							<div class="form-group form-inline">
-
-								<%--已经拥有的角色--%>
-								<c:forEach items="${user.roles}" var="role">
-									<div class="checkbox">
-										<label>
-											<input name="roleIds" type="checkbox" value="${role.id}" checked> ${role.roleDesc}
-										</label>
-									</div>
-								</c:forEach>
-
-								<%--可以添加的角色--%>
-								<c:forEach items="${roleCanAdd}" var="role">
-									<div class="checkbox">
-										<label>
-											<input name="roleIds" type="checkbox" value="${role.id}"> ${role.roleDesc}
-										</label>
-									</div>
-								</c:forEach>
-
-
+								<c:if test="${user.role==1}">
+									<div class="radio"><label><input name="role" type="radio" value="1" checked>管理员</label></div>
+									<div class="radio"><label><input name="role" type="radio" value="2">普通用户</label></div>
+								</c:if>
+								<c:if test="${user.role==2}">
+									<div class="radio"><label><input name="role" type="radio" value="1">管理员</label></div>
+									<div class="radio"><label><input name="role" type="radio" value="2" checked>普通用户</label></div>
+								</c:if>
 							</div>
 						</div>
 
@@ -177,6 +178,12 @@
 									<option value="0">关闭</option>
 								</c:if>
 							</select>
+						</div>
+
+						<div class="col-md-2 title rowHeight2x">描述</div>
+						<div class="col-md-10 data rowHeight2x">
+							<textarea class="form-control" rows="3" name="description"
+									  placeholder="描述" >${user.description}</textarea>
 						</div>
 
 					</div>

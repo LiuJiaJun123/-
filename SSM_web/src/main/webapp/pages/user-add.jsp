@@ -99,21 +99,16 @@
 					<div class="panel-heading">用户信息</div>
 					<div class="row data-type">
 
-						<%--<div class="col-md-2 title">用户名称</div>--%>
-						<%--<div class="col-md-4 data">--%>
-							<%--<div class="input-group date">--%>
-								<%--<div style="float: left">--%>
-									<%--<input id="username" type="text" class="form-control" name="username"--%>
-										   <%--placeholder="用户名称" value="">--%>
-								<%--</div>--%>
-								<%--&lt;%&ndash;<span id="span_username" style="float: right"></span>&ndash;%&gt;--%>
-							<%--</div>--%>
-						<%--</div>--%>
-                        <div class="col-md-2 title">用户名</div>
-                        <div class="col-md-4 data">
-                            <input type="text" class="form-control" name="username"
-                                   placeholder="用户名" value="">
-                        </div>
+						<div class="col-md-2 title">用户名称</div>
+						<div class="col-md-4 data">
+							<div class="input-group date">
+								<div style="float: left">
+									<input id="username" type="text" class="form-control" name="username"
+										   placeholder="用户名称" value="">
+								</div>
+								<span id="span_username" style="float: right"></span>
+							</div>
+						</div>
 						<div class="col-md-2 title">密码</div>
 						<div class="col-md-4 data">
 							<div class="input-group date">
@@ -172,7 +167,7 @@
 				</div>
 				<!--订单信息/--> <!--工具栏-->
 				<div class="box-tools text-center">
-					<button id="btnSave" type="submit" class="btn bg-maroon" onclick="location.href='${pageContext.request.contextPath}/user/save.do'">保存</button>
+					<button id="btnSave" type="button" class="btn bg-maroon">保存</button>
 					<button type="button" class="btn bg-default"
 						onclick="history.back(-1);">返回</button>
 				</div>
@@ -283,6 +278,38 @@
 
     <%--添加用户时，检查用户名是否存在，密码是否符合正则表达式--%>
     <script>
+        function checkUsername(){
+            var username=$("#username").val();
+            // alert(username)
+
+            var allData = {
+                username:username
+            };
+            var flag =false;
+
+           flag = $.ajax({
+                url:"${pageContext.request.contextPath}/user/findByName.do",
+                contentType:"application/json;charset=UTF-8",
+                data:JSON.stringify(allData),//'{"username":username}',
+                dataType:"json",
+                type:"post",
+                success:function (data) {
+                    if (data.flag){
+                        $("#username").css("border","");
+                        $("#span_username").text("");
+                        return true;
+                    }else{
+                        $("#username").css("border","1px solid red");
+                        $("#span_username").text(data.errorMsg);
+                        $("#span_username").css("color","red");
+                        return false;
+                    }
+
+                }
+            });
+            return flag;
+        }
+
         // 检查密码是否符合正则表达式
         function checkPassword() {
             var password = $("#password").val();
@@ -301,9 +328,23 @@
             return flag;
         }
 
+        $("#btnSave").click(function () {
+            return save_check();
+        })
+
+        function save_check(){
+            var flag = checkUsername()&&checkPassword();
+            if (flag==false){
+                // 出错
+                return false;
+            }
+            // 没出错，提交表单
+            $("#saveForm").submit();
+        }
+
         $(function () {
             $("#password").blur(checkPassword);
-
+            $("#username").blur(checkUsername);
         });
 
     </script>

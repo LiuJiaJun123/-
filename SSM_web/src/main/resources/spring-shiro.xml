@@ -35,6 +35,7 @@
                 /login.do = anon
                 <!--注册-->
                 /register.do = anon
+                /findByName.do = anon
 
                 <!--退出登录-->
                 /logout = logout

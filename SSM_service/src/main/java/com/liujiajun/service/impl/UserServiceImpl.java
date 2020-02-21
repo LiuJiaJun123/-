@@ -86,7 +86,7 @@ public class UserServiceImpl implements IUserService {
     public void delete(String[] selectIds) {
         for (String id : selectIds) {
             //先从users_role删除记录
-            users_roleDao.deleteByUserId(id);
+//            users_roleDao.deleteByUserId(id);
             //再从users表删除记录
             userDao.delete(id);
         }

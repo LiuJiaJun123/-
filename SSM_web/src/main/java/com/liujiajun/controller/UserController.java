@@ -42,6 +42,32 @@ public class UserController {
         return mv;
     }
 
+    /**
+     * 添加用户时，查看用户名是否已经已经存在
+     * @param checkUsername
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/findByName.do")
+    @ResponseBody
+    public CheckUsername findByName(@RequestBody CheckUsername checkUsername) throws Exception{
+
+//        CheckUsername checkUsername=new CheckUsername();
+        System.out.println("UserController 1111111:"+checkUsername);
+
+        Boolean flag = userService.findNameExist(checkUsername.getUsername());
+        if(!flag){
+            //用户已经存在
+            checkUsername.setFlag(false);
+            checkUsername.setErrorMsg("该用户名已经存在，请重新输入！");
+        }else {
+            //可以注册
+            checkUsername.setFlag(true);
+            checkUsername.setErrorMsg("");
+        }
+        return checkUsername;
+    }
+
     //添加用户
     @RequestMapping("/save.do")
     public String save(UserInfo userInfo) throws Exception {
@@ -87,10 +113,10 @@ public class UserController {
     public ModelAndView edit(String id) throws Exception {
         ModelAndView mv=new ModelAndView();
         //找出可以用户添加的角色
-        List<Role> roleCanAdd = userService.findRoleCanAdd(id);
+//        List<Role> roleCanAdd = userService.findRoleCanAdd(id);
         //查找要编辑的用户信息
         UserInfo user = userService.findById(id);
-        mv.addObject("roleCanAdd",roleCanAdd);
+//        mv.addObject("roleCanAdd",roleCanAdd);
         mv.addObject("user",user);
         mv.setViewName("user-edit");
         return mv;
@@ -113,26 +139,6 @@ public class UserController {
 
     }
 
-
-
-    /**
-     * 用户添加角色，查找可以添加的角色
-     * @param id
-     * @return
-     */
-//    @RequestMapping("/findUserByIdAndAllRole.do")
-//    public ModelAndView findUserByIdAndAllRole(String id) throws Exception {
-//
-//        ModelAndView mv=new ModelAndView();
-//
-//        UserInfo user = userService.findById(id);
-//        List<Role> roleCanAdd = userService.findRoleCanAdd(id);
-//
-//        mv.addObject("user",user);
-//        mv.addObject("roleCanAdd",roleCanAdd);
-//        mv.setViewName("user-role-add");
-//        return mv;
-//    }
 
     /**
      * 用户添加角色
