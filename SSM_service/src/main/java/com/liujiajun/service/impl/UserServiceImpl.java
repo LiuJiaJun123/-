@@ -75,10 +75,19 @@ public class UserServiceImpl implements IUserService {
         return userDao.findById(id);
     }
 
-    //根据姓名查找用户
+    //根据姓名查找用户 (登录时使用的)
     @Override
     public UserInfo findByName(String username) throws Exception {
         return userDao.findByName(username);
+    }
+
+    //根据姓名模糊查抄用户（管理员进行用户管理时的模糊查找）
+    @Override
+    public List<UserInfo> findByUsername(String username,Integer page,Integer pageSize) throws Exception {
+        username="%"+username+"%";
+        PageHelper.startPage(page,pageSize);
+        List<UserInfo> findUser = userDao.findByUsername(username);
+        return findUser;
     }
 
     //删除用户

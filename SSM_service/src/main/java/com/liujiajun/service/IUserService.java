@@ -24,8 +24,12 @@ public interface IUserService  {
     //根据id查找用户
     public UserInfo findById(String id) throws Exception;
 
-    //根据姓名查找用户
+    //根据姓名查找用户(登录时使用的)
     UserInfo findByName(String username) throws Exception;
+
+    //根据姓名模糊查抄用户（管理员进行用户管理时的模糊查找）
+    List<UserInfo> findByUsername(String username,Integer page,Integer pageSize) throws Exception;
+
 
     //删除用户
     void delete(String[] selectIds);

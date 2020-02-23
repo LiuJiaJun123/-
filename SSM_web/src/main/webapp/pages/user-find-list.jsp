@@ -83,7 +83,7 @@
 				<li><a href="${pageContext.request.contextPath}/index.jsp"><i
 						class="fa fa-dashboard"></i> 首页</a></li>
 				<li><a
-					href="${pageContext.request.contextPath}/user/findAll.do?page=1&pageSize=4">用户管理</a></li>
+					href="${pageContext.request.contextPath}/user/findUser.do?username=${findUsername}&page=1&pageSize=4">用户管理</a></li>
 
 				<li class="active">全部用户</li>
 			</ol>
@@ -194,22 +194,22 @@
 						<div class="box-tools pull-right">
 							<ul class="pagination">
 								<li>
-									<a aria-label="Previous" href="${pageContext.request.contextPath}/user/findAll.do?page=1&pageSize=${usersInfo.pageSize}">首页</a>
+									<a aria-label="Previous" href="${pageContext.request.contextPath}/user/findUser.do?username=${findUsername}&page=1&pageSize=${usersInfo.pageSize}">首页</a>
 								</li>
-								<li><a href="${pageContext.request.contextPath}/user/findAll.do?page=${usersInfo.pageNum-1}&pageSize=${usersInfo.pageSize}">上一页</a></li>
+								<li><a href="${pageContext.request.contextPath}/user/findUser.do?username=${findUsername}&page=${usersInfo.pageNum-1}&pageSize=${usersInfo.pageSize}">上一页</a></li>
 
 								<c:forEach begin="1" end="${usersInfo.pages}" var="i">
 									<c:if test="${i==usersInfo.pageNum}">
-										<li><a style="background-color: #2aabd2" href="${pageContext.request.contextPath}/user/findAll.do?page=${i}&pageSize=${usersInfo.pageSize}">${i}</a></li>
+										<li><a style="background-color: #2aabd2" href="${pageContext.request.contextPath}/user/findUser.do?username=${findUsername}&page=${i}&pageSize=${usersInfo.pageSize}">${i}</a></li>
 									</c:if>
 									<c:if test="${i!=usersInfo.pageNum}">
-										<li><a href="${pageContext.request.contextPath}/user/findAll.do?page=${i}&pageSize=${usersInfo.pageSize}">${i}</a></li>
+										<li><a href="${pageContext.request.contextPath}/user/findUser.do?username=${findUsername}&page=${i}&pageSize=${usersInfo.pageSize}">${i}</a></li>
 									</c:if>
 								</c:forEach>
 
-								<li><a href="${pageContext.request.contextPath}/user/findAll.do?page=${usersInfo.pageNum+1}&pageSize=${usersInfo.pageSize}">下一页</a></li>
+								<li><a href="${pageContext.request.contextPath}/user/findUser.do?username=${findUsername}&page=${usersInfo.pageNum+1}&pageSize=${usersInfo.pageSize}">下一页</a></li>
 								<li>
-									<a href="${pageContext.request.contextPath}/user/findAll.do?page=${usersInfo.pages}&pageSize=${usersInfo.pageSize}" aria-label="Next">尾页</a>
+									<a href="${pageContext.request.contextPath}/user/findUser.do?username=${findUsername}&page=${usersInfo.pages}&pageSize=${usersInfo.pageSize}" aria-label="Next">尾页</a>
 								</li>
 							</ul>
 						</div>
@@ -299,7 +299,7 @@
             //改变每页显示条数
             function changPageSize(){
                 var pageSize=$("#changPageSize").val();
-                location.href="${pageContext.request.contextPath}/user/findAll.do?page=1&pageSize="+pageSize;
+                location.href="${pageContext.request.contextPath}/user/findUser.do?username=${findUsername}&page=1&pageSize="+pageSize;
             }
 
 			// 设置激活菜单

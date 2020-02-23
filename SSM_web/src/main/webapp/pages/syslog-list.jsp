@@ -127,7 +127,8 @@
 							<form action="${pageContext.request.contextPath}/sysLog/findSysLog.do" method="post">
 								<div class="has-feedback">
 									<%--搜索--%>
-									<input type="text" class="form-control input-sm" placeholder="输入访问用户名称搜索" name="username" id="username">
+									<input type="text" class="form-control input-sm" placeholder="输入访问用户名称搜索"
+										   name="username" id="username" value="${findUsername}">
 									<span class="glyphicon glyphicon-search form-control-feedback"></span>
 								</div>
 							</form>

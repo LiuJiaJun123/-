@@ -3,6 +3,7 @@ package com.liujiajun.controller;
 import com.github.pagehelper.PageInfo;
 import com.liujiajun.domain.CheckUsername;
 import com.liujiajun.domain.Role;
+import com.liujiajun.domain.SysLog;
 import com.liujiajun.domain.UserInfo;
 import com.liujiajun.exception.CustomException;
 import com.liujiajun.service.IRoleService;
@@ -151,5 +152,24 @@ public class UserController {
         return "redirect:findAll.do";
     }
 
+
+    //搜索用户
+    @RequestMapping("/findUser.do")
+    public ModelAndView findUser(UserInfo userInfo,
+                                   @RequestParam(value = "page",required = true,defaultValue = "1")Integer page,
+                                   @RequestParam(value = "pageSize",required = true,defaultValue = "4")Integer pageSize) throws Exception {
+
+        ModelAndView mv=new ModelAndView();
+
+        List<UserInfo> findUser = userService.findByUsername(userInfo.getUsername(),page,pageSize);
+        PageInfo pageInfo=new PageInfo(findUser);
+
+        mv.addObject("findUsername",userInfo.getUsername());
+        mv.addObject("usersInfo",pageInfo);
+
+        mv.setViewName("user-find-list");
+
+        return mv;
+    }
 
 }

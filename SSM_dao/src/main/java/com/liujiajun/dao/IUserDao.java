@@ -11,28 +11,6 @@ import java.util.List;
 public interface IUserDao {
 
     /**
-     * 登录时
-     * @param username
-     * @return
-     * @throws Exception
-     */
-    @Select("select * from users where username=#{username}")
-    @Results({
-            @Result(id = true,column = "id",property = "id"),
-            @Result(column = "username",property = "username"),
-            @Result(column = "password",property = "password"),
-            @Result(column = "phone",property = "phone"),
-            @Result(column = "qq",property = "qq"),
-            @Result(column = "email",property = "email"),
-            @Result(column = "address",property = "address"),
-            @Result(column = "description",property = "description"),
-            @Result(column = "role",property = "role"),
-            @Result(column = "status",property = "status")
-    })
-    public UserInfo findByUsername(String username) throws Exception;
-
-
-    /**
      * 查找所有用户
      * @param page
      * @param pageSize
@@ -103,9 +81,13 @@ public interface IUserDao {
     @Delete("delete from users where id=#{id}")
     void delete(String id);
 
-    //根据姓名查找用户
+    //根据姓名查找用户(登录时使用的)
     @Select("select * from users where username=#{username}")
     UserInfo findByName(String username);
+
+    //根据姓名模糊查找用户（管理员进行用户管理时的模糊查找）
+    @Select("select * from users where username like #{username}")
+    List<UserInfo> findByUsername(String username);
 
     //用户信息修改
     @Update("update users set username=#{username},password=#{password},phone=#{phone},qq=#{qq},email=#{email}," +
