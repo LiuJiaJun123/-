@@ -29,9 +29,6 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
-    @Autowired
-    private IRoleService roleService;
-
     @RequestMapping("/findAll.do")
     public ModelAndView findAll(@RequestParam(value = "page",required = true,defaultValue = "1") Integer page,
                                 @RequestParam(value = "pageSize",required = true,defaultValue = "4")Integer pageSize) throws Exception {

@@ -31,6 +31,7 @@
                 /user/findByName.do = anon
 
                 <!-- 如果用户没有该角色，然后访问该 路径 会报 401错误-->
+                /category/** = authc, roles[admin]
                 /user/** = authc, roles[admin]
                 /role/** = authc, roles[user]
 

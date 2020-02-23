@@ -7,7 +7,7 @@
 <!-- 页面meta -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>用户信息编辑</title>
+<title>类别信息编辑</title>
 
 <!-- Tell the browser to be responsive to screen width -->
 <meta
@@ -78,119 +78,49 @@
 			<!-- 内容头部 -->
 			<section class="content-header">
 			<h1>
-				用户管理 <small>用户信息编辑</small>
+				类别管理 <small>类别信息编辑</small>
 			</h1>
 			<ol class="breadcrumb">
 				<li><a href="${pageContext.request.contextPath}/index.jsp"><i
 						class="fa fa-dashboard"></i> 首页</a></li>
 				<li><a
-					href="${pageContext.request.contextPath}/user/findAll.do?page=1$pageSize=4">用户管理</a></li>
-				<li class="active">用户信息编辑</li>
+					href="${pageContext.request.contextPath}/category/findAll.do?page=1$pageSize=4">类别管理</a></li>
+				<li class="active">类别信息编辑</li>
 			</ol>
 			</section>
 			<!-- 内容头部 /-->
 
-			<form action="${pageContext.request.contextPath}/user/update.do" id="saveForm"
+			<form action="${pageContext.request.contextPath}/category/update.do" id="saveForm"
 				method="post">
 				<!-- 正文区域 -->
 				<section class="content">
 
 				<div class="panel panel-default">
-					<div class="panel-heading">用户信息</div>
+					<div class="panel-heading">类别信息</div>
 					<div class="row data-type">
 
-						<div class="col-md-2 title">用户ID</div>
-						<div class="col-md-10 data">
-							<input type="text" class="form-control" name="id"
-								   placeholder="用户ID" value="${user.id}" readonly>
+						<div class="col-md-2 title">类别ID</div>
+						<div class="col-md-4 data">
+							<input type="text" class="form-control" name="category_id"
+								   placeholder="类别ID" value="${category.category_id}" readonly>
 						</div>
 
-						<div class="col-md-2 title">用户名称</div>
+						<div class="col-md-2 title">类别名称</div>
 						<div class="col-md-4 data">
 							<div class="input-group date">
 								<div style="float: left">
-									<input id="username" type="text" class="form-control" name="username"
-										   placeholder="用户名称" value="${user.username}">
+									<input id="category_name" type="text" class="form-control" name="category_name"
+										   placeholder="类别名称" value="${category.category_name}">
 								</div>
-								<span id="span_username" style="float: right"></span>
+								<span id="span_category_name" style="float: right"></span>
 							</div>
-						</div>
-
-						<div class="col-md-2 title">密码</div>
-						<div class="col-md-4 data">
-							<div class="input-group date">
-								<div style="float: left">
-									<input id="password" type="text" class="form-control" name="password"
-										   placeholder="密码" value="${user.password}">
-								</div>
-								<span id="span_password" style="float: right"></span>
-							</div>
-						</div>
-
-						<div class="col-md-2 title">联系电话</div>
-						<div class="col-md-4 data">
-							<input type="text" class="form-control" name="phone"
-								placeholder="联系电话" value="${user.phone}">
-						</div>
-
-						<div class="col-md-2 title">qq</div>
-						<div class="col-md-4 data">
-							<input type="text" class="form-control" name="qq"
-								   placeholder="qq" value="${user.qq}">
-						</div>
-
-
-						<div class="col-md-2 title">邮箱</div>
-						<div class="col-md-4 data">
-							<input type="text" class="form-control" name="email"
-								   placeholder="邮箱" value="${user.email}">
-						</div>
-
-						<div class="col-md-2 title">地址</div>
-						<div class="col-md-4 data">
-							<input type="text" class="form-control" name="address"
-								   placeholder="地址" value="${user.address}">
-						</div>
-
-						<div class="col-md-2 title">角色</div>
-						<div class="col-md-4 data line-height36">
-							<div class="form-group form-inline">
-								<c:if test="${user.role==1}">
-									<div class="radio"><label><input name="role" type="radio" value="1" checked>管理员</label></div>
-									<div class="radio"><label><input name="role" type="radio" value="2">普通用户</label></div>
-								</c:if>
-								<c:if test="${user.role==2}">
-									<div class="radio"><label><input name="role" type="radio" value="1">管理员</label></div>
-									<div class="radio"><label><input name="role" type="radio" value="2" checked>普通用户</label></div>
-								</c:if>
-							</div>
-						</div>
-
-						<div class="col-md-2 title">用户状态</div>
-						<div class="col-md-4 data">
-							<select class="form-control select2" style="width: 100%" name="status">
-								<c:if test="${user.status==0}">
-									<option value="1">开启</option>
-									<option value="0" selected="selected">关闭</option>
-								</c:if>
-								<c:if test="${user.status==1}">
-									<option value="1" selected="selected">开启</option>
-									<option value="0">关闭</option>
-								</c:if>
-							</select>
-						</div>
-
-						<div class="col-md-2 title rowHeight2x">描述</div>
-						<div class="col-md-10 data rowHeight2x">
-							<textarea class="form-control" rows="3" name="description"
-									  placeholder="描述" >${user.description}</textarea>
 						</div>
 
 					</div>
 				</div>
 				<!--订单信息/--> <!--工具栏-->
 				<div class="box-tools text-center">
-					<%--<button id="btnSave" type="submit" class="btn bg-maroon" onclick="location.href='${pageContext.request.contextPath}/user/update.do'">保存</button>--%>
+					<%--<button id="btnSave" type="submit" class="btn bg-maroon" onclick="location.href='${pageContext.request.contextPath}/category/update.do'">保存</button>--%>
 					<button id="btnSave" type="submit" class="btn bg-maroon">保存</button>
 					<button type="button" class="btn bg-default"
 						onclick="history.back(-1);">返回</button>
@@ -299,54 +229,37 @@
 		src="${pageContext.request.contextPath}/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
 
 
-    <%--添加用户时，检查用户名是否存在，密码是否符合正则表达式--%>
+    <%--添加用户时，检查类别名称是否存在--%>
     <script>
-        // 检查密码是否符合正则表达式
-        function checkPassword() {
-            var password = $("#password").val();
-            var reg_password=/^\w{6,20}$/;
-            var flag = reg_password.test(password);
-            if (flag==true){
-                //校验通过
-                $("#password").css("border","");
-                $("#span_password").text("")
-            } else{
-                //校验不通过
-                $("#password").css("border","1px solid red");
-                $("#span_password").text("请输入6-20位的密码")
-                $("#span_password").css("color","red");
-            }
-            return flag;
-        }
-
-        function checkUsername(){
-            var username=$("#username").val();
-            // 如果用户名是当前用户名，则不查询是否重名
-			if (username=="${user.username}") {
-                $("#username").css("border","");
-                $("#span_username").text("");
-				return true;
+        function checkCategoryName(){
+            var category_name=$("#category_name").val();
+            // 如果类别名是当前类别名，则不查询是否重名
+			if (category_name=="${category.category_name}") {
+                $("#category_name").css("border","");
+                $("#span_category_name").text("");
+                return true;
 			}
             var allData = {
-                username:username
+                username:category_name
             };
             var flag =false;
 
             $.ajax({
-                url:"${pageContext.request.contextPath}/user/findByName.do",
+                url:"${pageContext.request.contextPath}/category/findByName.do",
                 contentType:"application/json;charset=UTF-8",
                 data:JSON.stringify(allData),//'{"username":username}',
                 dataType:"json",
+                async: false,  //把异步处理设置 为false；即可给方法外部赋值
                 type:"post",
                 success:function (data) {
                     if (data.flag){
-                        $("#username").css("border","");
-                        $("#span_username").text("");
+                        $("#category_name").css("border","");
+                        $("#span_category_name").text("");
                         flag = true;
                     }else{
-                        $("#username").css("border","1px solid red");
-                        $("#span_username").text(data.errorMsg);
-                        $("#span_username").css("color","red");
+                        $("#category_name").css("border","1px solid red");
+                        $("#span_category_name").text(data.errorMsg);
+                        $("#span_category_name").css("color","red");
                         flag = false;
                     }
 
@@ -360,7 +273,7 @@
         })
 
         function save_check(){
-            var flag = checkUsername()&&checkPassword();
+            var flag = checkCategoryName();
             if (flag==false){
                 // 出错
                 return false;
@@ -371,8 +284,7 @@
 
         $(function () {
 
-            $("#password").blur(checkPassword);
-            $("#username").blur(checkUsername);
+            $("#category_name").blur(checkCategoryName);
 
         });
 

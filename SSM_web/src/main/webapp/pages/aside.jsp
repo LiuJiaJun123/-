@@ -63,7 +63,10 @@
 				</span>
 			</a>
 				<ul class="treeview-menu">
-
+					<li id="category-management"><a
+							href="${pageContext.request.contextPath}/category/findAll.do?page=1&pageSize=4">
+						<i class="fa fa-circle-o"></i> 类别管理
+					</a></li>
 					<li id="product-management"><a
 						href="${pageContext.request.contextPath}/product/findAll.do?page=1&pageSize=4">
 							<i class="fa fa-circle-o"></i> 产品管理
