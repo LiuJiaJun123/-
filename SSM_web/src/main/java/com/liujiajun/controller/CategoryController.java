@@ -98,4 +98,14 @@ public class CategoryController {
 
     }
 
+    //删除类别
+    @RequestMapping("delete.do")
+    public String delete(String[] selectIds) throws Exception {
+
+        categoryService.delete(selectIds);
+
+        return "redirect:findAll.do";
+
+    }
+
 }

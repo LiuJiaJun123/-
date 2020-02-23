@@ -51,4 +51,17 @@ public class CategoryServiceImpl implements ICategoryService {
     public void save(Category category) throws Exception {
         categoryDao.save(category);
     }
+
+    //删除类别
+    @Override
+    public void delete(String[] selectIds) {
+        //先判断该类别下是否有书籍，如果有，给出错误提示
+
+
+        //如果没有，则进行删除
+        for (String category_id : selectIds) {
+            categoryDao.delete(category_id);
+        }
+
+    }
 }

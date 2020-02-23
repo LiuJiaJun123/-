@@ -2,6 +2,7 @@ package com.liujiajun.dao;
 
 import com.liujiajun.domain.Category;
 import com.liujiajun.domain.UserInfo;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -52,4 +53,11 @@ public interface ICategoryDao {
      */
     @Insert("insert into category(category_name) values(#{category_name})")
     void save(Category category);
+
+    /**
+     * 删除类别
+     * @param category_id
+     */
+    @Delete("delete from category where category_id=#{category_id}")
+    void delete(String category_id);
 }

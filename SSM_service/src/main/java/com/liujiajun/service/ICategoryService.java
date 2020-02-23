@@ -21,4 +21,7 @@ public interface ICategoryService {
 
 //    添加类别
     void save(Category category) throws Exception;
+
+    //批量删除类别
+    void delete(String[] selectIds);
 }
