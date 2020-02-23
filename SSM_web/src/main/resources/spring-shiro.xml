@@ -27,6 +27,9 @@
             <value>
                 <!--需要注意filterChainDefinitions过滤器中对于路径的配置是有顺序的，当找到匹配的条目之后容器不会再继续寻找。因此带有通配符的路径要放在后面-->
 
+                <!--注册时，查找当前用户名是否存在-->
+                /user/findByName.do = anon
+
                 <!-- 如果用户没有该角色，然后访问该 路径 会报 401错误-->
                 /user/** = authc, roles[admin]
                 /role/** = authc, roles[user]
@@ -35,7 +38,6 @@
                 /login.do = anon
                 <!--注册-->
                 /register.do = anon
-                /findByName.do = anon
 
                 <!--退出登录-->
                 /logout = logout

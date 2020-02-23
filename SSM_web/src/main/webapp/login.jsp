@@ -126,13 +126,13 @@
 <%
 }%>
 
-<%
-    if ((String)request.getAttribute("register_info") == "usernameHasExist") { %>
-<script>
-    alert("用户名已存在，请重新输入！");
-</script>
-<%
-    }%>
+<%--<%--%>
+    <%--if ((String)request.getAttribute("register_info") == "usernameHasExist") { %>--%>
+<%--<script>--%>
+    <%--alert("用户名已存在，请重新输入！");--%>
+<%--</script>--%>
+<%--<%--%>
+    <%--}%>--%>
 
 <canvas id="canvas"></canvas>
 <script src="${pageContext.request.contextPath}/libs/jq-3.2.1/jquery-3.2.1.min.js"></script>
@@ -157,8 +157,7 @@
 
     function register_check(){
 
-        // checkUsername()
-        var flag = checkPassword()&&checkRePassword();
+        var flag = checkUsername()&&checkPassword()&&checkRePassword();
 
         if (flag==false){
             // 出错
@@ -172,47 +171,33 @@
 
     // 检查用户名是否符合正则表达式
 	function checkUsername() {
-        // var username = $("#username").val().trim();
-        // var reg_username=/^\w{1,20}$/;
-        // var flag = reg_username.test(username);
-        // if (flag==true){
-        //     //校验通过
-        //     $("#username").css("border","1px solid #0f88eb");
-        //     $("#username-error-msg").text("")
-        // } else{
-        //     //校验不通过
-        //     $("#username").css("border","1px solid red");
-        //     $("#username-error-msg").text("请输入1-20位的用户名");
-        // }
-        // return flag;
-
         var username=$("#username").val();
         var allData = {
             username:username
         };
-        var flag =false;
+        var flag2 =false;
 
-        flag = $.ajax({
+        $.ajax({
             url:"${pageContext.request.contextPath}/user/findByName.do",
             contentType:"application/json;charset=UTF-8",
             data:JSON.stringify(allData),//'{"username":username}',
             dataType:"json",
+            async: false,  //把异步处理设置 为false；即可给方法外部赋值
             type:"post",
             success:function (data) {
                 if (data.flag){
-                    $("#username").css("border","");
-                    $("#span_username").text("");
-                    return true;
+                    $("#username").css("border","1px solid #0f88eb");
+                    $("#username-error-msg").text("");
+                    flag2 = true;
                 }else{
                     $("#username").css("border","1px solid red");
-                    $("#span_username").text(data.errorMsg);
-                    $("#span_username").css("color","red");
-                    return false;
+                    // $("#username").text(data.errorMsg);
+                    $("#username-error-msg").text("用户名已存在，请重新输入");
+                    flag2 = false;
                 }
-
             }
         });
-        return flag;
+        return flag2;
     }
 
     // 检查密码是否符合正则表达式
@@ -252,7 +237,7 @@
 
     $(function () {
 
-        // $("#username").blur(checkUsername);
+        $("#username").blur(checkUsername);
         $("#password").blur(checkPassword);
         $("#rePassword").blur(checkRePassword);
 

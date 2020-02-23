@@ -200,8 +200,8 @@ a:link {
 .register-error-msg{
     position: absolute;
     top: -5px;
-    right: -130px;
-    padding: 0 8px;
+    width: 200px;
+    text-align: left;
     line-height: 48px;
     color: #c33;
     cursor: text;

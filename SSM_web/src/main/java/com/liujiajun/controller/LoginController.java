@@ -58,14 +58,14 @@ public class LoginController {
         System.out.println("注册11111111111");
         System.out.println(userInfo);
 
-        Boolean flag = userService.findNameExist(userInfo.getUsername());
-        if(flag==false){
-            System.out.println("用户名已存在，注册失败");
-            ModelAndView modelAndView=new ModelAndView();
-            modelAndView.setViewName("../login");
-            modelAndView.addObject("register_info","usernameHasExist");
-            return modelAndView;
-        }
+//        Boolean flag = userService.findNameExist(userInfo.getUsername());
+//        if(flag==false){
+//            System.out.println("用户名已存在，注册失败");
+//            ModelAndView modelAndView=new ModelAndView();
+//            modelAndView.setViewName("../login");
+//            modelAndView.addObject("register_info","usernameHasExist");
+//            return modelAndView;
+//        }
 
         //注册
         userService.register(userInfo);

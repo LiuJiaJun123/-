@@ -101,6 +101,9 @@ public class LogAop {
 //                    User user = (User) context.getAuthentication().getPrincipal();
 //                    String username = user.getUsername();
                     String username = (String) SecurityUtils.getSubject().getPrincipal();
+                    if(username==null){
+                        username="游客";
+                    }
 
                     //将日志相关信息封装到SysLog对象
                     SysLog sysLog = new SysLog();
