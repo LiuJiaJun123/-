@@ -287,26 +287,27 @@
             };
             var flag =false;
 
-           flag = $.ajax({
+            $.ajax({
                 url:"${pageContext.request.contextPath}/user/findByName.do",
                 contentType:"application/json;charset=UTF-8",
                 data:JSON.stringify(allData),//'{"username":username}',
                 dataType:"json",
+                async: false,  //把异步处理设置 为false；即可给方法外部赋值
                 type:"post",
                 success:function (data) {
                     if (data.flag){
                         $("#username").css("border","");
                         $("#span_username").text("");
-                        return true;
+                        flag=true;
                     }else{
                         $("#username").css("border","1px solid red");
                         $("#span_username").text(data.errorMsg);
                         $("#span_username").css("color","red");
-                        return false;
+                        flag=false;
                     }
-
                 }
             });
+           // alert("flag:"+flag)
             return flag;
         }
 
