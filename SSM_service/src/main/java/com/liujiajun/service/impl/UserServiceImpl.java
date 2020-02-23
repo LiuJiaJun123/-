@@ -120,6 +120,7 @@ public class UserServiceImpl implements IUserService {
 //            userInfo.setPassword(bCryptPasswordEncoder.encode(userInfo.getPassword()));
 //        }
 //        userDao.update(userInfo);
+        userDao.update(userInfo);
     }
 
     //用户的角色修改

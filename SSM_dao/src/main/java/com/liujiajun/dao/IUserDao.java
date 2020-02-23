@@ -108,7 +108,8 @@ public interface IUserDao {
     UserInfo findByName(String username);
 
     //用户信息修改
-    @Update("update users set username=#{username},email=#{email},password=#{password},phoneNum=#{phoneNum},status=#{status} where id=#{id}")
+    @Update("update users set username=#{username},password=#{password},phone=#{phone},qq=#{qq},email=#{email}," +
+            "address=#{address},description=#{description},role=#{role},status=#{status} where id=#{id}")
     void update(UserInfo userInfo);
 
     //用户删除角色
