@@ -2,6 +2,7 @@ package com.liujiajun.dao;
 
 import com.liujiajun.domain.Category;
 import com.liujiajun.domain.UserInfo;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
@@ -44,4 +45,11 @@ public interface ICategoryDao {
      */
     @Select("select * from category where category_name=#{category_name}")
     Category findNameExist(String category_name);
+
+    /**
+     * 添加类别
+     * @param category
+     */
+    @Insert("insert into category(category_name) values(#{category_name})")
+    void save(Category category);
 }

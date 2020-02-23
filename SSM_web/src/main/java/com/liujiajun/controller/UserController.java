@@ -73,7 +73,7 @@ public class UserController {
         ModelAndView mv=new ModelAndView();
         userService.save(userInfo);
         //因为id是随机生成的，所以要根据姓名查找用户
-        userInfo=userService.findByName(userInfo.getUsername());
+//        userInfo=userService.findByName(userInfo.getUsername());
         return "redirect:findAll.do";
 
     }

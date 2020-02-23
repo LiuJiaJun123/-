@@ -86,6 +86,16 @@ public class CategoryController {
         return checkUsername;
     }
 
+    //添加类别
+    @RequestMapping("/save.do")
+    public String save(Category category) throws Exception {
 
+        ModelAndView mv=new ModelAndView();
+        categoryService.save(category);
+        //因为id是随机生成的，所以要根据姓名查找用户
+//        userInfo= categoryService.findByName(userInfo.getUsername());
+        return "redirect:findAll.do";
+
+    }
 
 }

@@ -18,4 +18,7 @@ public interface ICategoryService {
 
 //    添加类别时，查看类别名是否已经已经存在
     Boolean findNameExist(String category_name) throws Exception;
+
+//    添加类别
+    void save(Category category) throws Exception;
 }

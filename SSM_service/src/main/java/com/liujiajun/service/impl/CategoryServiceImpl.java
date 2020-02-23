@@ -45,4 +45,10 @@ public class CategoryServiceImpl implements ICategoryService {
         //用户名不存在，可以注册
         return true;
     }
+
+//    添加类别
+    @Override
+    public void save(Category category) throws Exception {
+        categoryDao.save(category);
+    }
 }
