@@ -64,4 +64,13 @@ public class CategoryServiceImpl implements ICategoryService {
         }
 
     }
+
+    //查找类别
+    @Override
+    public List<Category> findByCategoryName(String category_name, Integer page, Integer pageSize) {
+        category_name="%"+category_name+"%";
+        PageHelper.startPage(page,pageSize);
+        List<Category> findCategory = categoryDao.findByCategoryName(category_name);
+        return findCategory;
+    }
 }

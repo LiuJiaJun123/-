@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>类别管理</title>
+<title>类别查找</title>
 
 <!-- Tell the browser to be responsive to screen width -->
 <meta
@@ -77,7 +77,7 @@
 			<!-- 内容头部 -->
 			<section class="content-header">
 			<h1>
-				类别管理 <small>全部类别</small>
+				类别管理 <small>查找类别</small>
 			</h1>
 			<ol class="breadcrumb">
 				<li><a href="${pageContext.request.contextPath}/index.jsp"><i
@@ -85,7 +85,7 @@
 				<li><a
 					href="${pageContext.request.contextPath}/category/findAll.do?page=1&pageSize=4">类别管理</a></li>
 
-				<li class="active">全部类别</li>
+				<li class="active">查找类别</li>
 			</ol>
 			</section>
 			<!-- 内容头部 /-->
@@ -121,7 +121,8 @@
                                 <form action="${pageContext.request.contextPath}/category/findCategory.do" method="post">
                                     <div class="has-feedback">
                                         <%--搜索--%>
-                                        <input type="text" class="form-control input-sm" placeholder="输入类别名称搜索" name="category_name" id="category_name">
+                                        <input type="text" class="form-control input-sm" placeholder="输入类别名称搜索"
+											   value="${findCategoryName}" name="category_name" id="category_name">
                                         <span class="glyphicon glyphicon-search form-control-feedback"></span>
                                     </div>
                                 </form>
@@ -186,22 +187,22 @@
 						<div class="box-tools pull-right">
 							<ul class="pagination">
 								<li>
-									<a aria-label="Previous" href="${pageContext.request.contextPath}/category/findAll.do?page=1&pageSize=${categoryInfo.pageSize}">首页</a>
+									<a aria-label="Previous" href="${pageContext.request.contextPath}/category/findCategory.do?category_name=${findCategoryName}&page=1&pageSize=${categoryInfo.pageSize}">首页</a>
 								</li>
-								<li><a href="${pageContext.request.contextPath}/category/findAll.do?page=${categoryInfo.pageNum-1}&pageSize=${categoryInfo.pageSize}">上一页</a></li>
+								<li><a href="${pageContext.request.contextPath}/category/findCategory.do?category_name=${findCategoryName}&page=${categoryInfo.pageNum-1}&pageSize=${categoryInfo.pageSize}">上一页</a></li>
 
 								<c:forEach begin="1" end="${categoryInfo.pages}" var="i">
 									<c:if test="${i==categoryInfo.pageNum}">
-										<li><a style="background-color: #2aabd2" href="${pageContext.request.contextPath}/category/findAll.do?page=${i}&pageSize=${categoryInfo.pageSize}">${i}</a></li>
+										<li><a style="background-color: #2aabd2" href="${pageContext.request.contextPath}/category/findCategory.do?category_name=${findCategoryName}&page=${i}&pageSize=${categoryInfo.pageSize}">${i}</a></li>
 									</c:if>
 									<c:if test="${i!=categoryInfo.pageNum}">
-										<li><a href="${pageContext.request.contextPath}/category/findAll.do?page=${i}&pageSize=${categoryInfo.pageSize}">${i}</a></li>
+										<li><a href="${pageContext.request.contextPath}/category/findCategory.do?category_name=${findCategoryName}&page=${i}&pageSize=${categoryInfo.pageSize}">${i}</a></li>
 									</c:if>
 								</c:forEach>
 
-								<li><a href="${pageContext.request.contextPath}/category/findAll.do?page=${categoryInfo.pageNum+1}&pageSize=${categoryInfo.pageSize}">下一页</a></li>
+								<li><a href="${pageContext.request.contextPath}/category/findCategory.do?category_name=${findCategoryName}&page=${categoryInfo.pageNum+1}&pageSize=${categoryInfo.pageSize}">下一页</a></li>
 								<li>
-									<a href="${pageContext.request.contextPath}/category/findAll.do?page=${categoryInfo.pages}&pageSize=${categoryInfo.pageSize}" aria-label="Next">尾页</a>
+									<a href="${pageContext.request.contextPath}/category/findCategory.do?category_name=${findCategoryName}&page=${categoryInfo.pages}&pageSize=${categoryInfo.pageSize}" aria-label="Next">尾页</a>
 								</li>
 							</ul>
 						</div>
@@ -291,7 +292,7 @@
             //改变每页显示条数
             function changPageSize(){
                 var pageSize=$("#changPageSize").val();
-                location.href="${pageContext.request.contextPath}/category/findAll.do?page=1&pageSize="+pageSize;
+                location.href="${pageContext.request.contextPath}/category/findCategory.do?category_name=${findCategoryName}&page=1&pageSize="+pageSize;
             }
 
 			// 设置激活菜单

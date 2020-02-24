@@ -60,4 +60,12 @@ public interface ICategoryDao {
      */
     @Delete("delete from category where category_id=#{category_id}")
     void delete(String category_id);
+
+    /**
+     * 查找类别
+     * @param category_name
+     * @return
+     */
+    @Select("select * from category where category_name like #{category_name}")
+    List<Category> findByCategoryName(String category_name);
 }

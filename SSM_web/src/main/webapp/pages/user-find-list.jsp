@@ -121,7 +121,8 @@
                                 <form action="${pageContext.request.contextPath}/user/findUser.do" method="post">
                                     <div class="has-feedback">
                                         <%--搜索--%>
-                                        <input type="text" class="form-control input-sm" placeholder="输入用户名称搜索" name="username" id="username">
+                                        <input type="text" class="form-control input-sm" placeholder="输入用户名称搜索"
+											   value="${findUsername}" name="username" id="username">
                                         <span class="glyphicon glyphicon-search form-control-feedback"></span>
                                     </div>
                                 </form>

@@ -108,4 +108,23 @@ public class CategoryController {
 
     }
 
+    //搜索类别
+    @RequestMapping("/findCategory.do")
+    public ModelAndView findUser(Category category,
+                                 @RequestParam(value = "page",required = true,defaultValue = "1")Integer page,
+                                 @RequestParam(value = "pageSize",required = true,defaultValue = "4")Integer pageSize) throws Exception {
+
+        ModelAndView mv=new ModelAndView();
+
+        List<Category> findCategory = categoryService.findByCategoryName(category.getCategory_name(),page,pageSize);
+        PageInfo categoryInfo=new PageInfo(findCategory);
+
+        mv.addObject("findCategoryName",category.getCategory_name());
+        mv.addObject("categoryInfo",categoryInfo);
+
+        mv.setViewName("category-find-list");
+
+        return mv;
+    }
+
 }
