@@ -68,8 +68,8 @@
 						<i class="fa fa-circle-o"></i> 类别管理
 					</a></li>
 					<li id="product-management"><a
-						href="${pageContext.request.contextPath}/product/findAll.do?page=1&pageSize=4">
-							<i class="fa fa-circle-o"></i> 产品管理
+						href="${pageContext.request.contextPath}/book/findAll.do?page=1&pageSize=4">
+							<i class="fa fa-circle-o"></i> 书籍管理
 					</a></li>
 					<li id="orders-management"><a
 						href="${pageContext.request.contextPath}/orders/findAll.do?page=1&pageSize=4"> <i
