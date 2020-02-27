@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/book")
@@ -56,13 +58,23 @@ public class BookController {
 
     //添加书籍
     @RequestMapping("/save.do")
-    public String save(Book book) throws Exception {
+    public String save(Book book,MultipartFile uploadImg) throws Exception {
 
-//        ,MultipartFile uploadImg
-//        System.out.println("上传文件的原始名称：" + uploadImg.getOriginalFilename());
-//        System.out.println("上传文件的类型：" + uploadImg.getContentType());
-//        //单位是字节
-//        System.out.println("获取上传文件大小：" + uploadImg.getSize()+ "字节");
+        // 有上传图片
+        if(uploadImg!=null&&uploadImg.getSize()>0){
+            //随机数  保证每个图片名字不一样
+            String picName= UUID.randomUUID().toString();
+            //上传文件的原始名称
+            String oriName=uploadImg.getOriginalFilename();
+            //获取后缀  .jpg 等
+            String extName=oriName.substring(oriName.lastIndexOf("."));
+            //图片保存路径
+            String path =  "C:/BYSJ_upfile/"+picName+extName;
+            //保存到本地磁盘
+            uploadImg.transferTo(new File(path));
+
+            book.setImgUrl(path);
+        }
 
         bookService.save(book);
         return "redirect:findAll.do";

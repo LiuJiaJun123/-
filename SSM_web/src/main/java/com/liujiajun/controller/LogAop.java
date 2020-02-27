@@ -47,11 +47,11 @@ public class LogAop {
         if (args == null || args.length == 0) {
             method = clazz.getMethod(methodName); //只能获取无参数的方法
         } else {
-            Class[] classArgs = new Class[args.length];
-            for (int i = 0; i < args.length; i++) {
-                classArgs[i] = args[i].getClass();
-            }
-            method = clazz.getMethod(methodName, classArgs);
+//            Class[] classArgs = new Class[args.length];
+//            for (int i = 0; i < args.length; i++) {
+//                classArgs[i] = args[i].getClass();
+//            }
+//            method = clazz.getMethod(methodName, classArgs);
         }
 
     }

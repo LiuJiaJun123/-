@@ -96,7 +96,7 @@
 
             <%--enctype="multipart/form-data"--%>
 			<form action="${pageContext.request.contextPath}/book/save.do" id="saveForm"
-				method="post">
+				method="post" enctype="multipart/form-data">
 				<!-- 正文区域 -->
 				<section class="content"> <!--产品信息-->
 
@@ -127,8 +127,8 @@
 
 						<div class="col-md-2 title">上传图片</div>
 						<div class="col-md-4 data">
-                            <input type="file" id="imgUrl" name="imgUrl" ONCHANGE="setImg(this);">
-							<%--<input type="file" id="uploadImg" name="uploadImg" ONCHANGE="setImg(this);">--%>
+                            <%--<input type="file" id="imgUrl" name="imgUrl" ONCHANGE="setImg(this);">--%>
+							<input type="file" id="uploadImg" name="uploadImg" ONCHANGE="setImg(this);">
 						</div>
                         <div class="col-md-2 title">类别</div>
                         <div class="col-md-4 data">
@@ -146,15 +146,15 @@
 							<select class="form-control select2" style="width: 100%"
 									name="appearance">
 								<option value="无说明">请选择</option>
-								<option value="1成新">1成新</option>
-								<option value="2成新">2成新</option>
-								<option value="3成新">3成新</option>
-								<option value="4成新">4成新</option>
-								<option value="5成新">5成新</option>
-								<option value="6成新">6成新</option>
-								<option value="7成新">7成新</option>
-								<option value="8成新">8成新</option>
 								<option value="9成新">9成新</option>
+								<option value="8成新">8成新</option>
+								<option value="7成新">7成新</option>
+								<option value="6成新">6成新</option>
+								<option value="5成新">5成新</option>
+								<option value="4成新">4成新</option>
+								<option value="3成新">3成新</option>
+								<option value="2成新">2成新</option>
+								<option value="1成新">1成新</option>
 							</select>
                         </div>
 						<div class="col-md-2 title">书籍价格</div>
