@@ -71,7 +71,7 @@ public class UserServiceImpl implements IUserService {
 
 
     @Override
-    public UserInfo findById(String id) throws Exception {
+    public UserInfo findById(Integer id) throws Exception {
         return userDao.findById(id);
     }
 

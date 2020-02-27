@@ -11,7 +11,7 @@ public interface ICategoryService {
     public List<Category> findAll(int page, int pageSize) throws Exception;
 
     //根据id查找类别
-    public Category findById(String category_id) throws Exception;
+    public Category findById(Integer category_id) throws Exception;
 
     //类别信息修改
     void update(Category category);

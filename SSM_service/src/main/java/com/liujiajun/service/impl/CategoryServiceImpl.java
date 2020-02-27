@@ -24,7 +24,7 @@ public class CategoryServiceImpl implements ICategoryService {
 
     //根据id查找类别
     @Override
-    public Category findById(String category_id) throws Exception {
+    public Category findById(Integer category_id) throws Exception {
         return categoryDao.findById(category_id);
     }
 

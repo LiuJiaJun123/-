@@ -22,7 +22,7 @@ public interface IUserService  {
     public Boolean findNameExist(String username) throws Exception;
 
     //根据id查找用户
-    public UserInfo findById(String id) throws Exception;
+    public UserInfo findById(Integer id) throws Exception;
 
     //根据姓名查找用户(登录时使用的)
     UserInfo findByName(String username) throws Exception;

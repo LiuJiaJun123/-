@@ -159,7 +159,8 @@
 												<td>${book.price }</td>
 												<td>${book.statusStr }</td>
 												<td class="text-center">
-													<a href="${pageContext.request.contextPath}/book/edit.do?id=${book.book_id}" class="btn bg-olive btn-xs">编辑</a>
+													<a href="${pageContext.request.contextPath}/book/beforeDetail.do?book_id=${book.book_id}" class="btn bg-olive btn-xs">详情</a>
+													<a href="${pageContext.request.contextPath}/book/edit.do?book_id=${book.book_id}" class="btn bg-olive btn-xs">编辑</a>
 												</td>
 											</tr>
 										</c:forEach>

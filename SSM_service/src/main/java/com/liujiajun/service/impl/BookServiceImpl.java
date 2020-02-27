@@ -27,5 +27,11 @@ public class BookServiceImpl implements IBookService {
         bookDao.save(book);
     }
 
+    //根据书籍Id查找 书籍
+    @Override
+    public Book findByBookId(Integer book_id) {
+        return bookDao.findByBookId(book_id);
+    }
+
 
 }

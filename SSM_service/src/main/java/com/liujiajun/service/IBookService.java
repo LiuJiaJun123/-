@@ -12,4 +12,7 @@ public interface IBookService {
 
     //保存
     void save(Book book);
+
+    //根据书籍Id查找 书籍
+    Book findByBookId(Integer book_id);
 }

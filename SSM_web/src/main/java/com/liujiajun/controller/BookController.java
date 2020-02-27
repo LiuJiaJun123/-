@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.util.List;
 import java.util.UUID;
@@ -58,10 +59,19 @@ public class BookController {
 
     //添加书籍
     @RequestMapping("/save.do")
-    public String save(Book book,MultipartFile uploadImg) throws Exception {
+    public String save(Book book, MultipartFile uploadImg, HttpServletRequest request) throws Exception {
 
-        // 有上传图片
-        if(uploadImg!=null&&uploadImg.getSize()>0){
+        //有上传图片
+        if(!uploadImg.isEmpty()){
+
+            // 文件保存路径
+            String path = request.getSession().getServletContext().getRealPath("");
+//            System.err.println("11111111111"+path);
+            File newFile = new File(path + "img/uploadImg/");  //为图片文件夹下的图片存放文件夹目录
+            if (!newFile.exists()){
+                newFile.mkdirs();
+            }
+
             //随机数  保证每个图片名字不一样
             String picName= UUID.randomUUID().toString();
             //上传文件的原始名称
@@ -69,17 +79,41 @@ public class BookController {
             //获取后缀  .jpg 等
             String extName=oriName.substring(oriName.lastIndexOf("."));
             //图片保存路径
-            String path =  "C:/BYSJ_upfile/"+picName+extName;
+            String filePath =  path+"img\\uploadImg\\"+picName+extName;
             //保存到本地磁盘
-            uploadImg.transferTo(new File(path));
+            uploadImg.transferTo(new File(filePath));
 
-            book.setImgUrl(path);
+            book.setImgUrl("../img/uploadImg/"+picName+extName);
+        }
+
+        //没上传图片，设置默认图片
+        if(uploadImg.isEmpty()){
+            book.setImgUrl("../img/暂无图片.png");
         }
 
         bookService.save(book);
         return "redirect:findAll.do";
     }
 
+    //查看书籍详情之前，先根据书籍id 查找书籍信息、卖家信息
+    @RequestMapping("/beforeDetail.do")
+    public ModelAndView beforeDetail(Integer book_id) throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
+        //查找书籍信息
+        Book book = bookService.findByBookId(book_id);
+        //书籍类别
+        Category category = categoryService.findById(book.getCategory());
+        //图片路径
+        String imgUrl = book.getImgUrl();
+
+        //查找卖家信息
+        UserInfo userInfo = userService.findById(book.getUser_id());
+        modelAndView.addObject("book",book);
+        modelAndView.addObject("category",category);
+        modelAndView.addObject("userInfo",userInfo);
+        modelAndView.setViewName("book-show");
+        return modelAndView;
+    }
 
 
 }

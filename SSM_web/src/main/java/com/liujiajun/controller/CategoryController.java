@@ -39,7 +39,7 @@ public class CategoryController {
      * @return
      */
     @RequestMapping("/edit.do")
-    public ModelAndView edit(String category_id) throws Exception {
+    public ModelAndView edit(Integer category_id) throws Exception {
         ModelAndView mv=new ModelAndView();
         //查找要编辑的种类信息
         Category category = categoryService.findById(category_id);

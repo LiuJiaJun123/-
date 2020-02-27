@@ -25,4 +25,8 @@ public interface IBookDao {
     @Insert("insert into book(user_id,book_name,category,author,price,appearance,description,imgUrl,time,status) " +
             "values(#{user_id},#{book_name},#{category},#{author},#{price},#{appearance},#{description},#{imgUrl},#{time},#{status})")
     void save(Book book);
+
+    //根据书籍Id查找 书籍
+    @Select("select * from book where book_id=#{book_id}")
+    Book findByBookId(Integer book_id);
 }

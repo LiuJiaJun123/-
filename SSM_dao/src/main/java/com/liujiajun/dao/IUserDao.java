@@ -60,7 +60,7 @@ public interface IUserDao {
             @Result(column = "role",property = "role"),
             @Result(column = "status",property = "status"),
     })
-    public UserInfo findById(String id) throws Exception;
+    public UserInfo findById(Integer id) throws Exception;
 
 
     /**

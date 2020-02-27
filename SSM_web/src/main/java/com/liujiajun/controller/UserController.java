@@ -95,7 +95,7 @@ public class UserController {
      * @return
      */
     @RequestMapping("/findById.do")
-    public ModelAndView findById(String id) throws Exception {
+    public ModelAndView findById(Integer id) throws Exception {
         ModelAndView mv=new ModelAndView();
         UserInfo user = userService.findById(id);
         mv.addObject("user",user);
@@ -108,7 +108,7 @@ public class UserController {
      * @return
      */
     @RequestMapping("/edit.do")
-    public ModelAndView edit(String id) throws Exception {
+    public ModelAndView edit(Integer id) throws Exception {
         ModelAndView mv=new ModelAndView();
         //找出可以用户添加的角色
 //        List<Role> roleCanAdd = userService.findRoleCanAdd(id);

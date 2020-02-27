@@ -28,7 +28,7 @@ public interface ICategoryDao {
      * @return
      */
     @Select("select * from category where category_id = #{category_id}")
-    Category findById(String category_id);
+    Category findById(Integer category_id);
 
 
     /**
