@@ -143,5 +143,11 @@ public class UserServiceImpl implements IUserService {
         }
     }
 
+    //查找所有除了管理员的 普通用户
+    @Override
+    public List<UserInfo> findUserExpectAdmin() {
+        return userDao.findUserExpectAdmin();
+    }
+
 
 }

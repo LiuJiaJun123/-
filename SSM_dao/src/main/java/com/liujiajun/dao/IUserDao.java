@@ -97,4 +97,8 @@ public interface IUserDao {
     //用户删除角色
     @Delete("delete from users_role where userId=#{id}")
     void deleteRole(String id);
+
+    //查找所有除了管理员的 普通用户
+    @Select("select * from users where role = 2")
+    List<UserInfo> findUserExpectAdmin();
 }

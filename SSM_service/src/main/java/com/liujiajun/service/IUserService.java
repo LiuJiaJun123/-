@@ -45,4 +45,7 @@ public interface IUserService  {
 
     //用户的角色修改
     void updateRole(String id, String[] roleIds);
+
+    //查找所有除了管理员的 普通用户
+    List<UserInfo> findUserExpectAdmin();
 }

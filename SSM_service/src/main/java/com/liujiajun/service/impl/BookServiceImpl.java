@@ -21,5 +21,11 @@ public class BookServiceImpl implements IBookService {
         return bookDao.findAll();
     }
 
+//    保存
+    @Override
+    public void save(Book book) {
+        bookDao.save(book);
+    }
+
 
 }

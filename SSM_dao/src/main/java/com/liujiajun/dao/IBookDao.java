@@ -1,6 +1,7 @@
 package com.liujiajun.dao;
 
 import com.liujiajun.domain.Book;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
@@ -17,4 +18,11 @@ public interface IBookDao {
     List<Book> findAll();
 
 
+    /**
+     * 保存
+     * @param book
+     */
+    @Insert("insert into book(user_id,book_name,category,author,price,appearance,description,imgUrl,time,status) " +
+            "values(#{user_id},#{book_name},#{category},#{author},#{price},#{appearance},#{description},#{imgUrl},#{time},#{status})")
+    void save(Book book);
 }

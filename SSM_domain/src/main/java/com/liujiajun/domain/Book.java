@@ -1,5 +1,7 @@
 package com.liujiajun.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 //书籍
@@ -13,6 +15,7 @@ public class Book {
     private String appearance;  //书籍外观（几成新）
     private String description; //描述
     private String imgUrl;      //图片路径
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date time;          //出售时间
     private Integer status;     //状态，是否在售
     private String statusStr;

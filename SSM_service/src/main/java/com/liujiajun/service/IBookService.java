@@ -10,6 +10,6 @@ public interface IBookService {
 
     public List<Book> findAll(int page, int pageSize) throws Exception;
 
-
-
+    //保存
+    void save(Book book);
 }
