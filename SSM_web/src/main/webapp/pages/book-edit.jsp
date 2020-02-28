@@ -290,9 +290,6 @@
 						<div class="col-md-10 data">
 							<select class="form-control select2" style="width: 100%"
 								name="status">
-								<option value="1" selected="selected">开启</option>
-								<option value="0">关闭</option>
-
 								<c:if test="${bookInfo.status==0}">
 									<option value="0" selected="selected">关闭</option>
 									<option value="1">开启</option>
