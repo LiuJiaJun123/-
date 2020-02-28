@@ -130,11 +130,9 @@
 
                         <div class="col-md-2 title">类别</div>
                         <div class="col-md-4 data">
-                            <%--<input type="text" class="form-control" name="category"--%>
-                                   <%--placeholder="类别" value="">--%>
-							<select class="form-control select2" style="width: 100%"
-									name="category">
-								<c:forEach items="${categoryList}" var="category">
+							<select class="form-control select2" style="width: 100%" name="category">
+								<option value="${categoryCurrent.category_id}" selected>${categoryCurrent.category_name}</option>
+								<c:forEach items="${categoryNotSet}" var="category">
 									<option value="${category.category_id}">${category.category_name}</option>
 								</c:forEach>
 							</select>
@@ -143,22 +141,142 @@
                         <div class="col-md-4 data">
 							<select class="form-control select2" style="width: 100%"
 									name="appearance">
-								<option value="无说明">请选择</option>
-								<option value="9成新">9成新</option>
-								<option value="8成新">8成新</option>
-								<option value="7成新">7成新</option>
-								<option value="6成新">6成新</option>
-								<option value="5成新">5成新</option>
-								<option value="4成新">4成新</option>
-								<option value="3成新">3成新</option>
-								<option value="2成新">2成新</option>
-								<option value="1成新">1成新</option>
+								<c:if test="${bookInfo.appearance=='无说明'}">
+									<option value="无说明" selected>请选择</option>
+									<option value="9成新">9成新</option>
+									<option value="8成新">8成新</option>
+									<option value="7成新">7成新</option>
+									<option value="6成新">6成新</option>
+									<option value="5成新">5成新</option>
+									<option value="4成新">4成新</option>
+									<option value="3成新">3成新</option>
+									<option value="2成新">2成新</option>
+									<option value="1成新">1成新</option>
+								</c:if>
+
+								<c:if test="${bookInfo.appearance=='9成新'}">
+									<option value="无说明">请选择</option>
+									<option value="9成新" selected>9成新</option>
+									<option value="8成新">8成新</option>
+									<option value="7成新">7成新</option>
+									<option value="6成新">6成新</option>
+									<option value="5成新">5成新</option>
+									<option value="4成新">4成新</option>
+									<option value="3成新">3成新</option>
+									<option value="2成新">2成新</option>
+									<option value="1成新">1成新</option>
+								</c:if>
+
+								<c:if test="${bookInfo.appearance=='8成新'}">
+									<option value="无说明">请选择</option>
+									<option value="9成新">9成新</option>
+									<option value="8成新" selected>8成新</option>
+									<option value="7成新">7成新</option>
+									<option value="6成新">6成新</option>
+									<option value="5成新">5成新</option>
+									<option value="4成新">4成新</option>
+									<option value="3成新">3成新</option>
+									<option value="2成新">2成新</option>
+									<option value="1成新">1成新</option>
+								</c:if>
+
+								<c:if test="${bookInfo.appearance=='7成新'}">
+									<option value="无说明">请选择</option>
+									<option value="9成新">9成新</option>
+									<option value="8成新">8成新</option>
+									<option value="7成新" selected>7成新</option>
+									<option value="6成新">6成新</option>
+									<option value="5成新">5成新</option>
+									<option value="4成新">4成新</option>
+									<option value="3成新">3成新</option>
+									<option value="2成新">2成新</option>
+									<option value="1成新">1成新</option>
+								</c:if>
+
+								<c:if test="${bookInfo.appearance=='6成新'}">
+									<option value="无说明">请选择</option>
+									<option value="9成新">9成新</option>
+									<option value="8成新">8成新</option>
+									<option value="7成新">7成新</option>
+									<option value="6成新" selected>6成新</option>
+									<option value="5成新">5成新</option>
+									<option value="4成新">4成新</option>
+									<option value="3成新">3成新</option>
+									<option value="2成新">2成新</option>
+									<option value="1成新">1成新</option>
+								</c:if>
+
+								<c:if test="${bookInfo.appearance=='5成新'}">
+									<option value="无说明">请选择</option>
+									<option value="9成新">9成新</option>
+									<option value="8成新">8成新</option>
+									<option value="7成新">7成新</option>
+									<option value="6成新">6成新</option>
+									<option value="5成新" selected>5成新</option>
+									<option value="4成新">4成新</option>
+									<option value="3成新">3成新</option>
+									<option value="2成新">2成新</option>
+									<option value="1成新">1成新</option>
+								</c:if>
+
+								<c:if test="${bookInfo.appearance=='4成新'}">
+									<option value="无说明">请选择</option>
+									<option value="9成新">9成新</option>
+									<option value="8成新">8成新</option>
+									<option value="7成新">7成新</option>
+									<option value="6成新">6成新</option>
+									<option value="5成新">5成新</option>
+									<option value="4成新" selected>4成新</option>
+									<option value="3成新">3成新</option>
+									<option value="2成新">2成新</option>
+									<option value="1成新">1成新</option>
+								</c:if>
+
+								<c:if test="${bookInfo.appearance=='3成新'}">
+									<option value="无说明">请选择</option>
+									<option value="9成新">9成新</option>
+									<option value="8成新">8成新</option>
+									<option value="7成新">7成新</option>
+									<option value="6成新">6成新</option>
+									<option value="5成新">5成新</option>
+									<option value="4成新">4成新</option>
+									<option value="3成新" selected>3成新</option>
+									<option value="2成新">2成新</option>
+									<option value="1成新">1成新</option>
+								</c:if>
+
+								<c:if test="${bookInfo.appearance=='2成新'}">
+									<option value="无说明">请选择</option>
+									<option value="9成新">9成新</option>
+									<option value="8成新">8成新</option>
+									<option value="7成新">7成新</option>
+									<option value="6成新">6成新</option>
+									<option value="5成新">5成新</option>
+									<option value="4成新">4成新</option>
+									<option value="3成新">3成新</option>
+									<option value="2成新" selected>2成新</option>
+									<option value="1成新">1成新</option>
+								</c:if>
+
+								<c:if test="${bookInfo.appearance=='1成新'}">
+									<option value="无说明">请选择</option>
+									<option value="9成新">9成新</option>
+									<option value="8成新">8成新</option>
+									<option value="7成新">7成新</option>
+									<option value="6成新">6成新</option>
+									<option value="5成新">5成新</option>
+									<option value="4成新">4成新</option>
+									<option value="3成新">3成新</option>
+									<option value="2成新">2成新</option>
+									<option value="1成新" selected>1成新</option>
+								</c:if>
+
 							</select>
                         </div>
 						<div class="col-md-2 title">书籍价格</div>
 						<div class="col-md-4 data">
 							<input type="number" class="form-control" name="price"
-								placeholder="书籍价格" value="">
+								 value="${bookInfo.price}">
 						</div>
 
 						<div class="col-md-2 title">上市时间</div>
@@ -174,6 +292,16 @@
 								name="status">
 								<option value="1" selected="selected">开启</option>
 								<option value="0">关闭</option>
+
+								<c:if test="${bookInfo.status==0}">
+									<option value="0" selected="selected">关闭</option>
+									<option value="1">开启</option>
+								</c:if>
+
+								<c:if test="${bookInfo.status==1}">
+									<option value="0">关闭</option>
+									<option value="1" selected="selected">开启</option>
+								</c:if>
 							</select>
 						</div>
 
@@ -198,8 +326,8 @@
 
                         <div class="col-md-2 title rowHeight2x">描述</div>
                             <div class="col-md-4 data rowHeight2x">
-                            <textarea class="form-control" rows="3" placeholder="描述"
-                                      name="description"></textarea>
+                            <textarea class="form-control" rows="3"
+                                      name="description">${bookInfo.description}</textarea>
                         </div>
 
 					</div>

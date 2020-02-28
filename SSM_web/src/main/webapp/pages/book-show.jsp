@@ -147,18 +147,8 @@
 
 					<div class="col-md-2 title">上市时间</div>
 					<div class="col-md-4 data">
-						<%--<div class="input-group date">--%>
-							<%--<div class="input-group-addon">--%>
-								<%--<i class="fa fa-calendar"></i>--%>
-							<%--</div>--%>
-							<%--<input type="text" class="form-control pull-right"--%>
-								<%--id="datepicker-a3" readonly="readonly"--%>
-								<%--value="${book.time}">--%>
-						<%--</div>--%>
-
 						<input type="text" class="form-control"
 							   value="<fmt:formatDate value='${book.time}' pattern='yyyy-MM-dd HH:mm'/>" readonly="readonly">
-
 					</div>
 
 					<div class="col-md-2 title">状态</div>

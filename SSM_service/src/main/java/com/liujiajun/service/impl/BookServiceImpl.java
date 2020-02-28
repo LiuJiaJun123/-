@@ -39,5 +39,11 @@ public class BookServiceImpl implements IBookService {
         bookDao.update(book);
     }
 
+    //没有修改 书籍图片时 调用的修改方法
+    @Override
+    public void updateWithoutImg(Book book) {
+        bookDao.updateWithoutImg(book);
+    }
+
 
 }

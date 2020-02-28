@@ -36,4 +36,10 @@ public interface IBookDao {
             "price=#{price},appearance=#{appearance},description=#{description},imgUrl=#{imgUrl}" +
             ",status=#{status} where book_id=#{book_id}"})
     void update(Book book);
+
+    //没有修改 书籍图片时 调用的修改方法
+    @Update({"update book set book_name=#{book_name},category=#{category},author=#{author}," +
+            "price=#{price},appearance=#{appearance},description=#{description}" +
+            ",status=#{status} where book_id=#{book_id}"})
+    void updateWithoutImg(Book book);
 }

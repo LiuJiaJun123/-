@@ -121,9 +121,12 @@ public class BookController {
         ModelAndView mv=new ModelAndView();
         //书籍信息
         Book bookInfo = bookService.findByBookId(book_id);
-        //类别信息  查找当前类别之外的类别
+        //类别信息  查找当前类别
+        Category categoryCurrent = categoryService.findById(bookInfo.getCategory());
+        // 查找当前类别之外的类别
         List<Category> categoryNotSet =  categoryService.findCategoryNotSet(bookInfo.getCategory());
         mv.addObject("bookInfo",bookInfo);
+        mv.addObject("categoryCurrent",categoryCurrent);
         mv.addObject("categoryNotSet",categoryNotSet);
         mv.setViewName("book-edit");
         return mv;
@@ -154,14 +157,16 @@ public class BookController {
             uploadImg.transferTo(new File(filePath));
 
             book.setImgUrl("../img/uploadImg/"+picName+extName);
+            bookService.update(book);
         }
 
         //没上传图片，设置默认图片
         if(uploadImg.isEmpty()){
-            book.setImgUrl("../img/暂无图片.png");
+//            book.setImgUrl("../img/暂无图片.png");
+            bookService.updateWithoutImg(book);
         }
 
-        bookService.update(book);
+
         return "redirect:findAll.do";
     }
 

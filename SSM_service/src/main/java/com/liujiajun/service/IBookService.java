@@ -18,4 +18,7 @@ public interface IBookService {
 
     //修改书籍信息
     void update(Book book);
+
+    //没有修改 书籍图片时 调用的修改方法
+    void updateWithoutImg(Book book);
 }

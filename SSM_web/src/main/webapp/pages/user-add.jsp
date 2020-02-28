@@ -280,13 +280,10 @@
     <script>
         function checkUsername(){
             var username=$("#username").val();
-            // alert(username)
-
             var allData = {
                 username:username
             };
             var flag =false;
-
             $.ajax({
                 url:"${pageContext.request.contextPath}/user/findByName.do",
                 contentType:"application/json;charset=UTF-8",
@@ -307,7 +304,6 @@
                     }
                 }
             });
-           // alert("flag:"+flag)
             return flag;
         }
 
