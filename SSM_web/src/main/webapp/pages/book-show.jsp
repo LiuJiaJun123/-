@@ -84,12 +84,12 @@
 			<!-- 内容头部 -->
 			<section class="content-header">
 			<h1>
-				书籍管理 <small>全部书籍</small>
+				书籍管理 <small>书籍详情</small>
 			</h1>
 			<ol class="breadcrumb">
-				<li><a href="all-admin-index.html"><i
-						class="fa fa-dashboard"></i> 首页</a></li>
-				<li><a href="all-order-manage-list.html">书籍管理</a></li>
+                <li><a href="${pageContext.request.contextPath}/index.jsp"><i
+                        class="fa fa-dashboard"></i> 首页</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/findAll.do?page=1&pageSize=4">书籍管理</a></li>
 				<li class="active">书籍详情</li>
 			</ol>
 			</section>
@@ -100,10 +100,11 @@
 			<!--书籍信息-->
 			<div class="panel panel-default">
 
-				<div class="box-tools" style="float: left;padding:3px">
-					<button type="button" class="btn bg-default"
-							onclick="location.href='${pageContext.request.contextPath}/orders/findAll.do'">返回</button>
-				</div>
+				<%--<div class="box-tools" style="float: left;padding:3px">--%>
+					<%--&lt;%&ndash;<button type="button" class="btn bg-default"&ndash;%&gt;--%>
+					<%--<button type="button" class="btn btn-block btn-primary"--%>
+							<%--onclick="location.href='${pageContext.request.contextPath}/orders/findAll.do'">返回</button>--%>
+				<%--</div>--%>
 
 				<div class="panel-heading text-center">书籍信息</div>
 				<div class="row data-type">
@@ -144,7 +145,7 @@
 							   value="${book.appearance }" readonly="readonly">
 					</div>
 
-					<div class="col-md-2 title">下单时间</div>
+					<div class="col-md-2 title">出售时间</div>
 					<div class="col-md-4 data">
 						<%--<div class="input-group date">--%>
 							<%--<div class="input-group-addon">--%>
@@ -183,29 +184,52 @@
 			<!--书籍信息/-->
 			<!--卖家信息-->
 			<div class="panel panel-default">
-				<%--<div class="panel-heading">联系人信息</div>--%>
-				<%--<div class="row data-type">--%>
+                <div class="panel-heading text-center">卖家信息</div>
+                <div class="row data-type">
 
-					<%--<div class="col-md-2 title">会员</div>--%>
-					<%--<div class="col-md-4 data text">${orders.member.nickname }</div>--%>
+                    <div class="col-md-2 title">ID</div>
+                    <div class="col-md-4 data">
+                        <input type="text" class="form-control"
+                               value="${userInfo.id }" readonly="readonly">
+                    </div>
 
-					<%--<div class="col-md-2 title">联系人</div>--%>
-					<%--<div class="col-md-4 data text">${orders.member.name}</div>--%>
+                    <div class="col-md-2 title">姓名</div>
+                    <div class="col-md-4 data">
+                        <input type="text" class="form-control"
+                               value="${userInfo.username }" readonly="readonly">
+                    </div>
 
-					<%--<div class="col-md-2 title">手机号</div>--%>
-					<%--<div class="col-md-4 data text">${orders.member.phoneNum}</div>--%>
+                    <div class="col-md-2 title">电话</div>
+                    <div class="col-md-4 data">
+                        <input type="text" class="form-control"
+                               value="${userInfo.phone }" readonly="readonly">
+                    </div>
 
-					<%--<div class="col-md-2 title">邮箱</div>--%>
-					<%--<div class="col-md-4 data text">${orders.member.email}</div>--%>
+                    <div class="col-md-2 title">QQ</div>
+                    <div class="col-md-4 data">
+                        <input type="text" class="form-control"
+                               value="${userInfo.qq }" readonly="readonly">
+                    </div>
 
-				<%--</div>--%>
-			</div>
+                    <div class="col-md-2 title">邮箱</div>
+                    <div class="col-md-4 data">
+                        <input type="text" class="form-control"
+                               value="${userInfo.email }" readonly="readonly">
+                    </div>
+
+                    <div class="col-md-2 title">地址</div>
+                    <div class="col-md-4 data">
+                        <input type="text" class="form-control"
+                               value="${userInfo.address }" readonly="readonly">
+                    </div>
+			    </div>
+            </div>
+
 			<!--卖家信息/-->
 			<!--工具栏-->
 			<div class="box-tools text-center">
-
-				<button type="button" class="btn bg-default"
-						onclick="location.href='${pageContext.request.contextPath}/orders/findAll.do'">返回</button>
+				<button type="button" class="btn btn-block btn-primary" style="width: 10vw; height: 2vw; margin-left: 38vw;"
+						onclick="location.href='${pageContext.request.contextPath}/book/findAll.do'">返回</button>
 			</div>
 			<!--工具栏/--> </section>
 			<!-- 正文区域 /-->

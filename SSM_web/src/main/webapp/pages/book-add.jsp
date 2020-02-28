@@ -88,7 +88,7 @@
 				<li><a href="${pageContext.request.contextPath}/index.jsp"><i
 						class="fa fa-dashboard"></i> 首页</a></li>
 				<li><a
-					href="${pageContext.request.contextPath}/user/findAll.do?page=1$pageSize=4">书籍管理</a></li>
+					href="${pageContext.request.contextPath}/user/findAll.do?page=1&pageSize=4">书籍管理</a></li>
 				<li class="active">添加书籍</li>
 			</ol>
 			</section>
