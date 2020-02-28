@@ -15,4 +15,7 @@ public interface IBookService {
 
     //根据书籍Id查找 书籍
     Book findByBookId(Integer book_id);
+
+    //修改书籍信息
+    void update(Book book);
 }

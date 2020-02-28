@@ -27,4 +27,7 @@ public interface ICategoryService {
 
     //查找类别
     List<Category> findByCategoryName(String category_name, Integer page, Integer pageSize);
+
+    //书籍编辑时，查找当前类别之外的类别
+    List<Category> findCategoryNotSet(Integer category_id);
 }

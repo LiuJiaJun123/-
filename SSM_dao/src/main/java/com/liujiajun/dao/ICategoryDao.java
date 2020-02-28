@@ -68,4 +68,8 @@ public interface ICategoryDao {
      */
     @Select("select * from category where category_name like #{category_name}")
     List<Category> findByCategoryName(String category_name);
+
+    //书籍编辑时，查找当前类别之外的类别
+    @Select("select * from category where category_id != #{category_id}")
+    List<Category> findCategoryNotSet(Integer category_id);
 }

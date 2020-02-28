@@ -33,5 +33,11 @@ public class BookServiceImpl implements IBookService {
         return bookDao.findByBookId(book_id);
     }
 
+    //修改书籍信息
+    @Override
+    public void update(Book book) {
+        bookDao.update(book);
+    }
+
 
 }

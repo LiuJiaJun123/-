@@ -16,7 +16,7 @@ public class Book {
     private String description; //描述
     private String imgUrl;      //图片路径
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    private Date time;          //出售时间
+    private Date time;          //上市时间
     private Integer status;     //状态，是否在售
     private String statusStr;
 

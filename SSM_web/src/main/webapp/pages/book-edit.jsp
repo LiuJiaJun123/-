@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,7 +12,7 @@
 <!-- 页面meta -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>添加书籍</title>
+<title>书籍信息编辑</title>
 
 <!-- Tell the browser to be responsive to screen width -->
 <meta
@@ -82,20 +83,20 @@
 			<!-- 内容头部 -->
 			<section class="content-header">
 			<h1>
-				书籍管理 <small>添加书籍</small>
+				书籍管理 <small>书籍信息编辑</small>
 			</h1>
 			<ol class="breadcrumb">
 				<li><a href="${pageContext.request.contextPath}/index.jsp"><i
 						class="fa fa-dashboard"></i> 首页</a></li>
 				<li><a
 					href="${pageContext.request.contextPath}/book/findAll.do?page=1&pageSize=4">书籍管理</a></li>
-				<li class="active">添加书籍</li>
+				<li class="active">书籍信息编辑</li>
 			</ol>
 			</section>
 			<!-- 内容头部 /-->
 
             <%--enctype="multipart/form-data"--%>
-			<form action="${pageContext.request.contextPath}/book/save.do" id="saveForm"
+			<form action="${pageContext.request.contextPath}/book/update.do" id="updateForm"
 				method="post" enctype="multipart/form-data">
 				<!-- 正文区域 -->
 				<section class="content"> <!--产品信息-->
@@ -104,32 +105,29 @@
 					<div class="panel-heading">书籍信息</div>
 					<div class="row data-type">
 
+						<div class="col-md-2 title">书籍编号</div>
+						<div class="col-md-4 data">
+							<input type="text" class="form-control" name="book_id"
+								   value="${bookInfo.book_id }" readonly="readonly">
+						</div>
+
+						<div class="col-md-2 title">卖家ID</div>
+						<div class="col-md-4 data">
+							<input type="text" class="form-control" name="user_id"
+								   value="${bookInfo.user_id }" readonly="readonly">
+						</div>
+
 						<div class="col-md-2 title">书籍名称</div>
 						<div class="col-md-4 data">
                             <input id="book_name" type="text" class="form-control" name="book_name"
-                                 placeholder="书籍名称" value="">
+                                 placeholder="书籍名称" value="${bookInfo.book_name}">
 						</div>
 						<div class="col-md-2 title">书籍作者</div>
 						<div class="col-md-4 data">
 							<input type="text" class="form-control" name="author"
-								   placeholder="书籍作者" value="">
+								   placeholder="书籍作者" value="${bookInfo.author}">
 						</div>
 
-                        <div class="col-md-2 title">卖家</div>
-                        <div class="col-md-4 data">
-                            <select class="form-control select2" style="width: 100%"
-                                    name="user_id">
-                                <c:forEach items="${userList}" var="user">
-                                    <option value="${user.id}">${user.username}</option>
-                                </c:forEach>
-                            </select>
-                        </div>
-
-						<div class="col-md-2 title">上传图片</div>
-						<div class="col-md-4 data">
-                            <%--<input type="file" id="imgUrl" name="imgUrl" ONCHANGE="setImg(this);">--%>
-							<input type="file" id="uploadImg" name="uploadImg" ONCHANGE="setImg(this);">
-						</div>
                         <div class="col-md-2 title">类别</div>
                         <div class="col-md-4 data">
                             <%--<input type="text" class="form-control" name="category"--%>
@@ -163,19 +161,15 @@
 								placeholder="书籍价格" value="">
 						</div>
 
-                        <%
-                            Date date = new Date();
-                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-                            String now = sdf.format(date);
-                        %>
-                        <%--<div class="col-md-4 data">--%>
-                            <input type="hidden" class="form-control" name="time"
-                                   placeholder="出售时间" value="<%=now %>">
-                        <%--</div>--%>
+						<div class="col-md-2 title">上市时间</div>
+						<div class="col-md-4 data">
+							<input type="text" class="form-control" name="time"
+								   value="<fmt:formatDate value='${bookInfo.time}' pattern='yyyy-MM-dd HH:mm'/>" readonly="readonly">
+						</div>
 
 
 						<div class="col-md-2 title">状态</div>
-						<div class="col-md-4 data">
+						<div class="col-md-10 data">
 							<select class="form-control select2" style="width: 100%"
 								name="status">
 								<option value="1" selected="selected">开启</option>
@@ -183,8 +177,27 @@
 							</select>
 						</div>
 
+						<div class="col-md-2 title rowHeight2x">书籍图片</div>
+						<div class="col-md-4 rowHeight2x" >
+							<%--<input type="file" id="imgUrl" name="imgUrl" ONCHANGE="setImg(this);">--%>
+							<%--没有图片--%>
+							<c:if test="${bookInfo.imgUrl=='../img/暂无图片.png'}">
+								<input style="margin-top: 0.5%; padding-top: 4%; padding-left: 2%; border: 1px solid lightgrey; width: 27vw; height: 4vw;"
+									   type="file" id="uploadImg" name="uploadImg" ONCHANGE="setImg(this);">
+							</c:if>
+							<%--已有图片--%>
+							<c:if test="${bookInfo.imgUrl !='../img/暂无图片.png'}">
+								<img class="img-responsive" src="${bookInfo.imgUrl}" alt="Photo" style="height: 4.5vw;float: left;">
+								<%--<input type="file" id="uploadImg" value="更换图片" name="uploadImg" ONCHANGE="setImg(this);">--%>
+								<input type="button" value="修改图片" onclick="javascript:$('input[name=\'uploadImg\']').click();"
+									style="margin-top: 10%;margin-left: 13%;"/>
+								<input name="fileName" readonly />
+								<input type="file" name="uploadImg"  style="display: none;" onchange="setImg2(this);" />
+							</c:if>
+						</div>
+
                         <div class="col-md-2 title rowHeight2x">描述</div>
-                            <div class="col-md-10 data rowHeight2x">
+                            <div class="col-md-4 data rowHeight2x">
                             <textarea class="form-control" rows="3" placeholder="描述"
                                       name="description"></textarea>
                         </div>
@@ -305,6 +318,22 @@
 	<script>
 
         //图片上传,检查提交的是不是图片
+        function setImg2(obj){
+
+            var f=$(obj).val();
+            if(f == null || f ==undefined || f == ''){
+                return false;
+            }
+            if(!/\.(?:png|jpg|bmp|PNG|JPG|BMP)$/.test(f))
+            {
+                alert("类型必须是图片(.png|jpg|bmp|PNG|JPG|BMP)");
+                $(obj).val('');
+                return false;
+            }
+            $('input[name="fileName"]').val(obj.files[0].name);
+        }
+
+        //图片上传,检查提交的是不是图片
         function setImg(obj){
 
             var f=$(obj).val();
@@ -321,7 +350,7 @@
 
         //提交
         $("#btnSave").click(function () {
-            $("#saveForm").submit();
+            $("#updateForm").submit();
         })
 
 		$(document).ready(function() {

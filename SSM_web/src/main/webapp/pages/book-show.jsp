@@ -145,7 +145,7 @@
 							   value="${book.appearance }" readonly="readonly">
 					</div>
 
-					<div class="col-md-2 title">出售时间</div>
+					<div class="col-md-2 title">上市时间</div>
 					<div class="col-md-4 data">
 						<%--<div class="input-group date">--%>
 							<%--<div class="input-group-addon">--%>

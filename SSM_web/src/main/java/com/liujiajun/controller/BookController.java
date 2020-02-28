@@ -115,5 +115,55 @@ public class BookController {
         return modelAndView;
     }
 
+    //书籍 编辑前，先查找 书籍信息以及类别信息
+    @RequestMapping("/edit.do")
+    public ModelAndView edit(Integer book_id) throws Exception {
+        ModelAndView mv=new ModelAndView();
+        //书籍信息
+        Book bookInfo = bookService.findByBookId(book_id);
+        //类别信息  查找当前类别之外的类别
+        List<Category> categoryNotSet =  categoryService.findCategoryNotSet(bookInfo.getCategory());
+        mv.addObject("bookInfo",bookInfo);
+        mv.addObject("categoryNotSet",categoryNotSet);
+        mv.setViewName("book-edit");
+        return mv;
+    }
+
+    // 书籍信息修改
+    @RequestMapping("/update.do")
+    public String update( Book book,MultipartFile uploadImg,HttpServletRequest request) throws Exception {
+        //有上传图片
+        if(!uploadImg.isEmpty()){
+
+            // 文件保存路径
+            String path = request.getSession().getServletContext().getRealPath("");
+            File newFile = new File(path + "img/uploadImg/");  //为图片文件夹下的图片存放文件夹目录
+            if (!newFile.exists()){
+                newFile.mkdirs();
+            }
+
+            //随机数  保证每个图片名字不一样
+            String picName= UUID.randomUUID().toString();
+            //上传文件的原始名称
+            String oriName=uploadImg.getOriginalFilename();
+            //获取后缀  .jpg 等
+            String extName=oriName.substring(oriName.lastIndexOf("."));
+            //图片保存路径
+            String filePath =  path+"img\\uploadImg\\"+picName+extName;
+            //保存到本地磁盘
+            uploadImg.transferTo(new File(filePath));
+
+            book.setImgUrl("../img/uploadImg/"+picName+extName);
+        }
+
+        //没上传图片，设置默认图片
+        if(uploadImg.isEmpty()){
+            book.setImgUrl("../img/暂无图片.png");
+        }
+
+        bookService.update(book);
+        return "redirect:findAll.do";
+    }
+
 
 }

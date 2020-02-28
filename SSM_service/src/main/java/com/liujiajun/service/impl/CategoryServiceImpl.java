@@ -73,4 +73,10 @@ public class CategoryServiceImpl implements ICategoryService {
         List<Category> findCategory = categoryDao.findByCategoryName(category_name);
         return findCategory;
     }
+
+    //书籍编辑时，查找当前类别之外的类别
+    @Override
+    public List<Category> findCategoryNotSet(Integer category_id) {
+        return categoryDao.findCategoryNotSet(category_id);
+    }
 }
