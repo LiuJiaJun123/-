@@ -1,6 +1,7 @@
 package com.liujiajun.dao;
 
 import com.liujiajun.domain.Book;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -42,4 +43,8 @@ public interface IBookDao {
             "price=#{price},appearance=#{appearance},description=#{description}" +
             ",status=#{status} where book_id=#{book_id}"})
     void updateWithoutImg(Book book);
+
+    //删除书籍
+    @Delete("delete from book where book_id=#{book_id}")
+    void delete(String book_id);
 }

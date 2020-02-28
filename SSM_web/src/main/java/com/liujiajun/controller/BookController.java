@@ -170,5 +170,15 @@ public class BookController {
         return "redirect:findAll.do";
     }
 
+    //删除书籍
+    @RequestMapping("delete.do")
+    public String delete(String[] selectIds) throws Exception {
+
+        bookService.delete(selectIds);
+
+        return "redirect:findAll.do";
+
+    }
+
 
 }

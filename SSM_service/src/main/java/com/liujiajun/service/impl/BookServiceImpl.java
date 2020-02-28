@@ -45,5 +45,13 @@ public class BookServiceImpl implements IBookService {
         bookDao.updateWithoutImg(book);
     }
 
+    //删除书籍
+    @Override
+    public void delete(String[] selectIds) {
+        for (String book_id : selectIds) {
+            bookDao.delete(book_id);
+        }
+    }
+
 
 }

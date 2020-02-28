@@ -21,4 +21,7 @@ public interface IBookService {
 
     //没有修改 书籍图片时 调用的修改方法
     void updateWithoutImg(Book book);
+
+    //删除书籍
+    void delete(String[] selectIds);
 }
