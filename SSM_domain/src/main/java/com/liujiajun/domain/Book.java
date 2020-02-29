@@ -7,7 +7,8 @@ import java.util.Date;
 //书籍
 public class Book {
     private Integer book_id;    //书籍Id
-    private Integer user_id;    //用户Id
+//    private Integer user_id;    //用户Id
+    private UserInfo userInfo;  //用户信息
     private String book_name;   //书名
     private Integer category;   //书籍类别
     private String author;      //作者
@@ -28,12 +29,21 @@ public class Book {
         this.book_id = book_id;
     }
 
-    public Integer getUser_id() {
-        return user_id;
+//    public Integer getUser_id() {
+//        return user_id;
+//    }
+//
+//    public void setUser_id(Integer user_id) {
+//        this.user_id = user_id;
+//    }
+
+
+    public UserInfo getUserInfo() {
+        return userInfo;
     }
 
-    public void setUser_id(Integer user_id) {
-        this.user_id = user_id;
+    public void setUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
     }
 
     public String getBook_name() {
@@ -127,7 +137,7 @@ public class Book {
     public String toString() {
         return "Book{" +
                 "book_id=" + book_id +
-                ", user_id=" + user_id +
+                ", userInfo=" + userInfo +
                 ", book_name='" + book_name + '\'' +
                 ", category=" + category +
                 ", author='" + author + '\'' +

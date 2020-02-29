@@ -113,8 +113,8 @@
 
 						<div class="col-md-2 title">卖家ID</div>
 						<div class="col-md-4 data">
-							<input type="text" class="form-control" name="user_id"
-								   value="${bookInfo.user_id }" readonly="readonly">
+							<input type="text" class="form-control" name="userInfo.id"
+								   value="${bookInfo.userInfo.id }" readonly="readonly">
 						</div>
 
 						<div class="col-md-2 title">书籍名称</div>

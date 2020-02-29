@@ -180,37 +180,37 @@
                     <div class="col-md-2 title">ID</div>
                     <div class="col-md-4 data">
                         <input type="text" class="form-control"
-                               value="${userInfo.id }" readonly="readonly">
+                               value="${book.userInfo.id }" readonly="readonly">
                     </div>
 
                     <div class="col-md-2 title">姓名</div>
                     <div class="col-md-4 data">
                         <input type="text" class="form-control"
-                               value="${userInfo.username }" readonly="readonly">
+                               value="${book.userInfo.username }" readonly="readonly">
                     </div>
 
                     <div class="col-md-2 title">电话</div>
                     <div class="col-md-4 data">
                         <input type="text" class="form-control"
-                               value="${userInfo.phone }" readonly="readonly">
+                               value="${book.userInfo.phone }" readonly="readonly">
                     </div>
 
                     <div class="col-md-2 title">QQ</div>
                     <div class="col-md-4 data">
                         <input type="text" class="form-control"
-                               value="${userInfo.qq }" readonly="readonly">
+                               value="${book.userInfo.qq }" readonly="readonly">
                     </div>
 
                     <div class="col-md-2 title">邮箱</div>
                     <div class="col-md-4 data">
                         <input type="text" class="form-control"
-                               value="${userInfo.email }" readonly="readonly">
+                               value="${book.userInfo.email }" readonly="readonly">
                     </div>
 
                     <div class="col-md-2 title">地址</div>
                     <div class="col-md-4 data">
                         <input type="text" class="form-control"
-                               value="${userInfo.address }" readonly="readonly">
+                               value="${book.userInfo.address }" readonly="readonly">
                     </div>
 			    </div>
             </div>
@@ -219,7 +219,7 @@
 			<!--工具栏-->
 			<div class="box-tools text-center">
 				<button type="button" class="btn btn-block btn-primary" style="width: 10vw; height: 2vw; margin-left: 38vw;"
-						onclick="location.href='${pageContext.request.contextPath}/book/findAll.do'">返回</button>
+						onclick="history.back(-1);">返回</button>
 			</div>
 			<!--工具栏/--> </section>
 			<!-- 正文区域 /-->

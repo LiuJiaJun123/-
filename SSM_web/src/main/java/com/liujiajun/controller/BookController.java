@@ -66,7 +66,6 @@ public class BookController {
 
             // 文件保存路径
             String path = request.getSession().getServletContext().getRealPath("");
-//            System.err.println("11111111111"+path);
             File newFile = new File(path + "img/uploadImg/");  //为图片文件夹下的图片存放文件夹目录
             if (!newFile.exists()){
                 newFile.mkdirs();
@@ -95,7 +94,7 @@ public class BookController {
         return "redirect:findAll.do";
     }
 
-    //查看书籍详情之前，先根据书籍id 查找书籍信息、卖家信息
+    //查看书籍详情之前，先根据书籍id 查找书籍信息
     @RequestMapping("/beforeDetail.do")
     public ModelAndView beforeDetail(Integer book_id) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
@@ -104,13 +103,13 @@ public class BookController {
         //书籍类别
         Category category = categoryService.findById(book.getCategory());
         //图片路径
-        String imgUrl = book.getImgUrl();
+//        String imgUrl = book.getImgUrl();
 
         //查找卖家信息
-        UserInfo userInfo = userService.findById(book.getUser_id());
+//        UserInfo userInfo = userService.findById(book.getUser_id());
         modelAndView.addObject("book",book);
         modelAndView.addObject("category",category);
-        modelAndView.addObject("userInfo",userInfo);
+//        modelAndView.addObject("userInfo",userInfo);
         modelAndView.setViewName("book-show");
         return modelAndView;
     }

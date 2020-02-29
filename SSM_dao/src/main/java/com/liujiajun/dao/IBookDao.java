@@ -1,10 +1,7 @@
 package com.liujiajun.dao;
 
 import com.liujiajun.domain.Book;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -17,6 +14,16 @@ public interface IBookDao {
      * @return
      */
     @Select("select * from book")
+    @Results({
+            @Result(id = true,column = "book_id",property = "book_id"),
+            @Result(column = "user_id",property = "userInfo",one = @One( select = "com.liujiajun.dao.IUserDao.findById")),
+            @Result(column = "orderTime",property = "orderTime"),
+            @Result(column = "orderStatus",property = "orderStatus"),
+            @Result(column = "peopleCount",property = "peopleCount"),
+            @Result(column = "payType",property = "payType"),
+            @Result(column = "orderDesc",property = "orderDesc"),
+            @Result(column = "productId",property = "product")
+    })
     List<Book> findAll();
 
 
@@ -25,11 +32,21 @@ public interface IBookDao {
      * @param book
      */
     @Insert("insert into book(user_id,book_name,category,author,price,appearance,description,imgUrl,time,status) " +
-            "values(#{user_id},#{book_name},#{category},#{author},#{price},#{appearance},#{description},#{imgUrl},#{time},#{status})")
+            "values(#{userInfo.id},#{book_name},#{category},#{author},#{price},#{appearance},#{description},#{imgUrl},#{time},#{status})")
     void save(Book book);
 
     //根据书籍Id查找 书籍
     @Select("select * from book where book_id=#{book_id}")
+    @Results({
+            @Result(id = true,column = "book_id",property = "book_id"),
+            @Result(column = "user_id",property = "userInfo",one = @One( select = "com.liujiajun.dao.IUserDao.findById")),
+            @Result(column = "orderTime",property = "orderTime"),
+            @Result(column = "orderStatus",property = "orderStatus"),
+            @Result(column = "peopleCount",property = "peopleCount"),
+            @Result(column = "payType",property = "payType"),
+            @Result(column = "orderDesc",property = "orderDesc"),
+            @Result(column = "productId",property = "product")
+    })
     Book findByBookId(Integer book_id);
 
     //修改图片信息

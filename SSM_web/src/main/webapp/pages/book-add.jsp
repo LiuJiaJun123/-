@@ -118,7 +118,7 @@
                         <div class="col-md-2 title">卖家</div>
                         <div class="col-md-4 data">
                             <select class="form-control select2" style="width: 100%"
-                                    name="user_id">
+                                    name="userInfo.id">
                                 <c:forEach items="${userList}" var="user">
                                     <option value="${user.id}">${user.username}</option>
                                 </c:forEach>
