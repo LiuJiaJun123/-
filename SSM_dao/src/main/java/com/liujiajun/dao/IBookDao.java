@@ -87,4 +87,8 @@ public interface IBookDao {
             @Result(column = "status",property = "status")
     })
     List<Book> findBook(String findConditions);
+
+    //根据类别ID 查找书籍，删除类别时调用
+    @Select("select * from book where category=#{category_id}")
+    List<Book> findByCategoryId(Integer category_id);
 }

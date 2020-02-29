@@ -59,7 +59,7 @@ public interface ICategoryDao {
      * @param category_id
      */
     @Delete("delete from category where category_id=#{category_id}")
-    void delete(String category_id);
+    void delete(Integer category_id) throws Exception;
 
     /**
      * 查找类别

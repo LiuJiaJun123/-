@@ -1,9 +1,12 @@
 package com.liujiajun.service.impl;
 
 import com.github.pagehelper.PageHelper;
+import com.liujiajun.dao.IBookDao;
 import com.liujiajun.dao.ICategoryDao;
+import com.liujiajun.domain.Book;
 import com.liujiajun.domain.Category;
 import com.liujiajun.domain.UserInfo;
+import com.liujiajun.exception.CustomException;
 import com.liujiajun.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +18,8 @@ public class CategoryServiceImpl implements ICategoryService {
 
     @Autowired
     private ICategoryDao categoryDao;
+    @Autowired
+    private IBookDao bookDao;
 
     @Override
     public List<Category> findAll(int page, int pageSize) throws Exception {
@@ -54,15 +59,19 @@ public class CategoryServiceImpl implements ICategoryService {
 
     //删除类别
     @Override
-    public void delete(String[] selectIds) {
+    public void delete(Integer[] selectIds) throws Exception {
         //先判断该类别下是否有书籍，如果有，给出错误提示
-
-
-        //如果没有，则进行删除
-        for (String category_id : selectIds) {
-            categoryDao.delete(category_id);
+        for (Integer category_id : selectIds) {
+            List<Book> bookList = bookDao.findByCategoryId(category_id);
+            if(bookList.size()!=0){
+                throw new CustomException("删除失败！该类别下有书籍，请先删除该类别下的所有书籍，再执行删除操作！");
+            }
         }
 
+        //如果没有，则进行删除
+        for (Integer category_id : selectIds) {
+            categoryDao.delete(category_id);
+        }
     }
 
     //查找类别

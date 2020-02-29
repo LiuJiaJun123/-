@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.liujiajun.domain.Category;
 import com.liujiajun.domain.CheckUsername;
 import com.liujiajun.domain.UserInfo;
+import com.liujiajun.exception.CustomException;
 import com.liujiajun.service.ICategoryService;
 import com.liujiajun.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -100,10 +101,9 @@ public class CategoryController {
 
     //删除类别
     @RequestMapping("delete.do")
-    public String delete(String[] selectIds) throws Exception {
+    public String delete(Integer[] selectIds) throws Exception {
 
         categoryService.delete(selectIds);
-
         return "redirect:findAll.do";
 
     }

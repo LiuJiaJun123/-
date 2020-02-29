@@ -23,7 +23,7 @@ public interface ICategoryService {
     void save(Category category) throws Exception;
 
     //批量删除类别
-    void delete(String[] selectIds);
+    void delete(Integer[] selectIds) throws Exception;
 
     //查找类别
     List<Category> findByCategoryName(String category_name, Integer page, Integer pageSize);
