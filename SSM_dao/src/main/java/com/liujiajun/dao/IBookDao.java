@@ -72,7 +72,9 @@ public interface IBookDao {
     void delete(String book_id);
 
     //根据书籍名称或卖家名称 模糊搜索书籍
-    @Select("select * from book where book_name like #{findConditions} or user_id in (select id from users where username like #{findConditions})")
+    @Select("select * from book where book_name like #{findConditions} " +
+            "or user_id in (select id from users where username like #{findConditions}) " +
+            "or category in (select category_id from category where category_name like #{findConditions})")
     @Results({
             @Result(id = true,column = "book_id",property = "book_id"),
             @Result(column = "user_id",property = "userInfo",one = @One( select = "com.liujiajun.dao.IUserDao.findById")),

@@ -122,8 +122,8 @@
                                 <form action="${pageContext.request.contextPath}/book/findBook.do" method="post">
                                     <div class="has-feedback">
                                         <%--搜索--%>
-                                        <input type="text" class="form-control input-sm" placeholder="输入书籍名称或卖家名称搜索"
-                                               style="width: 11vw; " name="findConditions" id="findConditions">
+                                        <input type="text" class="form-control input-sm" placeholder="输入书籍名称、卖家名称、类别名称搜索"
+                                               style="width: 14.5vw; " name="findConditions" id="findConditions">
                                         <span class="glyphicon glyphicon-search form-control-feedback"></span>
                                     </div>
                                 </form>
