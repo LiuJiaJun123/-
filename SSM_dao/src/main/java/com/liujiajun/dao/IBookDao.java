@@ -67,5 +67,15 @@ public interface IBookDao {
 
     //根据书籍名称或卖家名称 模糊搜索书籍
     @Select("select * from book where book_name like #{findConditions} or user_id in (select id from users where username like #{findConditions})")
+    @Results({
+            @Result(id = true,column = "book_id",property = "book_id"),
+            @Result(column = "user_id",property = "userInfo",one = @One( select = "com.liujiajun.dao.IUserDao.findById")),
+            @Result(column = "orderTime",property = "orderTime"),
+            @Result(column = "orderStatus",property = "orderStatus"),
+            @Result(column = "peopleCount",property = "peopleCount"),
+            @Result(column = "payType",property = "payType"),
+            @Result(column = "orderDesc",property = "orderDesc"),
+            @Result(column = "productId",property = "product")
+    })
     List<Book> findBook(String findConditions);
 }
