@@ -53,5 +53,14 @@ public class BookServiceImpl implements IBookService {
         }
     }
 
+    //根据 书籍名称或卖家名称 搜索书籍
+    @Override
+    public List<Book> findBook(String findConditions, Integer page, Integer pageSize) {
+        findConditions="%"+findConditions+"%";
+        PageHelper.startPage(page,pageSize);
+        List<Book> findBook = bookDao.findBook(findConditions);
+        return findBook;
+    }
+
 
 }

@@ -179,5 +179,24 @@ public class BookController {
 
     }
 
+    //根据 书籍名称或卖家名称 搜索书籍
+    @RequestMapping("/findBook.do")
+    public ModelAndView findBook(String findConditions,
+                                 @RequestParam(value = "page",required = true,defaultValue = "1")Integer page,
+                                 @RequestParam(value = "pageSize",required = true,defaultValue = "4")Integer pageSize) throws Exception {
+
+        ModelAndView mv=new ModelAndView();
+
+        List<Book> findBook = bookService.findBook(findConditions,page,pageSize);
+        PageInfo pageInfo=new PageInfo(findBook);
+
+        mv.addObject("findConditions",findConditions);
+        mv.addObject("bookInfo",pageInfo);
+
+        mv.setViewName("book-find-list");
+
+        return mv;
+    }
+
 
 }

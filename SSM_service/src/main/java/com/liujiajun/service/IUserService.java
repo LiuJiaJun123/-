@@ -1,5 +1,6 @@
 package com.liujiajun.service;
 
+import com.liujiajun.domain.Book;
 import com.liujiajun.domain.Role;
 import com.liujiajun.domain.UserInfo;
 import org.apache.ibatis.annotations.Select;
@@ -48,4 +49,7 @@ public interface IUserService  {
 
     //查找所有除了管理员的 普通用户
     List<UserInfo> findUserExpectAdmin();
+
+
+
 }

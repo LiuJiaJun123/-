@@ -24,4 +24,7 @@ public interface IBookService {
 
     //删除书籍
     void delete(String[] selectIds);
+
+    //根据 书籍名称或卖家名称 搜索书籍
+    List<Book> findBook(String findConditions, Integer page, Integer pageSize);
 }

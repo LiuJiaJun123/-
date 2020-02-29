@@ -6,6 +6,7 @@ import com.liujiajun.dao.IPermissionDao;
 import com.liujiajun.dao.IRole_PermissionDao;
 import com.liujiajun.dao.IUserDao;
 import com.liujiajun.dao.IUsers_RoleDao;
+import com.liujiajun.domain.Book;
 import com.liujiajun.domain.Permission;
 import com.liujiajun.domain.Role;
 import com.liujiajun.domain.UserInfo;
@@ -148,6 +149,7 @@ public class UserServiceImpl implements IUserService {
     public List<UserInfo> findUserExpectAdmin() {
         return userDao.findUserExpectAdmin();
     }
+
 
 
 }

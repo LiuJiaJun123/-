@@ -64,4 +64,8 @@ public interface IBookDao {
     //删除书籍
     @Delete("delete from book where book_id=#{book_id}")
     void delete(String book_id);
+
+    //根据书籍名称或卖家名称 模糊搜索书籍
+    @Select("select * from book where book_name like #{findConditions} or user_id in (select id from users where username like #{findConditions})")
+    List<Book> findBook(String findConditions);
 }
