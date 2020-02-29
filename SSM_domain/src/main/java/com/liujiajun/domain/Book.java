@@ -7,10 +7,9 @@ import java.util.Date;
 //书籍
 public class Book {
     private Integer book_id;    //书籍Id
-//    private Integer user_id;    //用户Id
     private UserInfo userInfo;  //用户信息
     private String book_name;   //书名
-    private Integer category;   //书籍类别
+    private Category categoryInfo;   //书籍类别信息
     private String author;      //作者
     private Double price;       //价格
     private String appearance;  //书籍外观（几成新）
@@ -54,12 +53,12 @@ public class Book {
         this.book_name = book_name;
     }
 
-    public Integer getCategory() {
-        return category;
+    public Category getCategoryInfo() {
+        return categoryInfo;
     }
 
-    public void setCategory(Integer category) {
-        this.category = category;
+    public void setCategoryInfo(Category categoryInfo) {
+        this.categoryInfo = categoryInfo;
     }
 
     public String getAuthor() {
@@ -132,14 +131,13 @@ public class Book {
         this.statusStr = statusStr;
     }
 
-
     @Override
     public String toString() {
         return "Book{" +
                 "book_id=" + book_id +
                 ", userInfo=" + userInfo +
                 ", book_name='" + book_name + '\'' +
-                ", category=" + category +
+                ", categoryInfo=" + categoryInfo +
                 ", author='" + author + '\'' +
                 ", price=" + price +
                 ", appearance='" + appearance + '\'' +

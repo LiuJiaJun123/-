@@ -101,14 +101,14 @@ public class BookController {
         //查找书籍信息
         Book book = bookService.findByBookId(book_id);
         //书籍类别
-        Category category = categoryService.findById(book.getCategory());
+//        Category category = categoryService.findById(book.getCategory());
         //图片路径
 //        String imgUrl = book.getImgUrl();
 
         //查找卖家信息
 //        UserInfo userInfo = userService.findById(book.getUser_id());
         modelAndView.addObject("book",book);
-        modelAndView.addObject("category",category);
+//        modelAndView.addObject("category",category);
 //        modelAndView.addObject("userInfo",userInfo);
         modelAndView.setViewName("book-show");
         return modelAndView;
@@ -121,11 +121,11 @@ public class BookController {
         //书籍信息
         Book bookInfo = bookService.findByBookId(book_id);
         //类别信息  查找当前类别
-        Category categoryCurrent = categoryService.findById(bookInfo.getCategory());
+//        Category categoryCurrent = categoryService.findById(bookInfo.getCategory());
         // 查找当前类别之外的类别
-        List<Category> categoryNotSet =  categoryService.findCategoryNotSet(bookInfo.getCategory());
+        List<Category> categoryNotSet =  categoryService.findCategoryNotSet(bookInfo.getCategoryInfo().getCategory_id());
         mv.addObject("bookInfo",bookInfo);
-        mv.addObject("categoryCurrent",categoryCurrent);
+//        mv.addObject("categoryCurrent",categoryCurrent);
         mv.addObject("categoryNotSet",categoryNotSet);
         mv.setViewName("book-edit");
         return mv;

@@ -136,7 +136,7 @@
 					<div class="col-md-2 title">书籍类别</div>
 					<div class="col-md-4 data">
 						<input type="text" class="form-control"
-							   value="${category.category_name }" readonly="readonly">
+							   value="${book.categoryInfo.category_name }" readonly="readonly">
 					</div>
 
 					<div class="col-md-2 title">书籍成色</div>

@@ -17,12 +17,15 @@ public interface IBookDao {
     @Results({
             @Result(id = true,column = "book_id",property = "book_id"),
             @Result(column = "user_id",property = "userInfo",one = @One( select = "com.liujiajun.dao.IUserDao.findById")),
-            @Result(column = "orderTime",property = "orderTime"),
-            @Result(column = "orderStatus",property = "orderStatus"),
-            @Result(column = "peopleCount",property = "peopleCount"),
-            @Result(column = "payType",property = "payType"),
-            @Result(column = "orderDesc",property = "orderDesc"),
-            @Result(column = "productId",property = "product")
+            @Result(column = "book_name",property = "book_name"),
+            @Result(column = "category",property = "categoryInfo",one = @One( select = "com.liujiajun.dao.ICategoryDao.findById")),
+            @Result(column = "author",property = "author"),
+            @Result(column = "price",property = "price"),
+            @Result(column = "appearance",property = "appearance"),
+            @Result(column = "description",property = "description"),
+            @Result(column = "imgUrl",property = "imgUrl"),
+            @Result(column = "time",property = "time"),
+            @Result(column = "status",property = "status")
     })
     List<Book> findAll();
 
@@ -40,12 +43,15 @@ public interface IBookDao {
     @Results({
             @Result(id = true,column = "book_id",property = "book_id"),
             @Result(column = "user_id",property = "userInfo",one = @One( select = "com.liujiajun.dao.IUserDao.findById")),
-            @Result(column = "orderTime",property = "orderTime"),
-            @Result(column = "orderStatus",property = "orderStatus"),
-            @Result(column = "peopleCount",property = "peopleCount"),
-            @Result(column = "payType",property = "payType"),
-            @Result(column = "orderDesc",property = "orderDesc"),
-            @Result(column = "productId",property = "product")
+            @Result(column = "book_name",property = "book_name"),
+            @Result(column = "category",property = "categoryInfo",one = @One( select = "com.liujiajun.dao.ICategoryDao.findById")),
+            @Result(column = "author",property = "author"),
+            @Result(column = "price",property = "price"),
+            @Result(column = "appearance",property = "appearance"),
+            @Result(column = "description",property = "description"),
+            @Result(column = "imgUrl",property = "imgUrl"),
+            @Result(column = "time",property = "time"),
+            @Result(column = "status",property = "status")
     })
     Book findByBookId(Integer book_id);
 
@@ -70,12 +76,15 @@ public interface IBookDao {
     @Results({
             @Result(id = true,column = "book_id",property = "book_id"),
             @Result(column = "user_id",property = "userInfo",one = @One( select = "com.liujiajun.dao.IUserDao.findById")),
-            @Result(column = "orderTime",property = "orderTime"),
-            @Result(column = "orderStatus",property = "orderStatus"),
-            @Result(column = "peopleCount",property = "peopleCount"),
-            @Result(column = "payType",property = "payType"),
-            @Result(column = "orderDesc",property = "orderDesc"),
-            @Result(column = "productId",property = "product")
+            @Result(column = "book_name",property = "book_name"),
+            @Result(column = "category",property = "categoryInfo",one = @One( select = "com.liujiajun.dao.ICategoryDao.findById")),
+            @Result(column = "author",property = "author"),
+            @Result(column = "price",property = "price"),
+            @Result(column = "appearance",property = "appearance"),
+            @Result(column = "description",property = "description"),
+            @Result(column = "imgUrl",property = "imgUrl"),
+            @Result(column = "time",property = "time"),
+            @Result(column = "status",property = "status")
     })
     List<Book> findBook(String findConditions);
 }

@@ -141,8 +141,9 @@
 												id="selall" type="checkbox" class="icheckbox_square-blue">
 											</th>
 											<th class="sorting_asc">书籍ID</th>
-											<th class="sorting_desc">卖家名字</th>
 											<th class="sorting_asc sorting_asc_disabled">书名</th>
+											<th class="sorting_asc sorting_asc_disabled">类别</th>
+											<th class="sorting_desc">卖家名字</th>
 											<th class="sorting_desc sorting_desc_disabled">价格</th>
 											<th class="sorting">状态</th>
 											<th class="text-center">操作</th>
@@ -155,8 +156,9 @@
 													<%-- checkbox 提交form，所以要有name ,value为要删除的id--%>
 												<td><input type="checkbox" name="selectIds" value="${book.book_id}"></td>
 												<td>${book.book_id }</td>
-												<td>${book.userInfo.username }</td>
 												<td>${book.book_name }</td>
+												<td>${book.categoryInfo.category_name }</td>
+												<td>${book.userInfo.username }</td>
 												<td>${book.price }</td>
 												<td>${book.statusStr }</td>
 												<td class="text-center">
