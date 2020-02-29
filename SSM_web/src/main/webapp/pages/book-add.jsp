@@ -135,7 +135,7 @@
                             <%--<input type="text" class="form-control" name="category"--%>
                                    <%--placeholder="类别" value="">--%>
 							<select class="form-control select2" style="width: 100%"
-									name="category">
+									name="categoryInfo.category_id">
 								<c:forEach items="${categoryList}" var="category">
 									<option value="${category.category_id}">${category.category_name}</option>
 								</c:forEach>

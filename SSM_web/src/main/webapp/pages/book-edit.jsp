@@ -130,7 +130,7 @@
 
                         <div class="col-md-2 title">类别</div>
                         <div class="col-md-4 data">
-							<select class="form-control select2" style="width: 100%" name="category">
+							<select class="form-control select2" style="width: 100%" name="categoryInfo.category_id">
 								<option value="${bookInfo.categoryInfo.category_id}" selected>${bookInfo.categoryInfo.category_name}</option>
 								<c:forEach items="${categoryNotSet}" var="category">
 									<option value="${category.category_id}">${category.category_name}</option>
