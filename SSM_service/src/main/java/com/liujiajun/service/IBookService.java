@@ -24,7 +24,10 @@ public interface IBookService {
     void updateWithoutImg(Book book);
 
     //删除书籍
-    void delete(String[] selectIds);
+    void delete(Integer book_id);
+
+    //批量删除书籍
+    void delete(Integer[] selectIds);
 
     //根据 书籍名称或卖家名称 搜索书籍
     List<Book> findBook(String findConditions, Integer page, Integer pageSize);

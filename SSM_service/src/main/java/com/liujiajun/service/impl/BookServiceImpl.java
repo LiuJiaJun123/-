@@ -52,8 +52,14 @@ public class BookServiceImpl implements IBookService {
 
     //删除书籍
     @Override
-    public void delete(String[] selectIds) {
-        for (String book_id : selectIds) {
+    public void delete(Integer book_id) {
+        bookDao.delete(book_id);
+    }
+
+    //批量删除书籍
+    @Override
+    public void delete(Integer[] selectIds) {
+        for (Integer book_id : selectIds) {
             bookDao.delete(book_id);
         }
     }

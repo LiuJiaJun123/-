@@ -171,7 +171,7 @@ public class BookController {
 
     //删除书籍
     @RequestMapping("delete.do")
-    public String delete(String[] selectIds) throws Exception {
+    public String delete(Integer[] selectIds) throws Exception {
 
         bookService.delete(selectIds);
 

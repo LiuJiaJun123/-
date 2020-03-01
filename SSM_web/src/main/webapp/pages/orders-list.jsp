@@ -140,7 +140,8 @@
                                             <td><input type="checkbox" name="selectIds" value="${orders.orders_id}"></td>
                                             <td>${orders.orders_id}</td>
                                             <td>${orders.book.book_name}</td>
-                                            <td>${orders.seller.username}</td>
+                                            <%--<td>${orders.seller.username}</td>--%>
+                                            <td>${orders.book.userInfo.username}</td>
                                             <td>${orders.buyer.username}</td>
                                             <td>${orders.order_time_str}</td>
                                             <td class="text-center">

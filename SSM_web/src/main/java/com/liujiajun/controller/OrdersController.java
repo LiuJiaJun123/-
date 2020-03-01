@@ -57,7 +57,7 @@ public class OrdersController {
         //查找所有书籍
         List<Book> bookList = bookService.findAll();
         //查找所有买家
-        List<UserInfo> userList = userService.findAll();
+        List<UserInfo> userList = userService.findUserExpectAdmin();
 
         ModelAndView mv=new ModelAndView();
         mv.addObject("bookList",bookList);
@@ -70,21 +70,12 @@ public class OrdersController {
 
     //添加订单
     @RequestMapping(value = "/save.do",method = RequestMethod.POST)
-    public ModelAndView save(Orders orders,String[] travellersId) throws Exception {   //String orderNum
-
-        //除了旅客之外的信息封装到Orders中， 将旅客的id封装到一个数组中
+    public ModelAndView save(Orders orders) throws Exception {   //String orderNum
 
         //添加订单
         ordersService.save(orders);
-
-        //添加订单后，要根据订单编号查询的订单的id，因为id是随机生成的
-//        Orders findOrders = ordersService.findByOrderNum(orders.getOrderNum());
-//        String orderId = findOrders.getId();
-
-        //在中间表order_traveller中添加记录
-        for (String travellerId : travellersId) {
-//            order_travellerService.save(orderId,travellerId);
-        }
+        //订单添加后，书籍列表要删除对应的 书籍
+        bookService.delete(orders.getBook().getBook_id());
 
         ModelAndView mv=new ModelAndView();
         mv.setViewName("redirect:findAll.do");

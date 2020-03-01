@@ -9,11 +9,7 @@ import java.util.List;
 public class Orders {
 
     private Integer orders_id;
-    //private Integer book_id;
-    //private Integer seller_id;
-    //private Integer buyer_id;
     private Book book;
-    private UserInfo seller;
     private UserInfo buyer;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
@@ -37,13 +33,13 @@ public class Orders {
         this.book = book;
     }
 
-    public UserInfo getSeller() {
-        return seller;
-    }
-
-    public void setSeller(UserInfo seller) {
-        this.seller = seller;
-    }
+//    public UserInfo getSeller() {
+//        return seller;
+//    }
+//
+//    public void setSeller(UserInfo seller) {
+//        this.seller = seller;
+//    }
 
     public UserInfo getBuyer() {
         return buyer;
@@ -85,9 +81,9 @@ public class Orders {
         return "Orders{" +
                 "orders_id=" + orders_id +
                 ", book=" + book +
-                ", seller=" + seller +
                 ", buyer=" + buyer +
                 ", order_time=" + order_time +
+                ", order_time_str='" + order_time_str + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }

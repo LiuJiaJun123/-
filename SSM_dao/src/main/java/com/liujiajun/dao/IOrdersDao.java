@@ -14,7 +14,6 @@ public interface IOrdersDao {
     @Results({
             @Result(id = true,column = "orders_id",property = "orders_id"),
             @Result(column = "book_id",property = "book",one = @One( select = "com.liujiajun.dao.IBookDao.findByBookId")),
-            @Result(column = "seller_id",property = "seller",one = @One( select = "com.liujiajun.dao.IUserDao.findById")),
             @Result(column = "buyer_id",property = "buyer",one = @One( select = "com.liujiajun.dao.IUserDao.findById")),
             @Result(column = "order_time",property = "order_time"),
             @Result(column = "description",property = "description")
@@ -43,8 +42,8 @@ public interface IOrdersDao {
 
 
     //添加订单
-    @Insert("insert into orders(orderNum,orderTime,peopleCount,orderDesc,payType,orderStatus,productId,memberId) " +
-            "values(#{orderNum},#{orderTime},#{peopleCount},#{orderDesc},#{payType},#{orderStatus},#{product.id},#{member.id})")
+    @Insert("insert into orders(book_id,buyer_id,description,order_time) " +
+            "values(#{book.book_id},#{buyer.id},#{description},#{order_time} )")
     void save(Orders orders);
 
 

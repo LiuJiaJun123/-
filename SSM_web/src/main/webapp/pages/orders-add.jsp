@@ -1,3 +1,5 @@
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -99,81 +101,36 @@
 					<div class="panel-heading">订单信息</div>
 					<div class="row data-type">
 
-						<div class="col-md-2 title">订单编号</div>
-						<div class="col-md-10 data">
-							<input type="text" class="form-control" name="orderNum"
-								placeholder="订单编号" value="">
-						</div>
-
-						<div class="col-md-2 title">产品编号</div>
+						<div class="col-md-2 title">书籍编号</div>
 						<div class="col-md-4 data">
-							<select class="form-control select2" style="width: 100%" name="product.id">
-								<c:forEach items="${productList}" var="product">
-									<option value="${product.id}">${product.productNum}</option>
+							<select class="form-control select2" style="width: 100%" name="book.book_id">
+								<c:forEach items="${bookList}" var="book">
+									<option value="${book.book_id}">${book.book_id}</option>
 								</c:forEach>
 							</select>
 						</div>
 
-						<div class="col-md-2 title">会员ID</div>
+						<div class="col-md-2 title">买家姓名</div>
 						<div class="col-md-4 data">
-							<select class="form-control select2" style="width: 100%" name="member.id">
-								<c:forEach items="${memberList}" var="member">
-									<option value="${member.id}">${member.id}</option>
+							<select class="form-control select2" style="width: 100%" name="buyer.id">
+								<c:forEach items="${userList}" var="user">
+									<option value="${user.id}">${user.username}</option>
 								</c:forEach>
 							</select>
 						</div>
 
-						<div class="col-md-2 title">下单时间</div>
-						<div class="col-md-4 data">
-							<div class="input-group date">
-								<div class="input-group-addon">
-									<i class="fa fa-calendar"></i>
-								</div>
-								<input type="text" class="form-control pull-right"
-									id="datepicker-a3" name="orderTime">
-							</div>
-						</div>
+						<%
+							Date date = new Date();
+							SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+							String now = sdf.format(date);
+						%>
+						<input type="hidden" class="form-control" name="order_time"
+							   placeholder="出售时间" value="<%=now %>">
 
-
-
-						<div class="col-md-2 title">出行人数</div>
-						<div class="col-md-4 data">
-							<input type="number" class="form-control" name="peopleCount"
-								placeholder="出行人数" value="">
-						</div>
-
-						<div class="col-md-2 title">旅客ID</div>
-						<div class="col-md-10 data">
-							<select class="form-control select2" multiple="multiple" name="travellersId" data-placeholder="可多选" style="width: 100%;">
-								<c:forEach items="${travellerList}" var="traveller">
-									<option value="${traveller.id}">${traveller.id}</option>
-								</c:forEach>
-							</select>
-						</div>
-
-
-						<div class="col-md-2 title">支付方式</div>
-						<div class="col-md-4 data">
-							<select class="form-control select2" style="width: 100%" name="payType">
-								<option value="0" selected="selected">支付宝</option>
-								<option value="1">微信</option>
-								<option value="2">其他</option>
-							</select>
-						</div>
-
-						<div class="col-md-2 title">订单状态</div>
-						<div class="col-md-4 data">
-							<select class="form-control select2" style="width: 100%"
-								name="orderStatus">
-								<option value="0" selected="selected">未支付</option>
-								<option value="1">已支付</option>
-							</select>
-						</div>
-
-						<div class="col-md-2 title rowHeight2x">其他信息</div>
+						<div class="col-md-2 title rowHeight2x">描述</div>
 						<div class="col-md-10 data rowHeight2x">
-							<textarea class="form-control" rows="3" placeholder="其他信息"
-								name="orderDesc"></textarea>
+							<textarea class="form-control" rows="3" placeholder="描述"
+								name="description"></textarea>
 						</div>
 
 					</div>
