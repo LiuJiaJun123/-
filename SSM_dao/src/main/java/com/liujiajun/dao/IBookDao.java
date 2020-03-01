@@ -13,7 +13,7 @@ public interface IBookDao {
      * 查找所有
      * @return
      */
-    @Select("select * from book")
+    @Select("select * from book where status = 1 ")
     @Results({
             @Result(id = true,column = "book_id",property = "book_id"),
             @Result(column = "user_id",property = "userInfo",one = @One( select = "com.liujiajun.dao.IUserDao.findById")),

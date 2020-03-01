@@ -36,6 +36,7 @@ public class BookController {
                                 @RequestParam(value = "pageSize",required = true,defaultValue = "4")Integer pageSize) throws Exception {
 
         ModelAndView mv=new ModelAndView();
+        //查找所有未出售的书籍 (status为1)
         List<Book> bookList = bookService.findAll(page,pageSize);
         PageInfo bookInfo=new PageInfo(bookList);
         mv.addObject("bookInfo",bookInfo);
