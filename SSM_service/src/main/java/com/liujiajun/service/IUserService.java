@@ -12,6 +12,9 @@ import java.util.List;
 //public interface IUserService extends UserDetailsService {
 public interface IUserService  {
 
+
+    List<UserInfo> findAll() throws Exception;
+
     public List<UserInfo> findAll(int page,int pageSize) throws Exception;
 
     public void register(UserInfo userInfo) throws Exception;
@@ -49,7 +52,6 @@ public interface IUserService  {
 
     //查找所有除了管理员的 普通用户
     List<UserInfo> findUserExpectAdmin();
-
 
 
 }

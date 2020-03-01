@@ -1,10 +1,7 @@
 package com.liujiajun.controller;
 
 import com.github.pagehelper.PageInfo;
-import com.liujiajun.domain.Member;
-import com.liujiajun.domain.Orders;
-import com.liujiajun.domain.Product;
-import com.liujiajun.domain.Traveller;
+import com.liujiajun.domain.*;
 import com.liujiajun.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,18 +18,19 @@ public class OrdersController {
 
     @Autowired
     private IOrdersService ordersService;
-
     @Autowired
     private IProductService productService;
-
     @Autowired
     private IMemberService memberService;
-
     @Autowired
     private ITravellerService travellerService;
-
     @Autowired
     private IOrder_TravellerService order_travellerService;
+
+    @Autowired
+    private IBookService bookService;
+    @Autowired
+    private IUserService userService;
 
     //查找所有
     @RequestMapping("/findAll.do")
@@ -56,19 +54,14 @@ public class OrdersController {
     @RequestMapping(value = "/save.do",method = RequestMethod.GET)
     public ModelAndView saveUI() throws Exception {
 
-        //查找所有产品
-        List<Product> productList = productService.findAll();
-
-        //查找所有会员
-        List<Member> memberList = memberService.findAll();
-
-        //查找所有旅客
-        List<Traveller> travellerList = travellerService.findAll();
+        //查找所有书籍
+        List<Book> bookList = bookService.findAll();
+        //查找所有买家
+        List<UserInfo> userList = userService.findAll();
 
         ModelAndView mv=new ModelAndView();
-        mv.addObject("productList",productList);
-        mv.addObject("memberList",memberList);
-        mv.addObject("travellerList",travellerList);
+        mv.addObject("bookList",bookList);
+        mv.addObject("userList",userList);
 
         mv.setViewName("orders-add");
         return mv;
@@ -85,12 +78,12 @@ public class OrdersController {
         ordersService.save(orders);
 
         //添加订单后，要根据订单编号查询的订单的id，因为id是随机生成的
-        Orders findOrders = ordersService.findByOrderNum(orders.getOrderNum());
-        String orderId = findOrders.getId();
+//        Orders findOrders = ordersService.findByOrderNum(orders.getOrderNum());
+//        String orderId = findOrders.getId();
 
         //在中间表order_traveller中添加记录
         for (String travellerId : travellersId) {
-            order_travellerService.save(orderId,travellerId);
+//            order_travellerService.save(orderId,travellerId);
         }
 
         ModelAndView mv=new ModelAndView();
@@ -137,7 +130,7 @@ public class OrdersController {
         ordersService.update(orders);
 
         //在中间表order_traveller中修改记录
-        order_travellerService.update(orders.getId(),travellersId);
+//        order_travellerService.update(orders.getId(),travellersId);
 
         ModelAndView mv=new ModelAndView();
         mv.setViewName("redirect:findAll.do");
@@ -173,10 +166,10 @@ public class OrdersController {
 
         ModelAndView mv=new ModelAndView();
 
-        List<Orders> findOrders = ordersService.searchByOrderNum(orders.getOrderNum());
-
-        mv.addObject("findOrderNum",orders.getOrderNum());
-        mv.addObject("findOrders",findOrders);
+//        List<Orders> findOrders = ordersService.searchByOrderNum(orders.getOrderNum());
+//
+//        mv.addObject("findOrderNum",orders.getOrderNum());
+//        mv.addObject("findOrders",findOrders);
         mv.setViewName("orders-find-list");
 
         return mv;

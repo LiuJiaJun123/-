@@ -16,6 +16,11 @@ public class BookServiceImpl implements IBookService {
     private IBookDao bookDao;
 
     @Override
+    public List<Book> findAll() throws Exception {
+        return bookDao.findAll();
+    }
+
+    @Override
     public List<Book> findAll(int page, int pageSize) throws Exception {
         PageHelper.startPage(page,pageSize);
         return bookDao.findAll();

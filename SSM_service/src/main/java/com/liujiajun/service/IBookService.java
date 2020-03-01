@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface IBookService {
 
+    List<Book> findAll() throws Exception;
 
     public List<Book> findAll(int page, int pageSize) throws Exception;
 

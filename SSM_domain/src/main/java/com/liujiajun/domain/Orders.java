@@ -8,165 +8,87 @@ import java.util.List;
 
 public class Orders {
 
-    private String id;
-    private String orderNum;
+    private Integer orders_id;
+    //private Integer book_id;
+    //private Integer seller_id;
+    //private Integer buyer_id;
+    private Book book;
+    private UserInfo seller;
+    private UserInfo buyer;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    private Date orderTime;
-    private String orderTimeStr;
-    private int orderStatus;
-    private String orderStatusStr;
-    private int peopleCount;
-    private Product product;
-    private List<Traveller> travellers;
-    private Member member;
-    private Integer payType;
-    private String payTypeStr;
-    private String orderDesc;
+    private Date order_time;
+    private String order_time_str;
+    private String description;
 
-    public String getId() {
-        return id;
+    public Integer getOrders_id() {
+        return orders_id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setOrders_id(Integer orders_id) {
+        this.orders_id = orders_id;
     }
 
-    public String getOrderNum() {
-        return orderNum;
+    public Book getBook() {
+        return book;
     }
 
-    public void setOrderNum(String orderNum) {
-        this.orderNum = orderNum;
+    public void setBook(Book book) {
+        this.book = book;
     }
 
-    public Date getOrderTime() {
-        return orderTime;
+    public UserInfo getSeller() {
+        return seller;
     }
 
-    public void setOrderTime(Date orderTime) {
-        this.orderTime = orderTime;
+    public void setSeller(UserInfo seller) {
+        this.seller = seller;
     }
 
-    public String getOrderTimeStr() {
-        if(orderTime!=null){
-            orderTimeStr= DateUtils.Date2String(orderTime,"yyyy-MM-dd HH:mm");
+    public UserInfo getBuyer() {
+        return buyer;
+    }
+
+    public void setBuyer(UserInfo buyer) {
+        this.buyer = buyer;
+    }
+
+    public Date getOrder_time() {
+        return order_time;
+    }
+
+    public void setOrder_time(Date order_time) {
+        this.order_time = order_time;
+    }
+
+    public String getOrder_time_str() {
+        if(order_time!=null){
+            order_time_str= DateUtils.Date2String(order_time,"yyyy-MM-dd HH:mm");
         }
-        return orderTimeStr;
+        return order_time_str;
     }
 
-    public void setOrderTimeStr(String orderTimeStr) {
-        this.orderTimeStr = orderTimeStr;
+    public void setOrder_time_str(String order_time_str) {
+        this.order_time_str = order_time_str;
     }
 
-    public int getOrderStatus() {
-        return orderStatus;
+    public String getDescription() {
+        return description;
     }
 
-    public void setOrderStatus(int orderStatus) {
-        this.orderStatus = orderStatus;
-    }
-
-
-    public String getOrderStatusStr() {
-
-        if(orderStatus==0){
-            orderStatusStr="未支付";
-        } else{
-            orderStatusStr="已支付";
-        }
-
-        return orderStatusStr;
-    }
-
-    public void setOrderStatusStr(String orderStatusStr) {
-        this.orderStatusStr = orderStatusStr;
-    }
-
-    public int getPeopleCount() {
-        return peopleCount;
-    }
-
-    public void setPeopleCount(int peopleCount) {
-        this.peopleCount = peopleCount;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    public List<Traveller> getTravellers() {
-        return travellers;
-    }
-
-    public void setTravellers(List<Traveller> travellers) {
-        this.travellers = travellers;
-    }
-
-    public Member getMember() {
-        return member;
-    }
-
-    public void setMember(Member member) {
-        this.member = member;
-    }
-
-    public Integer getPayType() {
-        return payType;
-    }
-
-    public void setPayType(Integer payType) {
-        this.payType = payType;
-    }
-
-    public String getPayTypeStr() {
-        if(payType!=null){
-            if(payType==0){
-                payTypeStr="支付宝";
-            }
-            if(payType==1){
-                payTypeStr="微信";
-            }
-            if(payType==2){
-                payTypeStr="其它";
-            }
-        }
-        if(payType==null){
-            payTypeStr="支付宝";
-        }
-        return payTypeStr;
-    }
-
-    public void setPayTypeStr(String payTypeStr) {
-        this.payTypeStr = payTypeStr;
-    }
-
-    public String getOrderDesc() {
-        return orderDesc;
-    }
-
-    public void setOrderDesc(String orderDesc) {
-        this.orderDesc = orderDesc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
     public String toString() {
         return "Orders{" +
-                "id='" + id + '\'' +
-                ", orderNum='" + orderNum + '\'' +
-                ", orderTime=" + orderTime +
-                ", orderTimeStr='" + orderTimeStr + '\'' +
-                ", orderStatus=" + orderStatus +
-                ", peopleCount=" + peopleCount +
-                ", product=" + product +
-                ", travellers=" + travellers +
-                ", member=" + member +
-                ", payType=" + payType +
-                ", payTypeStr='" + payTypeStr + '\'' +
-                ", orderDesc='" + orderDesc + '\'' +
+                "orders_id=" + orders_id +
+                ", book=" + book +
+                ", seller=" + seller +
+                ", buyer=" + buyer +
+                ", order_time=" + order_time +
+                ", description='" + description + '\'' +
                 '}';
     }
 }

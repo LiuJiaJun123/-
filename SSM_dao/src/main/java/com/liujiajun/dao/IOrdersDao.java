@@ -10,16 +10,14 @@ import java.util.List;
 @Repository("ordersDao")
 public interface IOrdersDao {
 
-    @Select("select * from orders order by orderNum")
+    @Select("select * from orders order by orders_id")
     @Results({
-            @Result(id = true,column = "id",property = "id"),
-            @Result(column = "orderNum",property = "orderNum"),
-            @Result(column = "orderTime",property = "orderTime"),
-            @Result(column = "orderStatus",property = "orderStatus"),
-            @Result(column = "peopleCount",property = "peopleCount"),
-            @Result(column = "payType",property = "payType"),
-            @Result(column = "orderDesc",property = "orderDesc"),
-            @Result(column = "productId",property = "product",one = @One( select = "com.liujiajun.dao.IProductDao.findById"))
+            @Result(id = true,column = "orders_id",property = "orders_id"),
+            @Result(column = "book_id",property = "book",one = @One( select = "com.liujiajun.dao.IBookDao.findByBookId")),
+            @Result(column = "seller_id",property = "seller",one = @One( select = "com.liujiajun.dao.IUserDao.findById")),
+            @Result(column = "buyer_id",property = "buyer",one = @One( select = "com.liujiajun.dao.IUserDao.findById")),
+            @Result(column = "order_time",property = "order_time"),
+            @Result(column = "description",property = "description")
     })
     public List<Orders> findAll() throws Exception;
 

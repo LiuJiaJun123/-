@@ -38,9 +38,14 @@ public class UserServiceImpl implements IUserService {
 
 
     @Override
+    public List<UserInfo> findAll() throws Exception {
+        return userDao.findAll();
+    }
+
+    @Override
     public List<UserInfo> findAll(int page,int pageSize) throws Exception {
         PageHelper.startPage(page,pageSize);
-        return userDao.findAll(page,pageSize);
+        return userDao.findAll();
     }
 
 

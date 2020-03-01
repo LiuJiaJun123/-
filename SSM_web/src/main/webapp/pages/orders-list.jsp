@@ -104,10 +104,6 @@
                                 </div>
                             </div>
                             <div class="box-tools pull-right">
-                                <%--<div class="has-feedback">--%>
-                                    <%--<input type="text" class="form-control input-sm" placeholder="搜索">--%>
-                                    <%--<span class="glyphicon glyphicon-search form-control-feedback"></span>--%>
-                                <%--</div>--%>
                                 <form action="${pageContext.request.contextPath}/orders/findOrders.do" method="post">
                                     <div class="has-feedback">
                                         <%--搜索--%>
@@ -120,7 +116,6 @@
 
                             <%--用form包裹起来，这样提交的时候就可以获得选中的checkbox--%>
                             <form id="form1" action="${pageContext.servletContext.contextPath}/orders/delete.do" method="post">
-
                                 <!--数据列表-->
                                 <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
                                     <thead>
@@ -128,12 +123,11 @@
                                         <th class="" style="padding-right:0px;">
                                             <input id="selall" type="checkbox" class="icheckbox_square-blue">
                                         </th>
-                                        <th class="sorting_asc">ID</th>
-                                        <th class="sorting_desc">订单编号</th>
-                                        <th class="sorting_asc sorting_asc_disabled">产品名称</th>
-                                        <th class="sorting_desc sorting_desc_disabled">金额</th>
-                                        <th class="sorting">下单时间</th>
-                                        <th class="sorting">订单状态</th>
+                                        <th class="sorting_asc">订单编号</th>
+                                        <th class="sorting_desc">书籍ID</th>
+                                        <th class="sorting_asc sorting_asc_disabled">卖家名字</th>
+                                        <th class="sorting_desc sorting_desc_disabled">买家名字</th>
+                                        <th class="sorting">出售时间</th>
                                         <th class="text-center">操作</th>
                                     </tr>
                                     </thead>
@@ -143,18 +137,17 @@
                                     <c:forEach items="${pageInfo.list}" var="orders">
                                         <tr>
                                             <%-- checkbox 提交form，所以要有name ,value为要删除的id--%>
-                                            <td><input type="checkbox" name="selectIds" value="${orders.id}"></td>
-                                            <td>${orders.id}</td>
-                                            <td>${orders.orderNum}</td>
-                                            <td>${orders.product.productName}</td>
-                                            <td>${orders.product.productPrice}</td>
-                                            <td>${orders.orderTimeStr}</td>
-                                            <td>${orders.orderStatusStr}</td>
+                                            <td><input type="checkbox" name="selectIds" value="${orders.orders_id}"></td>
+                                            <td>${orders.orders_id}</td>
+                                            <td>${orders.book.book_name}</td>
+                                            <td>${orders.seller.username}</td>
+                                            <td>${orders.buyer.username}</td>
+                                            <td>${orders.order_time_str}</td>
                                             <td class="text-center">
                                                 <button type="button" class="btn bg-olive btn-xs"
-                                                        onclick="window.location.href='${pageContext.request.contextPath}/orders/findById.do?id=${orders.id}'">详情</button>
+                                                        onclick="window.location.href='${pageContext.request.contextPath}/orders/findById.do?id=${orders.orders_id}'">详情</button>
                                                 <button type="button" class="btn bg-olive btn-xs"
-                                                        onclick="window.location.href='${pageContext.request.contextPath}/orders/update.do?id=${orders.id}'">编辑</button>
+                                                        onclick="window.location.href='${pageContext.request.contextPath}/orders/update.do?id=${orders.orders_id}'">编辑</button>
                                             </td>
 
                                         </tr>
@@ -181,11 +174,11 @@
                             总共${pageInfo.pages} 页，共${pageInfo.total} 条数据。 每页
                             <select class="form-control" id="changPageSize" onchange="changPageSize()">
                                 <option>请选择</option>
-                                <option>1</option>
                                 <option>2</option>
-                                <option>3</option>
                                 <option>4</option>
-                                <option>5</option>
+                                <option>6</option>
+                                <option>8</option>
+                                <option>10</option>
                             </select> 条
                         </div>
                     </div>

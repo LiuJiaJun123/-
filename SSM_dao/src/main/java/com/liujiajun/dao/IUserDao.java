@@ -18,7 +18,7 @@ public interface IUserDao {
      * @throws Exception
      */
     @Select("select * from users")
-    public List<UserInfo> findAll(int page,int pageSize) throws Exception;
+    public List<UserInfo> findAll() throws Exception;
 
 
     /**
