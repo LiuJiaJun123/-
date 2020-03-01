@@ -93,4 +93,8 @@ public interface IBookDao {
     //根据类别ID 查找书籍，删除类别时调用
     @Select("select * from book where category=#{category_id}")
     List<Book> findByCategoryId(Integer category_id);
+
+    //订单添加后，要 修改对应书籍的状态为0
+    @Update("update book set status=0 where book_id=#{book_id}")
+    void updateStatus(Integer book_id);
 }

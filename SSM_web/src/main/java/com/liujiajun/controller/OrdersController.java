@@ -74,8 +74,8 @@ public class OrdersController {
 
         //添加订单
         ordersService.save(orders);
-        //订单添加后，书籍列表要删除对应的 书籍
-        bookService.delete(orders.getBook().getBook_id());
+        //订单添加后，书籍列表要 修改对应书籍的状态
+        bookService.updateStatus(orders.getBook().getBook_id());
 
         ModelAndView mv=new ModelAndView();
         mv.setViewName("redirect:findAll.do");

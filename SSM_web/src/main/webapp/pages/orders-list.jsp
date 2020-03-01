@@ -124,7 +124,7 @@
                                             <input id="selall" type="checkbox" class="icheckbox_square-blue">
                                         </th>
                                         <th class="sorting_asc">订单编号</th>
-                                        <th class="sorting_desc">书籍ID</th>
+                                        <th class="sorting_desc">书籍名称</th>
                                         <th class="sorting_asc sorting_asc_disabled">卖家名字</th>
                                         <th class="sorting_desc sorting_desc_disabled">买家名字</th>
                                         <th class="sorting">出售时间</th>

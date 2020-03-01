@@ -73,5 +73,11 @@ public class BookServiceImpl implements IBookService {
         return findBook;
     }
 
+    //订单添加后，要 修改对应书籍的状态为0
+    @Override
+    public void updateStatus(Integer book_id) {
+        bookDao.updateStatus(book_id);
+    }
+
 
 }
