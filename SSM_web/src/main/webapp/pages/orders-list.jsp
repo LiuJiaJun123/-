@@ -146,9 +146,9 @@
                                             <td>${orders.order_time_str}</td>
                                             <td class="text-center">
                                                 <button type="button" class="btn bg-olive btn-xs"
-                                                        onclick="window.location.href='${pageContext.request.contextPath}/orders/findById.do?id=${orders.orders_id}'">详情</button>
+                                                        onclick="window.location.href='${pageContext.request.contextPath}/orders/findById.do?orders_id=${orders.orders_id}'">详情</button>
                                                 <button type="button" class="btn bg-olive btn-xs"
-                                                        onclick="window.location.href='${pageContext.request.contextPath}/orders/update.do?id=${orders.orders_id}'">编辑</button>
+                                                        onclick="window.location.href='${pageContext.request.contextPath}/orders/update.do?orders_id=${orders.orders_id}'">编辑</button>
                                             </td>
 
                                         </tr>

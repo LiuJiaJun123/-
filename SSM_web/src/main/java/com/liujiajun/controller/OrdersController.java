@@ -80,21 +80,21 @@ public class OrdersController {
 
     //修改订单
     @RequestMapping(value = "/update.do",method = RequestMethod.GET)
-    public ModelAndView update(String id)throws Exception{
+    public ModelAndView update(Integer orders_id)throws Exception{
 
         //订单
-        Orders orders = ordersService.findById(id);
+        Orders orders = ordersService.findById(orders_id);
 
-        //查找所有产品
-        List<Product> productList = productService.findAll();
+//        //查找所有产品
+//        List<Book> bookList = bookService.findAll();
 
-        //查找所有会员
-        List<Member> memberList = memberService.findAll();
+        //查找所有买家
+        List<UserInfo> userList = userService.findUserExpectAdmin();
 
         ModelAndView mv=new ModelAndView();
         mv.addObject("orders",orders);
-        mv.addObject("productList",productList);
-        mv.addObject("memberList",memberList);
+//        mv.addObject("bookList",bookList);
+        mv.addObject("userList",userList);
 
 
         mv.setViewName("orders-update");
@@ -103,15 +103,10 @@ public class OrdersController {
 
     //修改订单
     @RequestMapping(value = "/update.do",method = RequestMethod.POST)
-    public ModelAndView update(Orders orders,String[] travellersId) throws Exception {
-
-        //除了旅客之外的信息封装到Orders中， 将旅客的id封装到一个数组中
+    public ModelAndView update(Orders orders) throws Exception {
 
         //修改订单
         ordersService.update(orders);
-
-        //在中间表order_traveller中修改记录
-//        order_travellerService.update(orders.getId(),travellersId);
 
         ModelAndView mv=new ModelAndView();
         mv.setViewName("redirect:findAll.do");
@@ -132,7 +127,7 @@ public class OrdersController {
 
     //查询订单详情
     @RequestMapping("/findById.do")
-    public ModelAndView findById(String id)throws Exception{
+    public ModelAndView findById(Integer id)throws Exception{
         ModelAndView mv=new ModelAndView();
         Orders orders = ordersService.findById(id);
         mv.addObject("orders",orders);

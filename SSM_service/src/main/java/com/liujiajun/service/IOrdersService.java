@@ -11,7 +11,7 @@ public interface IOrdersService {
 
 
     //查询订单详情
-    public Orders findById(String id) throws Exception;
+    public Orders findById(Integer orders_id) throws Exception;
 
     //根据订单编号查询订单
     public Orders findByOrderNum(String orderNum) throws Exception;

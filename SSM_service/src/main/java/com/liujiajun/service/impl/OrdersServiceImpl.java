@@ -30,8 +30,8 @@ public class OrdersServiceImpl implements IOrdersService {
 
     //查询订单详情
     @Override
-    public Orders findById(String id) throws Exception {
-        return ordersDao.findById(id);
+    public Orders findById(Integer orders_id) throws Exception {
+        return ordersDao.findById(orders_id);
     }
 
     //根据订单编号查询订单

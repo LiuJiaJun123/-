@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -7,7 +8,7 @@
 	<!-- 页面meta -->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>添加订单</title>
+	<title>订单信息修改</title>
 
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta
@@ -78,14 +79,14 @@
 		<!-- 内容头部 -->
 		<section class="content-header">
 			<h1>
-				订单管理 <small>添加订单</small>
+				订单管理 <small>订单信息修改</small>
 			</h1>
 			<ol class="breadcrumb">
 				<li><a href="${pageContext.request.contextPath}/index.jsp"><i
 						class="fa fa-dashboard"></i> 首页</a></li>
 				<li><a
 						href="${pageContext.request.contextPath}/orders/findAll.do">订单管理</a></li>
-				<li class="active">添加订单</li>
+				<li class="active">订单信息修改</li>
 			</ol>
 		</section>
 		<!-- 内容头部 /-->
@@ -101,129 +102,44 @@
 
 						<div class="col-md-2 title">订单ID</div>
 						<div class="col-md-4 data">
-							<input type="text" class="form-control" name="id" readonly
-								   placeholder="订单ID" value="${orders.id}">
+							<input type="text" class="form-control" name="orders_id" readonly
+								   placeholder="订单ID" value="${orders.orders_id}">
 						</div>
 
-						<div class="col-md-2 title">订单编号</div>
+						<div class="col-md-2 title">出售时间</div>
 						<div class="col-md-4 data">
-							<input type="text" class="form-control" name="orderNum" readonly
-								   placeholder="订单编号" value="${orders.orderNum}">
+							<input type="text" class="form-control " readonly
+								name="order_time" value="${orders.order_time_str}">
 						</div>
 
-						<div class="col-md-2 title">产品编号</div>
+
+						<div class="col-md-2 title">书籍编号</div>
 						<div class="col-md-4 data">
-							<select class="form-control select2" style="width: 100%" name="product.id">
-								<c:forEach items="${productList}" var="product">
+							<input type="text" class="form-control" name="book.book_id" readonly
+								   placeholder="书籍编号" value="${orders.book.book_id}">
+						</div>
+
+						<div class="col-md-2 title">买家名字</div>
+						<div class="col-md-4 data">
+							<select class="form-control select2" style="width: 100%" name="buyer.id">
+								<c:forEach items="${userList}" var="user">
 									<%--如果是当前订单，则改为默认选中--%>
-									<c:if test="${product.id==orders.product.id}">
-										<option value="${product.id}" selected>${product.productNum}</option>
+									<c:if test="${user.username==orders.buyer.username}">
+										<option value="${user.id}" selected>${user.username}</option>
 									</c:if>
 									<%--如果不是当前订单，则不默认选中--%>
-									<c:if test="${product.id!=orders.product.id}">
-										<option value="${product.id}">${product.productNum}</option>
+									<c:if test="${user.username!=orders.buyer.username}">
+										<option value="${user.id}" >${user.username}</option>
 									</c:if>
 								</c:forEach>
 							</select>
 						</div>
 
-						<div class="col-md-2 title">会员ID</div>
-						<div class="col-md-4 data">
-							<select class="form-control select2" style="width: 100%" name="member.id">
-								<c:forEach items="${memberList}" var="member">
-									<c:if test="${member.id==orders.member.id}">
-										<option value="${member.id}" selected>${member.id}</option>
-									</c:if>
-									<c:if test="${member.id!=orders.member.id}">
-										<option value="${member.id}">${member.id}</option>
-									</c:if>
-								</c:forEach>
-							</select>
-						</div>
 
-						<div class="col-md-2 title">下单时间</div>
-						<div class="col-md-4 data">
-							<div class="input-group date">
-								<div class="input-group-addon">
-									<i class="fa fa-calendar"></i>
-								</div>
-								<input type="text" class="form-control pull-right"
-									   id="datepicker-a3" name="orderTime" value="${orders.orderTimeStr}">
-							</div>
-						</div>
-
-
-
-						<div class="col-md-2 title">出行人数</div>
-						<div class="col-md-4 data">
-							<input type="number" class="form-control" name="peopleCount" id="haha"
-								   placeholder="出行人数" value="${orders.peopleCount}">
-						</div>
-
-						<div class="col-md-2 title">旅客ID</div>
-						<div class="col-md-10 data">
-							<select class="form-control select2" multiple="multiple" name="travellersId" data-placeholder="可多选" style="width: 100%;">
-
-								<%--先列出已有的旅客，且默认选中--%>
-								<c:forEach items="${orders.travellers}" var="traveller">
-									<option value="${traveller.id}" selected>${traveller.id}</option>
-								</c:forEach>
-
-								<%--接着列出可以添加的旅客id，默认不选中--%>
-								<c:forEach items="${travellerCanAdd}" var="traveller">
-									<option value="${traveller.id}">${traveller.id}</option>
-								</c:forEach>
-
-							</select>
-						</div>
-
-
-						<div class="col-md-2 title">支付方式</div>
-						<div class="col-md-4 data">
-							<select class="form-control select2" style="width: 100%" name="payType">
-								<c:if test="${orders.payType==0}">
-									<option value="0" selected="selected">支付宝</option>
-									<option value="1">微信</option>
-									<option value="2">其他</option>
-								</c:if>
-
-								<c:if test="${orders.payType==1}">
-									<option value="0">支付宝</option>
-									<option value="1" selected="selected">微信</option>
-									<option value="2">其他</option>
-								</c:if>
-
-								<c:if test="${orders.payType==2}">
-									<option value="0">支付宝</option>
-									<option value="1">微信</option>
-									<option value="2" selected="selected">其他</option>
-								</c:if>
-
-							</select>
-						</div>
-
-						<div class="col-md-2 title">订单状态</div>
-						<div class="col-md-4 data">
-							<select class="form-control select2" style="width: 100%"
-									name="orderStatus">
-
-								<c:if test="${orders.orderStatus==0}">
-									<option value="0" selected="selected">未支付</option>
-									<option value="1">已支付</option>
-								</c:if>
-
-								<c:if test="${orders.orderStatus==1}">
-									<option value="0">未支付</option>
-									<option value="1" selected="selected">已支付</option>
-								</c:if>
-
-							</select>
-						</div>
-
-						<div class="col-md-2 title rowHeight2x">其他信息</div>
+						<div class="col-md-2 title rowHeight2x">描述</div>
 						<div class="col-md-10 data rowHeight2x">
-							<textarea class="form-control" rows="3" placeholder="其他信息"
-									  name="orderDesc">${orders.orderDesc}</textarea>
+							<textarea class="form-control" rows="3" placeholder="描述"
+									  name="description">${orders.description}</textarea>
 						</div>
 
 					</div>
