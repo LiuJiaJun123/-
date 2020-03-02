@@ -17,7 +17,7 @@ public interface IOrder_TravellerDao {
 
     //根据订单id删除数据
     @Delete("delete from ORDER_TRAVELLER where orderId=#{orderId}")
-    void delete(String orderId);
+    void delete(Integer orderId);
 
 
 }

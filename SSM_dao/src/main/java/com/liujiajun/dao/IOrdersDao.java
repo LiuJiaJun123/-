@@ -1,7 +1,6 @@
 package com.liujiajun.dao;
 
 import com.liujiajun.domain.Orders;
-import com.liujiajun.domain.Traveller;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
@@ -37,8 +36,8 @@ public interface IOrdersDao {
     public Orders findById(String id) throws Exception;
 
     //批量删除
-    @Delete("delete from orders where id=#{id}")
-    void delete(String id);
+    @Delete("delete from orders where orders_id=#{orders_id}")
+    void delete(Integer orders_id);
 
 
     //添加订单
@@ -72,7 +71,5 @@ public interface IOrdersDao {
             ",payType=#{payType},orderStatus=#{orderStatus},productId=#{product.id},memberId=#{member.id} where id=#{id}")
     void update(Orders orders);
 
-    //查找所有可以添加的旅客
-    @Select("select * from traveller where id not in ( select travellerId from order_traveller where orderId=#{id} )")
-    List<Traveller> findTravellerCanAdd(String id);
+
 }

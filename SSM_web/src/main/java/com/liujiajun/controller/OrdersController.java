@@ -22,10 +22,6 @@ public class OrdersController {
     private IProductService productService;
     @Autowired
     private IMemberService memberService;
-    @Autowired
-    private ITravellerService travellerService;
-    @Autowired
-    private IOrder_TravellerService order_travellerService;
 
     @Autowired
     private IBookService bookService;
@@ -95,17 +91,11 @@ public class OrdersController {
         //查找所有会员
         List<Member> memberList = memberService.findAll();
 
-        //查找所有旅客
-//        List<Traveller> travellerList = travellerService.findAll();
-
-        //查找所有可以添加的旅客
-        List<Traveller> travellerCanAdd = ordersService.findTravellerCanAdd(id);
-
         ModelAndView mv=new ModelAndView();
         mv.addObject("orders",orders);
         mv.addObject("productList",productList);
         mv.addObject("memberList",memberList);
-        mv.addObject("travellerCanAdd",travellerCanAdd);
+
 
         mv.setViewName("orders-update");
         return mv;
@@ -131,7 +121,7 @@ public class OrdersController {
 
     //删除订单
     @RequestMapping("/delete.do")
-    public String delete(String[] selectIds){
+    public String delete(Integer[] selectIds){
 
         ordersService.delete(selectIds);
         return "redirect:findAll.do";

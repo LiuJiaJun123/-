@@ -4,7 +4,6 @@ import com.github.pagehelper.PageHelper;
 import com.liujiajun.dao.IOrder_TravellerDao;
 import com.liujiajun.dao.IOrdersDao;
 import com.liujiajun.domain.Orders;
-import com.liujiajun.domain.Traveller;
 import com.liujiajun.service.IOrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,12 +42,9 @@ public class OrdersServiceImpl implements IOrdersService {
 
     //批量删除
     @Override
-    public void delete(String[] selectIds) {
+    public void delete(Integer[] selectIds) {
         if(selectIds!=null&&selectIds.length>0){
-            for (String selectId : selectIds) {
-                //删除订单前应该先把order_traveller中对应数据删除
-                order_travellerServiceDao.delete(selectId);
-
+            for (Integer selectId : selectIds) {
                 //删除订单
                 ordersDao.delete(selectId);
             }
@@ -76,11 +72,7 @@ public class OrdersServiceImpl implements IOrdersService {
         return ordersDao.searchByOrderNum(orderNum);
     }
 
-    //查找所有可以添加的旅客
-    @Override
-    public List<Traveller> findTravellerCanAdd(String id) {
-        return ordersDao.findTravellerCanAdd(id);
-    }
+
 
 
 }
