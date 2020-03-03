@@ -22,9 +22,14 @@ public class CategoryServiceImpl implements ICategoryService {
     private IBookDao bookDao;
 
     @Override
+    public List<Category> findAll() throws Exception {
+        return categoryDao.findAll();
+    }
+
+    @Override
     public List<Category> findAll(int page, int pageSize) throws Exception {
         PageHelper.startPage(page,pageSize);
-        return categoryDao.findAll(page,pageSize);
+        return categoryDao.findAll();
     }
 
     //根据id查找类别

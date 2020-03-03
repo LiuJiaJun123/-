@@ -12,15 +12,15 @@ import java.util.List;
 
 @Repository("categoryDao")
 public interface ICategoryDao {
+
+
     /**
      * 查找所有类别
-     * @param page
-     * @param pageSize
      * @return
      * @throws Exception
      */
     @Select("select * from category")
-    public List<Category> findAll(int page, int pageSize) throws Exception;
+    public List<Category> findAll() throws Exception;
 
     /**
      * 根据id查找

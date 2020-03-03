@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface ICategoryService {
 
+    public List<Category> findAll() throws Exception;
+
     public List<Category> findAll(int page, int pageSize) throws Exception;
 
     //根据id查找类别

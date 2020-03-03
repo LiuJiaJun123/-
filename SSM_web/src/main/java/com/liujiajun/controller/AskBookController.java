@@ -35,7 +35,7 @@ public class AskBookController {
                                 @RequestParam(value = "pageSize",required = true,defaultValue = "4")Integer pageSize) throws Exception {
 
         ModelAndView mv=new ModelAndView();
-        //查找所有未出售的书籍 (status为1)
+        //查找所有未出售的求购书籍 (status为1)
         List<AskBook> askbookList = askBookService.findAll(page,pageSize);
         PageInfo askbookInfo=new PageInfo(askbookList);
         mv.addObject("askbookInfo",askbookInfo);
@@ -43,11 +43,11 @@ public class AskBookController {
         return mv;
     }
 
-//    添加书籍前，先查找所有书籍类别，查找所有卖家
+//    添加求购书籍前，先查找所有求购书籍类别，查找所有卖家
     @RequestMapping("/findAllCategory.do")
     public ModelAndView findAllCategory() throws Exception {
         ModelAndView mv=new ModelAndView();
-        List<Category> categoryList = categoryService.findAll(1, 30);
+        List<Category> categoryList = categoryService.findAll();
         mv.addObject("categoryList",categoryList);
 
         //查找所有除了 管理员 的用户
@@ -57,7 +57,7 @@ public class AskBookController {
         return mv;
     }
 
-    //添加书籍
+    //添加求购书籍
     @RequestMapping("/save.do")
     public String save(AskBook askbook, MultipartFile uploadImg, HttpServletRequest request) throws Exception {
 
@@ -94,13 +94,13 @@ public class AskBookController {
         return "redirect:findAll.do";
     }
 
-    //查看书籍详情之前，先根据书籍id 查找书籍信息
+    //查看求购书籍详情之前，先根据求购书籍id 查找求购书籍信息
     @RequestMapping("/beforeDetail.do")
     public ModelAndView beforeDetail(Integer askbook_id) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
-        //查找书籍信息
+        //查找求购书籍信息
         AskBook askbook = askBookService.findByAskBookId(askbook_id);
-        //书籍类别
+        //求购书籍类别
 //        Category category = categoryService.findById(askbook.getCategory());
         //图片路径
 //        String imgUrl = askbook.getImgUrl();
@@ -114,11 +114,11 @@ public class AskBookController {
         return modelAndView;
     }
 
-    //书籍 编辑前，先查找 书籍信息以及类别信息
+    //求购书籍 编辑前，先查找 求购书籍信息以及类别信息
     @RequestMapping("/edit.do")
     public ModelAndView edit(Integer askbook_id) throws Exception {
         ModelAndView mv=new ModelAndView();
-        //书籍信息
+        //求购书籍信息
         AskBook askbookInfo = askBookService.findByAskBookId(askbook_id);
         //类别信息  查找当前类别
 //        Category categoryCurrent = categoryService.findById(askbookInfo.getCategory());
@@ -131,7 +131,7 @@ public class AskBookController {
         return mv;
     }
 
-    // 书籍信息修改
+    // 求购书籍信息修改
     @RequestMapping("/update.do")
     public String update( AskBook askbook,MultipartFile uploadImg,HttpServletRequest request) throws Exception {
         //有上传图片
@@ -169,7 +169,7 @@ public class AskBookController {
         return "redirect:findAll.do";
     }
 
-    //删除书籍
+    //删除求购书籍
     @RequestMapping("delete.do")
     public String delete(Integer[] selectIds) throws Exception {
 
@@ -179,7 +179,7 @@ public class AskBookController {
 
     }
 
-    //根据 书籍名称或卖家名称 搜索书籍
+    //根据 求购书籍名称或卖家名称 搜索求购书籍
     @RequestMapping("/findAskBook.do")
     public ModelAndView findAskBook(String findConditions,
                                  @RequestParam(value = "page",required = true,defaultValue = "1")Integer page,
