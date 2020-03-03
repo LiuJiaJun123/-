@@ -77,7 +77,7 @@
 			<!-- 内容头部 -->
 			<section class="content-header">
 			<h1>
-				求购书籍管理 <small>全部求购书籍</small>
+				求购书籍管理 <small>查找求购书籍</small>
 			</h1>
 			<ol class="breadcrumb">
 				<li><a href="${pageContext.request.contextPath}/index.jsp"><i
@@ -85,7 +85,7 @@
 				<li><a
 					href="${pageContext.request.contextPath}/askbook/findAll.do?page=1&pageSize=4">求购书籍管理</a></li>
 
-				<li class="active">全部求购书籍</li>
+				<li class="active">查找求购书籍</li>
 			</ol>
 			</section>
 			<!-- 内容头部 /-->
@@ -123,7 +123,7 @@
                                     <div class="has-feedback">
                                         <%--搜索--%>
                                         <input type="text" class="form-control input-sm" placeholder="输入求购书籍名称、求购人名称、类别名称搜索"
-                                               style="width: 18vw; " name="findConditions" id="findConditions">
+                                               style="width: 18vw; " name="findConditions" id="findConditions" value="${findConditions}">
                                         <span class="glyphicon glyphicon-search form-control-feedback"></span>
                                     </div>
                                 </form>
@@ -142,8 +142,8 @@
 											</th>
 											<th class="sorting_asc">求购书籍ID</th>
 											<th class="sorting_asc sorting_asc_disabled">书名</th>
-                                            <th class="sorting_asc sorting_asc_disabled">类别</th>
-                                            <th class="sorting_desc">求购人名字</th>
+											<th class="sorting_asc sorting_asc_disabled">类别</th>
+											<th class="sorting_desc">求购人名字</th>
 											<th class="sorting">状态</th>
 											<th class="text-center">操作</th>
 										</tr>
@@ -155,8 +155,8 @@
 													<%-- checkbox 提交form，所以要有name ,value为要删除的id--%>
 												<td><input type="checkbox" name="selectIds" value="${askbook.askbook_id}"></td>
 												<td>${askbook.askbook_id }</td>
-                                                <td>${askbook.askbook_name }</td>
-                                                <td>${askbook.categoryInfo.category_name }</td>
+												<td>${askbook.askbook_name }</td>
+												<td>${askbook.categoryInfo.category_name }</td>
 												<td>${askbook.userInfo.username }</td>
 												<td>${askbook.statusStr }</td>
 												<td class="text-center">
@@ -195,22 +195,22 @@
 						<div class="box-tools pull-right">
 							<ul class="pagination">
 								<li>
-									<a aria-label="Previous" href="${pageContext.request.contextPath}/askbook/findAll.do?page=1&pageSize=${askbookInfo.pageSize}">首页</a>
+									<a aria-label="Previous" href="${pageContext.request.contextPath}/askbook/findAskBook.do?findConditions=${findConditions}&page=1&pageSize=${askbookInfo.pageSize}">首页</a>
 								</li>
-								<li><a href="${pageContext.request.contextPath}/askbook/findAll.do?page=${askbookInfo.pageNum-1}&pageSize=${askbookInfo.pageSize}">上一页</a></li>
+								<li><a href="${pageContext.request.contextPath}/askbook/findAskBook.do?findConditions=${findConditions}&page=${askbookInfo.pageNum-1}&pageSize=${askbookInfo.pageSize}">上一页</a></li>
 
 								<c:forEach begin="1" end="${askbookInfo.pages}" var="i">
 									<c:if test="${i==askbookInfo.pageNum}">
-										<li><a style="background-color: #2aabd2" href="${pageContext.request.contextPath}/askbook/findAll.do?page=${i}&pageSize=${askbookInfo.pageSize}">${i}</a></li>
+										<li><a style="background-color: #2aabd2" href="${pageContext.request.contextPath}/askbook/findAskBook.do?findConditions=${findConditions}&page=${i}&pageSize=${askbookInfo.pageSize}">${i}</a></li>
 									</c:if>
 									<c:if test="${i!=askbookInfo.pageNum}">
-										<li><a href="${pageContext.request.contextPath}/askbook/findAll.do?page=${i}&pageSize=${askbookInfo.pageSize}">${i}</a></li>
+										<li><a href="${pageContext.request.contextPath}/askbook/findAskBook.do?findConditions=${findConditions}&page=${i}&pageSize=${askbookInfo.pageSize}">${i}</a></li>
 									</c:if>
 								</c:forEach>
 
-								<li><a href="${pageContext.request.contextPath}/askbook/findAll.do?page=${askbookInfo.pageNum+1}&pageSize=${askbookInfo.pageSize}">下一页</a></li>
+								<li><a href="${pageContext.request.contextPath}/askbook/findAskBook.do?findConditions=${findConditions}&page=${askbookInfo.pageNum+1}&pageSize=${askbookInfo.pageSize}">下一页</a></li>
 								<li>
-									<a href="${pageContext.request.contextPath}/askbook/findAll.do?page=${askbookInfo.pages}&pageSize=${askbookInfo.pageSize}" aria-label="Next">尾页</a>
+									<a href="${pageContext.request.contextPath}/askbook/findAskBook.do?findConditions=${findConditions}&page=${askbookInfo.pages}&pageSize=${askbookInfo.pageSize}" aria-label="Next">尾页</a>
 								</li>
 							</ul>
 						</div>
@@ -300,7 +300,7 @@
             //改变每页显示条数
             function changPageSize(){
                 var pageSize=$("#changPageSize").val();
-                location.href="${pageContext.request.contextPath}/askbook/findAll.do?page=1&pageSize="+pageSize;
+                location.href="${pageContext.request.contextPath}/askbook/findAskBook.do?findConditions=${findConditions}&page=1&pageSize="+pageSize;
             }
 
 			// 设置激活菜单
