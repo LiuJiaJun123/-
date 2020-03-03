@@ -71,6 +71,10 @@
 						href="${pageContext.request.contextPath}/book/findAll.do?page=1&pageSize=4">
 							<i class="fa fa-circle-o"></i> 书籍管理
 					</a></li>
+					<li id="product-management2"><a
+							href="${pageContext.request.contextPath}/askbook/findAll.do?page=1&pageSize=4">
+						<i class="fa fa-circle-o"></i> 求购书籍管理
+					</a></li>
 					<li id="orders-management"><a
 						href="${pageContext.request.contextPath}/orders/findAll.do?page=1&pageSize=4"> <i
 							class="fa fa-circle-o"></i> 订单管理
