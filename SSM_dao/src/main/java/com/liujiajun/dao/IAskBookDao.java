@@ -57,13 +57,13 @@ public interface IAskBookDao {
 
     //修改图片信息
     @Update({"update askbook set askbook_name=#{askbook_name},category=#{categoryInfo.category_id},author=#{author}," +
-            "price=#{price},appearance=#{appearance},description=#{description},imgUrl=#{imgUrl}" +
+            "appearance=#{appearance},description=#{description},imgUrl=#{imgUrl}" +
             ",status=#{status} where askbook_id=#{askbook_id}"})
     void update(AskBook askBook);
 
     //没有修改 书籍图片时 调用的修改方法
     @Update({"update askbook set askbook_name=#{askbook_name},category=#{categoryInfo.category_id},author=#{author}," +
-            "price=#{price},appearance=#{appearance},description=#{description}" +
+            "appearance=#{appearance},description=#{description}" +
             ",status=#{status} where askbook_id=#{askbook_id}"})
     void updateWithoutImg(AskBook askBook);
 
