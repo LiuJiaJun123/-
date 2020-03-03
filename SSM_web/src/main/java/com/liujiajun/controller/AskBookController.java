@@ -100,16 +100,7 @@ public class AskBookController {
         ModelAndView modelAndView = new ModelAndView();
         //查找求购书籍信息
         AskBook askbook = askBookService.findByAskBookId(askbook_id);
-        //求购书籍类别
-//        Category category = categoryService.findById(askbook.getCategory());
-        //图片路径
-//        String imgUrl = askbook.getImgUrl();
-
-        //查找卖家信息
-//        UserInfo userInfo = userService.findById(askbook.getUser_id());
         modelAndView.addObject("askbook",askbook);
-//        modelAndView.addObject("category",category);
-//        modelAndView.addObject("userInfo",userInfo);
         modelAndView.setViewName("askbook-show");
         return modelAndView;
     }
