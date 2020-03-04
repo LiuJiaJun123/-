@@ -116,7 +116,7 @@ header .top .right .gouwuche:hover{color:#000;background: #666;}
 .danpin .main .mingxing .sub_mingxing a img:hover{width: 160px;height: 160px;opacity: 1;}
 .danpin .main .mingxing .pinpai{width: 234px;height: 14px;line-height: 14px;text-align: center;margin-top: -10px;}
 .danpin .main .mingxing .pinpai a{font-size: 18px;color:#333;}
-.danpin .main .mingxing .youhui{width: 234px;height: 12px;line-height: 12px;margin:15px 0;font-size: 12px;color: rgb(176,176,176);text-align: center;}
+.danpin .main .mingxing .youhui{width: 234px;height: 12px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; line-height: 12px;margin:15px 0;font-size: 12px;color: rgb(176,176,176);text-align: center;}
 .danpin .main .mingxing .jiage{font-size: 14px;text-align: center;color:#ff6709;}
 
 /*peijian*/

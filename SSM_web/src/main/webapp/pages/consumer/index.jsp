@@ -67,7 +67,12 @@
             <div class="mingxing fl">
                 <div class="sub_mingxing"><a href=""><img src="../${newBook.imgUrl}" alt=""></a></div>
                 <div class="pinpai"><a href="">${newBook.book_name}</a></div>
-                <div class="youhui">${newBook.description}</div>
+                <c:if test="${empty newBook.description}">
+                    <div class="youhui">暂无描述</div>
+                </c:if>
+                <c:if test="${not empty newBook.description}">
+                    <div class="youhui">${newBook.description}</div>
+                </c:if>
                 <div class="jiage">${newBook.price}元</div>
             </div>
         </c:forEach>
