@@ -57,7 +57,6 @@
 
 
 
-<!-- start danpin -->
 <div class="danpin center">
 
     <div class="biaoti center">新书上架</div>
@@ -76,19 +75,33 @@
                 <div class="jiage">${newBook.price}元</div>
             </div>
         </c:forEach>
-
-        <%--<div class="mingxing fl">--%>
-            <%--<div class="sub_mingxing"><a href=""><img src="/image/pinpai1.png" alt=""></a></div>--%>
-            <%--<div class="pinpai"><a href="">小米MIX</a></div>--%>
-            <%--<div class="youhui">5月9日-21日享花呗12期分期免息</div>--%>
-            <%--<div class="jiage">3499元起</div>--%>
-        <%--</div>--%>
-
         <div class="clear"></div>
     </div>
 </div>
+
+<div class="danpin center" style="margin:50px auto;">
+    <div class="biaoti center">超低价格</div>
+    <div class="main center">
+        <c:forEach items="${cheapBookList}" var="cheapBook">
+            <div class="mingxing fl">
+                <div class="sub_mingxing"><a href=""><img src="../${cheapBook.imgUrl}" alt=""></a></div>
+                <div class="pinpai"><a href="">${cheapBook.book_name}</a></div>
+                <c:if test="${empty cheapBook.description}">
+                    <div class="youhui">暂无描述</div>
+                </c:if>
+                <c:if test="${not empty cheapBook.description}">
+                    <div class="youhui">${cheapBook.description}</div>
+                </c:if>
+                <div class="jiage">${cheapBook.price}元</div>
+            </div>
+        </c:forEach>
+        <div class="clear"></div>
+    </div>
+</div>
+
+
 <div class="peijian w">
-    <div class="biaoti center">配件</div>
+    <div class="biaoti center">精品推荐</div>
     <div class="main center">
         <div class="content">
             <div class="remen fl"><a href=""><img src="/image/peijian1.jpg"></a>

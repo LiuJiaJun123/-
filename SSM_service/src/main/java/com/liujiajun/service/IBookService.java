@@ -37,4 +37,7 @@ public interface IBookService {
 
     //查找最新上架的图书
     List<Book> findNewBook();
+
+    //查找价格最低的书籍
+    List<Book> findCheapBook();
 }

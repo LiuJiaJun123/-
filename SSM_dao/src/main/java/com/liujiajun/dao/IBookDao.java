@@ -9,12 +9,13 @@ import java.util.List;
 @Repository("bookDao")
 public interface IBookDao {
 
+
     /**
      * 查找所有
      * @return
      */
     @Select("select * from book where status = 1 ")
-    @Results({
+    @Results(id = "resultMap",value = {
             @Result(id = true,column = "book_id",property = "book_id"),
             @Result(column = "user_id",property = "userInfo",one = @One( select = "com.liujiajun.dao.IUserDao.findById")),
             @Result(column = "book_name",property = "book_name"),
@@ -40,19 +41,7 @@ public interface IBookDao {
 
     //根据书籍Id查找 书籍
     @Select("select * from book where book_id=#{book_id}")
-    @Results({
-            @Result(id = true,column = "book_id",property = "book_id"),
-            @Result(column = "user_id",property = "userInfo",one = @One( select = "com.liujiajun.dao.IUserDao.findById")),
-            @Result(column = "book_name",property = "book_name"),
-            @Result(column = "category",property = "categoryInfo",one = @One( select = "com.liujiajun.dao.ICategoryDao.findById")),
-            @Result(column = "author",property = "author"),
-            @Result(column = "price",property = "price"),
-            @Result(column = "appearance",property = "appearance"),
-            @Result(column = "description",property = "description"),
-            @Result(column = "imgUrl",property = "imgUrl"),
-            @Result(column = "time",property = "time"),
-            @Result(column = "status",property = "status")
-    })
+    @ResultMap("resultMap")
     Book findByBookId(Integer book_id);
 
     //修改图片信息
@@ -75,19 +64,7 @@ public interface IBookDao {
     @Select("select * from book where book_name like #{findConditions} " +
             "or user_id in (select id from users where username like #{findConditions}) " +
             "or category in (select category_id from category where category_name like #{findConditions})")
-    @Results({
-            @Result(id = true,column = "book_id",property = "book_id"),
-            @Result(column = "user_id",property = "userInfo",one = @One( select = "com.liujiajun.dao.IUserDao.findById")),
-            @Result(column = "book_name",property = "book_name"),
-            @Result(column = "category",property = "categoryInfo",one = @One( select = "com.liujiajun.dao.ICategoryDao.findById")),
-            @Result(column = "author",property = "author"),
-            @Result(column = "price",property = "price"),
-            @Result(column = "appearance",property = "appearance"),
-            @Result(column = "description",property = "description"),
-            @Result(column = "imgUrl",property = "imgUrl"),
-            @Result(column = "time",property = "time"),
-            @Result(column = "status",property = "status")
-    })
+    @ResultMap("resultMap")
     List<Book> findBook(String findConditions);
 
     //根据类别ID 查找书籍，删除类别时调用
@@ -100,5 +77,11 @@ public interface IBookDao {
 
     //查找最新上架的图书
     @Select("select * from book order by time desc limit 0,5")
+    @ResultMap("resultMap")
     List<Book> findNewBook();
+
+    //查找价格最低的书籍
+    @Select("select * from book order by price limit 0,5")
+    @ResultMap("resultMap")
+    List<Book> findCheapBook();
 }

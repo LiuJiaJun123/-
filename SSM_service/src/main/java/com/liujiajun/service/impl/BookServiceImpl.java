@@ -85,5 +85,11 @@ public class BookServiceImpl implements IBookService {
         return bookDao.findNewBook();
     }
 
+    //查找价格最低的书籍
+    @Override
+    public List<Book> findCheapBook() {
+        return bookDao.findCheapBook();
+    }
+
 
 }

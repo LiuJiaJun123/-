@@ -52,7 +52,7 @@ public class LoginController {
             return "main";
         } else if (subject.hasRole("user")) {
             System.out.println("普通用户登录2222222222");
-            return "redirect:findNewBook.do";
+            return "redirect:index.do";
         }
 
         return "login";
@@ -82,13 +82,17 @@ public class LoginController {
         return modelAndView;
     }
 
-    @RequestMapping("/findNewBook.do")
+
+    @RequestMapping("/index.do")
     public ModelAndView findNewBook() throws Exception {
 
         ModelAndView mv=new ModelAndView();
-        //查找所有未出售的书籍 (status为1)
+        //查找最新上架的书籍
         List<Book> newBookList = bookService.findNewBook();
+        //查找价格最低的书籍
+        List<Book> cheapBookList = bookService.findCheapBook();
         mv.addObject("newBookList",newBookList);
+        mv.addObject("cheapBookList",cheapBookList);
         mv.setViewName("consumer/index");
         return mv;
     }
