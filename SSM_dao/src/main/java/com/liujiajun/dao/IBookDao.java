@@ -97,4 +97,8 @@ public interface IBookDao {
     //订单添加后，要 修改对应书籍的状态为0
     @Update("update book set status=0 where book_id=#{book_id}")
     void updateStatus(Integer book_id);
+
+    //查找最新上架的图书
+    @Select("select * from book order by time desc limit 0,5")
+    List<Book> findNewBook();
 }

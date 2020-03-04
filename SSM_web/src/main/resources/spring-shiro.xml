@@ -36,6 +36,7 @@
                 /role/** = authc, roles[user]
                 /book/** = authc, roles[admin]
                 /askbook/** = authc, roles[admin]
+                /findNewBook.do = authc, roles[user]
 
                 <!-- 当访问login（LoginController中的登录处理方法）时，不用进行认证（anon表示匿名）-->
                 /login.do = anon

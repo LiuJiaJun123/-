@@ -79,5 +79,11 @@ public class BookServiceImpl implements IBookService {
         bookDao.updateStatus(book_id);
     }
 
+    //查找最新上架的图书
+    @Override
+    public List<Book> findNewBook() {
+        return bookDao.findNewBook();
+    }
+
 
 }

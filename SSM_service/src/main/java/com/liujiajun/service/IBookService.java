@@ -34,4 +34,7 @@ public interface IBookService {
 
     //订单添加后，要 修改对应书籍的状态为0
     void updateStatus(Integer book_id);
+
+    //查找最新上架的图书
+    List<Book> findNewBook();
 }

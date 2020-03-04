@@ -1,0 +1,56 @@
+
+.bg-success{
+    background: linear-gradient(to bottom, #11CD6E, #11CD6E 100%);
+}
+
+#nav1{
+    height: 70px;
+}
+
+#content li{
+     /*line-height:10px;*/
+     text-align:center;
+     color:#fff;
+     display:block;
+     /*background:#333;*/
+     width:100px;
+ }
+#content li a{
+    display:block;
+    float:right;
+    background:#11CD6E;
+    width:100px;
+    color:white;
+    font-size: 18px;
+    text-decoration:none;
+}
+#content li a:hover{
+    color:#000;
+    /*background:#fff;*/
+}
+
+/*个人信息  退出*/
+#content2 li{
+    /*line-height:10px;*/
+    text-align:center;
+    color:#fff;
+    display:block;
+    /*background:#333;*/
+    width:auto;
+}
+#content2 li a{
+    display:block;
+    float:right;
+    background:#11CD6E;
+    width:auto;
+    color:white;
+    font-size: 18px;
+    text-decoration:none;
+}
+#content2 li a:hover{
+    color:#000;
+    /*background:#fff;*/
+}
+
+a {text-decoration:none; color:#000000; font-size:14px;}   初始状态
+a:hover {text-decoration:none;color:#ff0000; font-size:14px}   激发状态

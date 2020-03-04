@@ -1,7 +1,9 @@
 package com.liujiajun.controller;
 
+import com.liujiajun.domain.Book;
 import com.liujiajun.domain.CheckUsername;
 import com.liujiajun.domain.UserInfo;
+import com.liujiajun.service.IBookService;
 import com.liujiajun.service.IUserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -14,11 +16,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 public class LoginController {
 
     @Autowired
     private IUserService userService;
+    @Autowired
+    private IBookService bookService;
+
     //登录跳转
 //    @RequestMapping(value = "/login", method = {RequestMethod.GET})
 //    public String loginUI() throws Exception {
@@ -45,7 +52,7 @@ public class LoginController {
             return "main";
         } else if (subject.hasRole("user")) {
             System.out.println("普通用户登录2222222222");
-            return "main";
+            return "redirect:findNewBook.do";
         }
 
         return "login";
@@ -73,6 +80,17 @@ public class LoginController {
         modelAndView.setViewName("../login");
         modelAndView.addObject("register_info","success");
         return modelAndView;
+    }
+
+    @RequestMapping("/findNewBook.do")
+    public ModelAndView findNewBook() throws Exception {
+
+        ModelAndView mv=new ModelAndView();
+        //查找所有未出售的书籍 (status为1)
+        List<Book> newBookList = bookService.findNewBook();
+        mv.addObject("newBookList",newBookList);
+        mv.setViewName("consumer/index");
+        return mv;
     }
 
 
