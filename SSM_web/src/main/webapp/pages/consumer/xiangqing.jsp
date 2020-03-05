@@ -6,6 +6,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <html>
 <head>
@@ -52,46 +53,35 @@
     <div class="jieshao mt20 w">
         <div class="left fl"><img src="${bookInfo.imgUrl}"></div>
         <div class="right fr">
-            <div class="h3 ml20 mt20">${bookInfo.book_name}</div>
+            <div class="h3 ml20 mt20" style="color: teal">${bookInfo.book_name}</div>
             <div class="jianjie mr40 ml20 mt10">${bookInfo.description}</div>
-            <div class="jiage ml20 mt10">${bookInfo.price}元</div>
-            <div class="ft20 ml20 mt20">选择版本</div>
-            <div class="xzbb ml20 mt10">
-                <div class="banben fl">
-                    <a>
-                        <span>全网通版 6GB+64GB </span>
-                        <span>2499元</span>
-                    </a>
-                </div>
-                <div class="banben fr">
-                    <a>
-                        <span>全网通版 6GB+128GB</span>
-                        <span>2899元</span>
-                    </a>
-                </div>
-                <div class="clear"></div>
+            <div class="mr40 ml20 mt20">作者：<span style="color: teal">${bookInfo.author}</span>
+                <span class="ml40">类别：</span><a style="color: teal" href="" >${bookInfo.categoryInfo.category_name}</a>
+                <span class="ml40">成色：</span><a style="color: teal" href="" >${bookInfo.appearance}</a>
             </div>
-            <div class="ft20 ml20 mt20">选择颜色</div>
-            <div class="xzbb ml20 mt10">
-                <div class="banben">
-                    <a>
-                        <span class="yuandian"></span>
-                        <span class="yanse">亮黑色</span>
-                    </a>
-                </div>
 
+            <div class="mr40 ml20 mt20">上市时间：
+                <span style="color: teal"><fmt:formatDate value='${bookInfo.time}' pattern='yyyy-MM-dd HH:mm'/></span>
             </div>
-            <div class="xqxq mt20 ml20">
-                <div class="top1 mt10">
-                    <div class="left1 fl">小米6 全网通版 6GB内存 64GB 亮黑色</div>
-                    <div class="right1 fr">2499.00元</div>
-                    <div class="clear"></div>
-                </div>
-                <div class="mt20 ft20 ftbc">总计：2499元</div>
+
+            <br><br>
+            <span class="ml20" style="font-size: 20px;color: #ff6709; ">联系卖家：</span><br>
+            <div class="mr40 ml20 mt10">
+                <span class="ml20">卖家名字：</span><a style="color: teal" href="" >${bookInfo.userInfo.username}</a>
+                <span class="ml20">手机：</span><a style="color: teal" href="" >${bookInfo.userInfo.phone}</a>
+                <span class="ml20">qq：</span><a style="color: teal" href="" >${bookInfo.userInfo.qq}</a>
             </div>
+
+            <div class="mr40 ml20 mt10">
+                <span class="ml20">email：</span><a style="color: teal" href="" >${bookInfo.userInfo.email}</a>
+                <span class="ml20">地址：</span><a style="color: teal" href="" >${bookInfo.userInfo.address}</a>
+            </div>
+
+            <div class="jiage ml20 mt40">￥${bookInfo.price}元</div>
+
             <div class="xiadan ml20 mt20">
-                <input class="jrgwc"  type="button" name="jrgwc" value="立即选购" />
-                <input class="jrgwc" type="button" name="jrgwc" value="加入购物车" />
+                <input class="jrgwc"  type="button" name="jrgwc" value="点击收藏" />
+                <input class="jrgwc" type="button" name="jrgwc" value="我想要" />
 
             </div>
         </div>
