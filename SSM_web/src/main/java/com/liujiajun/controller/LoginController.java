@@ -91,8 +91,11 @@ public class LoginController {
         List<Book> newBookList = bookService.findNewBook();
         //查找价格最低的书籍
         List<Book> cheapBookList = bookService.findCheapBook();
+        //查找精品推荐的书籍
+        List<Book> goodBookList =  bookService.findGoodBook();
         mv.addObject("newBookList",newBookList);
         mv.addObject("cheapBookList",cheapBookList);
+        mv.addObject("goodBookList",goodBookList);
         mv.setViewName("consumer/index");
         return mv;
     }

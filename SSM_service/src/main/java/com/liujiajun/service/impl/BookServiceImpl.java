@@ -91,5 +91,11 @@ public class BookServiceImpl implements IBookService {
         return bookDao.findCheapBook();
     }
 
+    //查找精品推荐的书籍
+    @Override
+    public List<Book> findGoodBook() {
+        return bookDao.findGoodBook();
+    }
+
 
 }

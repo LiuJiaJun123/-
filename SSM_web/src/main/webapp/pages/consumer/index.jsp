@@ -30,17 +30,17 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <div class="banner banner1"></div>
+                <div class="banner banner1" style="background: url('../img/海报1.png');background-size: cover"></div>
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>蜘蛛侠</h5>
-                    <p>蜘蛛侠（Spider-Man）是美国漫威漫画旗下的超级英雄，由编剧斯坦·李和画家史蒂夫·迪特科联合创造，初次登场于《惊奇幻想》（Amazing Fantasy）第15期（1962年8月），因为广受欢迎，几个月后，便开始拥有以自己为主角的单行本漫画。</p>
+                    <%--<h5>蜘蛛侠</h5>--%>
+                    <%--<p>蜘蛛侠（Spider-Man）是美国漫威漫画旗下的超级英雄，由编剧斯坦·李和画家史蒂夫·迪特科联合创造，初次登场于《惊奇幻想》（Amazing Fantasy）第15期（1962年8月），因为广受欢迎，几个月后，便开始拥有以自己为主角的单行本漫画。</p>--%>
                 </div>
             </div>
             <div class="carousel-item">
-                <div class="banner banner2"></div>
+                <div class="banner banner2" style="background: url('../img/海报2.png');background-size: cover"></div>
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>绿巨人</h5>
-                    <p>浩克（Hulk）是美国漫威漫画旗下的超级英雄，初次登场于《不可思议的浩克》（The Incredible Hulk）第一期（1962年5月），由斯坦·李和杰克·科比联合创造。</p>
+                    <%--<h5>绿巨人</h5>--%>
+                    <%--<p>浩克（Hulk）是美国漫威漫画旗下的超级英雄，初次登场于《不可思议的浩克》（The Incredible Hulk）第一期（1962年5月），由斯坦·李和杰克·科比联合创造。</p>--%>
                 </div>
             </div>
         </div>

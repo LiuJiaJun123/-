@@ -40,4 +40,7 @@ public interface IBookService {
 
     //查找价格最低的书籍
     List<Book> findCheapBook();
+
+    //查找精品推荐的书籍
+    List<Book> findGoodBook();
 }
