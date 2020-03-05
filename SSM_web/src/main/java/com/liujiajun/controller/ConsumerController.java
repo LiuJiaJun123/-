@@ -15,7 +15,7 @@ public class ConsumerController {
     @Autowired
     private IBookService bookService;
 
-    //    详情
+    //    商品详情
     @RequestMapping("/xq.do")
     public ModelAndView xq(){
 
@@ -24,6 +24,19 @@ public class ConsumerController {
         modelAndView.addObject("bookInfo",bookInfo);
         modelAndView.setViewName("consumer/xiangqing");
         return modelAndView;
+    }
+
+    //    添加图书
+    @RequestMapping("/addbook.do")
+    public ModelAndView addbook(){
+
+        ModelAndView modelAndView=new ModelAndView();
+
+
+
+        modelAndView.setViewName("consumer/add-book");
+        return modelAndView;
+
     }
 
 
