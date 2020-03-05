@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/consumer")
 public class ConsumerController {
@@ -32,11 +34,21 @@ public class ConsumerController {
 
         ModelAndView modelAndView=new ModelAndView();
 
-
-
         modelAndView.setViewName("consumer/add-book");
         return modelAndView;
+    }
 
+
+    //    个人中心
+    @RequestMapping("/center.do")
+    public ModelAndView center(){
+
+        ModelAndView modelAndView=new ModelAndView();
+        // 我发布的商品
+        List<Book> bookInfo = bookService.findByUserId(1069);
+        modelAndView.addObject("bookInfo",bookInfo);
+        modelAndView.setViewName("consumer/个人中心");
+        return modelAndView;
     }
 
 

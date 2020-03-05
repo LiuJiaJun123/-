@@ -89,4 +89,9 @@ public interface IBookDao {
     @Select("select * from book limit 0,5")
     @ResultMap("resultMap")
     List<Book> findGoodBook();
+
+    //根据用户id查找书籍
+    @Select("select * from book where user_id=#{user_id}")
+    @ResultMap("resultMap")
+    List<Book> findByUserId(int user_id);
 }

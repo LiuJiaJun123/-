@@ -43,4 +43,7 @@ public interface IBookService {
 
     //查找精品推荐的书籍
     List<Book> findGoodBook();
+
+    //根据用户id查找书籍
+    List<Book> findByUserId(int user_id);
 }

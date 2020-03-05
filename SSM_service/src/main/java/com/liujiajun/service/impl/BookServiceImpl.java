@@ -97,5 +97,11 @@ public class BookServiceImpl implements IBookService {
         return bookDao.findGoodBook();
     }
 
+    //根据用户id查找书籍
+    @Override
+    public List<Book> findByUserId(int user_id) {
+        return bookDao.findByUserId(user_id);
+    }
+
 
 }
