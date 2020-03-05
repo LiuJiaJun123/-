@@ -86,7 +86,7 @@ public interface IBookDao {
     List<Book> findCheapBook();
 
     //查找精品推荐的书籍
-    @Select("select * from book order by price limit 0,5")
+    @Select("select * from book limit 0,5")
     @ResultMap("resultMap")
     List<Book> findGoodBook();
 }
