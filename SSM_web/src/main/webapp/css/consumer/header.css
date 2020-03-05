@@ -1,6 +1,6 @@
 
 .bg-success{
-    background: linear-gradient(to bottom, #6DA7EC, #6DA7EC 100%);
+    background: linear-gradient(to bottom, #3C8DBC, #3C8DBC 100%);
 }
 
 #nav1{
@@ -18,7 +18,7 @@
 #content li a{
     display:block;
     float:right;
-    background:#6DA7EC;
+    background:#3C8DBC;
     width:100px;
     color:white;
     font-size: 18px;
@@ -41,7 +41,7 @@
 #content2 li a{
     display:block;
     float:right;
-    background:#6DA7EC;
+    background:#3C8DBC;
     width:auto;
     color:white;
     font-size: 18px;
