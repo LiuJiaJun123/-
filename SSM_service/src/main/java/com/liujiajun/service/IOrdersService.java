@@ -1,5 +1,6 @@
 package com.liujiajun.service;
 
+import com.liujiajun.domain.Book;
 import com.liujiajun.domain.Orders;
 
 import java.util.List;
@@ -29,4 +30,6 @@ public interface IOrdersService {
     List<Orders> searchByOrderNum(String orderNum);
 
 
+    //查找订单
+    List<Orders> findOrders(String findConditions, Integer page, Integer pageSize);
 }

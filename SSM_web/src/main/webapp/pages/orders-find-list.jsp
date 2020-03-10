@@ -10,9 +10,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-
-    <title>订单搜索</title>
-
+    <title>订单列表</title>
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta
@@ -70,12 +68,12 @@
         <!-- 内容头部 -->
         <section class="content-header">
             <h1>
-                订单管理 <small>订单搜索</small>
+                订单管理 <small>订单搜索列表</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="${pageContext.request.contextPath}/index.jsp"><i class="fa fa-dashboard"></i> 首页</a></li>
                 <li><a href="${pageContext.request.contextPath}/orders/findAll.do">订单管理</a></li>
-                <li class="active">订单搜索</li>
+                <li class="active">订单搜索列表</li>
             </ol>
         </section>
         <!-- 内容头部 /-->
@@ -92,90 +90,126 @@
                 <div class="box-body">
 
 
-                        <!-- 数据表格 -->
-                        <div class="table-box">
+                    <!-- 数据表格 -->
+                    <div class="table-box">
 
-                            <!--工具栏-->
-                            <div class="pull-left">
-                                <div class="form-group form-inline">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-default" title="新建"
-                                                onclick="window.location.href='${pageContext.request.contextPath}/orders/save.do'"><i class="fa fa-file-o"></i> 新建</button>
-                                        <button type="button" class="btn btn-default" id="deleteSelected" title="删除选中"><i class="fa fa-trash-o"></i> 删除选中</button>
-                                    </div>
+                        <!--工具栏-->
+                        <div class="pull-left">
+                            <div class="form-group form-inline">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default" title="新建"
+                                            onclick="window.location.href='${pageContext.request.contextPath}/orders/save.do'"><i class="fa fa-file-o"></i> 新建</button>
+                                    <button type="button" class="btn btn-default" id="deleteSelected" title="删除选中"><i class="fa fa-trash-o"></i> 删除选中</button>
                                 </div>
                             </div>
-                            <div class="box-tools pull-right">
-                                <%--<div class="has-feedback">--%>
-                                    <%--<input type="text" class="form-control input-sm" placeholder="搜索">--%>
-                                    <%--<span class="glyphicon glyphicon-search form-control-feedback"></span>--%>
-                                <%--</div>--%>
-                                <form action="${pageContext.request.contextPath}/orders/findOrders.do" method="post">
-                                    <div class="has-feedback">
-                                        <%--搜索--%>
-                                        <input type="text" class="form-control input-sm" placeholder="输入订单编号搜索" name="orderNum" value="${findOrderNum}">
-                                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                                    </div>
-                                </form>
-                            </div>
-                            <!--工具栏/-->
+                        </div>
+                        <div class="box-tools pull-right">
+                            <form action="${pageContext.request.contextPath}/orders/findOrders.do" method="post">
+                                <div class="has-feedback">
+                                    <%--搜索--%>
+                                    <input type="text" class="form-control input-sm" placeholder="输入订单id、书籍名称或买家名字搜索"
+                                           style="width: 15.2vw; " name="findConditions" id="findConditions" value="${findConditions}">
+                                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                </div>
+                            </form>
+                        </div>
+                        <!--工具栏/-->
 
-                            <%--用form包裹起来，这样提交的时候就可以获得选中的checkbox--%>
-                            <form id="form1" action="${pageContext.servletContext.contextPath}/orders/delete.do" method="post">
+                        <%--用form包裹起来，这样提交的时候就可以获得选中的checkbox--%>
+                        <form id="form1" action="${pageContext.servletContext.contextPath}/orders/delete.do" method="post">
+                            <!--数据列表-->
+                            <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
+                                <thead>
+                                <tr>
+                                    <th class="" style="padding-right:0px;">
+                                        <input id="selall" type="checkbox" class="icheckbox_square-blue">
+                                    </th>
+                                    <th class="sorting_asc">订单编号</th>
+                                    <th class="sorting_desc">书籍名称</th>
+                                    <th class="sorting_asc sorting_asc_disabled">卖家名字</th>
+                                    <th class="sorting_desc sorting_desc_disabled">买家名字</th>
+                                    <th class="sorting">出售时间</th>
+                                    <th class="text-center">操作</th>
+                                </tr>
+                                </thead>
 
-                                <!--数据列表-->
-                                <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
-                                    <thead>
+                                <tbody>
+
+                                <c:forEach items="${pageInfo.list}" var="orders">
                                     <tr>
-                                        <th class="" style="padding-right:0px;">
-                                            <input id="selall" type="checkbox" class="icheckbox_square-blue">
-                                        </th>
-                                        <th class="sorting_asc">ID</th>
-                                        <th class="sorting_desc">订单编号</th>
-                                        <th class="sorting_asc sorting_asc_disabled">产品名称</th>
-                                        <th class="sorting_desc sorting_desc_disabled">金额</th>
-                                        <th class="sorting">下单时间</th>
-                                        <th class="sorting">订单状态</th>
-                                        <th class="text-center">操作</th>
-                                    </tr>
-                                    </thead>
-
-                                    <tbody>
-
-                                    <c:forEach items="${findOrders}" var="orders">
-                                        <tr>
                                             <%-- checkbox 提交form，所以要有name ,value为要删除的id--%>
-                                            <td><input type="checkbox" name="selectIds" value="${orders.id}"></td>
-                                            <td>${orders.id}</td>
-                                            <td>${orders.orderNum}</td>
-                                            <td>${orders.product.productName}</td>
-                                            <td>${orders.product.productPrice}</td>
-                                            <td>${orders.orderTimeStr}</td>
-                                            <td>${orders.orderStatusStr}</td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn bg-olive btn-xs"
-                                                        onclick="window.location.href='${pageContext.request.contextPath}/orders/findById.do?id=${orders.id}'">详情</button>
-                                                <button type="button" class="btn bg-olive btn-xs"
-                                                        onclick="window.location.href='${pageContext.request.contextPath}/orders/update.do?id=${orders.id}'">编辑</button>
-                                            </td>
+                                        <td><input type="checkbox" name="selectIds" value="${orders.orders_id}"></td>
+                                        <td>${orders.orders_id}</td>
+                                        <td>${orders.book.book_name}</td>
+                                            <%--<td>${orders.seller.username}</td>--%>
+                                        <td>${orders.book.userInfo.username}</td>
+                                        <td>${orders.buyer.username}</td>
+                                        <td>${orders.order_time_str}</td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn bg-olive btn-xs"
+                                                    onclick="window.location.href='${pageContext.request.contextPath}/orders/findById.do?orders_id=${orders.orders_id}'">详情</button>
+                                            <button type="button" class="btn bg-olive btn-xs"
+                                                    onclick="window.location.href='${pageContext.request.contextPath}/orders/update.do?orders_id=${orders.orders_id}'">编辑</button>
+                                        </td>
 
-                                        </tr>
-                                    </c:forEach>
+                                    </tr>
+                                </c:forEach>
 
 
-                                    </tbody>
-                                </table>
+                                </tbody>
+                            </table>
                             <!--数据列表/-->
 
-                            </form>
+                        </form>
 
-                        </div>
-                         <!-- 数据表格 /-->
+                    </div>
+                    <!-- 数据表格 /-->
 
 
                 </div>
                 <!-- /.box-body -->
 
+                <!-- .box-footer-->
+                <div class="box-footer">
+                    <div class="pull-left">
+                        <div class="form-group form-inline">
+                            总共${pageInfo.pages} 页，共${pageInfo.total} 条数据。 每页
+                            <select class="form-control" id="changPageSize" onchange="changPageSize()">
+                                <option>请选择</option>
+                                <option>2</option>
+                                <option>4</option>
+                                <option>6</option>
+                                <option>8</option>
+                                <option>10</option>
+                            </select> 条
+                        </div>
+                    </div>
+
+                    <div class="box-tools pull-right">
+                        <ul class="pagination">
+                            <li>
+                                <a aria-label="Previous" href="${pageContext.request.contextPath}/orders/findOrders.do?findConditions=${findConditions}&page=1&pageSize=${pageInfo.pageSize}">首页</a>
+                            </li>
+                            <li><a href="${pageContext.request.contextPath}/orders/findOrders.do?findConditions=${findConditions}&page=${pageInfo.pageNum-1}&pageSize=${pageInfo.pageSize}">上一页</a></li>
+
+                            <c:forEach begin="1" end="${pageInfo.pages}" var="i">
+                                <c:if test="${i==pageInfo.pageNum}">
+                                    <li><a style="background-color: #2aabd2" href="${pageContext.request.contextPath}/orders/findOrders.do?findConditions=${findConditions}&page=${i}&pageSize=${pageInfo.pageSize}">${i}</a></li>
+                                </c:if>
+                                <c:if test="${i!=pageInfo.pageNum}">
+                                    <li><a href="${pageContext.request.contextPath}/orders/findOrders.do?findConditions=${findConditions}&page=${i}&pageSize=${pageInfo.pageSize}">${i}</a></li>
+                                </c:if>
+                            </c:forEach>
+
+                            <li><a href="${pageContext.request.contextPath}/orders/findOrders.do?findConditions=${findConditions}&page=${pageInfo.pageNum+1}&pageSize=${pageInfo.pageSize}">下一页</a></li>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/orders/findOrders.do?findConditions=${findConditions}&page=${pageInfo.pages}&pageSize=${pageInfo.pageSize}" aria-label="Next">尾页</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <!-- /.box-footer-->
 
 
 
@@ -265,6 +299,11 @@
         }
     }
 
+    //改变每页显示条数
+    function changPageSize(){
+        var pageSize=$("#changPageSize").val();
+        location.href="${pageContext.request.contextPath}/orders/findOrders.do?findConditions=${findConditions}&page=1&pageSize="+pageSize;
+    }
 
     //删除所选的
     $("#deleteSelected").click(function () {

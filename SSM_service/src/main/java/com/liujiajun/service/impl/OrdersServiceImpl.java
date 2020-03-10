@@ -3,6 +3,7 @@ package com.liujiajun.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.liujiajun.dao.IOrder_TravellerDao;
 import com.liujiajun.dao.IOrdersDao;
+import com.liujiajun.domain.Book;
 import com.liujiajun.domain.Orders;
 import com.liujiajun.service.IOrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,7 +73,15 @@ public class OrdersServiceImpl implements IOrdersService {
         return ordersDao.searchByOrderNum(orderNum);
     }
 
+    //查找订单
+    @Override
+    public List<Orders> findOrders(String findConditions, Integer page, Integer pageSize) {
 
+        findConditions="%"+findConditions+"%";
+        PageHelper.startPage(page,pageSize);
+        List<Orders> findOrders = ordersDao.findOrders(findConditions);
+        return findOrders;
+    }
 
 
 }

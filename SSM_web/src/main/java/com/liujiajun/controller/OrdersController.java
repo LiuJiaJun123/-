@@ -138,14 +138,18 @@ public class OrdersController {
 
     //搜索订单
     @RequestMapping("/findOrders.do")
-    public ModelAndView findOrders(Orders orders) throws Exception {
+    public ModelAndView findOrders(String findConditions,
+                                   @RequestParam(value = "page",required = true,defaultValue = "1")Integer page,
+                                   @RequestParam(value = "pageSize",required = true,defaultValue = "4")Integer pageSize) throws Exception {
 
         ModelAndView mv=new ModelAndView();
 
-//        List<Orders> findOrders = ordersService.searchByOrderNum(orders.getOrderNum());
-//
-//        mv.addObject("findOrderNum",orders.getOrderNum());
-//        mv.addObject("findOrders",findOrders);
+        List<Orders> findOrders = ordersService.findOrders(findConditions,page,pageSize);
+        PageInfo pageInfo=new PageInfo(findOrders);
+
+        mv.addObject("findConditions",findConditions);
+        mv.addObject("pageInfo",pageInfo);
+
         mv.setViewName("orders-find-list");
 
         return mv;

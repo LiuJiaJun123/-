@@ -10,7 +10,7 @@ import java.util.List;
 public interface IOrdersDao {
 
     @Select("select * from orders order by orders_id")
-    @Results({
+    @Results(id = "resultMap",value = {
             @Result(id = true,column = "orders_id",property = "orders_id"),
             @Result(column = "book_id",property = "book",one = @One( select = "com.liujiajun.dao.IBookDao.findByBookId")),
             @Result(column = "buyer_id",property = "buyer",one = @One( select = "com.liujiajun.dao.IUserDao.findById")),
@@ -21,13 +21,7 @@ public interface IOrdersDao {
 
 
     @Select("select * from orders where orders_id=#{orders_id}")
-    @Results({
-            @Result(id = true,column = "orders_id",property = "orders_id"),
-            @Result(column = "book_id",property = "book",one = @One( select = "com.liujiajun.dao.IBookDao.findByBookId")),
-            @Result(column = "buyer_id",property = "buyer",one = @One( select = "com.liujiajun.dao.IUserDao.findById")),
-            @Result(column = "order_time",property = "order_time"),
-            @Result(column = "description",property = "description")
-    })
+    @ResultMap("resultMap")
     public Orders findById(Integer orders_id) throws Exception;
 
     //批量删除
@@ -66,4 +60,11 @@ public interface IOrdersDao {
     @Update("update orders set buyer_id=#{buyer.id},description=#{description} where orders_id=#{orders_id}")
     void update(Orders orders);
 
+    //查找订单
+    //根据订单id、书籍名称或买家名称 模糊搜索订单
+    @Select("select * from orders where orders_id like #{findConditions} " +
+            "or book_id in (select book_id from book where book_name like #{findConditions}) " +
+            "or buyer_id in (select id from users where username like #{findConditions})")
+    @ResultMap("resultMap")
+    List<Orders> findOrders(String findConditions);
 }

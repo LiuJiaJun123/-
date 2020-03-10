@@ -107,7 +107,8 @@
                                 <form action="${pageContext.request.contextPath}/orders/findOrders.do" method="post">
                                     <div class="has-feedback">
                                         <%--搜索--%>
-                                        <input type="text" class="form-control input-sm" placeholder="输入订单编号搜索" name="orderNum">
+                                        <input type="text" class="form-control input-sm" placeholder="输入订单id、书籍名称或买家名字搜索"
+                                               style="width: 15.2vw; " name="findConditions" id="findConditions">
                                         <span class="glyphicon glyphicon-search form-control-feedback"></span>
                                     </div>
                                 </form>
