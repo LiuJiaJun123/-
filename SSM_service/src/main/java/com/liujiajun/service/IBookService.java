@@ -32,8 +32,8 @@ public interface IBookService {
     //根据 书籍名称或卖家名称 搜索书籍
     List<Book> findBook(String findConditions, Integer page, Integer pageSize);
 
-    //订单添加后，要 修改对应书籍的状态为0
-    void updateStatus(Integer book_id);
+//    //订单添加后，要 修改对应书籍的状态为0
+//    void updateStatus(Integer book_id);
 
     //查找最新上架的图书
     List<Book> findNewBook();
@@ -46,4 +46,7 @@ public interface IBookService {
 
     //根据用户id查找书籍
     List<Book> findByUserId(int user_id);
+
+    //书籍出售
+    void sell(Integer book_id);
 }

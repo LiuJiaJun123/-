@@ -62,8 +62,8 @@ public interface IOrdersDao {
 
 
     //修改订单
+
     @Update("update orders set buyer_id=#{buyer.id},description=#{description} where orders_id=#{orders_id}")
     void update(Orders orders);
-
 
 }

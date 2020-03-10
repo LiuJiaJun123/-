@@ -17,6 +17,8 @@ public class Book {
     private String imgUrl;      //图片路径
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date time;          //上市时间
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    private Date sell_time;          //出售时间
     private Integer status;     //状态，是否在售
     private String statusStr;
 
@@ -109,6 +111,14 @@ public class Book {
         this.time = time;
     }
 
+    public Date getSell_time() {
+        return sell_time;
+    }
+
+    public void setSell_time(Date sell_time) {
+        this.sell_time = sell_time;
+    }
+
     public Integer getStatus() {
         return status;
     }
@@ -144,6 +154,7 @@ public class Book {
                 ", description='" + description + '\'' +
                 ", imgUrl='" + imgUrl + '\'' +
                 ", time=" + time +
+                ", sell_time=" + sell_time +
                 ", status=" + status +
                 ", statusStr='" + statusStr + '\'' +
                 '}';

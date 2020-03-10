@@ -4,6 +4,7 @@ import com.liujiajun.domain.Book;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository("bookDao")
@@ -26,6 +27,7 @@ public interface IBookDao {
             @Result(column = "description",property = "description"),
             @Result(column = "imgUrl",property = "imgUrl"),
             @Result(column = "time",property = "time"),
+            @Result(column = "sell_time",property = "sell_time"),
             @Result(column = "status",property = "status")
     })
     List<Book> findAll();
@@ -44,7 +46,7 @@ public interface IBookDao {
     @ResultMap("resultMap")
     Book findByBookId(Integer book_id);
 
-    //修改图片信息
+    //有修改图片信息时，调用的修改方法
     @Update({"update book set book_name=#{book_name},category=#{categoryInfo.category_id},author=#{author}," +
             "price=#{price},appearance=#{appearance},description=#{description},imgUrl=#{imgUrl}" +
             ",status=#{status} where book_id=#{book_id}"})
@@ -71,9 +73,9 @@ public interface IBookDao {
     @Select("select * from book where category=#{category_id}")
     List<Book> findByCategoryId(Integer category_id);
 
-    //订单添加后，要 修改对应书籍的状态为0
-    @Update("update book set status=0 where book_id=#{book_id}")
-    void updateStatus(Integer book_id);
+//    //订单添加后，要 修改对应书籍的状态为0
+//    @Update("update book set status=0 where book_id=#{book_id}")
+//    void updateStatus(Integer book_id);
 
     //查找最新上架的图书
     @Select("select * from book order by time desc limit 0,5")
@@ -94,4 +96,8 @@ public interface IBookDao {
     @Select("select * from book where user_id=#{user_id}")
     @ResultMap("resultMap")
     List<Book> findByUserId(int user_id);
+
+    //出售书籍
+    @Update("update book set status=0,sell_time=#{sell_time} where book_id=#{book_id}")
+    void sell(@Param("book_id")Integer book_id, @Param("sell_time")Date sell_time);
 }

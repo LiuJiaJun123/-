@@ -7,6 +7,10 @@ import com.liujiajun.service.IBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.xml.crypto.Data;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service("bookService")
@@ -73,11 +77,11 @@ public class BookServiceImpl implements IBookService {
         return findBook;
     }
 
-    //订单添加后，要 修改对应书籍的状态为0
-    @Override
-    public void updateStatus(Integer book_id) {
-        bookDao.updateStatus(book_id);
-    }
+//    //订单添加后，要 修改对应书籍的状态为0
+//    @Override
+//    public void updateStatus(Integer book_id) {
+//        bookDao.updateStatus(book_id);
+//    }
 
     //查找最新上架的图书
     @Override
@@ -101,6 +105,14 @@ public class BookServiceImpl implements IBookService {
     @Override
     public List<Book> findByUserId(int user_id) {
         return bookDao.findByUserId(user_id);
+    }
+
+    //出售书籍
+    @Override
+    public void sell(Integer book_id) {
+        //出售时间
+        Date sell_time=new Date();
+        bookDao.sell(book_id,sell_time);
     }
 
 
