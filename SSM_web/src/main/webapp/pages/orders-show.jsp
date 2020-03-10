@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -81,12 +82,12 @@
 			<!-- 内容头部 -->
 			<section class="content-header">
 			<h1>
-				订单管理 <small>全部订单</small>
+				订单管理 <small>订单详情</small>
 			</h1>
 			<ol class="breadcrumb">
-				<li><a href="all-admin-index.html"><i
+				<li><a href="${pageContext.request.contextPath}/index.jsp"><i
 						class="fa fa-dashboard"></i> 首页</a></li>
-				<li><a href="all-order-manage-list.html">订单管理</a></li>
+				<li><a href="${pageContext.request.contextPath}/orders/findAll.do">订单管理</a></li>
 				<li class="active">订单详情</li>
 			</ol>
 			</section>
@@ -107,7 +108,7 @@
 					<div class="col-md-2 title">订单编号</div>
 					<div class="col-md-4 data">
 						<input type="text" class="form-control" placeholder="订单编号"
-							value="${orders.orderNum }" readonly="readonly">
+							value="${orders.orders_id }" readonly="readonly">
 					</div>
 
 					<div class="col-md-2 title">下单时间</div>
@@ -118,120 +119,179 @@
 							</div>
 							<input type="text" class="form-control pull-right"
 								id="datepicker-a3" readonly="readonly"
-								value="${orders.orderTimeStr}">
+								value="${orders.order_time_str}">
 						</div>
 					</div>
-					<div class="col-md-2 title">路线名称</div>
-					<div class="col-md-4 data">
-						<input type="text" class="form-control" placeholder="路线名称"
-							value="${orders.product.productName }" readonly="readonly">
-					</div>
 
-					<div class="col-md-2 title">出发城市</div>
-					<div class="col-md-4 data">
-						<input type="text" class="form-control" placeholder="出发城市"
-							value="${orders.product.cityName }" readonly="readonly">
-					</div>
-
-					<div class="col-md-2 title">出发时间</div>
-					<div class="col-md-4 data">
-						<div class="input-group date">
-							<div class="input-group-addon">
-								<i class="fa fa-calendar"></i>
-							</div>
-							<input type="text" class="form-control pull-right"
-								id="datepicker-a6" value="${orders.product.departureTimeStr}"
-								readonly="readonly">
-						</div>
-					</div>
-					<div class="col-md-2 title">出游人数</div>
-					<div class="col-md-4 data">
-						<input type="text" class="form-control" placeholder="出游人数"
-							value="${orders.peopleCount}" readonly="readonly">
-					</div>
 
 					<div class="col-md-2 title rowHeight2x">其他信息</div>
 					<div class="col-md-10 data rowHeight2x">
 						<textarea class="form-control" rows="3" placeholder="其他信息">
-							${orders.orderDesc }
+							${orders.description }
 						</textarea>
 					</div>
 
 				</div>
 			</div>
-			<!--订单信息/--> <!--游客信息-->
+			<!--订单信息/-->
+
+			<!--书籍信息-->
 			<div class="panel panel-default">
-				<div class="panel-heading">游客信息</div>
-				<!--数据列表-->
-				<table id="dataList"
-					class="table table-bordered table-striped table-hover dataTable">
-					<thead>
-						<tr>
-							<th class="">人群</th>
-							<th class="">姓名</th>
-							<th class="">性别</th>
-							<th class="">手机号码</th>
-							<th class="">证件类型</th>
-							<th class="">证件号码</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="traveller" items="${orders.travellers}">
 
-							<tr>
-								<td>${traveller.travellerTypeStr}</td>
-								<td><input type="text" size="10" value="${traveller.name }"
-									readonly="readonly"></td>
-								<td><input type="text" size="10" value="${traveller.sex }"
-									readonly="readonly"></td>
-								<td><input type="text" size="20"
-									value="${traveller.phoneNum }" readonly="readonly"></td>
-								<td><input type="text" size="15"
-									value="${traveller.credentialsTypeStr}" readonly="readonly"></td>
-								<td><input type="text" size="28"
-									value="${traveller.credentialsNum }" readonly="readonly"></td>
-							</tr>
-						</c:forEach>
-
-
-					</tbody>
-				</table>
-				<!--数据列表/-->
-			</div>
-			<!--游客信息/--> <!--联系人信息-->
-			<div class="panel panel-default">
-				<div class="panel-heading">联系人信息</div>
+				<div class="panel-heading text-center">书籍信息</div>
 				<div class="row data-type">
 
-					<div class="col-md-2 title">会员</div>
-					<div class="col-md-4 data text">${orders.member.nickname }</div>
+					<div class="col-md-2 title">书籍编号</div>
+					<div class="col-md-4 data">
+						<input type="text" class="form-control"
+							   value="${orders.book.book_id }" readonly="readonly">
+					</div>
 
-					<div class="col-md-2 title">联系人</div>
-					<div class="col-md-4 data text">${orders.member.name}</div>
+					<div class="col-md-2 title">书籍名称</div>
+					<div class="col-md-4 data">
+						<input type="text" class="form-control"
+							   value="${orders.book.book_name }" readonly="readonly">
+					</div>
 
-					<div class="col-md-2 title">手机号</div>
-					<div class="col-md-4 data text">${orders.member.phoneNum}</div>
+					<div class="col-md-2 title">书籍作者</div>
+					<div class="col-md-4 data">
+						<input type="text" class="form-control"
+							   value="${orders.book.author }" readonly="readonly">
+					</div>
 
-					<div class="col-md-2 title">邮箱</div>
-					<div class="col-md-4 data text">${orders.member.email}</div>
+					<div class="col-md-2 title">书籍价格</div>
+					<div class="col-md-4 data">
+						<input type="text" class="form-control"
+							   value="${orders.book.price }" readonly="readonly">
+					</div>
+
+					<div class="col-md-2 title">书籍类别</div>
+					<div class="col-md-4 data">
+						<input type="text" class="form-control"
+							   value="${orders.book.categoryInfo.category_name }" readonly="readonly">
+					</div>
+
+					<div class="col-md-2 title">书籍成色</div>
+					<div class="col-md-4 data">
+						<input type="text" class="form-control"
+							   value="${orders.book.appearance }" readonly="readonly">
+					</div>
+
+					<div class="col-md-2 title">上市时间</div>
+					<div class="col-md-4 data">
+						<input type="text" class="form-control"
+							   value="<fmt:formatDate value='${orders.book.time}' pattern='yyyy-MM-dd HH:mm'/>" readonly="readonly">
+					</div>
+
+					<div class="col-md-2 title">状态</div>
+					<div class="col-md-4 data">
+						<input type="text" class="form-control"
+							   value="${orders.book.statusStr }" readonly="readonly">
+					</div>
+
+					<div class="col-md-2 title rowHeight2x">图片</div>
+					<div class="col-md-4 rowHeight2x" >
+						<img class="img-responsive" src="${orders.book.imgUrl}" alt="Photo" style="height: 4.5vw;">
+					</div>
+
+					<div class="col-md-2 title rowHeight2x">描述</div>
+					<div class="col-md-4 data rowHeight2x">
+					<textarea class="form-control" rows="3" >
+						${orders.book.description }
+					</textarea>
+					</div>
 
 				</div>
 			</div>
-			<!--联系人信息/--> <!--费用信息-->
-			<c:if test="${orders.orderStatus==1}">
-				<div class="panel panel-default">
-					<div class="panel-heading">费用信息</div>
-					<div class="row data-type">
+			<!--书籍信息/-->
+			<!--卖家信息-->
+			<div class="panel panel-default">
+				<div class="panel-heading text-center">卖家信息</div>
+				<div class="row data-type">
 
-						<div class="col-md-2 title">支付方式</div>
-						<div class="col-md-4 data text">在线支付-${orders.payTypeStr}</div>
+					<div class="col-md-2 title">卖家ID</div>
+					<div class="col-md-4 data">
+						<input type="text" class="form-control"
+							   value="${orders.book.userInfo.id }" readonly="readonly">
+					</div>
 
-						<div class="col-md-2 title">金额</div>
-						<div class="col-md-4 data text">￥${orders.product.productPrice}</div>
+					<div class="col-md-2 title">姓名</div>
+					<div class="col-md-4 data">
+						<input type="text" class="form-control"
+							   value="${orders.book.userInfo.username }" readonly="readonly">
+					</div>
 
+					<div class="col-md-2 title">电话</div>
+					<div class="col-md-4 data">
+						<input type="text" class="form-control"
+							   value="${orders.book.userInfo.phone }" readonly="readonly">
+					</div>
+
+					<div class="col-md-2 title">QQ</div>
+					<div class="col-md-4 data">
+						<input type="text" class="form-control"
+							   value="${orders.book.userInfo.qq }" readonly="readonly">
+					</div>
+
+					<div class="col-md-2 title">邮箱</div>
+					<div class="col-md-4 data">
+						<input type="text" class="form-control"
+							   value="${orders.book.userInfo.email }" readonly="readonly">
+					</div>
+
+					<div class="col-md-2 title">地址</div>
+					<div class="col-md-4 data">
+						<input type="text" class="form-control"
+							   value="${orders.book.userInfo.address }" readonly="readonly">
 					</div>
 				</div>
-			</c:if> <!--费用信息/--> <!--工具栏-->
+			</div>
+			<!--卖家信息/-->
+			<!--买家信息-->
+			<div class="panel panel-default">
+				<div class="panel-heading text-center">买家信息</div>
+				<div class="row data-type">
+
+					<div class="col-md-2 title">买家ID</div>
+					<div class="col-md-4 data">
+						<input type="text" class="form-control"
+							   value="${orders.buyer.id }" readonly="readonly">
+					</div>
+
+					<div class="col-md-2 title">姓名</div>
+					<div class="col-md-4 data">
+						<input type="text" class="form-control"
+							   value="${orders.buyer.username }" readonly="readonly">
+					</div>
+
+					<div class="col-md-2 title">电话</div>
+					<div class="col-md-4 data">
+						<input type="text" class="form-control"
+							   value="${orders.buyer.phone }" readonly="readonly">
+					</div>
+
+					<div class="col-md-2 title">QQ</div>
+					<div class="col-md-4 data">
+						<input type="text" class="form-control"
+							   value="${orders.buyer.qq }" readonly="readonly">
+					</div>
+
+					<div class="col-md-2 title">邮箱</div>
+					<div class="col-md-4 data">
+						<input type="text" class="form-control"
+							   value="${orders.buyer.email }" readonly="readonly">
+					</div>
+
+					<div class="col-md-2 title">地址</div>
+					<div class="col-md-4 data">
+						<input type="text" class="form-control"
+							   value="${orders.buyer.address }" readonly="readonly">
+					</div>
+				</div>
+			</div>
+			<!--买家信息/-->
+
+			<!--工具栏-->
 			<div class="box-tools text-center">
 
 				<div class="box-tools text-center">

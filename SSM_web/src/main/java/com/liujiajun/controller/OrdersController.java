@@ -127,9 +127,9 @@ public class OrdersController {
 
     //查询订单详情
     @RequestMapping("/findById.do")
-    public ModelAndView findById(Integer id)throws Exception{
+    public ModelAndView findById(Integer orders_id)throws Exception{
         ModelAndView mv=new ModelAndView();
-        Orders orders = ordersService.findById(id);
+        Orders orders = ordersService.findById(orders_id);
         mv.addObject("orders",orders);
         mv.setViewName("orders-show");
         return mv;
