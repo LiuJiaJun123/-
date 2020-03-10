@@ -96,10 +96,10 @@
 			<section class="content"> <!--订单信息-->
 			<div class="panel panel-default">
 
-				<div class="box-tools" style="float: left;padding:3px">
-					<button type="button" class="btn bg-default"
-							onclick="location.href='${pageContext.request.contextPath}/orders/findAll.do'">返回</button>
-				</div>
+				<%--<div class="box-tools" style="float: left;padding:3px">--%>
+					<%--<button type="button" class="btn bg-default"--%>
+							<%--onclick="location.href='${pageContext.request.contextPath}/orders/findAll.do'">返回</button>--%>
+				<%--</div>--%>
 
 				<div class="panel-heading text-center">订单信息</div>
 				<div class="row data-type">
@@ -234,8 +234,10 @@
 			</c:if> <!--费用信息/--> <!--工具栏-->
 			<div class="box-tools text-center">
 
-				<button type="button" class="btn bg-default"
-						onclick="location.href='${pageContext.request.contextPath}/orders/findAll.do'">返回</button>
+				<div class="box-tools text-center">
+					<button type="button" class="btn btn-block btn-primary" style="width: 10vw; height: 2vw; margin-left: 38vw;"
+							onclick="history.back(-1);">返回</button>
+				</div>
 			</div>
 			<!--工具栏/--> </section>
 			<!-- 正文区域 /-->
