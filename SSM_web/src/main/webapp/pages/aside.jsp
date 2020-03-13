@@ -79,6 +79,14 @@
 						href="${pageContext.request.contextPath}/orders/findAll.do?page=1&pageSize=4"> <i
 							class="fa fa-circle-o"></i> 订单管理
 					</a></li>
+					<li id="announcement-management"><a
+							href="${pageContext.request.contextPath}/announcement/findAll.do?page=1&pageSize=4"> <i
+							class="fa fa-circle-o"></i> 公告管理
+					</a></li>
+					<li id="opinion-management"><a
+							href="${pageContext.request.contextPath}/opinion/findAll.do?page=1&pageSize=4"> <i
+							class="fa fa-circle-o"></i> 用户意见管理
+					</a></li>
 
 				</ul></li>
 
