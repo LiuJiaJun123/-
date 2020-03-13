@@ -32,6 +32,15 @@ public class AnnouncementController {
         return mv;
     }
 
+    //删除公告
+    @RequestMapping("delete.do")
+    public String delete(Integer[] selectIds) throws Exception {
+
+        announcementService.delete(selectIds);
+        return "redirect:findAll.do";
+
+    }
+
 
 
 }

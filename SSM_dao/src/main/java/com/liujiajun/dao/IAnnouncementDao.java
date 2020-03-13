@@ -2,10 +2,7 @@ package com.liujiajun.dao;
 
 import com.liujiajun.domain.Announcement;
 import com.liujiajun.domain.Book;
-import org.apache.ibatis.annotations.One;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -28,4 +25,7 @@ public interface IAnnouncementDao {
     })
     List<Announcement> findAll();
 
+    //删除
+    @Delete("delete from announcement where announcement_id=#{announcement_id}")
+    void delete(Integer announcement_id);
 }

@@ -27,4 +27,12 @@ public class AnnouncementServiceImpl implements IAnnouncementService {
         PageHelper.startPage(page,pageSize);
         return announcementDao.findAll();
     }
+
+    //批量删除
+    @Override
+    public void delete(Integer[] selectIds) {
+        for (Integer announcement_id : selectIds) {
+            announcementDao.delete(announcement_id);
+        }
+    }
 }

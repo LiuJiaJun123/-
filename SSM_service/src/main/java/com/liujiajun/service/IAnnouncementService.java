@@ -12,4 +12,6 @@ public interface IAnnouncementService {
     public List<Announcement> findAll(int page, int pageSize) throws Exception;
 
 
+    //批量删除
+    void delete(Integer[] selectIds);
 }
