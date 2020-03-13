@@ -1,5 +1,9 @@
 package com.liujiajun.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
 //公告
 public class Announcement {
 
@@ -8,6 +12,8 @@ public class Announcement {
     private String title; //公告标题
     private String description; //描述
     private String imgUrl;  // 图片路径
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    private Date time; //发布时间
     private Integer status; //状态
     private String statusStr;
 
@@ -51,6 +57,14 @@ public class Announcement {
         this.imgUrl = imgUrl;
     }
 
+    public Date getTime() {
+        return time;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
+    }
+
     public Integer getStatus() {
         return status;
     }
@@ -76,12 +90,14 @@ public class Announcement {
     @Override
     public String toString() {
         return "Announcement{" +
-                "announcement_Id=" + announcement_id +
+                "announcement_id=" + announcement_id +
                 ", userInfo=" + userInfo +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", imgUrl='" + imgUrl + '\'' +
+                ", time=" + time +
                 ", status=" + status +
+                ", statusStr='" + statusStr + '\'' +
                 '}';
     }
 }

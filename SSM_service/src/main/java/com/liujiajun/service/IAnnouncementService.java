@@ -14,4 +14,7 @@ public interface IAnnouncementService {
 
     //批量删除
     void delete(Integer[] selectIds);
+
+    //保存
+    void save(Announcement announcement);
 }

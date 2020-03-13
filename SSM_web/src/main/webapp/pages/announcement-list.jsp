@@ -107,7 +107,7 @@
 								<div class="form-group form-inline">
 									<div class="btn-group">
 										<button type="button" class="btn btn-default" title="新建"
-												onclick="location.href='${pageContext.request.contextPath}/announcement/findAllCategory.do'">
+												onclick="location.href='${pageContext.request.contextPath}/announcement/add.do'">
 											<i class="fa fa-file-o"></i> 新建
 										</button>
 

@@ -35,4 +35,9 @@ public class AnnouncementServiceImpl implements IAnnouncementService {
             announcementDao.delete(announcement_id);
         }
     }
+
+    @Override
+    public void save(Announcement announcement) {
+        announcementDao.save(announcement);
+    }
 }

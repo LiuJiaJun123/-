@@ -62,6 +62,7 @@ public class BookController {
     @RequestMapping("/save.do")
     public String save(Book book, MultipartFile uploadImg, HttpServletRequest request) throws Exception {
 
+
         //有上传图片
         if(!uploadImg.isEmpty()){
 

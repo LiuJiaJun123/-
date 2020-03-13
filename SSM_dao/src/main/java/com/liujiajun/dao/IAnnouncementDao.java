@@ -21,6 +21,7 @@ public interface IAnnouncementDao {
             @Result(column = "title",property = "title"),
             @Result(column = "description",property = "description"),
             @Result(column = "imgUrl",property = "imgUrl"),
+            @Result(column = "time",property = "time"),
             @Result(column = "status",property = "status")
     })
     List<Announcement> findAll();
@@ -28,4 +29,8 @@ public interface IAnnouncementDao {
     //删除
     @Delete("delete from announcement where announcement_id=#{announcement_id}")
     void delete(Integer announcement_id);
+
+    @Insert("insert into announcement(user_id,title,description,imgUrl,time,status) " +
+            "values(#{userInfo.id},#{title},#{description},#{imgUrl},#{time},#{status})")
+    void save(Announcement announcement);
 }
