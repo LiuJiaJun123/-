@@ -27,10 +27,11 @@ public class LoginController {
     private IBookService bookService;
 
     //登录跳转
-//    @RequestMapping(value = "/login", method = {RequestMethod.GET})
-//    public String loginUI() throws Exception {
-//        return "../../login";
-//    }
+    @RequestMapping(value = "/login.do", method = {RequestMethod.GET})
+    public String loginUI() throws Exception {
+        return "../login";
+    }
+
 
     //登录表单处理
     @RequestMapping(value = "/login.do", method = {RequestMethod.POST})
