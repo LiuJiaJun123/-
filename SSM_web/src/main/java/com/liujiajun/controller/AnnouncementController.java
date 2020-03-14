@@ -140,4 +140,16 @@ public class AnnouncementController {
     }
 
 
+    //查看公告详情之前，先根据公告id 查找公告信息
+    @RequestMapping("/beforeDetail.do")
+    public ModelAndView beforeDetail(Integer announcement_id) throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
+        //查找公告信息
+        Announcement announcement = announcementService.findByAnnouncementId(announcement_id);
+        modelAndView.addObject("announcement",announcement);
+        modelAndView.setViewName("announcement-show");
+        return modelAndView;
+    }
+
+
 }
