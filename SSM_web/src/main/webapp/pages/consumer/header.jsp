@@ -4,6 +4,7 @@
   Time: 13:47
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <html>
 <head>
     <title>header</title>
@@ -24,7 +25,7 @@
         <div class="collapse navbar-collapse " id="navbarSupportedContent" >
             <ul class="navbar-nav mr-auto" id="content">
                 <li class="nav-item active">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/index" >首页</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/index.do" >首页</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">全部商品</a>
@@ -53,10 +54,9 @@
                     <a href="${pageContext.request.contextPath}/center" class="nav-link">
                         <img src="${pageContext.request.contextPath}/img/consumer/tou.png">
                         <span >
-                                <%--获取用户名--%>
-                                <%--<security:authentication property="principal.username"></security:authentication>--%>
-                                刘嘉俊2222222
-                            </span>
+                            <%--获取当前用户名--%>
+                            <shiro:principal/>
+                        </span>
                     </a>
                 </li>
 
