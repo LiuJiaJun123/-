@@ -26,4 +26,7 @@ public interface IAnnouncementService {
 
     //没有修改 公告图片时 调用的修改方法
     void updateWithoutImg(Announcement announcement);
+
+    //根据 发布人名称 或 公告标题 搜索公告
+    List<Announcement> findAnnouncement(String findConditions, Integer page, Integer pageSize);
 }

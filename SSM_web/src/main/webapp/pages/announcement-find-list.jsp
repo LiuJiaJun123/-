@@ -77,7 +77,7 @@
 			<!-- 内容头部 -->
 			<section class="content-header">
 			<h1>
-				公告管理 <small>全部公告</small>
+				公告管理 <small>查找公告</small>
 			</h1>
 			<ol class="breadcrumb">
 				<li><a href="${pageContext.request.contextPath}/index.jsp"><i
@@ -85,7 +85,7 @@
 				<li><a
 					href="${pageContext.request.contextPath}/announcement/findAll.do?page=1&pageSize=4">公告管理</a></li>
 
-				<li class="active">全部公告</li>
+				<li class="active">查找公告</li>
 			</ol>
 			</section>
 			<!-- 内容头部 /-->
@@ -123,7 +123,7 @@
                                     <div class="has-feedback">
                                         <%--搜索--%>
                                         <input type="text" class="form-control input-sm" placeholder="输入发布人名称或公告标题搜索"
-                                               style="width: 12.5vw; " name="findConditions" id="findConditions">
+                                               style="width: 12.5vw; " name="findConditions" id="findConditions" value="${findConditions}">
                                         <span class="glyphicon glyphicon-search form-control-feedback"></span>
                                     </div>
                                 </form>
@@ -193,22 +193,22 @@
 						<div class="box-tools pull-right">
 							<ul class="pagination">
 								<li>
-									<a aria-label="Previous" href="${pageContext.request.contextPath}/announcement/findAll.do?page=1&pageSize=${announcementInfo.pageSize}">首页</a>
+									<a aria-label="Previous" href="${pageContext.request.contextPath}/announcement/findAnnouncement.do?findConditions=${findConditions}&page=1&pageSize=${announcementInfo.pageSize}">首页</a>
 								</li>
-								<li><a href="${pageContext.request.contextPath}/announcement/findAll.do?page=${announcementInfo.pageNum-1}&pageSize=${announcementInfo.pageSize}">上一页</a></li>
+								<li><a href="${pageContext.request.contextPath}/announcement/findAnnouncement.do?findConditions=${findConditions}&page=${announcementInfo.pageNum-1}&pageSize=${announcementInfo.pageSize}">上一页</a></li>
 
 								<c:forEach begin="1" end="${announcementInfo.pages}" var="i">
 									<c:if test="${i==announcementInfo.pageNum}">
-										<li><a style="background-color: #2aabd2" href="${pageContext.request.contextPath}/announcement/findAll.do?page=${i}&pageSize=${announcementInfo.pageSize}">${i}</a></li>
+										<li><a style="background-color: #2aabd2" href="${pageContext.request.contextPath}/announcement/findAnnouncement.do?findConditions=${findConditions}&page=${i}&pageSize=${announcementInfo.pageSize}">${i}</a></li>
 									</c:if>
 									<c:if test="${i!=announcementInfo.pageNum}">
-										<li><a href="${pageContext.request.contextPath}/announcement/findAll.do?page=${i}&pageSize=${announcementInfo.pageSize}">${i}</a></li>
+										<li><a href="${pageContext.request.contextPath}/announcement/findAnnouncement.do?findConditions=${findConditions}&page=${i}&pageSize=${announcementInfo.pageSize}">${i}</a></li>
 									</c:if>
 								</c:forEach>
 
-								<li><a href="${pageContext.request.contextPath}/announcement/findAll.do?page=${announcementInfo.pageNum+1}&pageSize=${announcementInfo.pageSize}">下一页</a></li>
+								<li><a href="${pageContext.request.contextPath}/announcement/findAnnouncement.do?findConditions=${findConditions}&page=${announcementInfo.pageNum+1}&pageSize=${announcementInfo.pageSize}">下一页</a></li>
 								<li>
-									<a href="${pageContext.request.contextPath}/announcement/findAll.do?page=${announcementInfo.pages}&pageSize=${announcementInfo.pageSize}" aria-label="Next">尾页</a>
+									<a href="${pageContext.request.contextPath}/announcement/findAnnouncement.do?findConditions=${findConditions}&page=${announcementInfo.pages}&pageSize=${announcementInfo.pageSize}" aria-label="Next">尾页</a>
 								</li>
 							</ul>
 						</div>
@@ -298,7 +298,7 @@
             //改变每页显示条数
             function changPageSize(){
                 var pageSize=$("#changPageSize").val();
-                location.href="${pageContext.request.contextPath}/announcement/findAll.do?page=1&pageSize="+pageSize;
+                location.href="${pageContext.request.contextPath}/announcement/findAnnouncement.do?findConditions=${findConditions}&page=1&pageSize="+pageSize;
             }
 
 			// 设置激活菜单

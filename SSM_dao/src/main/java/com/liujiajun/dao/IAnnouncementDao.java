@@ -50,4 +50,9 @@ public interface IAnnouncementDao {
     void update(Announcement announcement);
 
 
+    //根据 发布人名称 或 公告标题 搜索公告
+    @Select("select * from announcement where title like #{findConditions} " +
+            "or user_id in (select id from users where username like #{findConditions}) " )
+    @ResultMap("resultMap")
+    List<Announcement> findAnnouncement(String findConditions);
 }

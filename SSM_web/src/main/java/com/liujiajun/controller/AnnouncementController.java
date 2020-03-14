@@ -151,5 +151,24 @@ public class AnnouncementController {
         return modelAndView;
     }
 
+    //根据 发布人名称 或 公告标题 搜索公告
+    @RequestMapping("/findAnnouncement.do")
+    public ModelAndView findAnnouncement(String findConditions,
+                                 @RequestParam(value = "page",required = true,defaultValue = "1")Integer page,
+                                 @RequestParam(value = "pageSize",required = true,defaultValue = "4")Integer pageSize) throws Exception {
+
+        ModelAndView mv=new ModelAndView();
+
+        List<Announcement> findAnnouncement = announcementService.findAnnouncement(findConditions,page,pageSize);
+        PageInfo pageInfo=new PageInfo(findAnnouncement);
+
+        mv.addObject("findConditions",findConditions);
+        mv.addObject("announcementInfo",pageInfo);
+
+        mv.setViewName("announcement-find-list");
+
+        return mv;
+    }
+
 
 }

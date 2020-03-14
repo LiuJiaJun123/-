@@ -58,4 +58,13 @@ public class AnnouncementServiceImpl implements IAnnouncementService {
     public void updateWithoutImg(Announcement announcement) {
         announcementDao.updateWithoutImg(announcement);
     }
+
+    //根据 发布人名称 或 公告标题 搜索公告
+    @Override
+    public List<Announcement> findAnnouncement(String findConditions, Integer page, Integer pageSize) {
+        findConditions="%"+findConditions+"%";
+        PageHelper.startPage(page,pageSize);
+        List<Announcement> findAnnouncement = announcementDao.findAnnouncement(findConditions);
+        return findAnnouncement;
+    }
 }
