@@ -41,16 +41,9 @@ public class AnnouncementController {
         return mv;
     }
 
-    //新增公告
-    @RequestMapping("add.do")
-    public String add() throws Exception {
-        return "announcement-add";
-    }
-
-    //添加书籍
+    //添加公告
     @RequestMapping("/save.do")
     public String save(Announcement announcement, MultipartFile uploadImg, HttpServletRequest request) throws Exception {
-
 
         //获取当前用户
         String username = (String) SecurityUtils.getSubject().getPrincipal();
