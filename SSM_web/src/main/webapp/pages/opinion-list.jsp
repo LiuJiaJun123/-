@@ -106,10 +106,10 @@
 							<div class="pull-left">
 								<div class="form-group form-inline">
 									<div class="btn-group">
-										<button type="button" class="btn btn-default" title="新建"
-												onclick="location.href='/pages/opinion-add.jsp'">
-											<i class="fa fa-file-o"></i> 新建
-										</button>
+										<%--<button type="button" class="btn btn-default" title="新建"--%>
+												<%--onclick="location.href='/pages/opinion-add.jsp'">--%>
+											<%--<i class="fa fa-file-o"></i> 新建--%>
+										<%--</button>--%>
 
 										<button type="button" class="btn btn-default" id="deleteSelected" title="删除选中">
 											<i class="fa fa-trash-o"></i> 删除选中
@@ -123,7 +123,7 @@
                                     <div class="has-feedback">
                                         <%--搜索--%>
                                         <input type="text" class="form-control input-sm" placeholder="输入发布人名称或用户意见标题搜索"
-                                               style="width: 13.5vw; " name="findConditions" id="findConditions">
+                                               style="width: 14vw; " name="findConditions" id="findConditions">
                                         <span class="glyphicon glyphicon-search form-control-feedback"></span>
                                     </div>
                                 </form>
@@ -159,7 +159,7 @@
 												<td>${opinion.timeStr }</td>
 												<td class="text-center">
 													<a href="${pageContext.request.contextPath}/opinion/beforeDetail.do?opinion_id=${opinion.opinion_id}" class="btn bg-olive btn-xs">详情</a>
-													<a href="${pageContext.request.contextPath}/opinion/edit.do?opinion_id=${opinion.opinion_id}" class="btn bg-olive btn-xs">编辑</a>
+													<%--<a href="${pageContext.request.contextPath}/opinion/edit.do?opinion_id=${opinion.opinion_id}" class="btn bg-olive btn-xs">编辑</a>--%>
 												</td>
 											</tr>
 										</c:forEach>

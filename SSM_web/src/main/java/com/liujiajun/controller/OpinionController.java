@@ -41,17 +41,17 @@ public class OpinionController {
     }
 
     //添加用户意见
-    @RequestMapping("/save.do")
-    public String save(Opinion opinion) throws Exception {
-
-        //获取当前用户
-        String username = (String) SecurityUtils.getSubject().getPrincipal();
-        UserInfo userInfo = userService.findByName(username);
-        opinion.setUserInfo(userInfo);
-
-        opinionService.save(opinion);
-        return "redirect:findAll.do";
-    }
+//    @RequestMapping("/save.do")
+//    public String save(Opinion opinion) throws Exception {
+//
+//        //获取当前用户
+//        String username = (String) SecurityUtils.getSubject().getPrincipal();
+//        UserInfo userInfo = userService.findByName(username);
+//        opinion.setUserInfo(userInfo);
+//
+//        opinionService.save(opinion);
+//        return "redirect:findAll.do";
+//    }
 
     //删除用户意见
     @RequestMapping("delete.do")
@@ -63,23 +63,23 @@ public class OpinionController {
     }
 
     //用户意见编辑前，先查找 用户意见信息
-    @RequestMapping("/edit.do")
-    public ModelAndView edit(Integer opinion_id) throws Exception {
-        ModelAndView mv=new ModelAndView();
-        //用户意见信息
-        Opinion opinionInfo = opinionService.findByOpinionId(opinion_id);
-        mv.addObject("opinionInfo",opinionInfo);
-        mv.setViewName("opinion-edit");
-        return mv;
-    }
+//    @RequestMapping("/edit.do")
+//    public ModelAndView edit(Integer opinion_id) throws Exception {
+//        ModelAndView mv=new ModelAndView();
+//        //用户意见信息
+//        Opinion opinionInfo = opinionService.findByOpinionId(opinion_id);
+//        mv.addObject("opinionInfo",opinionInfo);
+//        mv.setViewName("opinion-edit");
+//        return mv;
+//    }
 
     // 用户意见信息修改
-    @RequestMapping("/update.do")
-    public String update( Opinion opinion) throws Exception {
-
-        opinionService.update(opinion);
-        return "redirect:findAll.do";
-    }
+//    @RequestMapping("/update.do")
+//    public String update( Opinion opinion) throws Exception {
+//
+//        opinionService.update(opinion);
+//        return "redirect:findAll.do";
+//    }
 
 
     //查看用户意见详情之前，先根据用户意见id 查找用户意见信息
