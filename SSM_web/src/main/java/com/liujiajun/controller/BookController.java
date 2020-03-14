@@ -161,12 +161,10 @@ public class BookController {
             bookService.update(book);
         }
 
-        //没上传图片，设置默认图片
+        //没上传图片
         if(uploadImg.isEmpty()){
-//            book.setImgUrl("../img/暂无图片.png");
             bookService.updateWithoutImg(book);
         }
-
 
         return "redirect:findAll.do";
     }

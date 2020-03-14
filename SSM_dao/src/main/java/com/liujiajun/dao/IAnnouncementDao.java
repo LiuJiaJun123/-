@@ -33,4 +33,21 @@ public interface IAnnouncementDao {
     @Insert("insert into announcement(user_id,title,description,imgUrl,time,status) " +
             "values(#{userInfo.id},#{title},#{description},#{imgUrl},#{time},#{status})")
     void save(Announcement announcement);
+
+    //根据id查找
+    @Select("select * from announcement where announcement_id=#{announcement_id}")
+    @ResultMap("resultMap")
+    Announcement findByAnnouncementId(Integer announcement_id);
+
+    //没有修改 公告图片时 调用的修改方法
+    @Update({"update announcement set title=#{title},description=#{description}" +
+            ",status=#{status} where announcement_id=#{announcement_id}"})
+    void updateWithoutImg(Announcement announcement);
+
+    //有修改图片信息时，调用的修改方法
+    @Update({"update announcement set title=#{title},description=#{description},imgUrl=#{imgUrl}" +
+            ",status=#{status} where announcement_id=#{announcement_id}"})
+    void update(Announcement announcement);
+
+
 }

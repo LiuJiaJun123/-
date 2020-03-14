@@ -92,6 +92,52 @@ public class AnnouncementController {
 
     }
 
+    //公告编辑前，先查找 公告信息
+    @RequestMapping("/edit.do")
+    public ModelAndView edit(Integer announcement_id) throws Exception {
+        ModelAndView mv=new ModelAndView();
+        //公告信息
+        Announcement announcementInfo = announcementService.findByAnnouncementId(announcement_id);
+        mv.addObject("announcementInfo",announcementInfo);
+        mv.setViewName("announcement-edit");
+        return mv;
+    }
+
+    // 公告信息修改
+    @RequestMapping("/update.do")
+    public String update( Announcement announcement,MultipartFile uploadImg,HttpServletRequest request) throws Exception {
+        //有上传图片
+        if(!uploadImg.isEmpty()){
+
+            // 文件保存路径
+            String path = request.getSession().getServletContext().getRealPath("");
+            File newFile = new File(path + "img/announcement_img/");  //为图片文件夹下的图片存放文件夹目录
+            if (!newFile.exists()){
+                newFile.mkdirs();
+            }
+
+            //随机数  保证每个图片名字不一样
+            String picName= UUID.randomUUID().toString();
+            //上传文件的原始名称
+            String oriName=uploadImg.getOriginalFilename();
+            //获取后缀  .jpg 等
+            String extName=oriName.substring(oriName.lastIndexOf("."));
+            //图片保存路径
+            String filePath =  path+"img\\announcement_img\\"+picName+extName;
+            //保存到本地磁盘
+            uploadImg.transferTo(new File(filePath));
+
+            announcement.setImgUrl("../img/announcement_img/"+picName+extName);
+            announcementService.update(announcement);
+        }
+
+        //没上传图片
+        if(uploadImg.isEmpty()){
+            announcementService.updateWithoutImg(announcement);
+        }
+
+        return "redirect:findAll.do";
+    }
 
 
 }

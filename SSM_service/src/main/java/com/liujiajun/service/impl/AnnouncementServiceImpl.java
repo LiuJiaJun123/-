@@ -40,4 +40,22 @@ public class AnnouncementServiceImpl implements IAnnouncementService {
     public void save(Announcement announcement) {
         announcementDao.save(announcement);
     }
+
+    //根据id查找
+    @Override
+    public Announcement findByAnnouncementId(Integer announcement_id) {
+        return announcementDao.findByAnnouncementId(announcement_id);
+    }
+
+    //修改公告信息
+    @Override
+    public void update(Announcement announcement) {
+        announcementDao.update(announcement);
+    }
+
+    //没有修改 公告图片时 调用的修改方法
+    @Override
+    public void updateWithoutImg(Announcement announcement) {
+        announcementDao.updateWithoutImg(announcement);
+    }
 }
