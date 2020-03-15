@@ -89,7 +89,8 @@
     <div class="form-group row">
         <label for="uploadImg" class="col-sm-3 control-label">图片</label>
         <div class="col-sm-9">
-            <input type="file" class="form-control" id="uploadImg" name="uploadImg" placeholder="图片">
+            <input type="file" class="form-control" id="uploadImg"
+                   ONCHANGE="setImg(this);" name="uploadImg" placeholder="图片">
         </div>
     </div>
 
@@ -147,7 +148,7 @@
     </div>
 
     <div class="box-tools text-center">
-        <button id="btnSave" type="submit" class="btn bg-maroon">保存</button>
+        <button id="btnSave" type="submit" class="btn btn-primary">发布</button>
         <%--<button type="button" class="btn bg-default"--%>
                 <%--onclick="history.back(-1);">返回</button>--%>
     </div>
@@ -189,9 +190,9 @@
         text-align: center;
         margin: 0px auto;
         /*margin-left: 41%;*/
-        margin-top: 100px;
+        margin-top: 60px;
         width: 650px;
-        height: 700px;
+        height: 600px;
     }
     .form-horizontal .heading{
         display: block;
@@ -222,6 +223,22 @@
     }
 
 </style>
+
+<script>
+    //图片上传,检查提交的是不是图片
+    function setImg(obj){
+        var f=$(obj).val();
+        if(f == null || f ==undefined || f == ''){
+            return false;
+        }
+        if(!/\.(?:png|jpg|bmp|PNG|JPG|BMP)$/.test(f))
+        {
+            alert("类型必须是图片(.png|jpg|bmp|PNG|JPG|BMP)");
+            $(obj).val('');
+            return false;
+        }
+    }
+</script>
 
 
 </body>
