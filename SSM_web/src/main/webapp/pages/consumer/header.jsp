@@ -31,7 +31,7 @@
                     <a class="nav-link" href="#">全部商品</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">发布商品</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/consumer/addbook.do">发布商品</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">全部求购</a>

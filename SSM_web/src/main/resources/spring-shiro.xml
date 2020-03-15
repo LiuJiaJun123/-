@@ -16,12 +16,21 @@
     <!--组件扫描器-->
     <context:component-scan base-package="com.liujiajun.shiro" />
 
-    <!-- shiro过滤器bean，id要和web.xml中filter-name一致 -->
+    <bean id="hasroles" class="com.liujiajun.shiro.CustomRolesAuthorizationFilter"></bean>
+
+
+        <!-- shiro过滤器bean，id要和web.xml中filter-name一致 -->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager" />
 
         <!-- 要求登录时的链接(登录页面地址)，非必须的属性，默认会自动寻找Web工程根目录下的"/login.jsp"页面 -->
         <!--<property name="loginUrl" value="/admin/show"></property>-->
+
+        <property name="filters">
+            <map>
+                <entry key="roles" value-ref="hasroles" />
+            </map>
+        </property>
 
         <property name="filterChainDefinitions">
             <value>
@@ -30,14 +39,18 @@
                 <!--注册时，查找当前用户名是否存在-->
                 /user/findByName.do = anon
 
+
                 <!-- 如果用户没有该角色，然后访问该 路径 会报 401错误-->
                 /category/** = authc, roles[admin]
                 /user/** = authc, roles[admin]
                 /role/** = authc, roles[user]
+                /book/save.do = authc,roles["admin","user"]
                 /book/** = authc, roles[admin]
                 /askbook/** = authc, roles[admin]
                 /findNewBook.do = authc, roles[user]
                 /consumer/** = authc, roles[user]
+
+
 
                 <!-- 当访问login（LoginController中的登录处理方法）时，不用进行认证（anon表示匿名）-->
                 /login.do = anon

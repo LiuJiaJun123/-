@@ -65,7 +65,8 @@
 <!-- 导航栏 end/-->
 
 
-<form class="form-horizontal" role="form" id="form1">
+<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/book/save.do" id="saveForm"
+      method="post" enctype="multipart/form-data">
 
     <span class="heading">发布二手书</span>
 
@@ -81,6 +82,14 @@
         <label for="author" class="col-sm-3 control-label">书籍作者</label>
         <div class="col-sm-9">
             <input type="text" class="form-control" id="author" name="author" placeholder="请输入书籍作者">
+        </div>
+    </div>
+
+
+    <div class="form-group row">
+        <label for="uploadImg" class="col-sm-3 control-label">图片</label>
+        <div class="col-sm-9">
+            <input type="file" class="form-control" id="uploadImg" name="uploadImg" placeholder="图片">
         </div>
     </div>
 
@@ -137,6 +146,11 @@
         </div>
     </div>
 
+    <div class="box-tools text-center">
+        <button id="btnSave" type="submit" class="btn bg-maroon">保存</button>
+        <%--<button type="button" class="btn bg-default"--%>
+                <%--onclick="history.back(-1);">返回</button>--%>
+    </div>
 
 </form>
 

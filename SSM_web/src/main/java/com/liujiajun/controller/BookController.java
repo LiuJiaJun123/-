@@ -62,12 +62,14 @@ public class BookController {
     @RequestMapping("/save.do")
     public String save(Book book, MultipartFile uploadImg, HttpServletRequest request) throws Exception {
 
+        //获取当前用户
+        String username = (String) SecurityUtils.getSubject().getPrincipal();
+        UserInfo userInfo = userService.findByName(username);
+
         //不是管理员 添加书籍，需要获取当前 添加书籍的用户
         if(book.getUserInfo()==null){
-            //获取当前用户
-            String username = (String) SecurityUtils.getSubject().getPrincipal();
-            UserInfo userInfo = userService.findByName(username);
             book.setUserInfo(userInfo);
+            book.setStatus(1);
         }
 
 
@@ -101,7 +103,15 @@ public class BookController {
         }
 
         bookService.save(book);
-        return "redirect:findAll.do";
+
+        if(userInfo.getRole()==1){
+            //管理员跳转页面
+            return "redirect:findAll.do";
+        }else {
+            //普通用户跳转页面
+            return "redirect:/index.do";
+        }
+
     }
 
     //查看书籍详情之前，先根据书籍id 查找书籍信息
