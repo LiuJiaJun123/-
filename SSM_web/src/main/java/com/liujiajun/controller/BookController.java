@@ -62,6 +62,14 @@ public class BookController {
     @RequestMapping("/save.do")
     public String save(Book book, MultipartFile uploadImg, HttpServletRequest request) throws Exception {
 
+        //不是管理员 添加书籍，需要获取当前 添加书籍的用户
+        if(book.getUserInfo()==null){
+            //获取当前用户
+            String username = (String) SecurityUtils.getSubject().getPrincipal();
+            UserInfo userInfo = userService.findByName(username);
+            book.setUserInfo(userInfo);
+        }
+
 
         //有上传图片
         if(!uploadImg.isEmpty()){

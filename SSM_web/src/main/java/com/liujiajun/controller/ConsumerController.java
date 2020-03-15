@@ -1,8 +1,10 @@
 package com.liujiajun.controller;
 
 import com.liujiajun.domain.Book;
+import com.liujiajun.domain.Category;
 import com.liujiajun.service.IBookService;
-import com.sun.org.apache.xpath.internal.operations.Mod;
+import com.liujiajun.service.ICategoryService;
+import com.liujiajun.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +18,10 @@ public class ConsumerController {
 
     @Autowired
     private IBookService bookService;
+    @Autowired
+    private ICategoryService categoryService;
+    @Autowired
+    private IUserService userService;
 
     //    商品详情
     @RequestMapping("/xq.do")
@@ -30,10 +36,13 @@ public class ConsumerController {
 
     //    添加图书
     @RequestMapping("/addbook.do")
-    public ModelAndView addbook(){
+    public ModelAndView addbook() throws Exception {
 
         ModelAndView modelAndView=new ModelAndView();
+        //查找所有类别
+        List<Category> categoryList = categoryService.findAll();
 
+        modelAndView.addObject("categoryList",categoryList);
         modelAndView.setViewName("consumer/add-book");
         return modelAndView;
     }
