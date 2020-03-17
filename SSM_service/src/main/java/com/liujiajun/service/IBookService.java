@@ -52,4 +52,5 @@ public interface IBookService {
 
     //书籍出售
     void sell(Integer book_id);
+
 }

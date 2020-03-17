@@ -1,9 +1,11 @@
 package com.liujiajun.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.liujiajun.domain.AskBook;
 import com.liujiajun.domain.Book;
 import com.liujiajun.domain.Category;
 import com.liujiajun.domain.UserInfo;
+import com.liujiajun.service.IAskBookService;
 import com.liujiajun.service.IBookService;
 import com.liujiajun.service.ICategoryService;
 import com.liujiajun.service.IUserService;
@@ -22,6 +24,8 @@ public class ConsumerController {
 
     @Autowired
     private IBookService bookService;
+    @Autowired
+    private IAskBookService askBookService;
     @Autowired
     private ICategoryService categoryService;
     @Autowired
@@ -66,6 +70,23 @@ public class ConsumerController {
         PageInfo bookInfo=new PageInfo(bookList);
         modelAndView.addObject("bookInfo",bookInfo);
         modelAndView.setViewName("consumer/my-sell");
+        return modelAndView;
+    }
+
+    //  我的求购
+    @RequestMapping("/myAsk.do")
+    public ModelAndView myAsk(@RequestParam(value = "page",required = true,defaultValue = "1") Integer page) throws Exception {
+
+        //获取当前用户
+        String username = (String) SecurityUtils.getSubject().getPrincipal();
+        UserInfo userInfo = userService.findByName(username);
+
+        ModelAndView modelAndView=new ModelAndView();
+        // 我发布的商品
+        List<AskBook> askBookList = askBookService.findAskBookByUserId(userInfo.getId(),page);
+        PageInfo askbookInfo=new PageInfo(askBookList);
+        modelAndView.addObject("askbookInfo",askbookInfo);
+        modelAndView.setViewName("consumer/my-ask");
         return modelAndView;
     }
 

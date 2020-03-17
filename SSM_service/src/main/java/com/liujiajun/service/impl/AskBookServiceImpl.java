@@ -79,5 +79,12 @@ public class AskBookServiceImpl implements IAskBookService {
         askBookDao.updateStatus(askbook_id);
     }
 
+    //根据用户id查找 求购书籍 （我的求购书籍 页面）
+    @Override
+    public List<AskBook> findAskBookByUserId(Integer user_id, Integer page) {
+        PageHelper.startPage(page,3);
+        return askBookDao.findByUserId(user_id);
+    }
+
 
 }

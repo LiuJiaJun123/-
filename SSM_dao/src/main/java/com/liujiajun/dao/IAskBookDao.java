@@ -32,7 +32,7 @@ public interface IAskBookDao {
 
     /**
      * 保存
-     * @param book
+     * @param askBook
      */
     @Insert("insert into askbook(user_id,askbook_name,category,author,appearance,description,imgUrl,time,status) " +
             "values(#{userInfo.id},#{askbook_name},#{categoryInfo.category_id},#{author},#{appearance},#{description},#{imgUrl},#{time},#{status})")
@@ -40,7 +40,7 @@ public interface IAskBookDao {
 
     //根据书籍Id查找 书籍
     @Select("select * from askbook where askbook_id=#{askbook_id}")
-    @Results({
+    @Results(id = "resultMap",value = {
             @Result(id = true,column = "askbook_id",property = "askbook_id"),
             @Result(column = "user_id",property = "userInfo",one = @One( select = "com.liujiajun.dao.IUserDao.findById")),
             @Result(column = "askbook_name",property = "askbook_name"),
@@ -74,18 +74,7 @@ public interface IAskBookDao {
     @Select("select * from askbook where askbook_name like #{findConditions} " +
             "or user_id in (select id from users where username like #{findConditions}) " +
             "or category in (select category_id from category where category_name like #{findConditions})")
-    @Results({
-            @Result(id = true,column = "askbook_id",property = "askbook_id"),
-            @Result(column = "user_id",property = "userInfo",one = @One( select = "com.liujiajun.dao.IUserDao.findById")),
-            @Result(column = "askbook_name",property = "askbook_name"),
-            @Result(column = "category",property = "categoryInfo",one = @One( select = "com.liujiajun.dao.ICategoryDao.findById")),
-            @Result(column = "author",property = "author"),
-            @Result(column = "appearance",property = "appearance"),
-            @Result(column = "description",property = "description"),
-            @Result(column = "imgUrl",property = "imgUrl"),
-            @Result(column = "time",property = "time"),
-            @Result(column = "status",property = "status")
-    })
+    @ResultMap("resultMap")
     List<AskBook> findAskBook(String findConditions);
 
     //根据类别ID 查找书籍，删除类别时调用
@@ -95,4 +84,12 @@ public interface IAskBookDao {
     //订单添加后，要 修改对应书籍的状态为0
     @Update("update askbook set status=0 where askbook_id=#{askbook_id}")
     void updateStatus(Integer askbook_id);
+
+
+    //根据用户id查找求购书籍 (我的求购书籍 页面)
+    @Select("select * from askbook where user_id=#{user_id} and status = 1 order by askbook_id desc")
+    @ResultMap("resultMap")
+    List<AskBook> findByUserId(Integer user_id);
+
+
 }

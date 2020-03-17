@@ -33,4 +33,7 @@ public interface IAskBookService {
 
     //订单添加后，要 修改对应书籍的状态为0
     void updateStatus(Integer askbook_id);
+
+    //根据用户id查找 求购书籍 （我的求购书籍 页面）
+    List<AskBook> findAskBookByUserId(Integer id, Integer page);
 }

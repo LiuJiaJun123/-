@@ -100,4 +100,5 @@ public interface IBookDao {
     //出售书籍
     @Update("update book set status=0,sell_time=#{sell_time} where book_id=#{book_id}")
     void sell(@Param("book_id")Integer book_id, @Param("sell_time")Date sell_time);
+
 }
