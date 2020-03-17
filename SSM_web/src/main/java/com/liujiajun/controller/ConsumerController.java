@@ -2,9 +2,11 @@ package com.liujiajun.controller;
 
 import com.liujiajun.domain.Book;
 import com.liujiajun.domain.Category;
+import com.liujiajun.domain.UserInfo;
 import com.liujiajun.service.IBookService;
 import com.liujiajun.service.ICategoryService;
 import com.liujiajun.service.IUserService;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,11 +52,15 @@ public class ConsumerController {
 
     //    个人中心
     @RequestMapping("/center.do")
-    public ModelAndView center(){
+    public ModelAndView center() throws Exception {
+
+        //获取当前用户
+        String username = (String) SecurityUtils.getSubject().getPrincipal();
+        UserInfo userInfo = userService.findByName(username);
 
         ModelAndView modelAndView=new ModelAndView();
         // 我发布的商品
-        List<Book> bookInfo = bookService.findByUserId(1069);
+        List<Book> bookInfo = bookService.findByUserId(userInfo.getId());
         modelAndView.addObject("bookInfo",bookInfo);
         modelAndView.setViewName("consumer/个人中心");
         return modelAndView;
