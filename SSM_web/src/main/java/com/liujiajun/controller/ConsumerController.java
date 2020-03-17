@@ -52,9 +52,9 @@ public class ConsumerController {
     }
 
 
-    //    个人中心
-    @RequestMapping("/center.do")
-    public ModelAndView center(@RequestParam(value = "page",required = true,defaultValue = "1") Integer page) throws Exception {
+    //   我出售的商品
+    @RequestMapping("/mySell.do")
+    public ModelAndView mySell(@RequestParam(value = "page",required = true,defaultValue = "1") Integer page) throws Exception {
 
         //获取当前用户
         String username = (String) SecurityUtils.getSubject().getPrincipal();
@@ -65,7 +65,7 @@ public class ConsumerController {
         List<Book> bookList = bookService.findByUserId(userInfo.getId(),page);
         PageInfo bookInfo=new PageInfo(bookList);
         modelAndView.addObject("bookInfo",bookInfo);
-        modelAndView.setViewName("consumer/个人中心");
+        modelAndView.setViewName("consumer/my-sell");
         return modelAndView;
     }
 

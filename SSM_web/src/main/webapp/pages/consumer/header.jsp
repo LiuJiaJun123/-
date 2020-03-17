@@ -51,7 +51,7 @@
 
             <ul class="navbar-nav mr-auto" id="content2" style="padding-left: 200px">
                 <li class="nav-item">
-                    <a href="${pageContext.request.contextPath}/consumer/center.do" class="nav-link">
+                    <a href="${pageContext.request.contextPath}/consumer/mySell.do" class="nav-link">
                         <img src="${pageContext.request.contextPath}/img/consumer/tou.png">
                         <span >
                             <%--获取当前用户名--%>

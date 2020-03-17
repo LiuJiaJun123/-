@@ -21,15 +21,14 @@
 <!-- 导航栏 end/-->
 
 
-<!-- self_info -->
 <div class="grzxbj">
     <div class="selfinfo center">
         <div class="lfnav fl">
             <div class="ddzx">个人中心</div>
             <div class="subddzx">
                 <ul>
-                    <li><a href="" style="color:#ff6700;font-weight:bold;">我发布的商品</a></li>
-                    <li><a href="">我的求购</a></li>
+                    <li><a href="${pageContext.request.contextPath}/consumer/mySell.do" style="color:#ff6700;font-weight:bold;">我发布的商品</a></li>
+                    <li><a href="${pageContext.request.contextPath}/consumer/myAsk.do">我的求购</a></li>
                     <li><a href="">我的收藏</a></li>
                     <li><a href="">消息通知</a></li>
                     <li><a href="">修改密码</a></li>
@@ -65,24 +64,24 @@
             <div class="page_class">
                 <ul class="pagination">
                 <li class="page-item">
-                    <a class="page-link" href="${pageContext.request.contextPath}/consumer/center.do?page=${bookInfo.pageNum-1}">上一页</a>
+                    <a class="page-link" href="${pageContext.request.contextPath}/consumer/mySell.do?page=${bookInfo.pageNum-1}">上一页</a>
                 </li>
 
                 <c:forEach begin="1" end="${bookInfo.pages}" var="i">
                     <c:if test="${i==bookInfo.pageNum}">
                         <li class="page-item active">
-                            <a class="page-link" href="${pageContext.request.contextPath}/consumer/center.do?page=${i}">${i}</a>
+                            <a class="page-link" href="${pageContext.request.contextPath}/consumer/mySell.do?page=${i}">${i}</a>
                         </li>
                     </c:if>
                     <c:if test="${i!=bookInfo.pageNum}">
                         <li class="page-item">
-                            <a class="page-link" href="${pageContext.request.contextPath}/consumer/center.do?page=${i}">${i}</a>
+                            <a class="page-link" href="${pageContext.request.contextPath}/consumer/mySell.do?page=${i}">${i}</a>
                         </li>
                     </c:if>
                 </c:forEach>
 
                 <li class="page-item">
-                    <a class="page-link" href="${pageContext.request.contextPath}/consumer/center.do?page=${bookInfo.pageNum+1}">下一页</a>
+                    <a class="page-link" href="${pageContext.request.contextPath}/consumer/mySell.do?page=${bookInfo.pageNum+1}">下一页</a>
                 </li>
             </ul>
             </div>
@@ -96,9 +95,6 @@
 
     </div>
 
-
-</div>
-<!-- self_info -->
 
 <footer class="mt20 center" style="margin-top: 50px;">
     <div class="mt20">
