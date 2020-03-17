@@ -263,6 +263,21 @@ footer{width: 100%;height: 170px;line-height: 30px;text-align: center;font-size:
 
 
 
+/*分页*/
+.page_class{
+	position: absolute;
+	bottom: 210px;
+	right: 500px;
+	/*margin: 30px 300px;*/
+}
+
+
+.page_total_class{
+	position: absolute;
+	bottom: 230px;
+	right: 930px;
+	/*margin: 30px 300px;*/
+}
 
 
 

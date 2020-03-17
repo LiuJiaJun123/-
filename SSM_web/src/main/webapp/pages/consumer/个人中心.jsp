@@ -39,7 +39,7 @@
         <div class="rtcont fr">
 
             <div class="ddzxbt">我发布的商品</div>
-                <c:forEach items="${bookInfo}" var="book">
+                <c:forEach items="${bookInfo.list}" var="book">
                     <div class="ddxq">
                         <div class="ddspt fl"><img style="width: 80px;height: 80px;" src="${book.imgUrl}" alt=""></div>
                         <div class="ddbh fl">《 ${book.book_name} 》</div>
@@ -54,11 +54,49 @@
                         </div>
                         <div class="clear"></div>
                 </c:forEach>
+
+
+            <div class="page_total_class">
+                总共${bookInfo.pages} 页，共${bookInfo.total} 条数据。
+            </div>
+
+
+            <%--分页 start--%>
+            <div class="page_class">
+                <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" href="${pageContext.request.contextPath}/consumer/center.do?page=${bookInfo.pageNum-1}">上一页</a>
+                </li>
+
+                <c:forEach begin="1" end="${bookInfo.pages}" var="i">
+                    <c:if test="${i==bookInfo.pageNum}">
+                        <li class="page-item active">
+                            <a class="page-link" href="${pageContext.request.contextPath}/consumer/center.do?page=${i}">${i}</a>
+                        </li>
+                    </c:if>
+                    <c:if test="${i!=bookInfo.pageNum}">
+                        <li class="page-item">
+                            <a class="page-link" href="${pageContext.request.contextPath}/consumer/center.do?page=${i}">${i}</a>
+                        </li>
+                    </c:if>
+                </c:forEach>
+
+                <li class="page-item">
+                    <a class="page-link" href="${pageContext.request.contextPath}/consumer/center.do?page=${bookInfo.pageNum+1}">下一页</a>
+                </li>
+            </ul>
+            </div>
+            <%--分页 end--%>
+
             </div>
 
         </div>
+
         <div class="clear"></div>
+
     </div>
+
+
 </div>
 <!-- self_info -->
 

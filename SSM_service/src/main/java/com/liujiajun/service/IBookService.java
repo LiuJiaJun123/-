@@ -47,6 +47,9 @@ public interface IBookService {
     //根据用户id查找书籍
     List<Book> findByUserId(int user_id);
 
+    //根据用户id查找书籍
+    List<Book> findByUserId(int user_id,int page);
+
     //书籍出售
     void sell(Integer book_id);
 }
