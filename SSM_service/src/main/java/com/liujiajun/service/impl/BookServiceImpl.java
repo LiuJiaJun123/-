@@ -107,6 +107,7 @@ public class BookServiceImpl implements IBookService {
         return bookDao.findByUserId(user_id);
     }
 
+    //根据用户id查找书籍 (我发布的商品 页面)
     @Override
     public List<Book> findByUserId(int user_id, int page) {
         PageHelper.startPage(page,3);
