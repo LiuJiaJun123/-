@@ -1,6 +1,7 @@
 package com.liujiajun.service;
 
 import com.liujiajun.domain.Book;
+import com.liujiajun.domain.FindBookCondition;
 import com.liujiajun.domain.UserInfo;
 
 import java.util.List;
@@ -52,5 +53,9 @@ public interface IBookService {
 
     //书籍出售
     void sell(Integer book_id);
+
+    //根据选中的条件查找书籍
+    List<Book> findByConditions(FindBookCondition findBookCondition);
+
 
 }

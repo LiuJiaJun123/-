@@ -3,6 +3,7 @@ package com.liujiajun.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.liujiajun.dao.IBookDao;
 import com.liujiajun.domain.Book;
+import com.liujiajun.domain.FindBookCondition;
 import com.liujiajun.service.IBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -120,6 +121,67 @@ public class BookServiceImpl implements IBookService {
         //出售时间
         Date sell_time=new Date();
         bookDao.sell(book_id,sell_time);
+    }
+
+    //根据选中的条件查找书籍
+    @Override
+    public List<Book> findByConditions(FindBookCondition findBookCondition) {
+
+        if(findBookCondition.getSelectCategory().length()==0){
+            findBookCondition.setSelectCategory(null);
+        }
+        if(findBookCondition.getSelectAppearance().length()==0){
+            findBookCondition.setSelectAppearance(null);
+        }
+        if(findBookCondition.getSelectPrice().length()==0){
+            findBookCondition.setSelectPrice(null);
+        }
+
+
+//        String appearanceStr = null;
+//        String selectAppearance = findBookCondition.getSelectAppearance();
+//        if( selectAppearance !=null){
+//            if(selectAppearance.equals("9成新")){
+//                appearanceStr =  "('9')" ;
+//            }
+//            if(selectAppearance.equals("8成新")){
+//                appearanceStr =  "('8成新')" ;
+//            }
+//            if(selectAppearance.equals("6~7成新")){
+//                appearanceStr =  "('6成新','7成新')" ;
+//            }
+//            if(selectAppearance.equals("4~5成新")){
+//                appearanceStr =  "('4成新','5成新')" ;
+//            }
+//            if(selectAppearance.equals("1~3成新")){
+//                appearanceStr =  "('1成新','2成新','3成新')" ;
+//            }
+//        }
+
+
+        int minPrice = 0;
+        int maxPrice = 0;
+        String selectPrice = findBookCondition.getSelectPrice();
+        if(selectPrice!=null){
+            if(selectPrice.equals("10元以内")){
+                minPrice = 0;
+                maxPrice=10;
+            }
+            if(selectPrice.equals("10~20元")){
+                minPrice = 10;
+                maxPrice=20;
+            }
+            if(selectPrice.equals("20~40元")){
+                minPrice = 20;
+                maxPrice= 40;
+            }
+            if(selectPrice.equals("40元以上")){
+                minPrice = 40;
+                maxPrice = 99999;
+            }
+        }
+
+        return bookDao.findByConditions(findBookCondition,minPrice,maxPrice);
     }
 
 

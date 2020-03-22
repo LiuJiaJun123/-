@@ -1,40 +1,40 @@
 package com.liujiajun.domain;
 
 public class FindBookCondition {
-    private String selectA;
-    private String selectB;
-    private String selectC;
+    private String selectCategory;
+    private String selectAppearance;
+    private String selectPrice;
+
+    public String getSelectCategory() {
+        return selectCategory;
+    }
+
+    public void setSelectCategory(String selectCategory) {
+        this.selectCategory = selectCategory;
+    }
+
+    public String getSelectAppearance() {
+        return selectAppearance;
+    }
+
+    public void setSelectAppearance(String selectAppearance) {
+        this.selectAppearance = selectAppearance;
+    }
+
+    public String getSelectPrice() {
+        return selectPrice;
+    }
+
+    public void setSelectPrice(String selectPrice) {
+        this.selectPrice = selectPrice;
+    }
 
     @Override
     public String toString() {
         return "FindBookCondition{" +
-                "selectA='" + selectA + '\'' +
-                ", selectB='" + selectB + '\'' +
-                ", selectC='" + selectC + '\'' +
+                "selectCategory='" + selectCategory + '\'' +
+                ", selectAppearance='" + selectAppearance + '\'' +
+                ", selectPrice='" + selectPrice + '\'' +
                 '}';
-    }
-
-    public String getSelectA() {
-        return selectA;
-    }
-
-    public void setSelectA(String selectA) {
-        this.selectA = selectA;
-    }
-
-    public String getSelectB() {
-        return selectB;
-    }
-
-    public void setSelectB(String selectB) {
-        this.selectB = selectB;
-    }
-
-    public String getSelectC() {
-        return selectC;
-    }
-
-    public void setSelectC(String selectC) {
-        this.selectC = selectC;
     }
 }

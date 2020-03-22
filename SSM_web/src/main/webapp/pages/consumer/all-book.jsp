@@ -18,7 +18,7 @@
 
 	<ul class="select">
 		<li class="select-list">
-			<dl id="select1">
+			<dl id="selectCategory">
 				<dt>种类：</dt>
 				<dd class="select-all selected"><a href="#">全部</a></dd>
 				<dd><a href="#">成功励志</a></dd>
@@ -31,24 +31,28 @@
 			</dl>
 		</li>
 		<li class="select-list">
-			<dl id="select2">
+			<dl id="selectAppearance">
 				<dt>成色：</dt>
 				<dd class="select-all selected"><a href="#">全部</a></dd>
 				<dd><a href="#">9成新</a></dd>
 				<dd><a href="#">8成新</a></dd>
-				<dd><a href="#">6~7成新</a></dd>
-				<dd><a href="#">4~5成新</a></dd>
-				<dd><a href="#">1~3成新</a></dd>
+				<dd><a href="#">7成新</a></dd>
+				<dd><a href="#">6成新</a></dd>
+				<dd><a href="#">5成新</a></dd>
+				<dd><a href="#">4成新</a></dd>
+				<dd><a href="#">3成新</a></dd>
+				<dd><a href="#">2成新</a></dd>
+				<dd><a href="#">1成新</a></dd>
 			</dl>
 		</li>
 		<li class="select-list">
-			<dl id="select3">
+			<dl id="selectPrice">
 				<dt>价格：</dt>
 				<dd class="select-all selected"><a href="#">全部</a></dd>
 				<dd><a href="#">10元以内</a></dd>
-				<dd><a href="#">10~20</a></dd>
-				<dd><a href="#">20~40</a></dd>
-				<dd><a href="#">40以上</a></dd>
+				<dd><a href="#">10~20元</a></dd>
+				<dd><a href="#">20~40元</a></dd>
+				<dd><a href="#">40元以上</a></dd>
 			</dl>
 		</li>
 		<li class="select-result">

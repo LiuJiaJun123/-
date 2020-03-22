@@ -1,6 +1,7 @@
 package com.liujiajun.dao;
 
 import com.liujiajun.domain.Book;
+import com.liujiajun.domain.FindBookCondition;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
@@ -100,5 +101,19 @@ public interface IBookDao {
     //出售书籍
     @Update("update book set status=0,sell_time=#{sell_time} where book_id=#{book_id}")
     void sell(@Param("book_id")Integer book_id, @Param("sell_time")Date sell_time);
+
+
+    //根据选中的条件查找书籍
+    @Select("<script> SELECT * from book" +
+            "<where>"+
+            "<if test='findBookCondition.selectCategory != null'>and category in (select category_id from category where category_name = #{findBookConditionselectCategory}) </if> "+
+            "<if test='findBookCondition.selectAppearance != null'>and appearance = #{findBookCondition.selectAppearance} </if> "+
+            "<if test='findBookCondition.selectPrice != null'>and price &gt;= #{minPrice} and price &lt;= #{maxPrice} </if> "+
+            "</where>"+
+            "</script>")
+    List<Book> findByConditions(@Param("findBookCondition") FindBookCondition findBookCondition,
+                                @Param("minPrice")Integer minPrice,@Param("maxPrice")Integer maxPrice);
+
+
 
 }

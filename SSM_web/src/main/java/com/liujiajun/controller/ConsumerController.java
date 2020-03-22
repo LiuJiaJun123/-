@@ -112,34 +112,35 @@ public class ConsumerController {
 
         ModelAndView modelAndView=new ModelAndView();
 
-        System.out.println("111111111");
+//        System.out.println("111111111");
+//
+//        String selectA = findBookCondition.getSelectA();
+//        String selectB = findBookCondition.getSelectB();
+//        String selectC = findBookCondition.getSelectC();
+//
+//        if(selectA==null||selectA.length()==0){
+//            System.out.println("A全部");
+//        }
+//        if (selectA.length()>0){
+//            System.out.println(selectA);
+//        }
+//
+//        if(selectB==null||selectB.length()==0){
+//            System.out.println("B全部");
+//        }
+//        if (selectB.length()>0){
+//            System.out.println(selectB);
+//        }
+//
+//        if(selectC==null||selectC.length()==0){
+//            System.out.println("C全部");
+//        }
+//        if (selectC.length()>0){
+//            System.out.println(selectC);
+//        }
 
-        String selectA = findBookCondition.getSelectA();
-        String selectB = findBookCondition.getSelectB();
-        String selectC = findBookCondition.getSelectC();
-
-        if(selectA==null||selectA.length()==0){
-            System.out.println("A全部");
-        }
-        if (selectA.length()>0){
-            System.out.println(selectA);
-        }
-
-        if(selectB==null||selectB.length()==0){
-            System.out.println("B全部");
-        }
-        if (selectB.length()>0){
-            System.out.println(selectB);
-        }
-
-        if(selectC==null||selectC.length()==0){
-            System.out.println("C全部");
-        }
-        if (selectC.length()>0){
-            System.out.println(selectC);
-        }
-
-        List<Book> bookList = bookService.findAll();
+        //根据选中的条件查找书籍
+        List<Book> bookList = bookService.findByConditions(findBookCondition);
 
         modelAndView.addObject("bookList",bookList);
         modelAndView.setViewName("consumer/all-book-list");

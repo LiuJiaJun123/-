@@ -2,7 +2,7 @@
 a,img{border:0;}
 body{font:10px/180% Arial, Helvetica, sans-serif, "新宋体";}
 /* select */
-.select{padding:5px 10px;border:#ddd 1px solid;border-radius:4px;width:60%;margin:5% auto;font-size:12px}
+.select{padding:5px 10px;border:#ddd 1px solid;border-radius:4px;width:60%;height:10%;margin:1% auto;font-size:12px}
 .select li{list-style:none;padding:10px 0 5px 100px}
 .select .select-list{border-bottom:#eee 1px dashed; }
 .select dl{zoom:1;position:relative;line-height:24px;}
@@ -16,6 +16,6 @@ body{font:10px/180% Arial, Helvetica, sans-serif, "新宋体";}
 .select-no{color:#999}
 .select .select-result a{padding-right:20px;background:#f60 url("/img/consumer/close.gif") right 9px no-repeat}
 .select .select-result a:hover{background-position:right -15px}
-#select1,#select2,#select3{
+#selectCategory,#selectAppearance,#selectPrice{
     margin: 0;
 }
