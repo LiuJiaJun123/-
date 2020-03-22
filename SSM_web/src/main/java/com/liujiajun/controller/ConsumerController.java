@@ -1,10 +1,7 @@
 package com.liujiajun.controller;
 
 import com.github.pagehelper.PageInfo;
-import com.liujiajun.domain.AskBook;
-import com.liujiajun.domain.Book;
-import com.liujiajun.domain.Category;
-import com.liujiajun.domain.UserInfo;
+import com.liujiajun.domain.*;
 import com.liujiajun.service.IAskBookService;
 import com.liujiajun.service.IBookService;
 import com.liujiajun.service.ICategoryService;
@@ -12,8 +9,10 @@ import com.liujiajun.service.IUserService;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -87,6 +86,64 @@ public class ConsumerController {
         PageInfo askbookInfo=new PageInfo(askBookList);
         modelAndView.addObject("askbookInfo",askbookInfo);
         modelAndView.setViewName("consumer/my-ask");
+        return modelAndView;
+    }
+
+
+    //    全部图书
+    @RequestMapping("/allbook.do")
+    public ModelAndView allbook() throws Exception {
+
+        ModelAndView modelAndView=new ModelAndView();
+//        //查找所有类别
+//        List<Category> categoryList = categoryService.findAll();
+//
+//        modelAndView.addObject("categoryList",categoryList);
+
+        modelAndView.setViewName("consumer/all-book");
+        return modelAndView;
+    }
+
+
+    //    全部图书
+    @RequestMapping("/searchbook.do")
+    @ResponseBody
+    public ModelAndView searchbook(@RequestBody FindBookCondition findBookCondition) throws Exception {
+
+        ModelAndView modelAndView=new ModelAndView();
+
+        System.out.println("111111111");
+
+        String selectA = findBookCondition.getSelectA();
+        String selectB = findBookCondition.getSelectB();
+        String selectC = findBookCondition.getSelectC();
+
+        if(selectA==null||selectA.length()==0){
+            System.out.println("A全部");
+        }
+        if (selectA.length()>0){
+            System.out.println(selectA);
+        }
+
+        if(selectB==null||selectB.length()==0){
+            System.out.println("B全部");
+        }
+        if (selectB.length()>0){
+            System.out.println(selectB);
+        }
+
+        if(selectC==null||selectC.length()==0){
+            System.out.println("C全部");
+        }
+        if (selectC.length()>0){
+            System.out.println(selectC);
+        }
+
+        List<Book> bookList = bookService.findAll();
+
+        modelAndView.addObject("bookList",bookList);
+        modelAndView.setViewName("consumer/all-book-list");
+//        modelAndView.setViewName("consumer/add-book");
         return modelAndView;
     }
 

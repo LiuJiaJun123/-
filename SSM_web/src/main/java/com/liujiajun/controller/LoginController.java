@@ -49,10 +49,10 @@ public class LoginController {
 
         //当调用subject.hasRole()方法时，就会执行LoginRealm中的doGetAuthorizationInfo方法
         if (subject.hasRole("admin")) {
-            System.out.println("管理员登录222222");
+//            System.out.println("管理员登录222222");
             return "main";
         } else if (subject.hasRole("user")) {
-            System.out.println("普通用户登录2222222222");
+//            System.out.println("普通用户登录2222222222");
             return "redirect:index.do";
         }
 

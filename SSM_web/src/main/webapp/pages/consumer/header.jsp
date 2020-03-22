@@ -28,7 +28,7 @@
                     <a class="nav-link" href="${pageContext.request.contextPath}/index.do" >首页</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">全部商品</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/consumer/allbook.do">全部商品</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/consumer/addbook.do">发布商品</a>

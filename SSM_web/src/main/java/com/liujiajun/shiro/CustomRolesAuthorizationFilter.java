@@ -21,17 +21,6 @@ public class CustomRolesAuthorizationFilter extends AuthorizationFilter {
             return true;
         }
         for (int i = 0; i < rolesArray.length; i++) {
-            System.out.println("$$$$$$$$$$$$$");
-            System.out.println(subject.hasRole("admin"));
-            boolean admin = subject.hasRole("admin");
-            boolean user = subject.hasRole("user");
-            if(admin){
-                System.out.println("admin111111111111");
-            }
-            if(user){
-                System.out.println("user1111111111111");
-            }
-
 
             if (subject.hasRole(rolesArray[i])) { // 若当前用户是rolesArray中的任何一个，则有权限访问
                 return true;
