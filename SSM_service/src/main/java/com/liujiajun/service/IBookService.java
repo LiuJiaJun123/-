@@ -55,7 +55,7 @@ public interface IBookService {
     void sell(Integer book_id);
 
     //根据选中的条件查找书籍
-    List<Book> findByConditions(FindBookCondition findBookCondition);
+    List<Book> findByConditions(FindBookCondition findBookCondition,Integer page,Integer pageSize);
 
 
 }

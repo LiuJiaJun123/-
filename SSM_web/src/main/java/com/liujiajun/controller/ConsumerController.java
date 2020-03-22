@@ -1,5 +1,6 @@
 package com.liujiajun.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
 import com.liujiajun.domain.*;
 import com.liujiajun.service.IAskBookService;
@@ -108,43 +109,21 @@ public class ConsumerController {
     //    全部图书
     @RequestMapping("/searchbook.do")
     @ResponseBody
-    public ModelAndView searchbook(@RequestBody FindBookCondition findBookCondition) throws Exception {
+    public ModelAndView searchbook(@RequestBody FindBookCondition findBookCondition,
+                                   @RequestParam(value = "page",required = true,defaultValue = "1") Integer page,
+                                   @RequestParam(value = "pageSize",required = true,defaultValue = "4")Integer pageSize) throws Exception {
 
         ModelAndView modelAndView=new ModelAndView();
 
-//        System.out.println("111111111");
-//
-//        String selectA = findBookCondition.getSelectA();
-//        String selectB = findBookCondition.getSelectB();
-//        String selectC = findBookCondition.getSelectC();
-//
-//        if(selectA==null||selectA.length()==0){
-//            System.out.println("A全部");
-//        }
-//        if (selectA.length()>0){
-//            System.out.println(selectA);
-//        }
-//
-//        if(selectB==null||selectB.length()==0){
-//            System.out.println("B全部");
-//        }
-//        if (selectB.length()>0){
-//            System.out.println(selectB);
-//        }
-//
-//        if(selectC==null||selectC.length()==0){
-//            System.out.println("C全部");
-//        }
-//        if (selectC.length()>0){
-//            System.out.println(selectC);
-//        }
-
         //根据选中的条件查找书籍
-        List<Book> bookList = bookService.findByConditions(findBookCondition);
+        List<Book> bookList = bookService.findByConditions(findBookCondition,page,pageSize);
+        PageInfo bookInfo=new PageInfo(bookList);
 
-        modelAndView.addObject("bookList",bookList);
+
+        modelAndView.addObject("findBookCondition",findBookCondition);
+
+        modelAndView.addObject("bookInfo",bookInfo);
         modelAndView.setViewName("consumer/all-book-list");
-//        modelAndView.setViewName("consumer/add-book");
         return modelAndView;
     }
 

@@ -21,7 +21,7 @@
 <div class="danpin center">
 
 	<div class="main center">
-		<c:forEach items="${bookList}" var="book">
+		<c:forEach items="${bookInfo.list}" var="book">
 			<div class="mingxing " style="border:2px solid #fff;width:230px;cursor:pointer;" onmouseout="this.style.border='2px solid #fff'" onmousemove="this.style.border='2px solid red'">
 				<div class="sub_mingxing"><a href=""><img src="../${book.imgUrl}" alt=""></a></div>
 				<div class="pinpai"><a href="">${book.book_name}</a></div>
@@ -36,6 +36,114 @@
 		</c:forEach>
 	</div>
 
+	<hr style="width: 65%;margin: 0 auto; ">
+
+	<div class="page_total_class1">
+		总共${bookInfo.pages} 页，共${bookInfo.total} 条数据。
+	</div>
+
+	<%--分页 start--%>
+	<div class="page_class1">
+		<ul class="pagination">
+			<li class="page-item">
+				<a class="page-link" onclick="lastPage()">上一页</a>
+			</li>
+
+			<c:forEach begin="1" end="${bookInfo.pages}" var="i">
+				<c:if test="${i==bookInfo.pageNum}">
+					<li class="page-item active">
+						<a class="page-link" onclick="changePage(${i})" >${i}</a>
+					</li>
+				</c:if>
+				<c:if test="${i!=bookInfo.pageNum}">
+					<li class="page-item">
+						<a class="page-link" onclick="changePage(${i})">${i}</a>
+					</li>
+				</c:if>
+			</c:forEach>
+
+
+
+
+			<li class="page-item">
+				<a class="page-link" onclick="nextPage()">下一页</a>
+			</li>
+
+		</ul>
+	</div>
+	<%--分页 end--%>
+
+
+	<script >
+        function lastPage(){
+            <%--alert(${findBookCondition.selectCategory})--%>
+            <%--alert("${findBookCondition.selectCategory }");--%>
+            var json = {
+                selectCategory: "${findBookCondition.selectCategory}",
+                selectAppearance: "${findBookCondition.selectAppearance}",
+                selectPrice: "${findBookCondition.selectPrice}"
+            }
+
+            $.ajax({
+                url:"/consumer/searchbook.do?page="+${bookInfo.pageNum-1},
+                contentType:"application/json;charset=UTF-8",
+                data:JSON.stringify(json),
+                dataType:"html",
+                type:"post",
+                success:function (data) {
+                    // alert(data)
+                    $('#mydiv').html(data);
+                }
+            });
+        }
+
+
+        function changePage(n){
+            <%--alert(${findBookCondition.selectCategory})--%>
+            <%--alert("${findBookCondition.selectCategory }");--%>
+            var json = {
+                selectCategory: "${findBookCondition.selectCategory}",
+                selectAppearance: "${findBookCondition.selectAppearance}",
+                selectPrice: "${findBookCondition.selectPrice}"
+            }
+
+            $.ajax({
+                url:"/consumer/searchbook.do?page="+n,
+                contentType:"application/json;charset=UTF-8",
+                data:JSON.stringify(json),
+                dataType:"html",
+                type:"post",
+                success:function (data) {
+                    // alert(data)
+                    $('#mydiv').html(data);
+                }
+            });
+        }
+
+
+        function nextPage(){
+            <%--alert(${findBookCondition.selectCategory})--%>
+            <%--alert("${findBookCondition.selectCategory }");--%>
+            var json = {
+                selectCategory: "${findBookCondition.selectCategory}",
+                selectAppearance: "${findBookCondition.selectAppearance}",
+                selectPrice: "${findBookCondition.selectPrice}"
+            }
+
+            $.ajax({
+                url:"/consumer/searchbook.do?page="+${bookInfo.pageNum+1},
+                contentType:"application/json;charset=UTF-8",
+                data:JSON.stringify(json),
+                dataType:"html",
+                type:"post",
+                success:function (data) {
+                    // alert(data)
+                    $('#mydiv').html(data);
+                }
+            });
+        }
+
+	</script>
 
 </div>
 

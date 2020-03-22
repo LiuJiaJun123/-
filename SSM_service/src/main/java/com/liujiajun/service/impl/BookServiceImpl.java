@@ -125,7 +125,7 @@ public class BookServiceImpl implements IBookService {
 
     //根据选中的条件查找书籍
     @Override
-    public List<Book> findByConditions(FindBookCondition findBookCondition) {
+    public List<Book> findByConditions(FindBookCondition findBookCondition,Integer page,Integer pageSize) {
 
         if(findBookCondition.getSelectCategory().length()==0){
             findBookCondition.setSelectCategory(null);
@@ -181,6 +181,7 @@ public class BookServiceImpl implements IBookService {
             }
         }
 
+        PageHelper.startPage(page,pageSize);
         return bookDao.findByConditions(findBookCondition,minPrice,maxPrice);
     }
 

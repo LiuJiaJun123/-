@@ -24,7 +24,6 @@ $(document).ready(function(){
             selectAppearance:selectB,
             selectPrice:selectC
         };
-        var flag =false;
         $.ajax({
             url:"/consumer/searchbook.do",
             contentType:"application/json;charset=UTF-8",
