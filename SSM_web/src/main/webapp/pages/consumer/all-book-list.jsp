@@ -7,11 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>jQuery淘宝商品列表多条件查询222</title>
 
-<link rel="stylesheet" type="text/css" href="/css/consumer/style.css">
+<link rel="stylesheet" type="text/css" href="/css/consumer/all-book-list.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
-<link rel="stylesheet" type="text/css" href="/css/consumer/all-book.css">
-<script type="text/javascript" src="/js/all-book/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="/js/all-book/script.js"></script>
+<%--<link rel="stylesheet" type="text/css" href="/css/consumer/all-book.css">--%>
+<%--<script type="text/javascript" src="/js/all-book/jquery-1.7.2.min.js"></script>--%>
+<%--<script type="text/javascript" src="/js/all-book/script.js"></script>--%>
 
 </head>
 <body>
@@ -20,11 +20,9 @@
 
 <div class="danpin center">
 
-	<div class="biaoti center">新书上架</div>
 	<div class="main center">
-
 		<c:forEach items="${bookList}" var="book">
-			<div class="mingxing fl">
+			<div class="mingxing " style="border:2px solid #fff;width:230px;cursor:pointer;" onmouseout="this.style.border='2px solid #fff'" onmousemove="this.style.border='2px solid red'">
 				<div class="sub_mingxing"><a href=""><img src="../${book.imgUrl}" alt=""></a></div>
 				<div class="pinpai"><a href="">${book.book_name}</a></div>
 				<c:if test="${empty book.description}">
@@ -35,9 +33,12 @@
 				</c:if>
 				<div class="jiage">${book.price}元</div>
 			</div>
+			<%--<div class="clear"></div>--%>
 		</c:forEach>
-		<div class="clear"></div>
+		<%--<div class="clear"></div>--%>
 	</div>
+
+
 </div>
 
 
