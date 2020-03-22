@@ -115,17 +115,81 @@ $(document).ready(function(){
     $("#selectA").live("click", function () {
         $(this).remove();
         $("#selectCategory .select-all").addClass("selected").siblings().removeClass("selected");
-        
+
+
+        //点击 x 按钮，去掉筛选时，重新发送一个ajax请求
+        var selectA = $("#selectA a").text();
+        var selectB = $("#selectB a").text();
+        var selectC = $("#selectC a").text();
+        var allData = {
+            selectCategory:selectA,
+            selectAppearance:selectB,
+            selectPrice:selectC
+        };
+        var flag =false;
+        $.ajax({
+            url:"/consumer/searchbook.do",
+            contentType:"application/json;charset=UTF-8",
+            data:JSON.stringify(allData),
+            dataType:"html",
+            type:"post",
+            success:function (data) {
+                // alert(data)
+                $('#mydiv').html(data);
+            }
+        });
     });
 
     $("#selectB").live("click", function () {
         $(this).remove();
         $("#selectAppearance .select-all").addClass("selected").siblings().removeClass("selected");
+
+        var selectA = $("#selectA a").text();
+        var selectB = $("#selectB a").text();
+        var selectC = $("#selectC a").text();
+        var allData = {
+            selectCategory:selectA,
+            selectAppearance:selectB,
+            selectPrice:selectC
+        };
+        var flag =false;
+        $.ajax({
+            url:"/consumer/searchbook.do",
+            contentType:"application/json;charset=UTF-8",
+            data:JSON.stringify(allData),
+            dataType:"html",
+            type:"post",
+            success:function (data) {
+                // alert(data)
+                $('#mydiv').html(data);
+            }
+        });
     });
 
     $("#selectC").live("click", function () {
         $(this).remove();
         $("#selectPrice .select-all").addClass("selected").siblings().removeClass("selected");
+
+        var selectA = $("#selectA a").text();
+        var selectB = $("#selectB a").text();
+        var selectC = $("#selectC a").text();
+        var allData = {
+            selectCategory:selectA,
+            selectAppearance:selectB,
+            selectPrice:selectC
+        };
+        var flag =false;
+        $.ajax({
+            url:"/consumer/searchbook.do",
+            contentType:"application/json;charset=UTF-8",
+            data:JSON.stringify(allData),
+            dataType:"html",
+            type:"post",
+            success:function (data) {
+                // alert(data)
+                $('#mydiv').html(data);
+            }
+        });
     });
 
     $(".select dd").live("click", function () {
