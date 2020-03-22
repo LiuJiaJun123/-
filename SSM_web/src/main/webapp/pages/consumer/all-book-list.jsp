@@ -33,9 +33,7 @@
 				</c:if>
 				<div class="jiage">${book.price}元</div>
 			</div>
-			<%--<div class="clear"></div>--%>
 		</c:forEach>
-		<%--<div class="clear"></div>--%>
 	</div>
 
 
