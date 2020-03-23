@@ -111,7 +111,7 @@ public class ConsumerController {
     @ResponseBody
     public ModelAndView searchbook(@RequestBody FindBookCondition findBookCondition,
                                    @RequestParam(value = "page",required = true,defaultValue = "1") Integer page,
-                                   @RequestParam(value = "pageSize",required = true,defaultValue = "4")Integer pageSize) throws Exception {
+                                   @RequestParam(value = "pageSize",required = true,defaultValue = "8")Integer pageSize) throws Exception {
 
         ModelAndView modelAndView=new ModelAndView();
 

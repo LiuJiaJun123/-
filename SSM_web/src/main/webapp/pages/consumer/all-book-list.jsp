@@ -49,18 +49,60 @@
 				<a class="page-link" onclick="lastPage()">上一页</a>
 			</li>
 
-			<c:forEach begin="1" end="${bookInfo.pages}" var="i">
-				<c:if test="${i==bookInfo.pageNum}">
-					<li class="page-item active">
-						<a class="page-link" onclick="changePage(${i})" >${i}</a>
-					</li>
-				</c:if>
-				<c:if test="${i!=bookInfo.pageNum}">
-					<li class="page-item">
-						<a class="page-link" onclick="changePage(${i})">${i}</a>
-					</li>
-				</c:if>
-			</c:forEach>
+
+
+
+            <!-- 分页 -->
+            <!--总页数没有10页-->
+            <c:choose>
+                <c:when test="${bookInfo.pages <= 10}">
+                    <c:set var="begin" value="1"/>
+                    <c:set var="end" value="${bookInfo.pages}"/>
+                </c:when>
+                <%--页数超过了10页--%>
+                <c:otherwise>
+                    <c:set var="begin" value="${bookInfo.pageNum - 5}"/>
+                    <c:set var="end" value="${bookInfo.pageNum + 4}"/>
+                    <%--如果begin等于0,设置起始页为1,最大页为10--%>
+                    <c:if test="${begin  <= 0}">
+                        <c:set var="begin" value="1"/>
+                        <c:set var="end" value="10"/>
+                    </c:if>
+                    <%--如果end超过最大页,设置起始页=最大页-9--%>
+                    <c:if test="${end > bookInfo.pages}">
+                        <c:set var="begin" value="${bookInfo.pages - 9}"/>
+                        <c:set var="end" value="${bookInfo.pages}"/>
+                    </c:if>
+                </c:otherwise>
+            </c:choose>
+            <!-- 分页 /-->
+
+            <%--遍历--%>
+            <c:forEach begin="${begin}" end="${end}" var="i">
+                <c:if test="${i==bookInfo.pageNum}">
+                    <li class="page-item active">
+                        <a class="page-link" onclick="changePage(${i})" >${i}</a>
+                    </li>
+                </c:if>
+                <c:if test="${i!=bookInfo.pageNum}">
+                    <li class="page-item">
+                        <a class="page-link" onclick="changePage(${i})">${i}</a>
+                    </li>
+                </c:if>
+            </c:forEach>
+
+            <%--<c:forEach begin="1" end="${bookInfo.pages}" var="i">--%>
+            <%--<c:if test="${i==bookInfo.pageNum}">--%>
+            <%--<li class="page-item active">--%>
+            <%--<a class="page-link" onclick="changePage(${i})" >${i}</a>--%>
+            <%--</li>--%>
+            <%--</c:if>--%>
+            <%--<c:if test="${i!=bookInfo.pageNum}">--%>
+            <%--<li class="page-item">--%>
+            <%--<a class="page-link" onclick="changePage(${i})">${i}</a>--%>
+            <%--</li>--%>
+            <%--</c:if>--%>
+            <%--</c:forEach>--%>
 
 
 
@@ -76,8 +118,6 @@
 
 	<script >
         function lastPage(){
-            <%--alert(${findBookCondition.selectCategory})--%>
-            <%--alert("${findBookCondition.selectCategory }");--%>
             var json = {
                 selectCategory: "${findBookCondition.selectCategory}",
                 selectAppearance: "${findBookCondition.selectAppearance}",
@@ -91,16 +131,14 @@
                 dataType:"html",
                 type:"post",
                 success:function (data) {
-                    // alert(data)
                     $('#mydiv').html(data);
+                    scrollTo(1,200);
                 }
             });
         }
 
 
         function changePage(n){
-            <%--alert(${findBookCondition.selectCategory})--%>
-            <%--alert("${findBookCondition.selectCategory }");--%>
             var json = {
                 selectCategory: "${findBookCondition.selectCategory}",
                 selectAppearance: "${findBookCondition.selectAppearance}",
@@ -114,16 +152,15 @@
                 dataType:"html",
                 type:"post",
                 success:function (data) {
-                    // alert(data)
                     $('#mydiv').html(data);
+                    scrollTo(1,200);
+
                 }
             });
         }
 
 
         function nextPage(){
-            <%--alert(${findBookCondition.selectCategory})--%>
-            <%--alert("${findBookCondition.selectCategory }");--%>
             var json = {
                 selectCategory: "${findBookCondition.selectCategory}",
                 selectAppearance: "${findBookCondition.selectAppearance}",
@@ -137,8 +174,8 @@
                 dataType:"html",
                 type:"post",
                 success:function (data) {
-                    // alert(data)
                     $('#mydiv').html(data);
+                    scrollTo(1,200);
                 }
             });
         }
