@@ -33,14 +33,15 @@ public class ConsumerController {
 
     //    商品详情
     @RequestMapping("/xq.do")
-    public ModelAndView xq(){
+    public ModelAndView xq(Book book){
 
         ModelAndView modelAndView=new ModelAndView();
-        Book bookInfo = bookService.findByBookId(10001);
+        Book bookInfo = bookService.findByBookId(book.getBook_id());
         modelAndView.addObject("bookInfo",bookInfo);
         modelAndView.setViewName("consumer/xiangqing");
         return modelAndView;
     }
+
 
     //    添加图书
     @RequestMapping("/addbook.do")

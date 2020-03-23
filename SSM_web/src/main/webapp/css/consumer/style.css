@@ -157,7 +157,7 @@ header .top .right .gouwuche:hover{color:#000;background: #666;}
 /*jieshao*/
 .jieshao{height: 560px; }
 .jieshao .left{width:560px;height:560px;border:1px solid #ccc;}
-.jieshao .left img{width:550px;height:540px; margin-top:10px}
+.jieshao .left img{width:380px;height:380px; margin:90px;}
 .jieshao .right{width:620px;background: rgb(248,248,248);height: 560px;}
 .jieshao .right .jianjie{font-size: 18px;color: #2b542c;line-height: 25px; word-spacing:2px;text-indent:33px;}
 .jieshao .right .jiage{font-size: 25px;color:#ff6700;font-weight: bold;}

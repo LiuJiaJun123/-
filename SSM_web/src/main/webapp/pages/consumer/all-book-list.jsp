@@ -23,8 +23,8 @@
 	<div class="main center">
 		<c:forEach items="${bookInfo.list}" var="book">
 			<div class="mingxing " style="border:2px solid #fff;width:230px;cursor:pointer;" onmouseout="this.style.border='2px solid #fff'" onmousemove="this.style.border='2px solid red'">
-				<div class="sub_mingxing"><a href=""><img src="../${book.imgUrl}" alt=""></a></div>
-				<div class="pinpai"><a href="">${book.book_name}</a></div>
+				<div class="sub_mingxing"><a target="_blank" href="${pageContext.request.contextPath}/consumer/xq.do?book_id=${book.book_id}"><img src="../${book.imgUrl}" alt=""></a></div>
+				<div class="pinpai"><a target="_blank" href="${pageContext.request.contextPath}/consumer/xq.do?book_id=${book.book_id}">${book.book_name}</a></div>
 				<c:if test="${empty book.description}">
 					<div class="youhui">暂无描述</div>
 				</c:if>
@@ -132,7 +132,7 @@
                 type:"post",
                 success:function (data) {
                     $('#mydiv').html(data);
-                    scrollTo(1,200);
+                    scrollTo(1,65);
                 }
             });
         }
@@ -153,7 +153,7 @@
                 type:"post",
                 success:function (data) {
                     $('#mydiv').html(data);
-                    scrollTo(1,200);
+                    scrollTo(1,65);
 
                 }
             });
@@ -175,7 +175,7 @@
                 type:"post",
                 success:function (data) {
                     $('#mydiv').html(data);
-                    scrollTo(1,200);
+                    scrollTo(1,65);
                 }
             });
         }
