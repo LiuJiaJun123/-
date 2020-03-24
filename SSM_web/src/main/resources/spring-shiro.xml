@@ -49,6 +49,7 @@
                 /askbook/** = authc, roles[admin]
                 /findNewBook.do = authc, roles[user]
                 /consumer/** = authc, roles[user]
+                /collection/** = authc,roles["admin","user"]
 
 
 

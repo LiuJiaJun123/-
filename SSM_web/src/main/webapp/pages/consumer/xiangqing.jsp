@@ -182,6 +182,15 @@
             $(".favotxt").addClass("favotxt-color")
             $(".favo").removeClass("favo-default");
             $(".favo").addClass("favo-hover");
+
+            $.ajax({
+                url:"/collection/save.do?book_id="+${bookInfo.book_id},
+                contentType:"application/json;charset=UTF-8",
+                dataType:"json",
+                type:"post",
+                success:function (data) {
+                }
+            });
         }
 
         if (txt == "已收藏" && $(".favo").hasClass("favo-hover")){
@@ -189,6 +198,15 @@
             $(".favotxt").removeClass("favotxt-color")
             $(".favo").removeClass("favo-hover");
             $(".favo").addClass("favo-default");
+
+            $.ajax({
+                url:"/collection/delete.do?book_id="+${bookInfo.book_id},
+                contentType:"application/json;charset=UTF-8",
+                dataType:"json",
+                type:"post",
+                success:function (data) {
+                }
+            });
         };
     }
 
