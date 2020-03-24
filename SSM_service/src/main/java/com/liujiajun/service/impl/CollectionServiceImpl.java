@@ -1,6 +1,7 @@
 package com.liujiajun.service.impl;
 
 import com.liujiajun.dao.ICollectionDao;
+import com.liujiajun.domain.Collection;
 import com.liujiajun.service.ICollectionService;
 import javafx.print.Collation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,15 @@ public class CollectionServiceImpl implements ICollectionService {
     @Override
     public void delete(Integer user_id, Integer book_id) {
         collectionDao.delete(user_id,book_id);
+    }
+
+    @Override
+    public Collection findByUserIdAndBookId(Integer user_id, Integer book_id) {
+        List<Collection> collectionList = collectionDao.findByUserIdAndBookId(user_id, book_id);
+        if(collectionList.size()>0){
+            return collectionList.get(0);
+        }
+
+        return null;
     }
 }

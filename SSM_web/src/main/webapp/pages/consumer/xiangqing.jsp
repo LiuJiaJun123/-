@@ -210,6 +210,27 @@
         };
     }
 
+
+
+    //页面加载时候，查询是否 已经收藏
+    $(document).ready(function() {
+        $.ajax({
+            url:"/collection/search.do?book_id="+${bookInfo.book_id},
+            contentType:"application/json;charset=UTF-8",
+            dataType:"json",
+            type:"post",
+            success:function (data) {
+                // 已收藏
+                if (data==1){
+                    $(".favotxt").text("已收藏")
+                    $(".favotxt").addClass("favotxt-color")
+                    $(".favo").removeClass("favo-default");
+                    $(".favo").addClass("favo-hover");
+                }
+            }
+        });
+    });
+
 </script>
 
 

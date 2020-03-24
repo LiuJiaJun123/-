@@ -1,10 +1,12 @@
 package com.liujiajun.dao;
 
+import com.liujiajun.domain.Collection;
 import javafx.print.Collation;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import javax.swing.*;
 import java.util.List;
 
 @Repository("collectionDao")
@@ -32,5 +34,6 @@ public interface ICollectionDao {
     void delete(@Param("user_id") Integer user_id,@Param("book_id") Integer book_id);
 
 
-
+    @Select("select * from collection where user_id = #{user_id} and book_id = #{book_id}")
+    List<Collection> findByUserIdAndBookId(@Param("user_id") Integer user_id, @Param("book_id") Integer book_id);
 }

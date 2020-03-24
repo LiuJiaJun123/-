@@ -1,5 +1,6 @@
 package com.liujiajun.controller;
 
+import com.liujiajun.domain.Collection;
 import com.liujiajun.domain.UserInfo;
 import com.liujiajun.service.ICollectionService;
 import com.liujiajun.service.IUserService;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -46,6 +48,27 @@ public class CollectionController {
         UserInfo userInfo = userService.findByName(username);
 
         collectionService.delete(userInfo.getId(), book_id);
+    }
+
+    //查询是否收藏
+    @RequestMapping("/search.do")
+    @ResponseBody
+    public int search(Integer book_id) throws Exception {
+
+        ModelAndView mv=new ModelAndView();
+
+        //获取当前用户
+        String username = (String) SecurityUtils.getSubject().getPrincipal();
+        UserInfo userInfo = userService.findByName(username);
+
+        //收藏表中有数据， 已经收藏
+        Collection collection = collectionService.findByUserIdAndBookId(userInfo.getId(), book_id);
+
+        int code=0;
+        if (collection!=null){
+            code = 1;
+        }
+        return code;
     }
 
 }
