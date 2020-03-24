@@ -53,8 +53,16 @@
     <div class="jieshao mt20 w">
         <div class="left fl"><img src="${bookInfo.imgUrl}"></div>
         <div class="right fr">
+
+            <div class="favorite fr" style="margin-top: 25px; margin-right: 300px;" >
+                <span class="favo favo-default" onclick="favo_click()"></span><span class="favotxt">
+                    点击收藏
+                </span>
+            </div>
+
             <div class="h3 ml20 mt20" style="color: teal">${bookInfo.book_name}</div>
-            <div class="jianjie mr40 ml20 mt10">${bookInfo.description}</div>
+
+            <div class="jianjie mr40 ml20 mt20"><span style="color: #0097bc">描述：</span>${bookInfo.description}</div>
             <div class="mr40 ml20 mt20">作者：<span style="color: teal">${bookInfo.author}</span>
                 <span class="ml40">类别：</span><a style="color: teal" href="" >${bookInfo.categoryInfo.category_name}</a>
                 <span class="ml40">成色：</span><a style="color: teal" href="" >${bookInfo.appearance}</a>
@@ -63,6 +71,8 @@
             <div class="mr40 ml20 mt20">上市时间：
                 <span style="color: teal"><fmt:formatDate value='${bookInfo.time}' pattern='yyyy-MM-dd HH:mm'/></span>
             </div>
+
+            <div class="jiage ml20 mt40">价格：￥${bookInfo.price}元</div>
 
             <br><br>
             <span class="ml20" style="font-size: 20px;color: #ff6709; ">联系卖家：</span><br>
@@ -77,19 +87,17 @@
                 <span class="ml20">地址：</span><a style="color: teal" href="" >${bookInfo.userInfo.address}</a>
             </div>
 
-            <div class="jiage ml20 mt40">￥${bookInfo.price}元</div>
 
-            <div class="xiadan ml20 mt20">
-                <input class="jrgwc"  type="button" name="jrgwc" value="点击收藏" />
-                <input class="jrgwc" type="button" name="jrgwc" value="我想要" />
 
-            </div>
+            <%--<div class="xiadan ml20 mt20">--%>
+                <%--<input class="jrgwc"  type="button" name="jrgwc" value="点击收藏" />--%>
+                <%--<input class="jrgwc" type="button" name="jrgwc" value="我想要" />--%>
+
+            <%--</div>--%>
         </div>
         <div class="clear"></div>
     </div>
 </form>
-
-
 
 
 <%--评论--%>
@@ -129,6 +137,68 @@
 
 <script type="text/javascript" src="/js/xiangqing/jquery-1.12.0.min.js"></script>
 <script type="text/javascript" src="/js/xiangqing/jquery.flexText.js"></script>
+
+
+<%--点击收藏、取消收藏--%>
+<style>
+    .favorite{
+        width: 90px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 14px;
+        color: #999;
+    }
+    .favorite>span.favo{
+        display: inline-block;
+        vertical-align: top;
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+    }
+    .favo-default{
+        background: url(/img/favo.png) no-repeat center top;
+        background-size: 25px 25px;
+    }
+    .favo-hover{
+        background: url(/img/favo-hover.png) no-repeat center top;
+        background-size: 25px 25px;
+    }
+    /*.favotxt-color{*/
+        /*color: #999;*/
+    /*}*/
+    .favotxt-color{
+        color: #00a7d0;
+    }
+</style>
+
+<script>
+
+    function favo_click(){
+
+        var txt = $(".favotxt").text().trim()
+
+        if( txt == "点击收藏" && $(".favo").hasClass("favo-default")){
+            $(".favotxt").text("已收藏")
+            $(".favotxt").addClass("favotxt-color")
+            $(".favo").removeClass("favo-default");
+            $(".favo").addClass("favo-hover");
+        }
+
+        if (txt == "已收藏" && $(".favo").hasClass("favo-hover")){
+            $(".favotxt").text("点击收藏");
+            $(".favotxt").removeClass("favotxt-color")
+            $(".favo").removeClass("favo-hover");
+            $(".favo").addClass("favo-default");
+        };
+    }
+
+</script>
+
+
+
+
+
+
 
 <!--textarea高度自适应-->
 <script type="text/javascript">
