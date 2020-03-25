@@ -27,9 +27,9 @@
             <div class="ddzx">个人中心</div>
             <div class="subddzx">
                 <ul>
-                    <li><a href="${pageContext.request.contextPath}/consumer/mySell.do" >我发布的商品</a></li>
-                    <li><a href="${pageContext.request.contextPath}/consumer/myAsk.do" style="color:#ff6700;font-weight:bold;">我的求购</a></li>
-                    <li><a href="${pageContext.request.contextPath}/consumer/myCollection.do">我的收藏</a></li>
+                    <li><a href="${pageContext.request.contextPath}/consumer/mySell.do">我发布的商品</a></li>
+                    <li><a href="${pageContext.request.contextPath}/consumer/myAsk.do">我的求购</a></li>
+                    <li><a href="${pageContext.request.contextPath}/consumer/myCollection.do" style="color:#ff6700;font-weight:bold;">我的收藏</a></li>
                     <li><a href="">消息通知</a></li>
                     <li><a href="">修改密码</a></li>
                 </ul>
@@ -37,17 +37,23 @@
         </div>
         <div class="rtcont fr">
 
-            <div class="ddzxbt">我的求购</div>
-                <c:forEach items="${askbookInfo.list}" var="askbook">
+            <div class="ddzxbt">我的收藏</div>
+                <c:forEach items="${collectionInfo.list}" var="collection">
                     <div class="ddxq">
-                        <div class="ddspt fl"><img style="width: 80px;height: 80px;" src="${askbook.imgUrl}" alt=""></div>
-                        <div class="ddbh fl">《 ${askbook.askbook_name} 》</div>
+                        <div class="ddspt fl"><img style="width: 80px;height: 80px;" src="${collection.bookInfo.imgUrl}" alt=""></div>
+                        <div class="ddbh fl">《 ${collection.bookInfo.book_name} 》</div>
                         <li class="ztxx fr">
                             <ul>
-                                <li>${askbook.appearance}</li>
-                                <li>${askbook.categoryInfo.category_name}</li>
-                                <li style="width: 200px"><fmt:formatDate value='${askbook.time}' pattern='yyyy-MM-dd HH:mm'/></li>
-                                <li><a href="">书籍详情></a></li>
+                                <li>${collection.bookInfo.categoryInfo.category_name}</li>
+                                <li>￥${collection.bookInfo.price}</li>
+                                <li style="width: 200px"><fmt:formatDate value='${collection.time}' pattern='yyyy-MM-dd HH:mm'/></li>
+                                <c:if test="${collection.bookInfo.status==0}">
+                                    <li>已售出</li>
+                                </c:if>
+                                <c:if test="${collection.bookInfo.status==1}">
+                                    <li><a target="_blank" href="${pageContext.request.contextPath}/consumer/xq.do?book_id=${collection.bookInfo.book_id}">书籍详情></a></li>
+                                </c:if>
+
                                 <div class="clear"></div>
                             </ul>
                         </div>
@@ -56,7 +62,7 @@
 
 
             <div class="page_total_class">
-                总共${askbookInfo.pages} 页，共${askbookInfo.total} 条数据。
+                总共${collectionInfo.pages} 页，共${collectionInfo.total} 条数据。
             </div>
 
 
@@ -64,24 +70,24 @@
             <div class="page_class">
                 <ul class="pagination">
                 <li class="page-item">
-                    <a class="page-link" href="${pageContext.request.contextPath}/consumer/myAsk.do?page=${askbookInfo.pageNum-1}">上一页</a>
+                    <a class="page-link" href="${pageContext.request.contextPath}/consumer/myCollection.do?page=${collectionInfo.pageNum-1}">上一页</a>
                 </li>
 
-                <c:forEach begin="1" end="${askbookInfo.pages}" var="i">
-                    <c:if test="${i==askbookInfo.pageNum}">
+                <c:forEach begin="1" end="${collectionInfo.pages}" var="i">
+                    <c:if test="${i==collectionInfo.pageNum}">
                         <li class="page-item active">
-                            <a class="page-link" href="${pageContext.request.contextPath}/consumer/myAsk.do?page=${i}">${i}</a>
+                            <a class="page-link" href="${pageContext.request.contextPath}/consumer/myCollection.do?page=${i}">${i}</a>
                         </li>
                     </c:if>
-                    <c:if test="${i!=askbookInfo.pageNum}">
+                    <c:if test="${i!=collectionInfo.pageNum}">
                         <li class="page-item">
-                            <a class="page-link" href="${pageContext.request.contextPath}/consumer/myAsk.do?page=${i}">${i}</a>
+                            <a class="page-link" href="${pageContext.request.contextPath}/consumer/myCollection.do?page=${i}">${i}</a>
                         </li>
                     </c:if>
                 </c:forEach>
 
                 <li class="page-item">
-                    <a class="page-link" href="${pageContext.request.contextPath}/consumer/myAsk.do?page=${askbookInfo.pageNum+1}">下一页</a>
+                    <a class="page-link" href="${pageContext.request.contextPath}/consumer/myCollection.do?page=${collectionInfo.pageNum+1}">下一页</a>
                 </li>
             </ul>
             </div>

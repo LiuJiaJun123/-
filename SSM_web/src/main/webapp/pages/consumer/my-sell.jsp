@@ -29,7 +29,7 @@
                 <ul>
                     <li><a href="${pageContext.request.contextPath}/consumer/mySell.do" style="color:#ff6700;font-weight:bold;">我发布的商品</a></li>
                     <li><a href="${pageContext.request.contextPath}/consumer/myAsk.do">我的求购</a></li>
-                    <li><a href="">我的收藏</a></li>
+                    <li><a href="${pageContext.request.contextPath}/consumer/myCollection.do">我的收藏</a></li>
                     <li><a href="">消息通知</a></li>
                     <li><a href="">修改密码</a></li>
                 </ul>

@@ -3,10 +3,8 @@ package com.liujiajun.controller;
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
 import com.liujiajun.domain.*;
-import com.liujiajun.service.IAskBookService;
-import com.liujiajun.service.IBookService;
-import com.liujiajun.service.ICategoryService;
-import com.liujiajun.service.IUserService;
+import com.liujiajun.service.*;
+import javafx.print.Collation;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +28,8 @@ public class ConsumerController {
     private ICategoryService categoryService;
     @Autowired
     private IUserService userService;
+    @Autowired
+    private ICollectionService collectionService;
 
     //    商品详情
     @RequestMapping("/xq.do")
@@ -88,6 +88,26 @@ public class ConsumerController {
         PageInfo askbookInfo=new PageInfo(askBookList);
         modelAndView.addObject("askbookInfo",askbookInfo);
         modelAndView.setViewName("consumer/my-ask");
+        return modelAndView;
+    }
+
+    //  我的收藏
+    @RequestMapping("/myCollection.do")
+    public ModelAndView myCollection(@RequestParam(value = "page",required = true,defaultValue = "1") Integer page) throws Exception {
+
+        //获取当前用户
+        String username = (String) SecurityUtils.getSubject().getPrincipal();
+        UserInfo userInfo = userService.findByName(username);
+
+        ModelAndView modelAndView=new ModelAndView();
+        //我的收藏
+        List<AskBook> askBookList = askBookService.findAskBookByUserId(userInfo.getId(),page);
+
+        List<Collection> collectionList = collectionService.findByUserId(userInfo.getId(), page);
+
+        PageInfo collectionInfo=new PageInfo(collectionList);
+        modelAndView.addObject("collectionInfo",collectionInfo);
+        modelAndView.setViewName("consumer/my-collection");
         return modelAndView;
     }
 
