@@ -20,6 +20,44 @@
 
     <script
             src="${pageContext.request.contextPath}/plugins/jQuery/jquery-2.2.3.min.js"></script>
+
+
+    <!-- 表单校验插件 -->
+    <script
+            src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('form')
+                .bootstrapValidator(
+                    {
+                        message : 'This value is not valid',
+                        feedbackIcons : {
+                            valid : 'glyphiconglyphicon-ok',
+                            invalid : 'glyphiconglyphicon-remove',
+                            validating : 'glyphiconglyphicon-refresh'
+                        },
+                        fields : {
+                            askbook_name : {
+                                message : '请输入求购书籍名称',
+                                validators : {
+                                    notEmpty : {
+                                        message : '求购书籍名称不能为空'
+                                    }
+                                }
+                            },
+                        }
+                    });
+        });
+    </script>
+    <style>
+        .form-horizontal .form-group .col-sm-8 .help-block{
+            /*position: absolute;*/
+            /*left: 50%;*/
+            /*bottom: 25%;*/
+            font-size: 16px;
+            color: red;
+        }
+    </style>
 </head>
 <body>
 
@@ -127,10 +165,14 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/book/update.do" id="saveForm"
+                        <form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/askbook/update.do" id="saveForm"
                               method="post" enctype="multipart/form-data" style="padding-left: 20px">
 
                             <div class="form-group row">
+                                <input type="hidden" class="form-control" name="askbook_id" id="askbook_id">
+
+                                <input type="hidden" class="form-control" name="status" value="1" id="status">
+
                                 <label  class="must" ></label>
                                 <label for="askbook_name" class="col-sm-3 control-label">求购书籍名</label>
                                 <div class="col-sm-8">
@@ -190,13 +232,6 @@
                                 </div>
                             </div>
 
-                            <%
-                                Date date = new Date();
-                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-                                String now = sdf.format(date);
-                            %>
-                            <input type="hidden" class="form-control" name="time"
-                                   placeholder="出售时间" value="<%=now %>">
 
                             <div class="form-group row">
                                 <label for="description" class="col-sm-3 control-label">描述</label>
@@ -205,13 +240,20 @@
                                               id="description"   name="description"></textarea>
                                 </div>
                             </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                <button type="submit" class="btn btn-primary"  >保存</button>
+                            </div>
                         </form>
 
+
+
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-primary" id="saveUpdate" >保存</button>
-                    </div>
+                    <%--<div class="modal-footer">--%>
+                        <%--<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>--%>
+                        <%--<button type="button" class="btn btn-primary" id="saveUpdate" >保存</button>--%>
+                    <%--</div>--%>
                 </div>
             </div>
         </div>
@@ -293,6 +335,21 @@
 
 <script >
 
+    //图片上传,检查提交的是不是图片
+    function setImg(obj){
+
+        var f=$(obj).val();
+        if(f == null || f ==undefined || f == ''){
+            return false;
+        }
+        if(!/\.(?:png|jpg|bmp|PNG|JPG|BMP)$/.test(f))
+        {
+            alert("类型必须是图片(.png|jpg|bmp|PNG|JPG|BMP)");
+            $(obj).val('');
+            return false;
+        }
+    }
+
     function updateInfo(askbook_id){
         $.ajax({
             url:"${pageContext.request.contextPath}/consumer/ask-edit.do?askbook_id="+askbook_id,
@@ -301,6 +358,7 @@
             async: false,  //把异步处理设置 为false；即可给方法外部赋值
             type:"post",
             success:function (data) {
+                $("#askbook_id").val(data.askbook_id);
                 $("#askbook_name").val(data.askbook_name);
                 $("#author").val(data.author);
                 $("#pic").attr("src", data.imgUrl);
@@ -312,9 +370,12 @@
                 })
             }
         });
-
-
     }
+
+    $("#saveUpdate").click(function () {
+        alert("haha")
+        $("#saveForm").submit();
+    })
 
 
 </script>

@@ -14,7 +14,7 @@ public class UserInfo {
     private String email;
     private String address;
     private String description;
-    private Integer role;
+    private Integer role; //1管理员  2普通用户
     private String roleStr;
     private Integer status;
     private String statusStr;

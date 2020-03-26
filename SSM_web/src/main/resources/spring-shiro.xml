@@ -46,6 +46,7 @@
                 /role/** = authc, roles[user]
                 /book/save.do = authc,roles["admin","user"]
                 /book/** = authc, roles[admin]
+                /askbook/update.do = authc, roles["admin","user"]
                 /askbook/** = authc, roles[admin]
                 /findNewBook.do = authc, roles[user]
                 /consumer/** = authc, roles[user]

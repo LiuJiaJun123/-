@@ -7,6 +7,7 @@ import com.liujiajun.domain.UserInfo;
 import com.liujiajun.service.IAskBookService;
 import com.liujiajun.service.ICategoryService;
 import com.liujiajun.service.IUserService;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -150,12 +151,19 @@ public class AskBookController {
             askBookService.update(askbook);
         }
 
-        //没上传图片，设置默认图片
+        //没上传图片
         if(uploadImg.isEmpty()){
 //            askbook.setImgUrl("../img/暂无图片.png");
             askBookService.updateWithoutImg(askbook);
         }
 
+        //获取当前用户
+        String username = (String) SecurityUtils.getSubject().getPrincipal();
+        UserInfo userInfo = userService.findByName(username);
+
+        if(userInfo.getRole()==2){
+            return "redirect:/consumer/myAsk.do";
+        }
 
         return "redirect:findAll.do";
     }
