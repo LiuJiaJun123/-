@@ -184,6 +184,14 @@ public class BookController {
             bookService.updateWithoutImg(book);
         }
 
+        //获取当前用户
+        String username = (String) SecurityUtils.getSubject().getPrincipal();
+        UserInfo userInfo = userService.findByName(username);
+
+        if(userInfo.getRole()==2){
+            return "redirect:/consumer/mySell.do";
+        }
+
         return "redirect:findAll.do";
     }
 

@@ -148,7 +148,7 @@ public class ConsumerController {
         return modelAndView;
     }
 
-    //    全部图书
+    //    求购信息修改
     @RequestMapping("/ask-edit.do")
     @ResponseBody
     public AskBook ask_edit(Integer askbook_id) throws Exception {
@@ -163,6 +163,19 @@ public class ConsumerController {
 //
 //        modelAndView.setViewName("consumer/all-book-list");
         return askBookInfo;
+    }
+
+
+    //    出售书籍信息修改
+    @RequestMapping("/sell-edit.do")
+    @ResponseBody
+    public Book sell_edit(Integer book_id) throws Exception {
+
+
+        //根据选中的条件查找书籍
+        Book bookInfo = bookService.findByBookId(book_id);
+
+        return bookInfo;
     }
 
 }
