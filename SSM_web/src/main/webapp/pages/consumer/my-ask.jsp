@@ -81,82 +81,7 @@
             </div>
         </div>
 
-        <!-- 模态框（Modal）start -->
-        <%--<div class="modal fade" id="update_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">--%>
-            <%--<div class="modal-dialog" role="document">--%>
-                <%--<div class="modal-content">--%>
-                    <%--<div class="modal-header">--%>
-                        <%--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>--%>
-                        <%--<h4 class="modal-title" id="myModalLabel">修改个人信息</h4>--%>
-                    <%--</div>--%>
-                    <%--<div class="modal-body">--%>
-                        <%--<form class="form-horizontal" id="update-form" name="update-form" method="post">--%>
-                            <%--<div class="form-group">--%>
-                                <%--<label for="goodsid" class="col-sm-2 control-label">id</label>--%>
-                                <%--<div class="col-sm-9">--%>
-                                    <%--<span id="goodsid"   class="form-control"></span>--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                            <%--<div class="form-group">--%>
-                                <%--<label for="goodsname" class="col-sm-2 control-label">商品名</label>--%>
-                                <%--<div class="col-sm-9">--%>
-                                    <%--<input type="text" class="form-control" name="goodsname" id="goodsname">--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                            <%--<div class="form-group">--%>
-                                <%--<label for="price" class="col-sm-2 control-label">价格</label>--%>
-                                <%--<div class="col-sm-9">--%>
-                                    <%--<input type="number" class="form-control" name="price" id="price">--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                            <%--<div class="form-group">--%>
-                                <%--<label for="num" class="col-sm-2 control-label">数量</label>--%>
-                                <%--<div class="col-sm-9">--%>
-                                    <%--<input type="number" class="form-control" id="num" name="num">--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                            <%--<div class="form-group">--%>
-                                <%--<label for="description" class="col-sm-2 control-label">描述</label>--%>
-                                <%--<div class="col-sm-9">--%>
-                                    <%--<textarea class="form-control" id="description" name="description"></textarea>--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                            <%--<div class="form-group">--%>
-                                <%--<label for="category" class="col-sm-2 control-label">类别</label>--%>
-                                <%--<div class="col-sm-9">--%>
-                                    <%--<select class="form-control" id="category" name="category">--%>
-                                        <%--<c:forEach items="${categoryList}" var="item">--%>
-                                            <%--<option value="${item.cateid}">${item.catename}</option>--%>
-                                        <%--</c:forEach>--%>
-                                    <%--</select>--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                            <%--<div class="form-group">--%>
-                                <%--<label for="detailcate" class="col-sm-2 control-label">详细分类</label>--%>
-                                <%--<div class="col-sm-9">--%>
-                                    <%--<input type="text" class="form-control" id="detailcate" name="detailcate">--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                            <%--<div class="form-group">--%>
-                                <%--<label for="detailcate" class="col-sm-2 control-label">图片</label>--%>
-                                <%--<div class="col-sm-9">--%>
-                                    <%--<img src="" width="60" height="60" id="pic">--%>
-
-                                    <%--<input type="file"  name="fileToUpload" id="fileToUpload" class="filestyle" data-buttonName="btn-primary" data-buttonBefore="true" data-icon="false" multiple="multiple">--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                        <%--</form>--%>
-
-                    <%--</div>--%>
-                    <%--<div class="modal-footer">--%>
-                        <%--<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>--%>
-                        <%--<button type="button" class="btn btn-primary" id="saveUpdate" >保存</button>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-        <!-- 模态框（Modal）end -->
-
+        <!-- 模态框（Modal）start-->
         <div class="modal fade" id="update_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -247,8 +172,6 @@
                             </div>
                         </form>
 
-
-
                     </div>
                     <%--<div class="modal-footer">--%>
                         <%--<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>--%>
@@ -257,7 +180,7 @@
                 </div>
             </div>
         </div>
-
+        <%--模态框 end--%>
 
         <div class="rtcont fr">
 
@@ -371,12 +294,6 @@
             }
         });
     }
-
-    $("#saveUpdate").click(function () {
-        alert("haha")
-        $("#saveForm").submit();
-    })
-
 
 </script>
 
