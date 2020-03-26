@@ -1,18 +1,25 @@
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+
 <%--
   User: Liu Jiajun
   Date: 2020/2/10
   Time: 23:31
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>个人中心</title>
     <link rel="stylesheet" type="text/css" href="../../css/consumer/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
+    <%--<script type="text/javascript" src="/js/xiangqing/jquery-1.12.0.min.js"></script>--%>
 
+    <script
+            src="${pageContext.request.contextPath}/plugins/jQuery/jquery-2.2.3.min.js"></script>
 </head>
 <body>
 
@@ -35,24 +42,199 @@
                 </ul>
             </div>
         </div>
+
+        <!-- 模态框（Modal）start -->
+        <%--<div class="modal fade" id="update_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">--%>
+            <%--<div class="modal-dialog" role="document">--%>
+                <%--<div class="modal-content">--%>
+                    <%--<div class="modal-header">--%>
+                        <%--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>--%>
+                        <%--<h4 class="modal-title" id="myModalLabel">修改个人信息</h4>--%>
+                    <%--</div>--%>
+                    <%--<div class="modal-body">--%>
+                        <%--<form class="form-horizontal" id="update-form" name="update-form" method="post">--%>
+                            <%--<div class="form-group">--%>
+                                <%--<label for="goodsid" class="col-sm-2 control-label">id</label>--%>
+                                <%--<div class="col-sm-9">--%>
+                                    <%--<span id="goodsid"   class="form-control"></span>--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+                            <%--<div class="form-group">--%>
+                                <%--<label for="goodsname" class="col-sm-2 control-label">商品名</label>--%>
+                                <%--<div class="col-sm-9">--%>
+                                    <%--<input type="text" class="form-control" name="goodsname" id="goodsname">--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+                            <%--<div class="form-group">--%>
+                                <%--<label for="price" class="col-sm-2 control-label">价格</label>--%>
+                                <%--<div class="col-sm-9">--%>
+                                    <%--<input type="number" class="form-control" name="price" id="price">--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+                            <%--<div class="form-group">--%>
+                                <%--<label for="num" class="col-sm-2 control-label">数量</label>--%>
+                                <%--<div class="col-sm-9">--%>
+                                    <%--<input type="number" class="form-control" id="num" name="num">--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+                            <%--<div class="form-group">--%>
+                                <%--<label for="description" class="col-sm-2 control-label">描述</label>--%>
+                                <%--<div class="col-sm-9">--%>
+                                    <%--<textarea class="form-control" id="description" name="description"></textarea>--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+                            <%--<div class="form-group">--%>
+                                <%--<label for="category" class="col-sm-2 control-label">类别</label>--%>
+                                <%--<div class="col-sm-9">--%>
+                                    <%--<select class="form-control" id="category" name="category">--%>
+                                        <%--<c:forEach items="${categoryList}" var="item">--%>
+                                            <%--<option value="${item.cateid}">${item.catename}</option>--%>
+                                        <%--</c:forEach>--%>
+                                    <%--</select>--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+                            <%--<div class="form-group">--%>
+                                <%--<label for="detailcate" class="col-sm-2 control-label">详细分类</label>--%>
+                                <%--<div class="col-sm-9">--%>
+                                    <%--<input type="text" class="form-control" id="detailcate" name="detailcate">--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+                            <%--<div class="form-group">--%>
+                                <%--<label for="detailcate" class="col-sm-2 control-label">图片</label>--%>
+                                <%--<div class="col-sm-9">--%>
+                                    <%--<img src="" width="60" height="60" id="pic">--%>
+
+                                    <%--<input type="file"  name="fileToUpload" id="fileToUpload" class="filestyle" data-buttonName="btn-primary" data-buttonBefore="true" data-icon="false" multiple="multiple">--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+                        <%--</form>--%>
+
+                    <%--</div>--%>
+                    <%--<div class="modal-footer">--%>
+                        <%--<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>--%>
+                        <%--<button type="button" class="btn btn-primary" id="saveUpdate" >保存</button>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+        <!-- 模态框（Modal）end -->
+
+        <div class="modal fade" id="update_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">修改信息</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/book/update.do" id="saveForm"
+                              method="post" enctype="multipart/form-data" style="padding-left: 20px">
+
+                            <div class="form-group row">
+                                <label  class="must" ></label>
+                                <label for="askbook_name" class="col-sm-3 control-label">求购书籍名</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="askbook_name" name="askbook_name" >
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="author" class="col-sm-3 control-label">书籍作者</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="author" name="author" placeholder="请输入求购书籍作者">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="uploadImg" class="col-sm-3 control-label">图片</label>
+                                <div class="col-sm-8">
+                                    <img src="" width="60" height="60" id="pic">
+                                    <input type="file" class="form-control" id="uploadImg"
+                                           ONCHANGE="setImg(this);" name="uploadImg" placeholder="图片">
+                                </div>
+                            </div>
+
+                            <div class="form-group help row">
+                                <label for="category_id" class="col-sm-3 control-label">书籍类别</label>
+                                <div class="col-sm-8" >
+                                    <select class="form-control" name="categoryInfo.category_id" id="category_id">
+
+                                        <option value="101">成功励志</option>
+                                        <option value="102">法律</option>
+                                        <option value="103">工具书</option>
+                                        <option value="104">管理</option>
+                                        <option value="105">计算机与网络</option>
+                                        <option value="106">教育考试</option>
+                                        <option value="107">科技工程</option>
+                                        <option value="108">生活时尚考试</option>
+                                        <option value="112">政治军事</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group help row">
+                                <label for="appearance" class="col-sm-3 control-label">书籍成色</label>
+                                <div class="col-sm-8" >
+                                    <select class="form-control" name="appearance" id="appearance">
+                                        <option value="无说明">请选择</option>
+                                        <option value="9成新">9成新</option>
+                                        <option value="8成新">8成新</option>
+                                        <option value="7成新">7成新</option>
+                                        <option value="6成新">6成新</option>
+                                        <option value="5成新">5成新</option>
+                                        <option value="4成新">4成新</option>
+                                        <option value="3成新">3成新</option>
+                                        <option value="2成新">2成新</option>
+                                        <option value="1成新">1成新</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <%
+                                Date date = new Date();
+                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+                                String now = sdf.format(date);
+                            %>
+                            <input type="hidden" class="form-control" name="time"
+                                   placeholder="出售时间" value="<%=now %>">
+
+                            <div class="form-group row">
+                                <label for="description" class="col-sm-3 control-label">描述</label>
+                                <div class="col-sm-8">
+                                    <textarea class="form-control" rows="3" placeholder="说些什么吧..."
+                                              id="description"   name="description"></textarea>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" id="saveUpdate" >保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="rtcont fr">
 
             <div class="ddzxbt">我的求购</div>
-                <c:forEach items="${askbookInfo.list}" var="askbook">
-                    <div class="ddxq">
-                        <div class="ddspt fl"><img style="width: 80px;height: 80px;" src="${askbook.imgUrl}" alt=""></div>
-                        <div class="ddbh fl">《 ${askbook.askbook_name} 》</div>
-                        <li class="ztxx fr">
-                            <ul>
-                                <li>${askbook.appearance}</li>
-                                <li>${askbook.categoryInfo.category_name}</li>
-                                <li style="width: 200px"><fmt:formatDate value='${askbook.time}' pattern='yyyy-MM-dd HH:mm'/></li>
-                                <li><a href="">书籍详情></a></li>
-                                <div class="clear"></div>
-                            </ul>
-                        </div>
-                        <div class="clear"></div>
-                </c:forEach>
+            <c:forEach items="${askbookInfo.list}" var="askbook">
+                <div class="ddxq">
+                    <div class="ddspt fl"><img style="width: 80px;height: 80px;" src="${askbook.imgUrl}" alt=""></div>
+                    <div class="ddbh fl">《 ${askbook.askbook_name} 》</div>
+                    <li class="ztxx fr">
+                        <ul>
+                            <li>${askbook.categoryInfo.category_name}</li>
+                            <li style="width: 200px"><fmt:formatDate value='${askbook.time}' pattern='yyyy-MM-dd HH:mm'/></li>
+                            <li><a id="update_info" href="" data-toggle="modal" onclick="updateInfo(${askbook.askbook_id})">编辑</a></li>
+                            <li><a href="">下架</a></li>
+                            <div class="clear"></div>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+            </c:forEach>
 
 
             <div class="page_total_class">
@@ -105,9 +287,38 @@
     <%--<div>违法和不良信息举报电话：185-0130-1238，本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</div>--%>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<%--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>--%>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+<script >
+
+    function updateInfo(askbook_id){
+        $.ajax({
+            url:"${pageContext.request.contextPath}/consumer/ask-edit.do?askbook_id="+askbook_id,
+            contentType:"application/json;charset=UTF-8",
+            dataType:"json",
+            async: false,  //把异步处理设置 为false；即可给方法外部赋值
+            type:"post",
+            success:function (data) {
+                $("#askbook_name").val(data.askbook_name);
+                $("#author").val(data.author);
+                $("#pic").attr("src", data.imgUrl);
+                $("#category_id").find("option[value="+data.categoryInfo.category_id+"]").prop("selected",true);
+                $("#appearance").find("option[value="+data.appearance+"]").prop("selected",true);
+                $("#description").val(data.description);
+                $("#update_modal").modal({
+                    backdrop: 'static'
+                })
+            }
+        });
+
+
+    }
+
+
+</script>
+
 </body>
 </html>
 

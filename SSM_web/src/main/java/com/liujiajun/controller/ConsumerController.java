@@ -148,5 +148,21 @@ public class ConsumerController {
         return modelAndView;
     }
 
+    //    全部图书
+    @RequestMapping("/ask-edit.do")
+    @ResponseBody
+    public AskBook ask_edit(Integer askbook_id) throws Exception {
+
+//        ModelAndView modelAndView=new ModelAndView();
+
+        //根据选中的条件查找书籍
+        AskBook askBookInfo = askBookService.findByAskBookId(askbook_id);
+
+
+//        modelAndView.addObject("bookEditInfo",askBookInfo);
+//
+//        modelAndView.setViewName("consumer/all-book-list");
+        return askBookInfo;
+    }
 
 }

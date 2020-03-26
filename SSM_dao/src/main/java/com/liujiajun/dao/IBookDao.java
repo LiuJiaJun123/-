@@ -106,11 +106,12 @@ public interface IBookDao {
     //根据选中的条件查找书籍
     @Select("<script> SELECT * from book" +
             "<where>"+
+            "and status=1"+
             "<if test='findBookCondition.selectCategory != null'>and category in (select category_id from category where category_name = #{findBookCondition.selectCategory}) </if> "+
             "<if test='findBookCondition.selectAppearance != null'>and appearance = #{findBookCondition.selectAppearance} </if> "+
             "<if test='findBookCondition.selectPrice != null'>and price &gt;= #{minPrice} and price &lt;= #{maxPrice} </if> " +
             "</where>" +
-            "where status=1"+
+
             "</script>")
     List<Book> findByConditions(@Param("findBookCondition") FindBookCondition findBookCondition,
                                 @Param("minPrice")Integer minPrice,@Param("maxPrice")Integer maxPrice);

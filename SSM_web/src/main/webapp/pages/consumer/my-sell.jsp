@@ -44,10 +44,11 @@
                         <div class="ddbh fl">《 ${book.book_name} 》</div>
                         <li class="ztxx fr">
                             <ul>
-                                <li>${book.categoryInfo.category_name}</li>
+                                <%--<li>${book.categoryInfo.category_name}</li>--%>
                                 <li>￥${book.price}</li>
                                 <li style="width: 200px"><fmt:formatDate value='${book.time}' pattern='yyyy-MM-dd HH:mm'/></li>
-                                <li><a href="">书籍详情></a></li>
+                                <li><a href="">编辑</a></li>
+                                <li><a href="">下架</a></li>
                                 <div class="clear"></div>
                             </ul>
                         </div>
