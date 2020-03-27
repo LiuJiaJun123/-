@@ -205,6 +205,15 @@ public class BookController {
 
     }
 
+    //用户下架书籍
+    @RequestMapping("soldOut.do")
+    public String soldOut(Integer book_id) throws Exception {
+
+        bookService.sell(book_id);
+        return "redirect:/consumer/mySell.do";
+
+    }
+
     //根据 书籍名称或卖家名称 搜索书籍
     @RequestMapping("/findBook.do")
     public ModelAndView findBook(String findConditions,

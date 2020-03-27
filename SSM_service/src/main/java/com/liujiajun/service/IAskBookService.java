@@ -36,4 +36,7 @@ public interface IAskBookService {
 
     //根据用户id查找 求购书籍 （我的求购书籍 页面）
     List<AskBook> findAskBookByUserId(Integer id, Integer page);
+
+    //用户取消求购书籍
+    void cancel(Integer askbook_id);
 }

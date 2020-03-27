@@ -194,7 +194,8 @@
                             <li>${askbook.categoryInfo.category_name}</li>
                             <li style="width: 200px"><fmt:formatDate value='${askbook.time}' pattern='yyyy-MM-dd HH:mm'/></li>
                             <li><a id="update_info" href="" data-toggle="modal" onclick="updateInfo(${askbook.askbook_id})">编辑</a></li>
-                            <li><a href="">下架</a></li>
+                            <li><a href="${pageContext.request.contextPath}/askbook/cancel.do?askbook_id=${askbook.askbook_id}"
+                                   onClick="return confirm('您确定要取消该书籍的求购吗?');">取消求购</a></li>
                             <div class="clear"></div>
                         </ul>
                     </div>

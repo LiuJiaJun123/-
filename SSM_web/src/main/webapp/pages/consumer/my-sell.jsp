@@ -11,7 +11,8 @@
     <meta charset="UTF-8">
     <title>个人中心</title>
     <link rel="stylesheet" type="text/css" href="../../css/consumer/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
+    <%--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >--%>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min4.css">
 
     <script
             src="${pageContext.request.contextPath}/plugins/jQuery/jquery-2.2.3.min.js"></script>
@@ -212,7 +213,9 @@
                                 <li>￥${book.price}</li>
                                 <li style="width: 200px"><fmt:formatDate value='${book.time}' pattern='yyyy-MM-dd HH:mm'/></li>
                                 <li><a id="update_info" href="" data-toggle="modal" onclick="updateInfo(${book.book_id})">编辑</a></li>
-                                <li><a href="">下架</a></li>
+                                <li><a  href="${pageContext.request.contextPath}/book/soldOut.do?book_id=${book.book_id}"
+                                       onClick="return confirm('您确定要下架该书籍吗?');">下架</a></li>
+
                                 <div class="clear"></div>
                             </ul>
                         </div>
@@ -272,7 +275,8 @@
 
 <%--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>--%>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<%--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>--%>
+<script src="/js/bootstrap.min.js"></script>
 
 
 <script >
@@ -292,6 +296,7 @@
         }
     }
 
+    //修改信息 模态框 信息填充
     function updateInfo(book_id){
         $.ajax({
             url:"${pageContext.request.contextPath}/consumer/sell-edit.do?book_id="+book_id,
@@ -314,6 +319,7 @@
             }
         });
     }
+
 
 </script>
 

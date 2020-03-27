@@ -178,6 +178,16 @@ public class AskBookController {
 
     }
 
+    //取消求购书籍
+    @RequestMapping("cancel.do")
+    public String cancel(Integer askbook_id) throws Exception {
+
+        askBookService.cancel(askbook_id);
+
+        return "redirect:/consumer/myAsk.do";
+
+    }
+
     //根据 求购书籍名称或卖家名称 搜索求购书籍
     @RequestMapping("/findAskBook.do")
     public ModelAndView findAskBook(String findConditions,

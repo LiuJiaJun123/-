@@ -86,5 +86,11 @@ public class AskBookServiceImpl implements IAskBookService {
         return askBookDao.findByUserId(user_id);
     }
 
+    //用户取消求购书籍
+    @Override
+    public void cancel(Integer askbook_id) {
+        askBookDao.updateStatus(askbook_id);
+    }
+
 
 }
