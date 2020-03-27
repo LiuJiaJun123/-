@@ -76,7 +76,7 @@
                     <li><a href="${pageContext.request.contextPath}/consumer/myAsk.do" style="color:#ff6700;font-weight:bold;">我的求购</a></li>
                     <li><a href="${pageContext.request.contextPath}/consumer/myCollection.do">我的收藏</a></li>
                     <li><a href="">消息通知</a></li>
-                    <li><a href="">修改密码</a></li>
+                    <li><a href="${pageContext.request.contextPath}/consumer/updatePwd.do">修改密码</a></li>
                 </ul>
             </div>
         </div>

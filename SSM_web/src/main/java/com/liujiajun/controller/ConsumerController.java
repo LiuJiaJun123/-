@@ -8,10 +8,7 @@ import javafx.print.Collation;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -109,6 +106,23 @@ public class ConsumerController {
         modelAndView.addObject("collectionInfo",collectionInfo);
         modelAndView.setViewName("consumer/my-collection");
         return modelAndView;
+    }
+
+
+    //  修改密码
+    @GetMapping("/updatePwd.do")
+    public String updatePwd() throws Exception {
+
+        return "/consumer/updatePwd";
+    }
+
+    //  修改密码
+    @PostMapping("/updatePwd.do")
+    public String updatePwd2(String oldPwd,UserInfo userInfo) throws Exception {
+
+        System.out.println("11111111111111222222222222");
+        System.out.println(userInfo);
+        return "/consumer/updatePwd";
     }
 
 
