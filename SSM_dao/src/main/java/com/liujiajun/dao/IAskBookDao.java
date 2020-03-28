@@ -14,7 +14,7 @@ public interface IAskBookDao {
      * 查找所有
      * @return
      */
-    @Select("select * from askbook where status = 1 ")
+    @Select("select * from askbook where status = 1 order by time desc ")
     @Results({
             @Result(id = true,column = "askbook_id",property = "askbook_id"),
             @Result(column = "user_id",property = "userInfo",one = @One( select = "com.liujiajun.dao.IUserDao.findById")),

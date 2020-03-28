@@ -34,7 +34,7 @@
                     <a class="nav-link" href="${pageContext.request.contextPath}/consumer/addbook.do">发布商品</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">全部求购</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/consumer/allaskbook.do">全部求购</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/consumer/addaskbook.do">发布求购</a>

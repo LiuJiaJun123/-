@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>jQuery淘宝商品列表多条件查询222</title>
+<title>全部二手书</title>
 
 <link rel="stylesheet" type="text/css" href="/css/consumer/all-book-list.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >

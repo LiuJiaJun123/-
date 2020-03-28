@@ -223,6 +223,26 @@ public class ConsumerController {
         return modelAndView;
     }
 
+
+    //    全部求购图书
+    @RequestMapping("/allaskbook.do")
+    public ModelAndView allaskbook(@RequestParam(value = "page",required = true,defaultValue = "1") Integer page) throws Exception {
+
+        ModelAndView modelAndView=new ModelAndView();
+//        //查找所有类别
+//        List<Category> categoryList = categoryService.findAll();
+//
+//        modelAndView.addObject("categoryList",categoryList);
+
+        List<AskBook> askBookList = askBookService.findAll(page, 6);
+        PageInfo askBookInfo = new PageInfo(askBookList);
+        modelAndView.addObject("askBookInfo",askBookInfo);
+        modelAndView.setViewName("consumer/all-askbook-list");
+        return modelAndView;
+    }
+
+
+
     //    求购信息修改
     @RequestMapping("/ask-edit.do")
     @ResponseBody
