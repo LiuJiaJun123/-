@@ -32,7 +32,7 @@
                             validating : 'glyphiconglyphicon-refresh'
                         },
                         fields : {
-                            oldPwd : {
+                            title : {
                                 message : '请输入标题',
                                 validators : {
                                     notEmpty : {
