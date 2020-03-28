@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
 import com.liujiajun.domain.*;
 import com.liujiajun.service.*;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import javafx.print.Collation;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -28,6 +30,8 @@ public class ConsumerController {
     private IUserService userService;
     @Autowired
     private ICollectionService collectionService;
+    @Autowired
+    private IOpinionService opinionService;
 
     //    商品详情
     @RequestMapping("/xq.do")
@@ -106,6 +110,33 @@ public class ConsumerController {
         PageInfo collectionInfo=new PageInfo(collectionList);
         modelAndView.addObject("collectionInfo",collectionInfo);
         modelAndView.setViewName("consumer/my-collection");
+        return modelAndView;
+    }
+
+
+    //  意见反馈
+    @GetMapping("/opinion.do")
+    public String opinion() throws Exception {
+
+        return "/consumer/opinion";
+    }
+
+    //  意见反馈
+    @PostMapping("/opinion.do")
+    public ModelAndView addOpinion(Opinion opinion) throws Exception {
+
+        ModelAndView modelAndView = new ModelAndView();
+        //获取当前用户
+        String username = (String) SecurityUtils.getSubject().getPrincipal();
+        UserInfo userInfo = userService.findByName(username);
+
+        opinion.setUserInfo(userInfo);
+        opinion.setTime(new Date());
+
+        opinionService.save(opinion);
+
+        modelAndView.addObject("successMsg","发布意见成功，您的意见是我们不断改进的动力！");
+        modelAndView.setViewName("/consumer/opinion");
         return modelAndView;
     }
 
