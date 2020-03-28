@@ -62,6 +62,16 @@ public class AskBookController {
     @RequestMapping("/save.do")
     public String save(AskBook askbook, MultipartFile uploadImg, HttpServletRequest request) throws Exception {
 
+        //获取当前用户
+        String username = (String) SecurityUtils.getSubject().getPrincipal();
+        UserInfo userInfo = userService.findByName(username);
+
+        //不是管理员 添加书籍，需要获取当前 添加书籍的用户
+        if(askbook.getUserInfo()==null){
+            askbook.setUserInfo(userInfo);
+            askbook.setStatus(1);
+        }
+
         //有上传图片
         if(!uploadImg.isEmpty()){
 
@@ -92,7 +102,17 @@ public class AskBookController {
         }
 
         askBookService.save(askbook);
-        return "redirect:findAll.do";
+
+
+        if(userInfo.getRole()==1){
+            //管理员跳转页面
+            return "redirect:findAll.do";
+        }else {
+            //普通用户跳转页面
+            return "redirect:/index.do";
+        }
+
+//        return "redirect:findAll.do";
     }
 
     //查看求购书籍详情之前，先根据求购书籍id 查找求购书籍信息

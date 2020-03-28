@@ -37,7 +37,7 @@
                     <a class="nav-link" href="#">全部求购</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">发布求购</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/consumer/addaskbook.do">发布求购</a>
                 </li>
                 <%--<li class="nav-item">--%>
                     <%--<a class="nav-link" href="${pageContext.request.contextPath}/center">刘嘉俊</a>--%>

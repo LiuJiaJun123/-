@@ -8,7 +8,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>发布二手书</title>
+    <title>求购书籍</title>
 
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -31,26 +31,15 @@
                             validating : 'glyphiconglyphicon-refresh'
                         },
                         fields : {
-                            book_name : {
-                                message : '请输入书籍名称',
+                            askbook_name : {
+                                message : '请输入求购书籍名称',
                                 validators : {
                                     notEmpty : {
-                                        message : '书籍名称不能为空'
+                                        message : '求购书籍名称不能为空'
                                     }
                                 }
                             },
-                            price : {
-                                message : '请输入大于0的价格',
-                                validators : {
-                                    notEmpty : {
-                                        message : '价格不能为空'
-                                    },
-                                    greaterThan: {
-                                        value : 0.0,
-                                        message : '价格不能低于0'
-                                    }
-                                }
-                            },
+
                         }
                     });
         });
@@ -65,23 +54,23 @@
 <!-- 导航栏 end/-->
 
 
-<form class="form-horizontal" style="margin-bottom: 100px;padding-right: 20px" role="form" action="${pageContext.request.contextPath}/book/save.do" id="saveForm"
+<form class="form-horizontal" style="margin-bottom: 100px;padding-right: 20px" role="form" action="${pageContext.request.contextPath}/askbook/save.do" id="saveForm"
       method="post" enctype="multipart/form-data">
 
-    <span class="heading">发布二手书</span>
+    <span class="heading">求购书籍</span>
 
     <div class="form-group row">
         <label  class="must" ></label>
-        <label for="book_name" class="col-sm-3 control-label">书籍名称</label>
+        <label for="askbook_name" class="col-sm-3 control-label">书籍名称</label>
         <div class="col-sm-9">
-            <input type="text" class="form-control" id="book_name" name="book_name" placeholder="请输入书籍名称">
+            <input type="text" class="form-control" id="askbook_name" name="askbook_name" placeholder="请输入求购书籍名称">
         </div>
     </div>
 
     <div class="form-group row">
         <label for="author" class="col-sm-3 control-label">书籍作者</label>
         <div class="col-sm-9">
-            <input type="text" class="form-control" id="author" name="author" placeholder="请输入书籍作者">
+            <input type="text" class="form-control" id="author" name="author" placeholder="请输入求购书籍作者">
         </div>
     </div>
 
@@ -120,14 +109,6 @@
                 <option value="2成新">2成新</option>
                 <option value="1成新">1成新</option>
             </select>
-        </div>
-    </div>
-
-    <div class="form-group row">
-        <label class="must"></label>
-        <label for="price" class="col-sm-3 control-label">出售价格</label>
-        <div class="col-sm-9">
-            <input type="number"  min="0.0" step="0.00001" class="form-control" id="price" name="price" placeholder="请输入出售价格">
         </div>
     </div>
 
@@ -192,7 +173,7 @@
         /*margin-left: 41%;*/
         margin-top: 60px;
         width: 650px;
-        height: 600px;
+        height: 530px;
     }
     .form-horizontal .heading{
         display: block;

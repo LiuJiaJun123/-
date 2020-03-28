@@ -58,6 +58,19 @@ public class ConsumerController {
         return modelAndView;
     }
 
+    //    求购图书
+    @RequestMapping("/addaskbook.do")
+    public ModelAndView addaskbook() throws Exception {
+
+        ModelAndView modelAndView=new ModelAndView();
+        //查找所有类别
+        List<Category> categoryList = categoryService.findAll();
+
+        modelAndView.addObject("categoryList",categoryList);
+        modelAndView.setViewName("consumer/add-askbook");
+        return modelAndView;
+    }
+
 
     //   我出售的商品
     @RequestMapping("/mySell.do")
