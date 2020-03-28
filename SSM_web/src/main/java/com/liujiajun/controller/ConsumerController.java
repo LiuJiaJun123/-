@@ -6,6 +6,7 @@ import com.liujiajun.domain.*;
 import com.liujiajun.service.*;
 import javafx.print.Collation;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -118,11 +119,27 @@ public class ConsumerController {
 
     //  修改密码
     @PostMapping("/updatePwd.do")
-    public String updatePwd2(String oldPwd,UserInfo userInfo) throws Exception {
+    public ModelAndView updatePwd2(String oldPwd,String newPwd) throws Exception {
 
-        System.out.println("11111111111111222222222222");
-        System.out.println(userInfo);
-        return "/consumer/updatePwd";
+        //获取当前用户
+        String username = (String) SecurityUtils.getSubject().getPrincipal();
+        UserInfo user = userService.findByName(username);
+
+        ModelAndView modelAndView= new ModelAndView();
+
+        //就密码输入不正确
+        if(!oldPwd.equals(user.getPassword())){
+            modelAndView.addObject("errorMsg","原密码输入有误，请重新输入！");
+            modelAndView.setViewName("/consumer/updatePwd");
+        }else {
+            user.setPassword(newPwd);
+            userService.update(user);
+            Subject subject = SecurityUtils.getSubject();
+            subject.logout();
+            modelAndView.setViewName("../login");
+        }
+
+        return modelAndView;
     }
 
 

@@ -40,7 +40,7 @@
                                     },
                                 }
                             },
-                            password : {
+                            newPwd : {
                                 message : ' ',
                                 validators : {
                                     notEmpty : {
@@ -52,19 +52,19 @@
                                         message: '密码长度必须在6到20位之间'
                                     },
                                     identical: {
-                                        field: 'password2',
+                                        field: 'newPwd2',
                                         message: ''
                                     }
                                 }
                             },
-                            password2 : {
+                            newPwd2 : {
                                 message : '请再次输入新密码',
                                 validators : {
                                     notEmpty : {
                                         message : '新密码不能为空'
                                     },
                                     identical: {
-                                        field: 'password',
+                                        field: 'newPwd',
                                         message: '两次输入的密码不相符'
                                     }
                                 }
@@ -104,6 +104,8 @@
         <form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/consumer/updatePwd.do" id="saveForm"
           method="post">
 
+            <label style="color: red;font-size: 20px;padding-right: 45%;">${errorMsg}</label>
+
             <div class="form-group row" >
                 <label for="oldPwd" class="col-sm-2 control-label">请输入原密码</label>
                 <div class="col-sm-8">
@@ -114,14 +116,14 @@
             <div class="form-group row" >
                 <label for="password" class="col-sm-2 control-label">请输入新密码</label>
                 <div class="col-sm-8">
-                    <input type="password" class="form-control" id="password" name="password" placeholder="请输入新密码">
+                    <input type="password" class="form-control" id="newPwd" name="newPwd" placeholder="请输入新密码">
                 </div>
             </div>
 
             <div class="form-group row" >
                 <label for="password2" class="col-sm-2 control-label">再次输入新密码</label>
                 <div class="col-sm-8">
-                    <input type="password" class="form-control" id="password2" name="password2" placeholder="再次输入新密码">
+                    <input type="password" class="form-control" id="newPwd2" name="newPwd2" placeholder="再次输入新密码">
                 </div>
             </div>
 
