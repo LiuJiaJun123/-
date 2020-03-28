@@ -24,7 +24,7 @@
 
         <div class="askbook_list">
             <c:forEach items="${askBookInfo.list}" var="askbook">
-                <a target="_blank" href="www.baidu.com" style="text-decoration:none;">
+                <a target="_blank" href="${pageContext.request.contextPath}/consumer/askbook-xq.do?askbook_id=${askbook.askbook_id}" style="text-decoration:none;">
                 <div class="goods" onmousemove="this.style.backgroundColor='#E6E6E6'" onmouseout="this.style.backgroundColor='#FFF'">
                     <img src="${askbook.imgUrl}" class="goodsImage"/>
                     <div class="goodsContent">

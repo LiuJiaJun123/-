@@ -44,6 +44,17 @@ public class ConsumerController {
         return modelAndView;
     }
 
+    //    求购详情
+    @RequestMapping("/askbook-xq.do")
+    public ModelAndView askbookXq(AskBook askBook){
+
+        ModelAndView modelAndView=new ModelAndView();
+        AskBook askBookInfo = askBookService.findByAskBookId(askBook.getAskbook_id());
+        modelAndView.addObject("askBookInfo",askBookInfo);
+        modelAndView.setViewName("consumer/askbook-details");
+        return modelAndView;
+    }
+
 
     //    添加图书
     @RequestMapping("/addbook.do")
@@ -229,10 +240,6 @@ public class ConsumerController {
     public ModelAndView allaskbook(@RequestParam(value = "page",required = true,defaultValue = "1") Integer page) throws Exception {
 
         ModelAndView modelAndView=new ModelAndView();
-//        //查找所有类别
-//        List<Category> categoryList = categoryService.findAll();
-//
-//        modelAndView.addObject("categoryList",categoryList);
 
         List<AskBook> askBookList = askBookService.findAll(page, 6);
         PageInfo askBookInfo = new PageInfo(askBookList);
