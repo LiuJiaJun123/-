@@ -203,11 +203,6 @@ public class ConsumerController {
     public ModelAndView allbook() throws Exception {
 
         ModelAndView modelAndView=new ModelAndView();
-//        //查找所有类别
-//        List<Category> categoryList = categoryService.findAll();
-//
-//        modelAndView.addObject("categoryList",categoryList);
-
         modelAndView.setViewName("consumer/all-book");
         return modelAndView;
     }
@@ -236,13 +231,25 @@ public class ConsumerController {
 
 
     //    全部求购图书
-    @RequestMapping("/allaskbook.do")
-    public ModelAndView allaskbook(@RequestParam(value = "page",required = true,defaultValue = "1") Integer page) throws Exception {
+    @RequestMapping("/allAskbook.do")
+    public ModelAndView allaskbook() throws Exception {
+
+        ModelAndView modelAndView=new ModelAndView();
+        modelAndView.setViewName("consumer/all-askbook");
+        return modelAndView;
+    }
+
+    //    全部求购图书
+    @RequestMapping("/searchAskbook.do")
+    @ResponseBody
+    public ModelAndView allaskbook(@RequestParam(value = "page",required = true,defaultValue = "1") Integer page,
+                                   @RequestBody FindBookCondition findBookCondition) throws Exception {
 
         ModelAndView modelAndView=new ModelAndView();
 
-        List<AskBook> askBookList = askBookService.findAll(page, 6);
+        List<AskBook> askBookList = askBookService.findAll(findBookCondition,page, 6);
         PageInfo askBookInfo = new PageInfo(askBookList);
+        modelAndView.addObject("findBookCondition",findBookCondition);
         modelAndView.addObject("askBookInfo",askBookInfo);
         modelAndView.setViewName("consumer/all-askbook-list");
         return modelAndView;

@@ -15,11 +15,6 @@
 </head>
 <body>
 
-<!-- 导航栏 start-->
-<jsp:include page="header.jsp"></jsp:include>
-<!-- 导航栏 end/-->
-
-
 <div>
 
         <div class="askbook_list">
@@ -38,9 +33,9 @@
         </div>
 
         <style>
-            .askbook_list{
-                margin-top: 30px;
-            }
+            /*.askbook_list{*/
+                /*margin-top: 30px;*/
+            /*}*/
             .goods{
                 height: 150px;
                 padding: 5px;
@@ -101,7 +96,7 @@
 	<div class="page_class1">
 		<ul class="pagination">
 			<li class="page-item">
-				<a class="page-link" href="${pageContext.request.contextPath}/consumer/allaskbook.do?page=${askBookInfo.pageNum-1}">上一页</a>
+				<a class="page-link" onclick="lastPage()">上一页</a>
 			</li>
 
             <!-- 分页 -->
@@ -133,18 +128,18 @@
             <c:forEach begin="${begin}" end="${end}" var="i">
                 <c:if test="${i==askBookInfo.pageNum}">
                     <li class="page-item active">
-                        <a class="page-link" href="${pageContext.request.contextPath}/consumer/allaskbook.do?page=${i}">${i}</a>
+                        <a class="page-link" onclick="changePage(${i})">${i}</a>
                     </li>
                 </c:if>
                 <c:if test="${i!=askBookInfo.pageNum}">
                     <li class="page-item">
-                        <a class="page-link" href="${pageContext.request.contextPath}/consumer/allaskbook.do?page=${i}">${i}</a>
+                        <a class="page-link" onclick="changePage(${i})">${i}</a>
                     </li>
                 </c:if>
             </c:forEach>
 
 			<li class="page-item">
-				<a class="page-link" href="${pageContext.request.contextPath}/consumer/allaskbook.do?page=${askBookInfo.pageNum+1}">下一页</a>
+				<a class="page-link" onclick="nextPage()">下一页</a>
 			</li>
 
 		</ul>
@@ -152,6 +147,65 @@
 	<%--分页 end--%>
 
 </div>
+
+
+<script type="text/javascript">
+    function lastPage(){
+        var json = {
+            searchContent: "${findBookCondition.searchContent}"
+        }
+
+        $.ajax({
+            url:"/consumer/searchAskbook.do?page="+${askBookInfo.pageNum-1},
+            contentType:"application/json;charset=UTF-8",
+            data:JSON.stringify(json),
+            dataType:"html",
+            type:"post",
+            success:function (data) {
+                $('#mydiv').html(data);
+            }
+        });
+    }
+
+
+    function changePage(n){
+        var json = {
+            searchContent: "${findBookCondition.searchContent}"
+        }
+
+        $.ajax({
+            url:"/consumer/searchAskbook.do?page="+n,
+            contentType:"application/json;charset=UTF-8",
+            data:JSON.stringify(json),
+            dataType:"html",
+            type:"post",
+            success:function (data) {
+                $('#mydiv').html(data);
+            }
+        });
+    }
+
+
+    function nextPage(){
+        var json = {
+            searchContent: "${findBookCondition.searchContent}"
+        }
+
+        $.ajax({
+            url:"/consumer/searchAskbook.do?page="+${askBookInfo.pageNum+1},
+            contentType:"application/json;charset=UTF-8",
+            data:JSON.stringify(json),
+            dataType:"html",
+            type:"post",
+            success:function (data) {
+                $('#mydiv').html(data);
+            }
+        });
+    }
+
+
+
+</script>
 
 
 </body>

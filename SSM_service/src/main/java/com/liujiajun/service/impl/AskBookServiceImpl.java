@@ -3,6 +3,7 @@ package com.liujiajun.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.liujiajun.dao.IAskBookDao;
 import com.liujiajun.domain.AskBook;
+import com.liujiajun.domain.FindBookCondition;
 import com.liujiajun.service.IAskBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,17 @@ public class AskBookServiceImpl implements IAskBookService {
     public List<AskBook> findAll(int page, int pageSize) throws Exception {
         PageHelper.startPage(page,pageSize);
         return askBookDao.findAll();
+    }
+
+    @Override
+    public List<AskBook> findAll(FindBookCondition findBookCondition, int page, int pageSize) throws Exception {
+        PageHelper.startPage(page,pageSize);
+        if(findBookCondition.getSearchContent().length()==0){
+            findBookCondition.setSearchContent(null);
+        }else {
+            findBookCondition.setSearchContent("%"+findBookCondition.getSearchContent()+"%");
+        }
+        return askBookDao.findByCondition(findBookCondition);
     }
 
 //    保存

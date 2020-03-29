@@ -1,6 +1,7 @@
 package com.liujiajun.service;
 
 import com.liujiajun.domain.AskBook;
+import com.liujiajun.domain.FindBookCondition;
 
 import java.util.List;
 
@@ -8,7 +9,9 @@ public interface IAskBookService {
 
     List<AskBook> findAll() throws Exception;
 
-    public List<AskBook> findAll(int page, int pageSize) throws Exception;
+    List<AskBook> findAll(int page, int pageSize) throws Exception;
+
+    List<AskBook> findAll(FindBookCondition findBookCondition, int page, int pageSize) throws Exception;
 
     //保存
     void save(AskBook askbook);

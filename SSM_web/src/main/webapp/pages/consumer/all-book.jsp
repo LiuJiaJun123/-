@@ -98,24 +98,26 @@
 
 
 <script>
-    var allData = {
-        selectCategory:"",
-        selectAppearance:"",
-        selectPrice:"",
-        searchContent:""
-    };
-    var flag =false;
-    $.ajax({
-        url:"/consumer/searchbook.do",
-        contentType:"application/json;charset=UTF-8",
-        data:JSON.stringify(allData),
-        dataType:"html",
-        type:"post",
-        success:function (data) {
-            // alert(data)
-            $('#mydiv').html(data);
-        }
-    });
+    $(function () {
+        var allData = {
+            selectCategory:"",
+            selectAppearance:"",
+            selectPrice:"",
+            searchContent:""
+        };
+        var flag =false;
+        $.ajax({
+            url:"/consumer/searchbook.do",
+            contentType:"application/json;charset=UTF-8",
+            data:JSON.stringify(allData),
+            dataType:"html",
+            type:"post",
+            success:function (data) {
+                // alert(data)
+                $('#mydiv').html(data);
+            }
+        });
+    })
 </script>
 
 </body>

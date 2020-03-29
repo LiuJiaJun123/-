@@ -2,6 +2,7 @@ package com.liujiajun.dao;
 
 import com.liujiajun.domain.AskBook;
 import com.liujiajun.domain.Book;
+import com.liujiajun.domain.FindBookCondition;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
@@ -15,7 +16,7 @@ public interface IAskBookDao {
      * @return
      */
     @Select("select * from askbook where status = 1 order by time desc ")
-    @Results({
+    @Results(id = "resultMap",value = {
             @Result(id = true,column = "askbook_id",property = "askbook_id"),
             @Result(column = "user_id",property = "userInfo",one = @One( select = "com.liujiajun.dao.IUserDao.findById")),
             @Result(column = "askbook_name",property = "askbook_name"),
@@ -30,6 +31,27 @@ public interface IAskBookDao {
     List<AskBook> findAll();
 
 
+//    @Select("<script>select * from askbook " +
+//            "<where>"+
+//            "<if test='1'> and status=1 </if>"+
+//            "<if test='findCondition != null'>and askbook_name like #{findCondition} </if> " +
+//           "</where>" +
+////            " order by time desc " +
+//            "</script>"
+//           )
+@Select("<script> SELECT * from askbook" +
+        "<where>"+
+        "<if test='1'> and status=1 </if>"+
+        "<if test='findBookCondition.searchContent != null'>and askbook_name like #{findBookCondition.searchContent} </if> "+
+        "</where>" +
+        " order by time desc " +
+        "</script>")
+    @ResultMap("resultMap")
+    List<AskBook> findByCondition(@Param("findBookCondition") FindBookCondition findBookCondition);
+
+
+
+
     /**
      * 保存
      * @param askBook
@@ -40,18 +62,7 @@ public interface IAskBookDao {
 
     //根据书籍Id查找 书籍
     @Select("select * from askbook where askbook_id=#{askbook_id}")
-    @Results(id = "resultMap",value = {
-            @Result(id = true,column = "askbook_id",property = "askbook_id"),
-            @Result(column = "user_id",property = "userInfo",one = @One( select = "com.liujiajun.dao.IUserDao.findById")),
-            @Result(column = "askbook_name",property = "askbook_name"),
-            @Result(column = "category",property = "categoryInfo",one = @One( select = "com.liujiajun.dao.ICategoryDao.findById")),
-            @Result(column = "author",property = "author"),
-            @Result(column = "appearance",property = "appearance"),
-            @Result(column = "description",property = "description"),
-            @Result(column = "imgUrl",property = "imgUrl"),
-            @Result(column = "time",property = "time"),
-            @Result(column = "status",property = "status")
-    })
+    @ResultMap("resultMap")
     AskBook findByAskBookId(Integer askbook_id);
 
     //修改图片信息

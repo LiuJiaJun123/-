@@ -49,9 +49,6 @@
 				<a class="page-link" onclick="lastPage()">上一页</a>
 			</li>
 
-
-
-
             <!-- 分页 -->
             <!--总页数没有10页-->
             <c:choose>

@@ -35,7 +35,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a id="allaskbook" class="nav-link" href="${pageContext.request.contextPath}/consumer/allaskbook.do">全部求购</a>
+                    <a id="allAskbook" class="nav-link" href="${pageContext.request.contextPath}/consumer/allAskbook.do">全部求购</a>
                 </li>
 
                 <%--<li class="nav-item">--%>
