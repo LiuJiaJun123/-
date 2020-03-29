@@ -25,9 +25,12 @@
 				<dd><a href="#">法律</a></dd>
 				<dd><a href="#">工具书</a></dd>
 				<dd><a href="#">管理</a></dd>
+				<dd><a href="#">计算机与网络</a></dd>
 				<dd><a href="#">科技工程</a></dd>
 				<dd><a href="#">生活时尚考试</a></dd>
+				<dd><a href="#">政治军事</a></dd>
 				<dd><a href="#">其他</a></dd>
+
 			</dl>
 		</li>
 		<li class="select-list">
