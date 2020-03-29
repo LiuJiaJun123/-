@@ -64,8 +64,8 @@
 
         <c:forEach items="${newBookList}" var="newBook">
             <div class="mingxing fl">
-                <div class="sub_mingxing"><a href=""><img src="../${newBook.imgUrl}" alt=""></a></div>
-                <div class="pinpai"><a href="">${newBook.book_name}</a></div>
+                <div class="sub_mingxing"><a target="_blank" href="${pageContext.request.contextPath}/consumer/xq.do?book_id=${newBook.book_id}"><img src="../${newBook.imgUrl}" alt=""></a></div>
+                <div class="pinpai"><a target="_blank" href="${pageContext.request.contextPath}/consumer/xq.do?book_id=${newBook.book_id}">${newBook.book_name}</a></div>
                 <c:if test="${empty newBook.description}">
                     <div class="youhui">暂无描述</div>
                 </c:if>
@@ -84,8 +84,8 @@
     <div class="main center">
         <c:forEach items="${cheapBookList}" var="cheapBook">
             <div class="mingxing fl">
-                <div class="sub_mingxing"><a href=""><img src="../${cheapBook.imgUrl}" alt=""></a></div>
-                <div class="pinpai"><a href="">${cheapBook.book_name}</a></div>
+                <div class="sub_mingxing"><a target="_blank" href="${pageContext.request.contextPath}/consumer/xq.do?book_id=${cheapBook.book_id}"><img src="../${cheapBook.imgUrl}" alt=""></a></div>
+                <div class="pinpai"><a target="_blank" href="${pageContext.request.contextPath}/consumer/xq.do?book_id=${cheapBook.book_id}">${cheapBook.book_name}</a></div>
                 <c:if test="${empty cheapBook.description}">
                     <div class="youhui">暂无描述</div>
                 </c:if>
@@ -111,8 +111,8 @@
         <c:forEach items="${goodBookList}" var="goodBook">
             <div class="remen fl">
                 <div class="xinpin"><span style="background:#fff"></span></div>
-                <div class="tu"><a href=""><img src="${goodBook.imgUrl}"></a></div>
-                <div class="miaoshu"><a href="">${goodBook.book_name}</a></div>
+                <div class="tu"><a target="_blank" href="${pageContext.request.contextPath}/consumer/xq.do?book_id=${goodBook.book_id}"><img src="${goodBook.imgUrl}"></a></div>
+                <div class="miaoshu"><a target="_blank" href="${pageContext.request.contextPath}/consumer/xq.do?book_id=${goodBook.book_id}">${goodBook.book_name}</a></div>
                 <div class="jiage">${goodBook.price}元</div>
                 <%--<div class="pingjia">372人评价</div>--%>
             </div>
