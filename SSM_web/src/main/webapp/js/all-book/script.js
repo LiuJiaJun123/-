@@ -1,20 +1,6 @@
 $(document).ready(function(){
 
-    $("#selectCategory dd").click(function () {
-        $(this).addClass("selected").siblings().removeClass("selected");
-        if ($(this).hasClass("select-all")) {
-            $("#selectA").remove();
-        } else {
-            var copyThisA = $(this).clone();
-            if ($("#selectA").length > 0) {
-                $("#selectA a").html($(this).text());
-            } else {
-                $(".select-result dl").append(copyThisA.attr("id", "selectA"));
-            }
-        }
-
-
-
+    function search(){
         var selectA = $("#selectA a").text();
         var selectB = $("#selectB a").text();
         var selectC = $("#selectC a").text();
@@ -37,7 +23,23 @@ $(document).ready(function(){
                 $('#mydiv').html(data);
             }
         });
+    }
 
+
+    $("#selectCategory dd").click(function () {
+        $(this).addClass("selected").siblings().removeClass("selected");
+        if ($(this).hasClass("select-all")) {
+            $("#selectA").remove();
+        } else {
+            var copyThisA = $(this).clone();
+            if ($("#selectA").length > 0) {
+                $("#selectA a").html($(this).text());
+            } else {
+                $(".select-result dl").append(copyThisA.attr("id", "selectA"));
+            }
+        }
+
+        search();
     });
 
     $("#selectAppearance dd").click(function () {
@@ -53,30 +55,7 @@ $(document).ready(function(){
             }
         }
 
-        var selectA = $("#selectA a").text();
-        var selectB = $("#selectB a").text();
-        var selectC = $("#selectC a").text();
-        var searchContent = $("#searchContent").val();
-
-        var allData = {
-            selectCategory:selectA,
-            selectAppearance:selectB,
-            selectPrice:selectC,
-            searchContent:searchContent
-        };
-        var flag =false;
-        $.ajax({
-            url:"/consumer/searchbook.do",
-            contentType:"application/json;charset=UTF-8",
-            data:JSON.stringify(allData),
-            dataType:"html",
-            type:"post",
-            success:function (data) {
-                // alert(data)
-                $('#mydiv').html(data);
-            }
-        });
-
+        search();
     });
 
     $("#selectPrice dd").click(function () {
@@ -92,84 +71,18 @@ $(document).ready(function(){
             }
         }
 
-        var selectA = $("#selectA a").text();
-        var selectB = $("#selectB a").text();
-        var selectC = $("#selectC a").text();
-        var searchContent = $("#searchContent").val();
-
-        var allData = {
-            selectCategory:selectA,
-            selectAppearance:selectB,
-            selectPrice:selectC,
-            searchContent:searchContent
-        };
-        var flag =false;
-        $.ajax({
-            url:"/consumer/searchbook.do",
-            contentType:"application/json;charset=UTF-8",
-            data:JSON.stringify(allData),
-            dataType:"html",
-            type:"post",
-            success:function (data) {
-                // alert(data)
-                $('#mydiv').html(data);
-            }
-        });
+        search();
     });
 
     $("#search_btn").click(function () {
-        var selectA = $("#selectA a").text();
-        var selectB = $("#selectB a").text();
-        var selectC = $("#selectC a").text();
-        var searchContent = $("#searchContent").val();
-
-        var allData = {
-            selectCategory:selectA,
-            selectAppearance:selectB,
-            selectPrice:selectC,
-            searchContent:searchContent
-        };
-        var flag =false;
-        $.ajax({
-            url:"/consumer/searchbook.do",
-            contentType:"application/json;charset=UTF-8",
-            data:JSON.stringify(allData),
-            dataType:"html",
-            type:"post",
-            success:function (data) {
-                // alert(data)
-                $('#mydiv').html(data);
-            }
-        });
+        search();
     });
 
     //按键盘的回车键也执行搜索
     $("#searchContent").keydown(function () {
         if(event.keyCode==13) {
             event.preventDefault();
-            var selectA = $("#selectA a").text();
-            var selectB = $("#selectB a").text();
-            var selectC = $("#selectC a").text();
-            var searchContent = $("#searchContent").val();
-
-            var allData = {
-                selectCategory:selectA,
-                selectAppearance:selectB,
-                selectPrice:selectC,
-                searchContent:searchContent
-            };
-            var flag =false;
-            $.ajax({
-                url:"/consumer/searchbook.do",
-                contentType:"application/json;charset=UTF-8",
-                data:JSON.stringify(allData),
-                dataType:"html",
-                type:"post",
-                success:function (data) {
-                    // alert(data)
-                    $('#mydiv').html(data);
-                }
-            });
+            search();
         }
     });
 
@@ -179,78 +92,21 @@ $(document).ready(function(){
 
 
         //点击 x 按钮，去掉筛选时，重新发送一个ajax请求
-        var selectA = $("#selectA a").text();
-        var selectB = $("#selectB a").text();
-        var selectC = $("#selectC a").text();
-        var allData = {
-            selectCategory:selectA,
-            selectAppearance:selectB,
-            selectPrice:selectC
-        };
-        var flag =false;
-        $.ajax({
-            url:"/consumer/searchbook.do",
-            contentType:"application/json;charset=UTF-8",
-            data:JSON.stringify(allData),
-            dataType:"html",
-            type:"post",
-            success:function (data) {
-                // alert(data)
-                $('#mydiv').html(data);
-            }
-        });
+        search();
     });
 
     $("#selectB").live("click", function () {
         $(this).remove();
         $("#selectAppearance .select-all").addClass("selected").siblings().removeClass("selected");
 
-        var selectA = $("#selectA a").text();
-        var selectB = $("#selectB a").text();
-        var selectC = $("#selectC a").text();
-        var allData = {
-            selectCategory:selectA,
-            selectAppearance:selectB,
-            selectPrice:selectC
-        };
-        var flag =false;
-        $.ajax({
-            url:"/consumer/searchbook.do",
-            contentType:"application/json;charset=UTF-8",
-            data:JSON.stringify(allData),
-            dataType:"html",
-            type:"post",
-            success:function (data) {
-                // alert(data)
-                $('#mydiv').html(data);
-            }
-        });
+        search();
     });
 
     $("#selectC").live("click", function () {
         $(this).remove();
         $("#selectPrice .select-all").addClass("selected").siblings().removeClass("selected");
 
-        var selectA = $("#selectA a").text();
-        var selectB = $("#selectB a").text();
-        var selectC = $("#selectC a").text();
-        var allData = {
-            selectCategory:selectA,
-            selectAppearance:selectB,
-            selectPrice:selectC
-        };
-        var flag =false;
-        $.ajax({
-            url:"/consumer/searchbook.do",
-            contentType:"application/json;charset=UTF-8",
-            data:JSON.stringify(allData),
-            dataType:"html",
-            type:"post",
-            success:function (data) {
-                // alert(data)
-                $('#mydiv').html(data);
-            }
-        });
+        search();
     });
 
     $(".select dd").live("click", function () {

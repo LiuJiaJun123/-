@@ -121,7 +121,8 @@
             var json = {
                 selectCategory: "${findBookCondition.selectCategory}",
                 selectAppearance: "${findBookCondition.selectAppearance}",
-                selectPrice: "${findBookCondition.selectPrice}"
+                selectPrice: "${findBookCondition.selectPrice}",
+                searchContent: "${findBookCondition.searchContent}"
             }
 
             $.ajax({
@@ -142,7 +143,8 @@
             var json = {
                 selectCategory: "${findBookCondition.selectCategory}",
                 selectAppearance: "${findBookCondition.selectAppearance}",
-                selectPrice: "${findBookCondition.selectPrice}"
+                selectPrice: "${findBookCondition.selectPrice}",
+                searchContent: "${findBookCondition.searchContent}"
             }
 
             $.ajax({
@@ -164,7 +166,8 @@
             var json = {
                 selectCategory: "${findBookCondition.selectCategory}",
                 selectAppearance: "${findBookCondition.selectAppearance}",
-                selectPrice: "${findBookCondition.selectPrice}"
+                selectPrice: "${findBookCondition.selectPrice}",
+                searchContent: "${findBookCondition.searchContent}"
             }
 
             $.ajax({
