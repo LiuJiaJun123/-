@@ -110,8 +110,8 @@ public interface IBookDao {
             "<if test='findBookCondition.selectCategory != null'>and category in (select category_id from category where category_name = #{findBookCondition.selectCategory}) </if> "+
             "<if test='findBookCondition.selectAppearance != null'>and appearance = #{findBookCondition.selectAppearance} </if> "+
             "<if test='findBookCondition.selectPrice != null'>and price &gt;= #{minPrice} and price &lt;= #{maxPrice} </if> " +
+            "<if test='findBookCondition.searchContent != null'>and book_name like #{findBookCondition.searchContent} or description like #{findBookCondition.searchContent} </if> "+
             "</where>" +
-
             "</script>")
     List<Book> findByConditions(@Param("findBookCondition") FindBookCondition findBookCondition,
                                 @Param("minPrice")Integer minPrice,@Param("maxPrice")Integer maxPrice);

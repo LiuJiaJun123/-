@@ -12,7 +12,7 @@ body{font:10px/180% Arial, Helvetica, sans-serif, "ÐÂËÎÌå";}
 .select a{display:inline-block;white-space:nowrap;height:24px;padding:0 10px;text-decoration:none;color:#039;border-radius:2px;}
 .select a:hover{color:#f60;background-color:#f3edc2}
 .select .selected a{color:#fff;background-color:#f60}
-.select-result dt{font-weight:bold}
+.select-result dt{font-weight:bold;}
 .select-no{color:#999}
 .select .select-result a{padding-right:20px;background:#f60 url("/img/consumer/close.gif") right 9px no-repeat}
 .select .select-result a:hover{background-position:right -15px}

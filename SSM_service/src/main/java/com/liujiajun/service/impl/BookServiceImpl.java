@@ -136,28 +136,12 @@ public class BookServiceImpl implements IBookService {
         if(findBookCondition.getSelectPrice().length()==0){
             findBookCondition.setSelectPrice(null);
         }
-
-
-//        String appearanceStr = null;
-//        String selectAppearance = findBookCondition.getSelectAppearance();
-//        if( selectAppearance !=null){
-//            if(selectAppearance.equals("9成新")){
-//                appearanceStr =  "('9')" ;
-//            }
-//            if(selectAppearance.equals("8成新")){
-//                appearanceStr =  "('8成新')" ;
-//            }
-//            if(selectAppearance.equals("6~7成新")){
-//                appearanceStr =  "('6成新','7成新')" ;
-//            }
-//            if(selectAppearance.equals("4~5成新")){
-//                appearanceStr =  "('4成新','5成新')" ;
-//            }
-//            if(selectAppearance.equals("1~3成新")){
-//                appearanceStr =  "('1成新','2成新','3成新')" ;
-//            }
-//        }
-
+        if(findBookCondition.getSearchContent().length()==0){
+            findBookCondition.setSearchContent(null);
+        }
+        else {
+            findBookCondition.setSearchContent("%"+findBookCondition.getSearchContent()+"%");
+        }
 
         int minPrice = 0;
         int maxPrice = 0;

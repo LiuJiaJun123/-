@@ -55,12 +55,38 @@
 				<dd><a href="#">40元以上</a></dd>
 			</dl>
 		</li>
-		<li class="select-result">
+		<li class="select-result selectCondition">
 			<dl>
 				<dt>已选条件：</dt>
 				<dd class="select-no">暂时没有选择过滤条件</dd>
 			</dl>
+
+			<form class="form-group row searchForm">
+				<div class="form-group col-sm-9">
+					<input type="text" id="searchContent" name="searchContent" class="form-control " placeholder="输入书名进行搜索" />
+				</div>
+				<button type="button" id="search_btn" class="btn btn-danger col-sm-3 search_btn">搜索</button>
+			</form>
 		</li>
+
+
+
+		<style>
+			.selectCondition{
+				position: relative;
+			}
+			.search_btn{
+				height: 37px;
+				margin-left: -10px;
+			}
+			.searchForm{
+				position: absolute;
+				top: 25%;
+				left: 70%;
+				width: 300px;
+			}
+		</style>
+
 	</ul>
 
 <%--书籍列表--%>
@@ -72,7 +98,8 @@
     var allData = {
         selectCategory:"",
         selectAppearance:"",
-        selectPrice:""
+        selectPrice:"",
+        searchContent:""
     };
     var flag =false;
     $.ajax({

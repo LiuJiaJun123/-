@@ -4,6 +4,7 @@ public class FindBookCondition {
     private String selectCategory;
     private String selectAppearance;
     private String selectPrice;
+    private String searchContent;
 
     public String getSelectCategory() {
         return selectCategory;
@@ -29,12 +30,21 @@ public class FindBookCondition {
         this.selectPrice = selectPrice;
     }
 
+    public String getSearchContent() {
+        return searchContent;
+    }
+
+    public void setSearchContent(String searchContent) {
+        this.searchContent = searchContent;
+    }
+
     @Override
     public String toString() {
         return "FindBookCondition{" +
                 "selectCategory='" + selectCategory + '\'' +
                 ", selectAppearance='" + selectAppearance + '\'' +
                 ", selectPrice='" + selectPrice + '\'' +
+                ", searchContent='" + searchContent + '\'' +
                 '}';
     }
 }
