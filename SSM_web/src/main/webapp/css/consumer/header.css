@@ -29,6 +29,10 @@
     /*background:#fff;*/
 }
 
+.currentSelect{
+    color:#000 !important;;
+}
+
 /*个人信息  退出*/
 #content2 li{
     /*line-height:10px;*/

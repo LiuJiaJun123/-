@@ -24,20 +24,25 @@
 
         <div class="collapse navbar-collapse " id="navbarSupportedContent" >
             <ul class="navbar-nav mr-auto" id="content">
-                <li class="nav-item active">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/index.do" >首页</a>
+                <li class="nav-item">
+                    <a id="index" class="nav-link" href="${pageContext.request.contextPath}/index.do" >首页</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/consumer/allbook.do">全部商品</a>
+                    <a id="allbook" class="nav-link" href="${pageContext.request.contextPath}/consumer/allbook.do">全部商品</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/consumer/addbook.do">发布商品</a>
+                    <a id="addbook" class="nav-link" href="${pageContext.request.contextPath}/consumer/addbook.do">发布商品</a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/consumer/allaskbook.do">全部求购</a>
+                    <a id="allaskbook" class="nav-link" href="${pageContext.request.contextPath}/consumer/allaskbook.do">全部求购</a>
                 </li>
+
+                <%--<li class="nav-item">--%>
+                    <%--<a id="allaskbook" class="nav-link" href="${pageContext.request.contextPath}/consumer/allaskbook.do">全部求购</a>--%>
+                <%--</li>--%>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/consumer/addaskbook.do">发布求购</a>
+                    <a id="addaskbook" class="nav-link" href="${pageContext.request.contextPath}/consumer/addaskbook.do">发布求购</a>
                 </li>
                 <%--<li class="nav-item">--%>
                     <%--<a class="nav-link" href="${pageContext.request.contextPath}/center">刘嘉俊</a>--%>
@@ -70,6 +75,16 @@
 </nav>
 <%--导航栏 end--%>
 
+<script>
+    $(function () {
+        var href = window.location.href;
+        var id = href.substring(href.lastIndexOf('/')+1);
+        id = id.substring(0,id.length-3);
+        $("#"+id).addClass("currentSelect");
+    })
+
+
+</script>
 
 
 </body>
