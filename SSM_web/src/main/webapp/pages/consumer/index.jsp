@@ -15,13 +15,70 @@
     <link rel="stylesheet" type="text/css" href="/css/consumer/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
 
+    <link rel="stylesheet" type="text/css" href="/css/consumer/announcement.css">
+
 </head>
 <body>
 <!-- 导航栏 start-->
 <jsp:include page="header.jsp"></jsp:include>
 <!-- 导航栏 end/-->
 
-<div class="bd-example mb-4">
+
+
+
+<div class="news-content">
+
+        <div class="news-content-item">
+            <a href="javascript:;" class="news-content-title clearfix">
+                <div class="news-title-fl">
+                    <div class="news-title-color"></div>
+                    <div class="news-title-title">官方公告</div>
+                </div>
+                <div class="news-title-fr news-title-img01"></div>
+            </a>
+            <ul class="news-content-lists clearfix">
+                <li class="clearfix">
+                    <a href="#">
+                        <i>【08-09】</i>
+                        <span>关于Man The server反射放大攻击的安全预警通知</span>
+                    </a>
+                </li>
+                <li class="clearfix">
+                    <a href="#">
+                        <i>【03-16】</i>
+                        <span>关于青岛1区、东北2区带宽价格下调的通知</span>
+                    </a>
+                </li>
+                <li class="clearfix">
+                    <a href="#">
+                        <i>【02-09】</i>
+                        <span>官网提示春节假期公告信息</span>
+                    </a>
+                </li>
+                <li class="clearfix">
+                    <a href="#">
+                        <i>【01-02】</i>
+                        <span>云计算市场爆发，云市场应用开启高效云管理模式</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .border-style{
+        margin-left: 27.5%;
+        width: 70%;
+        height: 500px;
+        margin-top: 10px;
+        padding: 20px;
+        border:1px solid #d3d3d3;background:#f7f7f7
+    }
+</style>
+
+<div class="bd-example mb-4 border-style">
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
