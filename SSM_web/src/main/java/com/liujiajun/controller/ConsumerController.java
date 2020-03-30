@@ -32,6 +32,8 @@ public class ConsumerController {
     private ICollectionService collectionService;
     @Autowired
     private IOpinionService opinionService;
+    @Autowired
+    private IAnnouncementService announcementService;
 
     //    商品详情
     @RequestMapping("/xq.do")
@@ -52,6 +54,17 @@ public class ConsumerController {
         AskBook askBookInfo = askBookService.findByAskBookId(askBook.getAskbook_id());
         modelAndView.addObject("askBookInfo",askBookInfo);
         modelAndView.setViewName("consumer/askbook-details");
+        return modelAndView;
+    }
+
+    //    公告详情
+    @RequestMapping("/announcement-xq.do")
+    public ModelAndView announcementXq(Announcement announcement){
+
+        ModelAndView modelAndView=new ModelAndView();
+        Announcement announcementInfo = announcementService.findByAnnouncementId(announcement.getAnnouncement_id());
+        modelAndView.addObject("announcementInfo",announcementInfo);
+        modelAndView.setViewName("consumer/announcement-details");
         return modelAndView;
     }
 

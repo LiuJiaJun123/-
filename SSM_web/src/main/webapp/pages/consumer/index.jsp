@@ -24,9 +24,6 @@
 <jsp:include page="header.jsp"></jsp:include>
 <!-- 导航栏 end/-->
 
-
-
-
 <div class="news-content">
 
 
@@ -41,31 +38,13 @@
             <ul class="news-content-lists clearfix">
                 <c:forEach items="${announcementInfo.list}" var="announcement">
                     <li class="clearfix">
-                        <a href="#">
+                        <a target="_blank" href="${pageContext.request.contextPath}/consumer/announcement-xq.do?announcement_id=${announcement.announcement_id}">
                             <i>【<fmt:formatDate value='${announcement.time}' pattern='MM-dd'/>】</i>
                             <span>${announcement.title}</span>
                         </a>
                     </li>
                 </c:forEach>
 
-                <%--<li class="clearfix">--%>
-                    <%--<a href="#">--%>
-                        <%--<i>【03-16】</i>--%>
-                        <%--<span>关于青岛1区、东北2区带宽价格下调的通知</span>--%>
-                    <%--</a>--%>
-                <%--</li>--%>
-                <%--<li class="clearfix">--%>
-                    <%--<a href="#">--%>
-                        <%--<i>【02-09】</i>--%>
-                        <%--<span>官网提示春节假期公告信息</span>--%>
-                    <%--</a>--%>
-                <%--</li>--%>
-                <%--<li class="clearfix">--%>
-                    <%--<a href="#">--%>
-                        <%--<i>【01-02】</i>--%>
-                        <%--<span>云计算市场爆发，云市场应用开启高效云管理模式</span>--%>
-                    <%--</a>--%>
-                <%--</li>--%>
             </ul>
         </div>
     </div>
