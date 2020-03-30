@@ -6,6 +6,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -28,6 +29,7 @@
 
 <div class="news-content">
 
+
         <div class="news-content-item">
             <a href="javascript:;" class="news-content-title clearfix">
                 <div class="news-title-fl">
@@ -37,30 +39,33 @@
                 <div class="news-title-fr news-title-img01"></div>
             </a>
             <ul class="news-content-lists clearfix">
-                <li class="clearfix">
-                    <a href="#">
-                        <i>【08-09】</i>
-                        <span>关于Man The server反射放大攻击的安全预警通知</span>
-                    </a>
-                </li>
-                <li class="clearfix">
-                    <a href="#">
-                        <i>【03-16】</i>
-                        <span>关于青岛1区、东北2区带宽价格下调的通知</span>
-                    </a>
-                </li>
-                <li class="clearfix">
-                    <a href="#">
-                        <i>【02-09】</i>
-                        <span>官网提示春节假期公告信息</span>
-                    </a>
-                </li>
-                <li class="clearfix">
-                    <a href="#">
-                        <i>【01-02】</i>
-                        <span>云计算市场爆发，云市场应用开启高效云管理模式</span>
-                    </a>
-                </li>
+                <c:forEach items="${announcementInfo.list}" var="announcement">
+                    <li class="clearfix">
+                        <a href="#">
+                            <i>【<fmt:formatDate value='${announcement.time}' pattern='MM-dd'/>】</i>
+                            <span>${announcement.title}</span>
+                        </a>
+                    </li>
+                </c:forEach>
+
+                <%--<li class="clearfix">--%>
+                    <%--<a href="#">--%>
+                        <%--<i>【03-16】</i>--%>
+                        <%--<span>关于青岛1区、东北2区带宽价格下调的通知</span>--%>
+                    <%--</a>--%>
+                <%--</li>--%>
+                <%--<li class="clearfix">--%>
+                    <%--<a href="#">--%>
+                        <%--<i>【02-09】</i>--%>
+                        <%--<span>官网提示春节假期公告信息</span>--%>
+                    <%--</a>--%>
+                <%--</li>--%>
+                <%--<li class="clearfix">--%>
+                    <%--<a href="#">--%>
+                        <%--<i>【01-02】</i>--%>
+                        <%--<span>云计算市场爆发，云市场应用开启高效云管理模式</span>--%>
+                    <%--</a>--%>
+                <%--</li>--%>
             </ul>
         </div>
     </div>

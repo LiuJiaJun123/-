@@ -14,7 +14,7 @@ public interface IAnnouncementDao {
      * 查找所有
      * @return
      */
-    @Select("select * from announcement")
+    @Select("select * from announcement order by time desc")
     @Results(id = "resultMap",value = {
             @Result(id = true,column = "announcement_id",property = "announcement_id"),
             @Result(column = "user_id",property = "userInfo",one = @One( select = "com.liujiajun.dao.IUserDao.findById")),
@@ -25,6 +25,14 @@ public interface IAnnouncementDao {
             @Result(column = "status",property = "status")
     })
     List<Announcement> findAll();
+
+    /**
+     * 查找所有status为1
+     * @return
+     */
+    @Select("select * from announcement where status = 1 order by time desc")
+    @ResultMap("resultMap")
+    List<Announcement> findAllOpen();
 
     //删除
     @Delete("delete from announcement where announcement_id=#{announcement_id}")

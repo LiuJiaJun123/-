@@ -1,8 +1,11 @@
 package com.liujiajun.controller;
 
+import com.github.pagehelper.PageInfo;
+import com.liujiajun.domain.Announcement;
 import com.liujiajun.domain.Book;
 import com.liujiajun.domain.CheckUsername;
 import com.liujiajun.domain.UserInfo;
+import com.liujiajun.service.IAnnouncementService;
 import com.liujiajun.service.IBookService;
 import com.liujiajun.service.IUserService;
 import org.apache.shiro.SecurityUtils;
@@ -25,6 +28,8 @@ public class LoginController {
     private IUserService userService;
     @Autowired
     private IBookService bookService;
+    @Autowired
+    private IAnnouncementService announcementService;
 
     //登录跳转
     @RequestMapping(value = "/login.do", method = {RequestMethod.GET})
@@ -88,12 +93,17 @@ public class LoginController {
     public ModelAndView findNewBook() throws Exception {
 
         ModelAndView mv=new ModelAndView();
+        //查找公告
+        List<Announcement> announcementList = announcementService.findAllOpen(1, 5);
+        PageInfo announcementInfo=new PageInfo(announcementList);
         //查找最新上架的书籍
         List<Book> newBookList = bookService.findNewBook();
         //查找价格最低的书籍
         List<Book> cheapBookList = bookService.findCheapBook();
         //查找精品推荐的书籍
         List<Book> goodBookList =  bookService.findGoodBook();
+
+        mv.addObject("announcementInfo",announcementInfo);
         mv.addObject("newBookList",newBookList);
         mv.addObject("cheapBookList",cheapBookList);
         mv.addObject("goodBookList",goodBookList);

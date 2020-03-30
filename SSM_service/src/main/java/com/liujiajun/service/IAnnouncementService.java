@@ -9,8 +9,11 @@ public interface IAnnouncementService {
 
     List<Announcement> findAll() throws Exception;
 
+    //查找所有
     public List<Announcement> findAll(int page, int pageSize) throws Exception;
 
+    //查找所有status为1
+    public List<Announcement> findAllOpen(int page, int pageSize) throws Exception;
 
     //批量删除
     void delete(Integer[] selectIds);

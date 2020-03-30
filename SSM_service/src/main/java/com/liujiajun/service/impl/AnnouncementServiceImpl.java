@@ -28,6 +28,13 @@ public class AnnouncementServiceImpl implements IAnnouncementService {
         return announcementDao.findAll();
     }
 
+    //查找所有status为1
+    @Override
+    public List<Announcement> findAllOpen(int page, int pageSize) throws Exception {
+        PageHelper.startPage(page,pageSize);
+        return announcementDao.findAllOpen();
+    }
+
     //批量删除
     @Override
     public void delete(Integer[] selectIds) {
