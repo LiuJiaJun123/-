@@ -97,6 +97,8 @@
 </div>
 
 
+<jsp:include page="footer.jsp"></jsp:include>
+
 <script>
     $(function () {
         var allData = {

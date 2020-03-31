@@ -15,9 +15,6 @@
     <link rel="stylesheet" type="text/css" href="/css/consumer/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3//css/bootstrap.min.css" >
 
-    <link rel="stylesheet" href="/css/consumer/xiangqing/style2.css">
-    <link rel="stylesheet" href="/css/consumer/xiangqing/comment.css">
-
 </head>
 <body>
 
@@ -32,20 +29,6 @@
     <div class="xiangqing">
         <div class="neirong w">
             <div class="xiaomi6 fl">${bookInfo.book_name}</div>
-            <%--<nav class="fr">--%>
-                <%--<li><a href="">概述</a></li>--%>
-                <%--<li>|</li>--%>
-                <%--<li><a href="">变焦双摄</a></li>--%>
-                <%--<li>|</li>--%>
-                <%--<li><a href="">设计</a></li>--%>
-                <%--<li>|</li>--%>
-                <%--<li><a href="">参数</a></li>--%>
-                <%--<li>|</li>--%>
-                <%--<li><a href="">F码通道</a></li>--%>
-                <%--<li>|</li>--%>
-                <%--<li><a href="">用户评价</a></li>--%>
-                <%--<div class="clear"></div>--%>
-            <%--</nav>--%>
             <div class="clear"></div>
         </div>
     </div>
@@ -87,13 +70,6 @@
                 <span class="ml20">地址：</span><a style="color: teal" href="" >${bookInfo.userInfo.address}</a>
             </div>
 
-
-
-            <%--<div class="xiadan ml20 mt20">--%>
-                <%--<input class="jrgwc"  type="button" name="jrgwc" value="点击收藏" />--%>
-                <%--<input class="jrgwc" type="button" name="jrgwc" value="我想要" />--%>
-
-            <%--</div>--%>
         </div>
         <div class="clear"></div>
     </div>
@@ -128,9 +104,7 @@
         background: url(/img/favo-hover.png) no-repeat center top;
         background-size: 25px 25px;
     }
-    /*.favotxt-color{*/
-        /*color: #999;*/
-    /*}*/
+
     .favotxt-color{
         color: #00a7d0;
     }
@@ -199,18 +173,7 @@
 </script>
 
 
-<!-- footer -->
-<footer class="mt20 center">
-
-    <div class="mt20">小米商城|MIUI|米聊|多看书城|小米路由器|视频电话|小米天猫店|小米淘宝直营店|小米网盟|小米移动|隐私政策|Select Region</div>
-    <div>©mi.com 京ICP证110507号 京ICP备10046444号 京公网安备11010802020134号 京网文[2014]0059-0009号</div>
-    <div>违法和不良信息举报电话：185-0130-1238，本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</div>
-
-</footer>
-
-<%--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>--%>
-<%--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper./js/xinagqing/1.14.3/umd/popper.min.js"></script>--%>
-<%--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3//js/xinagqing/bootstrap.min.js"></script>--%>
+<jsp:include page="footer.jsp"></jsp:include>
 
 
 </body>

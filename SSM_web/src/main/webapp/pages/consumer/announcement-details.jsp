@@ -40,6 +40,7 @@
 
 </div>
 
+
 <style>
     .announcement-content{
         margin: 50px auto;
@@ -72,7 +73,6 @@
 
     }
 </style>
-
 
 </body>
 </html>

@@ -38,21 +38,12 @@
                     <a id="allAskbook" class="nav-link" href="${pageContext.request.contextPath}/consumer/allAskbook.do">全部求购</a>
                 </li>
 
-                <%--<li class="nav-item">--%>
-                    <%--<a id="allaskbook" class="nav-link" href="${pageContext.request.contextPath}/consumer/allaskbook.do">全部求购</a>--%>
-                <%--</li>--%>
                 <li class="nav-item">
                     <a id="addaskbook" class="nav-link" href="${pageContext.request.contextPath}/consumer/addaskbook.do">发布求购</a>
                 </li>
-                <%--<li class="nav-item">--%>
-                    <%--<a class="nav-link" href="${pageContext.request.contextPath}/center">刘嘉俊</a>--%>
-                <%--</li>--%>
+
 
             </ul>
-            <%--<form class="form-inline my-2 my-lg-0">--%>
-                <%--<input class="form-control mr-sm-2" type="search" placeholder="在此输入内容" aria-label="Search">--%>
-                <%--<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">搜索</button>--%>
-            <%--</form>--%>
 
             <ul class="navbar-nav mr-auto" id="content2" style="padding-left: 200px">
                 <li class="nav-item">

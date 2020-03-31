@@ -263,19 +263,9 @@
 
     </div>
 
+<jsp:include page="footer.jsp"></jsp:include>
 
-<footer class="mt20 center" style="margin-top: 50px;">
-    <div class="mt20">
-        <b>Version</b> 1.0.8
-        <strong>Designed by 刘嘉俊.    </strong> All rights reserved.
-    </div>
-    <div>©mi.com 京ICP证110507号 京ICP备10046444号 京公网安备11010802020134号 京网文[2014]0059-0009号</div>
-    <%--<div>违法和不良信息举报电话：185-0130-1238，本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</div>--%>
-</footer>
-
-<%--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>--%>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-<%--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>--%>
 <script src="/js/bootstrap.min.js"></script>
 
 

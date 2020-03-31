@@ -145,9 +145,6 @@
     <div class="biaoti center">精品推荐</div>
     <div class="main center">
         <div class="content">
-            <%--<div class="remen fl"><a href=""><img src="/image/peijian1.jpg"></a>--%>
-            <%--</div>--%>
-
 
         <c:forEach items="${goodBookList}" var="goodBook">
             <div class="remen fl">
@@ -155,86 +152,16 @@
                 <div class="tu"><a target="_blank" href="${pageContext.request.contextPath}/consumer/xq.do?book_id=${goodBook.book_id}"><img src="${goodBook.imgUrl}"></a></div>
                 <div class="miaoshu"><a target="_blank" href="${pageContext.request.contextPath}/consumer/xq.do?book_id=${goodBook.book_id}">${goodBook.book_name}</a></div>
                 <div class="jiage">${goodBook.price}元</div>
-                <%--<div class="pingjia">372人评价</div>--%>
             </div>
         </c:forEach>
 
-            <%--<div class="remen fl">--%>
-                <%--<div class="xinpin"><span style="background:red">享6折</span></div>--%>
-                <%--<div class="tu"><a href=""><img src="/image/peijian4.jpg"></a></div>--%>
-                <%--<div class="miaoshu"><a href="">红米NOTE 4X 红米note4X</a></div>--%>
-                <%--<div class="jiage">19元</div>--%>
-                <%--<div class="pingjia">372人评价</div>--%>
-                <%--<div class="piao">--%>
-                    <%--<a href="">--%>
-                        <%--<span>发货速度很快！很配小米6！</span>--%>
-                        <%--<span>来至于mi狼牙的评价</span>--%>
-                    <%--</a>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-            <%--<div class="remen fl">--%>
-                <%--<div class="xinpin"><span style="background:#fff"></span></div>--%>
-                <%--<div class="tu"><a href=""><img src="/image/peijian5.jpg"></a></div>--%>
-                <%--<div class="miaoshu"><a href="">小米支架式自拍杆</a></div>--%>
-                <%--<div class="jiage">89元</div>--%>
-                <%--<div class="pingjia">372人评价</div>--%>
-                <%--<div class="piao">--%>
-                    <%--<a href="">--%>
-                        <%--<span>发货速度很快！很配小米6！</span>--%>
-                        <%--<span>来至于mi狼牙的评价</span>--%>
-                    <%--</a>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-            <%--<div class="clear"></div>--%>
-        <%--</div>--%>
-        <%--<div class="content">--%>
-            <%--<div class="remen fl"><a href=""><img src="/image/peijian6.png"></a>--%>
-            <%--</div>--%>
-            <%--<div class="remen fl">--%>
-                <%--<div class="xinpin"><span style="background:#fff"></span></div>--%>
-                <%--<div class="tu"><a href=""><img src="/image/peijian7.jpg"></a></div>--%>
-                <%--<div class="miaoshu"><a href="">小米指环支架</a></div>--%>
-                <%--<div class="jiage">19元</div>--%>
-                <%--<div class="pingjia">372人评价</div>--%>
-                <%--<div class="piao">--%>
-                    <%--<a href="">--%>
-                        <%--<span>发货速度很快！很配小米6！</span>--%>
-                        <%--<span>来至于mi狼牙的评价</span>--%>
-                    <%--</a>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-            <%--<div class="remen fl">--%>
-                <%--<div class="xinpin"><span style="background:#fff"></span></div>--%>
-                <%--<div class="tu"><a href=""><img src="/image/peijian8.jpg"></a></div>--%>
-                <%--<div class="miaoshu"><a href="">米家随身风扇</a></div>--%>
-                <%--<div class="jiage">19.9元</div>--%>
-                <%--<div class="pingjia">372人评价</div>--%>
-            <%--</div>--%>
-            <%--<div class="remen fl">--%>
-                <%--<div class="xinpin"><span style="background:#fff"></span></div>--%>
-                <%--<div class="tu"><a href=""><img src="/image/peijian9.jpg"></a></div>--%>
-                <%--<div class="miaoshu"><a href="">红米4X 高透软胶保护套</a></div>--%>
-                <%--<div class="jiage">59元</div>--%>
-                <%--<div class="pingjia">775人评价</div>--%>
-            <%--</div>--%>
-            <%--<div class="remenlast fr">--%>
-                <%--<div class="hongmi"><a href=""><img src="/image/hongmin4.png" alt=""></a></div>--%>
-                <%--<div class="liulangengduo"><a href=""><img src="/image/liulangengduo.png" alt=""></a></div>--%>
-            <%--</div>--%>
             <div class="clear"></div>
         </div>
     </div>
 </div>
 
+<jsp:include page="footer.jsp"></jsp:include>
 
-<footer class="mt20 center" style="margin-top: 50px;">
-    <div class="mt20">
-        <b>Version</b> 1.0.8
-        <strong>Designed by 刘嘉俊.    </strong> All rights reserved.
-    </div>
-    <div>©mi.com 京ICP证110507号 京ICP备10046444号 京公网安备11010802020134号 京网文[2014]0059-0009号</div>
-    <%--<div>违法和不良信息举报电话：185-0130-1238，本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</div>--%>
-</footer>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>

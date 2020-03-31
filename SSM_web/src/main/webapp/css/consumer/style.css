@@ -158,7 +158,10 @@ header .top .right .gouwuche:hover{color:#000;background: #666;}
 .xiangqing .neirong nav li a:hover{color:#ff6700;}
 /*jieshao*/
 .jieshao{height: 560px; }
-.jieshao .left{width:560px;height:560px;border:1px solid #ccc;}
+.jieshao .left{width:560px;height:560px;
+	border:1px solid #cee3e9;background:#f1f7f9
+	/*border:1px solid #cceff5;background:#fafcfd*/
+}
 .jieshao .left img{width:380px;height:380px; margin:90px;}
 .jieshao .right{width:620px;background: rgb(248,248,248);height: 560px;}
 .jieshao .right .jianjie{font-size: 18px;color: #2b542c;line-height: 35px; word-spacing:2px;text-indent:33px; height: 130px}

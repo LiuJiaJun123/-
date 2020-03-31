@@ -45,6 +45,9 @@
     <div  id="mydiv">
     </div>
 
+
+    <jsp:include page="footer.jsp"></jsp:include>
+
     <script>
         var allData = {
             searchContent:""

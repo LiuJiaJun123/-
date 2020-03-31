@@ -9,9 +9,6 @@
 
 <link rel="stylesheet" type="text/css" href="/css/consumer/all-book-list.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
-<%--<link rel="stylesheet" type="text/css" href="/css/consumer/all-book.css">--%>
-<%--<script type="text/javascript" src="/js/all-book/jquery-1.7.2.min.js"></script>--%>
-<%--<script type="text/javascript" src="/js/all-book/script.js"></script>--%>
 
 </head>
 <body>
@@ -87,22 +84,6 @@
                     </li>
                 </c:if>
             </c:forEach>
-
-            <%--<c:forEach begin="1" end="${bookInfo.pages}" var="i">--%>
-            <%--<c:if test="${i==bookInfo.pageNum}">--%>
-            <%--<li class="page-item active">--%>
-            <%--<a class="page-link" onclick="changePage(${i})" >${i}</a>--%>
-            <%--</li>--%>
-            <%--</c:if>--%>
-            <%--<c:if test="${i!=bookInfo.pageNum}">--%>
-            <%--<li class="page-item">--%>
-            <%--<a class="page-link" onclick="changePage(${i})">${i}</a>--%>
-            <%--</li>--%>
-            <%--</c:if>--%>
-            <%--</c:forEach>--%>
-
-
-
 
 			<li class="page-item">
 				<a class="page-link" onclick="nextPage()">下一页</a>
