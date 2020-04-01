@@ -47,4 +47,35 @@ public class CollectionServiceImpl implements ICollectionService {
 
         return null;
     }
+
+    //查找所有
+    @Override
+    public List<Collection> findAll(Integer page, Integer pageSize) {
+        PageHelper.startPage(page,pageSize);
+        return collectionDao.findAll();
+    }
+
+    //根据Id查找
+    @Override
+    public Collection findByCollectionId(Integer collection_id) {
+        return collectionDao.findByCollectionId(collection_id);
+    }
+
+    //根据id删除
+    @Override
+    public void deleteByCollectionId(Integer[] selectIds) {
+        for (Integer collection_id : selectIds) {
+            collectionDao.deleteByCollectionId(collection_id);
+        }
+    }
+
+    //根据 书籍id或收藏人Id 搜索
+    @Override
+    public List<Collection> findCollection(String findConditions, Integer page, Integer pageSize) {
+        findConditions="%"+findConditions+"%";
+        PageHelper.startPage(page,pageSize);
+        List<Collection> findBook = collectionDao.findCollection(findConditions);
+        return findBook;
+    }
+
 }

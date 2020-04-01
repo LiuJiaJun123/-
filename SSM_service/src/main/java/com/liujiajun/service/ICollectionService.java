@@ -19,4 +19,16 @@ public interface ICollectionService {
 
     //查询是否已经收藏
     Collection findByUserIdAndBookId(Integer user_id, Integer book_id);
+
+    //查找所有
+    List<Collection> findAll(Integer page, Integer pageSize);
+
+    //根据id查找
+    Collection findByCollectionId(Integer collection_id);
+
+    //根据id删除
+    void deleteByCollectionId(Integer[] collection_id);
+
+    //根据 书籍id或收藏人Id 搜索
+    List<Collection> findCollection(String findConditions, Integer page, Integer pageSize);
 }
