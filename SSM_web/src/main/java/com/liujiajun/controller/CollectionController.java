@@ -92,7 +92,7 @@ public class CollectionController {
         return code;
     }
 
-    //查看收藏详情之前，
+    //查看收藏详情之前
     @RequestMapping("/beforeDetail.do")
     public ModelAndView beforeDetail(Integer collection_id) throws Exception {
 
@@ -104,7 +104,7 @@ public class CollectionController {
         return mv;
     }
 
-    //普通用户删除收藏
+    //管理员删除收藏
     @RequestMapping("/deleteCollection.do")
     public String deleteCollection(Integer[] selectIds) throws Exception {
 
