@@ -71,10 +71,10 @@
 							href="${pageContext.request.contextPath}/collection/findAll.do?page=1&pageSize=4">
 						<i class="fa fa-circle-o"></i> 收藏管理
 					</a></li>
-					<li id="orders-management"><a
-						href="${pageContext.request.contextPath}/orders/findAll.do?page=1&pageSize=4"> <i
-							class="fa fa-circle-o"></i> 订单管理
-					</a></li>
+					<%--<li id="orders-management"><a--%>
+						<%--href="${pageContext.request.contextPath}/orders/findAll.do?page=1&pageSize=4"> <i--%>
+							<%--class="fa fa-circle-o"></i> 订单管理--%>
+					<%--</a></li>--%>
 					<li id="announcement-management"><a
 							href="${pageContext.request.contextPath}/announcement/findAll.do?page=1&pageSize=4"> <i
 							class="fa fa-circle-o"></i> 公告管理
