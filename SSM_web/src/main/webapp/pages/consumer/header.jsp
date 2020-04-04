@@ -5,6 +5,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>header</title>
@@ -48,17 +49,30 @@
             <ul class="navbar-nav mr-auto" id="content2" style="padding-left: 200px">
                 <li class="nav-item">
                     <a href="${pageContext.request.contextPath}/consumer/mySell.do" class="nav-link">
-                        <img src="${pageContext.request.contextPath}/img/consumer/tou.png">
+                        <%--<img src="${pageContext.request.contextPath}/img/consumer/tou.png">--%>
                         <span >
-                            <%--获取当前用户名--%>
-                            <shiro:principal/>
+                            <shiro:guest>
+                                <a class="nav-link"
+                                   href="${pageContext.request.contextPath}/login.jsp">请登录</a>
+                            </shiro:guest>
+
+                            <shiro:user>
+                                <img src="${pageContext.request.contextPath}/img/consumer/tou.png">
+                                <%--获取当前用户名--%>
+                                <shiro:principal/>
+                                <%--<a class="nav-link" href="/logout">退出</a>--%>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/logout">退出</a>
+                                </li>
+                            </shiro:user>
+
                         </span>
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/logout">退出</a>
-                </li>
+                <%--<li class="nav-item">--%>
+                    <%--<a class="nav-link" href="/logout">退出</a>--%>
+                <%--</li>--%>
             </ul>
 
         </div>

@@ -24,7 +24,7 @@
         <property name="securityManager" ref="securityManager" />
 
         <!-- 要求登录时的链接(登录页面地址)，非必须的属性，默认会自动寻找Web工程根目录下的"/login.jsp"页面 -->
-        <!--<property name="loginUrl" value="/admin/show"></property>-->
+        <!--<property name="loginUrl" value="/pages/consumer/index.jsp"></property>-->
 
         <property name="filters">
             <map>
@@ -35,6 +35,11 @@
         <property name="filterChainDefinitions">
             <value>
                 <!--需要注意filterChainDefinitions过滤器中对于路径的配置是有顺序的，当找到匹配的条目之后容器不会再继续寻找。因此带有通配符的路径要放在后面-->
+
+                <!--/index.do = anon-->
+                <!--/consumer/allbook.do = anon-->
+                <!--/index2.jsp = anon-->
+
 
                 <!--注册时，查找当前用户名是否存在-->
                 /user/findByName.do = anon
@@ -54,7 +59,17 @@
                 /askbook/save.do = authc, roles["admin","user"]
                 /askbook/** = authc, roles[admin]
                 /findNewBook.do = authc, roles[user]
-                /consumer/** = authc, roles[user]
+
+
+                <!--/consumer/** = authc, roles[user]-->
+                /consumer/addbook.do = roles[user]
+                /consumer/addaskbook.do = roles[user]
+                /consumer/mysell.do = roles[user]
+                /consumer/myask.do = roles[user]
+                /consumer/myCollection.do = roles[user]
+                /consumer/opinion.do = roles[user]
+                /consumer/updatePwd.do = roles[user]
+
 
                 /collection/delete.do = authc,roles["user"]
                 /collection/save.do = authc,roles["user"]
@@ -80,8 +95,13 @@
                 /fonts/** = anon
 
                 <!-- 除了上面的 /login 可以匿名访问，其他路径都需要登录访问-->
+
+
+
                 <!-- 如果没登录，就访问其他路径会跳转到 /login 登录-->
-                /** = authc
+                <!--/** = authc-->
+
+                /** = anon
             </value>
         </property>
     </bean>
