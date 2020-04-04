@@ -2,14 +2,8 @@ package com.liujiajun.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.liujiajun.domain.CheckUsername;
-import com.liujiajun.domain.Role;
-import com.liujiajun.domain.SysLog;
 import com.liujiajun.domain.UserInfo;
-import com.liujiajun.exception.CustomException;
-import com.liujiajun.service.IRoleService;
 import com.liujiajun.service.IUserService;
-import javafx.scene.input.InputMethodTextRun;
-import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -19,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @Controller
@@ -91,30 +84,14 @@ public class UserController {
 
 
     /**
-     * 查看用户详情
-     * @return
-     */
-    @RequestMapping("/findById.do")
-    public ModelAndView findById(Integer id) throws Exception {
-        ModelAndView mv=new ModelAndView();
-        UserInfo user = userService.findById(id);
-        mv.addObject("user",user);
-        mv.setViewName("user-show");
-        return mv;
-    }
-
-    /**
      * 用户信息编辑
      * @return
      */
     @RequestMapping("/edit.do")
     public ModelAndView edit(Integer id) throws Exception {
         ModelAndView mv=new ModelAndView();
-        //找出可以用户添加的角色
-//        List<Role> roleCanAdd = userService.findRoleCanAdd(id);
         //查找要编辑的用户信息
         UserInfo user = userService.findById(id);
-//        mv.addObject("roleCanAdd",roleCanAdd);
         mv.addObject("user",user);
         mv.setViewName("user-edit");
         return mv;
@@ -134,19 +111,6 @@ public class UserController {
         //角色信息修改
         return "redirect:findAll.do";
 
-    }
-
-
-    /**
-     * 用户添加角色
-     * @return
-     */
-    @RequestMapping("/addRoleToUser.do")
-    public String addRoleToUser(@RequestParam(value = "userId",required = true)String userId,
-                                @RequestParam(value = "ids",required = true) String[] roleIds) {
-
-        userService.addRole(userId,roleIds);
-        return "redirect:findAll.do";
     }
 
 

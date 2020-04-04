@@ -1,11 +1,7 @@
 package com.liujiajun.service;
 
-import com.liujiajun.domain.Book;
-import com.liujiajun.domain.Role;
 import com.liujiajun.domain.UserInfo;
-import org.apache.ibatis.annotations.Select;
 //import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -37,12 +33,6 @@ public interface IUserService  {
 
     //删除用户
     void delete(String[] selectIds);
-
-    //查找可以添加的角色
-    public List<Role> findRoleCanAdd(String id) throws Exception;
-
-    //用户添加角色
-    public void addRole(String userId, String[] roleIds);
 
     //用户信息修改
     void update(UserInfo userInfo) throws Exception;

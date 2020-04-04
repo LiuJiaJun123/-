@@ -1,10 +1,6 @@
 package com.liujiajun.shiro;
 
-import com.liujiajun.domain.Permission;
-import com.liujiajun.domain.Role;
 import com.liujiajun.domain.UserInfo;
-import com.liujiajun.exception.CustomException;
-import com.liujiajun.service.IRoleService;
 import com.liujiajun.service.IUserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -14,10 +10,7 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
-import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Component

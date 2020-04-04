@@ -18,10 +18,6 @@ public class OrdersController {
 
     @Autowired
     private IOrdersService ordersService;
-    @Autowired
-    private IProductService productService;
-    @Autowired
-    private IMemberService memberService;
 
     @Autowired
     private IBookService bookService;
@@ -41,7 +37,6 @@ public class OrdersController {
 
         mv.addObject("pageInfo",pageInfo);
 
-//        mv.addObject("ordersList",ordersList);
         mv.setViewName("orders-list");
         return mv;
     }
@@ -85,17 +80,12 @@ public class OrdersController {
         //订单
         Orders orders = ordersService.findById(orders_id);
 
-//        //查找所有产品
-//        List<Book> bookList = bookService.findAll();
-
         //查找所有买家
         List<UserInfo> userList = userService.findUserExpectAdmin();
 
         ModelAndView mv=new ModelAndView();
         mv.addObject("orders",orders);
-//        mv.addObject("bookList",bookList);
         mv.addObject("userList",userList);
-
 
         mv.setViewName("orders-update");
         return mv;

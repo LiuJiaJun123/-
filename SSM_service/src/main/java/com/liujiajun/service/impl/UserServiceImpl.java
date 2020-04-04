@@ -1,17 +1,9 @@
 package com.liujiajun.service.impl;
 
 import com.github.pagehelper.PageHelper;
-import com.liujiajun.BCryptPasswordEncoderUtils;
-import com.liujiajun.dao.IPermissionDao;
-import com.liujiajun.dao.IRole_PermissionDao;
 import com.liujiajun.dao.IUserDao;
-import com.liujiajun.dao.IUsers_RoleDao;
-import com.liujiajun.domain.Book;
-import com.liujiajun.domain.Permission;
-import com.liujiajun.domain.Role;
 import com.liujiajun.domain.UserInfo;
 import com.liujiajun.service.IUserService;
-import com.sun.org.apache.bcel.internal.generic.IUSHR;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.core.authority.SimpleGrantedAuthority;
 //import org.springframework.security.core.userdetails.User;
@@ -21,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service("userService")
@@ -29,12 +20,6 @@ public class UserServiceImpl implements IUserService {
 
     @Autowired
     private IUserDao userDao;
-
-    @Autowired
-    private IUsers_RoleDao users_roleDao;
-
-    @Autowired
-    private IPermissionDao permissionDao;
 
 
     @Override
@@ -108,22 +93,6 @@ public class UserServiceImpl implements IUserService {
     }
 
 
-    //查找可以添加的角色
-    @Override
-    public List<Role> findRoleCanAdd(String id) throws Exception {
-
-        return userDao.findRoleCanAdd(id);
-    }
-
-    //用户添加角色
-    @Override
-    public void addRole(String userId, String[] roleIds) {
-
-        for (String roleId : roleIds) {
-            userDao.addRole(userId,roleId);
-        }
-
-    }
 
 //    用户信息修改
     @Override

@@ -34,27 +34,6 @@ public interface IOrdersDao {
             "values(#{book.book_id},#{buyer.id},#{description},#{order_time} )")
     void save(Orders orders);
 
-
-    //根据订单编号查询订单
-    @Select("select * from orders where orderNum=#{orderNum}")
-    Orders findByOrderNum(String orderNum);
-
-
-    //根据订单编号查询订单  （搜索的时候按照订单编号搜索）
-    @Select("select * from orders where orderNum like #{orderNum}")
-    @Results({
-            @Result(id = true,column = "id",property = "id"),
-            @Result(column = "orderNum",property = "orderNum"),
-            @Result(column = "orderTime",property = "orderTime"),
-            @Result(column = "orderStatus",property = "orderStatus"),
-            @Result(column = "peopleCount",property = "peopleCount"),
-            @Result(column = "payType",property = "payType"),
-            @Result(column = "orderDesc",property = "orderDesc"),
-            @Result(column = "productId",property = "product",one = @One( select = "com.liujiajun.dao.IProductDao.findById"))
-    })
-    List<Orders> searchByOrderNum(String orderNum);
-
-
     //修改订单
 
     @Update("update orders set buyer_id=#{buyer.id},description=#{description} where orders_id=#{orders_id}")

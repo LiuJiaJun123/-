@@ -44,14 +44,6 @@
 					</a></li>
 					<%--</security:authorize>--%>
 
-					<li id="role-management"><a
-						href="${pageContext.request.contextPath}/role/findAll.do?page=1&pageSize=4"> <i
-							class="fa fa-circle-o"></i> 角色管理
-					</a></li>
-					<li id="permissions-management"><a
-						href="${pageContext.request.contextPath}/permission/findAll.do?page=1&pageSize=4">
-							<i class="fa fa-circle-o"></i> 资源权限管理
-					</a></li>
 					<li id="log-management"><a
 						href="${pageContext.request.contextPath}/sysLog/findAll.do?page=1&pageSize=4"> <i
 							class="fa fa-circle-o"></i> 访问日志

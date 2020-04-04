@@ -1,6 +1,5 @@
 package com.liujiajun.dao;
 
-import com.liujiajun.domain.Role;
 import com.liujiajun.domain.UserInfo;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
@@ -62,14 +61,6 @@ public interface IUserDao {
     })
     public UserInfo findById(Integer id) throws Exception;
 
-
-    /**
-     * 查找该用户可以添加的角色，从角色表查找 该用户没有的角色
-     * @param
-     * @return
-     */
-    @Select("select * from role where id not in(select roleId from users_role where userId=#{id})")
-    public List<Role> findRoleCanAdd(String id);
 
 
     //用户添加角色
