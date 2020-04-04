@@ -155,7 +155,10 @@ public class UserServiceImpl implements IUserService {
         return userDao.findUserExpectAdmin();
     }
 
-
+    @Override
+    public void updatePersonalData(UserInfo userInfo) {
+        userDao.updatePersonalData(userInfo);
+    }
 
 
 }

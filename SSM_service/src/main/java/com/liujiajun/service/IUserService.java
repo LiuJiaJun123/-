@@ -54,4 +54,6 @@ public interface IUserService  {
     List<UserInfo> findUserExpectAdmin();
 
 
+    //修改个人信息
+    void updatePersonalData(UserInfo userInfo);
 }

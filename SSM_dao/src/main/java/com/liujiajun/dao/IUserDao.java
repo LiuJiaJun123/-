@@ -101,4 +101,9 @@ public interface IUserDao {
     //查找所有除了管理员的 普通用户
     @Select("select * from users where role = 2")
     List<UserInfo> findUserExpectAdmin();
+
+    //修改个人信息
+    @Update("update users set username=#{username},phone=#{phone},qq=#{qq},email=#{email}," +
+            "address=#{address},description=#{description} where id=#{id}")
+    void updatePersonalData(UserInfo userInfo);
 }

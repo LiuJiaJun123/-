@@ -84,6 +84,7 @@
                     <li><a href="${pageContext.request.contextPath}/consumer/myAsk.do">我的求购</a></li>
                     <li><a href="${pageContext.request.contextPath}/consumer/myCollection.do">我的收藏</a></li>
                     <li><a href="${pageContext.request.contextPath}/consumer/opinion.do">意见反馈</a></li>
+                    <li><a href="${pageContext.request.contextPath}/consumer/updatePersonalData.do">修改个人资料</a></li>
                     <li><a href="${pageContext.request.contextPath}/consumer/updatePwd.do">修改密码</a></li>
                 </ul>
             </div>

@@ -177,6 +177,30 @@ public class ConsumerController {
         return modelAndView;
     }
 
+    //  修改个人资料
+    @GetMapping("/updatePersonalData.do")
+    public ModelAndView updatePersonalData() throws Exception {
+
+        ModelAndView modelAndView =new ModelAndView();
+        //获取当前用户
+        String username = (String) SecurityUtils.getSubject().getPrincipal();
+        //先查找个人资料
+        UserInfo userInfo = userService.findByName(username);
+        modelAndView.addObject("userInfo",userInfo);
+        modelAndView.setViewName("/consumer/updatePersonalData");
+
+        return modelAndView;
+    }
+
+    //  修改个人资料
+    @PostMapping("/updatePersonalData.do")
+    public String updatePersonalData2(UserInfo userInfo) throws Exception {
+
+        userService.updatePersonalData(userInfo);
+
+        return "redirect:updatePersonalData.do";
+    }
+
 
     //  修改密码
     @GetMapping("/updatePwd.do")

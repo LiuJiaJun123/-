@@ -68,6 +68,7 @@
                 /consumer/myask.do = roles[user]
                 /consumer/myCollection.do = roles[user]
                 /consumer/opinion.do = roles[user]
+                /consumer/updatePersonalData.do = roles[user]
                 /consumer/updatePwd.do = roles[user]
 
 

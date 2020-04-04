@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>修改密码</title>
+    <title>修改个人资料</title>
     <link rel="stylesheet" type="text/css" href="../../css/consumer/style.css">
     <%--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >--%>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min4.css">
@@ -93,46 +93,68 @@
                     <li><a href="${pageContext.request.contextPath}/consumer/myAsk.do">我的求购</a></li>
                     <li><a href="${pageContext.request.contextPath}/consumer/myCollection.do">我的收藏</a></li>
                     <li><a href="${pageContext.request.contextPath}/consumer/opinion.do">意见反馈</a></li>
-                    <li><a href="${pageContext.request.contextPath}/consumer/updatePersonalData.do">修改个人资料</a></li>
-                    <li><a href="${pageContext.request.contextPath}/consumer/updatePwd.do" style="color:#ff6700;font-weight:bold;">修改密码</a></li>
+                    <li><a href="${pageContext.request.contextPath}/consumer/updatePersonalData.do" style="color:#ff6700;font-weight:bold;">修改个人资料</a></li>
+                    <li><a href="${pageContext.request.contextPath}/consumer/updatePwd.do">修改密码</a></li>
                 </ul>
             </div>
         </div>
 
 
         <div class="rtcont fr">
-            <div class="ddzxbt">修改密码</div>
-        <form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/consumer/updatePwd.do" id="saveForm"
+            <div class="ddzxbt">修改个人资料</div>
+        <form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/consumer/updatePersonalData.do" id="saveForm"
           method="post">
 
-            <label style="color: red;font-size: 20px;padding-right: 45%;">${errorMsg}</label>
+            <div class="col-sm-8">
+                <input type="hidden" class="form-control" id="id" name="id" readonly value="${userInfo.id}">
+            </div>
 
             <div class="form-group row" >
-                <label for="oldPwd" class="col-sm-2 control-label">请输入原密码</label>
+                <label for="username" class="col-sm-2 control-label">用户名</label>
                 <div class="col-sm-8">
-                    <input type="password" class="form-control" id="oldPwd" name="oldPwd" placeholder="请输入原密码">
+                    <input type="text" class="form-control" id="username" name="username" readonly value="${userInfo.username}">
                 </div>
             </div>
 
             <div class="form-group row" >
-                <label for="newPwd" class="col-sm-2 control-label">请输入新密码</label>
+                <label for="phone" class="col-sm-2 control-label">电话</label>
                 <div class="col-sm-8">
-                    <input type="password" class="form-control" id="newPwd" name="newPwd" placeholder="请输入新密码">
+                    <input type="text" class="form-control" id="phone" name="phone" value="${userInfo.phone}">
                 </div>
             </div>
 
             <div class="form-group row" >
-                <label for="newPwd2" class="col-sm-2 control-label">再次输入新密码</label>
+                <label for="qq" class="col-sm-2 control-label">QQ</label>
                 <div class="col-sm-8">
-                    <input type="password" class="form-control" id="newPwd2" name="newPwd2" placeholder="再次输入新密码">
+                    <input type="text" class="form-control" id="qq" name="qq" value="${userInfo.qq}">
+                </div>
+            </div>
+
+            <div class="form-group row" >
+                <label for="email" class="col-sm-2 control-label">邮箱</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="email" name="email" value="${userInfo.email}">
+                </div>
+            </div>
+
+            <div class="form-group row" >
+                <label for="address" class="col-sm-2 control-label">地址</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="address" name="address" value="${userInfo.address}">
+                </div>
+            </div>
+
+            <div class="form-group row" >
+                <label for="description" class="col-sm-2 control-label">描述</label>
+                <div class="col-sm-8">
+                    <textarea class="form-control" rows="3" placeholder="说些什么吧..."
+                              id="description"   name="description">${userInfo.description}</textarea>
                 </div>
             </div>
 
 
-            <div class="box-tools text-center" style="padding-top: 20px;padding-right: 170px;">
-                <button type="submit" class="btn btn-primary">修改密码</button>
-                <%--<button type="button" class="btn bg-default"--%>
-                <%--onclick="history.back(-1);">返回</button>--%>
+            <div class="box-tools text-center" style="padding-top: 2px;padding-right: 50px;">
+                <button type="submit" class="btn btn-primary" style="width: 100px" onclick=alert("修改成功！")>修改</button>
             </div>
 
         </form>

@@ -79,17 +79,17 @@ public interface IBookDao {
 //    void updateStatus(Integer book_id);
 
     //查找最新上架的图书
-    @Select("select * from book order by time desc limit 0,5")
+    @Select("select * from book where status=1 order by time desc limit 0,5")
     @ResultMap("resultMap")
     List<Book> findNewBook();
 
     //查找价格最低的书籍
-    @Select("select * from book order by price limit 0,5")
+    @Select("select * from book where status=1 order by price limit 0,5")
     @ResultMap("resultMap")
     List<Book> findCheapBook();
 
     //查找精品推荐的书籍
-    @Select("select * from book limit 0,5")
+    @Select("select * from book where status=1 limit 0,5")
     @ResultMap("resultMap")
     List<Book> findGoodBook();
 
