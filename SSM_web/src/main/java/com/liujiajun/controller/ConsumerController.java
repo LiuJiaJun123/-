@@ -240,6 +240,8 @@ public class ConsumerController {
     public ModelAndView allbook() throws Exception {
 
         ModelAndView modelAndView=new ModelAndView();
+        List<Category> categoryList = categoryService.findAll();
+        modelAndView.addObject("categoryList",categoryList);
         modelAndView.setViewName("consumer/all-book");
         return modelAndView;
     }

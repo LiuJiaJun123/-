@@ -21,15 +21,20 @@
 			<dl id="selectCategory">
 				<dt>种类：</dt>
 				<dd class="select-all selected"><a href="#">全部</a></dd>
-				<dd><a href="#">成功励志</a></dd>
-				<dd><a href="#">法律</a></dd>
-				<dd><a href="#">工具书</a></dd>
-				<dd><a href="#">管理</a></dd>
-				<dd><a href="#">计算机与网络</a></dd>
-				<dd><a href="#">科技工程</a></dd>
-				<dd><a href="#">生活时尚考试</a></dd>
-				<dd><a href="#">政治军事</a></dd>
-				<dd><a href="#">其他</a></dd>
+
+				<c:forEach items="${categoryList}" var="category">
+					<dd><a href="#">${category.category_name}</a></dd>
+				</c:forEach>
+
+				<%--<dd><a href="#">成功励志</a></dd>--%>
+				<%--<dd><a href="#">法律</a></dd>--%>
+				<%--<dd><a href="#">工具书</a></dd>--%>
+				<%--<dd><a href="#">管理</a></dd>--%>
+				<%--<dd><a href="#">计算机与网络</a></dd>--%>
+				<%--<dd><a href="#">科技工程</a></dd>--%>
+				<%--<dd><a href="#">生活时尚考试</a></dd>--%>
+				<%--<dd><a href="#">政治军事</a></dd>--%>
+				<%--<dd><a href="#">其他</a></dd>--%>
 
 			</dl>
 		</li>
