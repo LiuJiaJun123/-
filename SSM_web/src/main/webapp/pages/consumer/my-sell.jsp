@@ -204,25 +204,24 @@
         <div class="rtcont fr">
 
             <div class="ddzxbt">我发布的商品</div>
-                <c:forEach items="${bookInfo.list}" var="book">
-                    <div class="ddxq">
-                        <div class="ddspt fl"><img style="width: 80px;height: 80px;" src="${book.imgUrl}" alt=""></div>
-                        <div class="ddbh fl">《 ${book.book_name} 》</div>
-                        <li class="ztxx fr">
-                            <ul>
-                                <%--<li>${book.categoryInfo.category_name}</li>--%>
-                                <li>￥${book.price}</li>
-                                <li style="width: 200px"><fmt:formatDate value='${book.time}' pattern='yyyy-MM-dd HH:mm'/></li>
-                                <li><a id="update_info" href="" data-toggle="modal" onclick="updateInfo(${book.book_id})">编辑</a></li>
-                                <li><a  href="${pageContext.request.contextPath}/book/soldOut.do?book_id=${book.book_id}"
-                                       onClick="return confirm('您确定要下架该书籍吗?');">下架</a></li>
+            <c:forEach items="${bookInfo.list}" var="book">
+                <div class="ddxq">
+                    <div class="ddspt fl"><img style="width: 80px;height: 80px;" src="${book.imgUrl}" alt=""></div>
+                    <div class="ddbh fl">《 ${book.book_name} 》</div>
+                    <li class="ztxx fr">
+                        <ul>
+                            <%--<li>${book.categoryInfo.category_name}</li>--%>
+                            <li>￥${book.price}</li>
+                            <li style="width: 200px"><fmt:formatDate value='${book.time}' pattern='yyyy-MM-dd HH:mm'/></li>
+                            <li><a id="update_info" href="" data-toggle="modal" onclick="updateInfo(${book.book_id})">编辑</a></li>
+                            <li><a  href="${pageContext.request.contextPath}/book/soldOut.do?book_id=${book.book_id}"
+                                   onClick="return confirm('您确定要下架该书籍吗?');">下架</a></li>
 
-                                <div class="clear"></div>
-                            </ul>
-                        </div>
-                        <div class="clear"></div>
-                </c:forEach>
-
+                            <div class="clear"></div>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+            </c:forEach>
 
             <div class="page_total_class">
                 总共${bookInfo.pages} 页，共${bookInfo.total} 条数据。
@@ -232,37 +231,37 @@
             <%--分页 start--%>
             <div class="page_class">
                 <ul class="pagination">
-                <li class="page-item">
-                    <a class="page-link" href="${pageContext.request.contextPath}/consumer/mySell.do?page=${bookInfo.pageNum-1}">上一页</a>
-                </li>
+                    <li class="page-item">
+                        <a class="page-link" href="${pageContext.request.contextPath}/consumer/mySell.do?page=${bookInfo.pageNum-1}">上一页</a>
+                    </li>
 
-                <c:forEach begin="1" end="${bookInfo.pages}" var="i">
-                    <c:if test="${i==bookInfo.pageNum}">
-                        <li class="page-item active">
-                            <a class="page-link" href="${pageContext.request.contextPath}/consumer/mySell.do?page=${i}">${i}</a>
-                        </li>
-                    </c:if>
-                    <c:if test="${i!=bookInfo.pageNum}">
-                        <li class="page-item">
-                            <a class="page-link" href="${pageContext.request.contextPath}/consumer/mySell.do?page=${i}">${i}</a>
-                        </li>
-                    </c:if>
-                </c:forEach>
+                    <c:forEach begin="1" end="${bookInfo.pages}" var="i">
+                        <c:if test="${i==bookInfo.pageNum}">
+                            <li class="page-item active">
+                                <a class="page-link" href="${pageContext.request.contextPath}/consumer/mySell.do?page=${i}">${i}</a>
+                            </li>
+                        </c:if>
+                        <c:if test="${i!=bookInfo.pageNum}">
+                            <li class="page-item">
+                                <a class="page-link" href="${pageContext.request.contextPath}/consumer/mySell.do?page=${i}">${i}</a>
+                            </li>
+                        </c:if>
+                    </c:forEach>
 
-                <li class="page-item">
-                    <a class="page-link" href="${pageContext.request.contextPath}/consumer/mySell.do?page=${bookInfo.pageNum+1}">下一页</a>
-                </li>
-            </ul>
+                    <li class="page-item">
+                        <a class="page-link" href="${pageContext.request.contextPath}/consumer/mySell.do?page=${bookInfo.pageNum+1}">下一页</a>
+                    </li>
+                </ul>
             </div>
             <%--分页 end--%>
 
-            </div>
-
         </div>
 
-        <div class="clear"></div>
-
     </div>
+
+    <div class="clear"></div>
+
+</div>
 
 <jsp:include page="footer.jsp"></jsp:include>
 
