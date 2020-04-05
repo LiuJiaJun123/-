@@ -345,7 +345,7 @@
 		$(document).ready(function() {
 
 			// 激活导航位置
-			setSidebarActive("order-manage");
+			setSidebarActive("collection-management");
 
 			// 列表按钮 
 			$("#dataList td input[type='checkbox']").iCheck({

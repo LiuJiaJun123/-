@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.liujiajun.domain.CheckUsername;
 import com.liujiajun.domain.UserInfo;
 import com.liujiajun.service.IUserService;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -90,8 +91,28 @@ public class UserController {
     @RequestMapping("/edit.do")
     public ModelAndView edit(Integer id) throws Exception {
         ModelAndView mv=new ModelAndView();
+
         //查找要编辑的用户信息
         UserInfo user = userService.findById(id);
+        mv.addObject("user",user);
+        mv.setViewName("user-edit");
+        return mv;
+    }
+
+    /**
+     * 管理员 导航栏 修改个人信息
+     * @return
+     */
+    @RequestMapping("/updatePersonalData.do")
+    public ModelAndView updatePersonalData() throws Exception {
+        ModelAndView mv=new ModelAndView();
+
+        //获取当前用户
+        String username = (String) SecurityUtils.getSubject().getPrincipal();
+        UserInfo userInfo = userService.findByName(username);
+
+        //查找要编辑的用户信息
+        UserInfo user = userService.findById(userInfo.getId());
         mv.addObject("user",user);
         mv.setViewName("user-edit");
         return mv;

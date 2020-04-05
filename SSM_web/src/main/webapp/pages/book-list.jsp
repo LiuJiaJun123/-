@@ -123,7 +123,7 @@
                                     <div class="has-feedback">
                                         <%--搜索--%>
                                         <input type="text" class="form-control input-sm" placeholder="输入书籍名称、卖家名称、类别名称搜索"
-                                               style="width: 14.5vw; " name="findConditions" id="findConditions">
+                                               style="width: 18vw; " name="findConditions" id="findConditions">
                                         <span class="glyphicon glyphicon-search form-control-feedback"></span>
                                     </div>
                                 </form>
@@ -337,40 +337,27 @@
             });
 
 
-			$(document)
-					.ready(
-							function() {
+            $(document).ready(function() {
 
-								// 激活导航位置 admin-datalist
-								setSidebarActive("user-list");
+                // 激活导航位置
+                setSidebarActive("book-management");
 
-								// 列表按钮 
-								$("#dataList td input[type='checkbox']")
-										.iCheck(
-												{
-													checkboxClass : 'icheckbox_square-blue',
-													increaseArea : '20%'
-												});
-								// 全选操作 
-								$("#selall")
-										.click(
-												function() {
-													var clicks = $(this).is(
-															':checked');
-													if (!clicks) {
-														$(
-																"#dataList td input[type='checkbox']")
-																.iCheck(
-																		"uncheck");
-													} else {
-														$(
-																"#dataList td input[type='checkbox']")
-																.iCheck("check");
-													}
-													$(this).data("clicks",
-															!clicks);
-												});
-							});
+                // 列表按钮
+                $("#dataList td input[type='checkbox']").iCheck({
+                    checkboxClass : 'icheckbox_square-blue',
+                    increaseArea : '20%'
+                });
+                // 全选操作
+                $("#selall").click(function() {
+                    var clicks = $(this).is(':checked');
+                    if (!clicks) {
+                        $("#dataList td input[type='checkbox']").iCheck("uncheck");
+                    } else {
+                        $("#dataList td input[type='checkbox']").iCheck("check");
+                    }
+                    $(this).data("clicks", !clicks);
+                });
+            });
 		</script>
 </body>
 

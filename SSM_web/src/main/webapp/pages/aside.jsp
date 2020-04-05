@@ -38,13 +38,13 @@
 				<ul class="treeview-menu">
 
 					<%--<security:authorize access="hasRole('ADMIN')">--%>
-					<li id="users-management"><a
+					<li id="user-management"><a
 						href="${pageContext.request.contextPath}/user/findAll.do?page=1&pageSize=4"> <i
 							class="fa fa-circle-o"></i> 用户管理
 					</a></li>
 					<%--</security:authorize>--%>
 
-					<li id="log-management"><a
+					<li id="syslog-management"><a
 						href="${pageContext.request.contextPath}/sysLog/findAll.do?page=1&pageSize=4"> <i
 							class="fa fa-circle-o"></i> 访问日志
 					</a></li>
@@ -59,11 +59,11 @@
 							href="${pageContext.request.contextPath}/category/findAll.do?page=1&pageSize=4">
 						<i class="fa fa-circle-o"></i> 类别管理
 					</a></li>
-					<li id="product-management"><a
+					<li id="book-management"><a
 						href="${pageContext.request.contextPath}/book/findAll.do?page=1&pageSize=4">
 							<i class="fa fa-circle-o"></i> 书籍管理
 					</a></li>
-					<li id="product-management2"><a
+					<li id="askbook-management"><a
 							href="${pageContext.request.contextPath}/askbook/findAll.do?page=1&pageSize=4">
 						<i class="fa fa-circle-o"></i> 求购书籍管理
 					</a></li>
