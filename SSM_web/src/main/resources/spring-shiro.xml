@@ -62,8 +62,8 @@
 
 
                 <!--/consumer/** = authc, roles[user]-->
-                /consumer/addbook.do = roles[user]
-                /consumer/addaskbook.do = roles[user]
+                <!--/consumer/addbook.do = roles[user]-->
+                <!--/consumer/addaskbook.do = roles[user]-->
                 /consumer/mysell.do = roles[user]
                 /consumer/myask.do = roles[user]
                 /consumer/myCollection.do = roles[user]

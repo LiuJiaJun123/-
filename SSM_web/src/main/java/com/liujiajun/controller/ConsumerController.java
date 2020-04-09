@@ -67,18 +67,27 @@ public class ConsumerController {
         modelAndView.setViewName("consumer/announcement-details");
         return modelAndView;
     }
-
+    
 
     //    添加图书
     @RequestMapping("/addbook.do")
     public ModelAndView addbook() throws Exception {
 
         ModelAndView modelAndView=new ModelAndView();
-        //查找所有类别
-        List<Category> categoryList = categoryService.findAll();
+        Subject subject = SecurityUtils.getSubject();
+        //如果未登录
+        if(!subject.isAuthenticated()){
+            modelAndView.setViewName("consumer/pleaseLogin");
+        }
 
-        modelAndView.addObject("categoryList",categoryList);
-        modelAndView.setViewName("consumer/add-book");
+        else{
+            //查找所有类别
+            List<Category> categoryList = categoryService.findAll();
+
+            modelAndView.addObject("categoryList",categoryList);
+            modelAndView.setViewName("consumer/add-book");
+        }
+
         return modelAndView;
     }
 
@@ -87,11 +96,18 @@ public class ConsumerController {
     public ModelAndView addaskbook() throws Exception {
 
         ModelAndView modelAndView=new ModelAndView();
-        //查找所有类别
-        List<Category> categoryList = categoryService.findAll();
+        Subject subject = SecurityUtils.getSubject();
+        //如果未登录
+        if(!subject.isAuthenticated()){
+            modelAndView.setViewName("consumer/pleaseLogin");
+        }
+        else {
+            //查找所有类别
+            List<Category> categoryList = categoryService.findAll();
 
-        modelAndView.addObject("categoryList",categoryList);
-        modelAndView.setViewName("consumer/add-askbook");
+            modelAndView.addObject("categoryList", categoryList);
+            modelAndView.setViewName("consumer/add-askbook");
+        }
         return modelAndView;
     }
 
