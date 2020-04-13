@@ -71,6 +71,20 @@ public class CollectionController {
         collectionService.delete(userInfo.getId(), book_id);
     }
 
+    //普通用户删除收藏
+    @RequestMapping("/remove.do")
+    public String remove(Integer book_id) throws Exception {
+
+        ModelAndView mv=new ModelAndView();
+
+        //获取当前用户
+        String username = (String) SecurityUtils.getSubject().getPrincipal();
+        UserInfo userInfo = userService.findByName(username);
+
+        collectionService.delete(userInfo.getId(), book_id);
+        return "redirect:/consumer/myCollection.do";
+    }
+
     //查询是否收藏
     @RequestMapping("/search.do")
     @ResponseBody

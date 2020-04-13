@@ -49,7 +49,10 @@
                                 <li>￥${collection.bookInfo.price}</li>
                                 <li style="width: 200px"><fmt:formatDate value='${collection.time}' pattern='yyyy-MM-dd HH:mm'/></li>
                                 <c:if test="${collection.bookInfo.status==0}">
-                                    <li>已售出</li>
+                                    <li><span style="font-size: 15px">已售出</span>
+                                        <a style="color: #ed5565; padding-left: 1px;font-size: 16px;"
+                                                href="${pageContext.request.contextPath}/collection/remove.do?book_id=${collection.bookInfo.book_id}">删除</a>
+                                    </li>
                                 </c:if>
                                 <c:if test="${collection.bookInfo.status==1}">
                                     <li><a target="_blank" href="${pageContext.request.contextPath}/consumer/xq.do?book_id=${collection.bookInfo.book_id}">书籍详情></a></li>

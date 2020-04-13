@@ -73,6 +73,7 @@
 
 
                 /collection/delete.do = authc,roles["user"]
+                /collection/remove.do = authc,roles["user"]
                 /collection/save.do = authc,roles["user"]
                 /collection/search.do = authc,roles["user"]
                 /collection/** = authc,roles["admin"]
